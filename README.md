@@ -1,6 +1,4 @@
 skrubb_DAT255
 =============
 
-DAT255 Software Engineering Project
-
-Hostprojekt låter kul!
+Regga er på https://www.seenowdo.com/

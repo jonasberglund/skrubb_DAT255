@@ -1,4 +1,0 @@
-Anders//
-Fråga 1:
-Jag får 415 fel när jag använder PUT i update, konveterar till Proxy före return. 
-Förstår inte vad problemet kan vara. Någon som har haft samma problem?

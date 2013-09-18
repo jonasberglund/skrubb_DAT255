@@ -3,7 +3,6 @@ package se.chalmers.h_sektionen;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.os.Bundle;
 import android.app.Activity;
-import android.content.Intent;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;

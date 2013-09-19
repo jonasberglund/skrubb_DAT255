@@ -1,10 +1,14 @@
 package se.chalmers.h_sektionen.utils;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -15,14 +19,17 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import android.content.res.AssetManager;
+import android.util.Log;
+
 
 public class MockTemp {
 	
 	public static String getData(){
 		DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
-		HttpPost httppost = new HttpPost("https://graph.facebook.com/oauth/access_token?client_id=161725214029162&client_secret=bace54110f0ba764dd7f98af20f5bfea&grant_type=client_credentials");
+		HttpPost httppost = new HttpPost("https://graph.facebook.com/109143889143301/feed?access_token=161725214029162%7CBzWvqgod38ZodPCz5Shub0PTld0");
 		// Depends on your web service
-		httppost.setHeader("Content-type", "application/json");
+		httppost.setHeader("Accept", "application/json");
 
 		InputStream inputStream = null;
 		String result = null;
@@ -42,7 +49,7 @@ public class MockTemp {
 		    }
 		    result = sb.toString();
 		} catch (Exception e) { 
-		    // Oops
+		    e.printStackTrace();
 		}
 		finally {
 		    try{if(inputStream != null)inputStream.close();}catch(Exception squish){}
@@ -59,15 +66,34 @@ public class MockTemp {
 			List<String> posts = new ArrayList<String>();
 			
 			for (int i = 0; i < json_arr.length(); i++){
-				posts.add(json_arr.getJSONObject(i).getString("message"));
+				String message = json_arr.getJSONObject(i).optString("message");
+				if (!message.equals(""))
+					posts.add(message);
 			}
 			
 			return posts.toArray(new String[posts.size()]);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
+			e.printStackTrace();
+			String p = Log.getStackTraceString(e);
+			String[] s = {"Det haer gick inte bra", p};
+			return s;
+		}
+	}
+	
+	public static String getDummyData(AssetManager am){
+		StringBuilder sb = new StringBuilder();
+		try {
+
+			Scanner sc = new Scanner(am.open("data.txt"));
+			
+			while (sc.hasNext()){
+				sb.append(sc.nextLine());
+			}
+		} catch (IOException e) {
+			sb.append("SKIT");
 			e.printStackTrace();
 		}
 		
-		return null;
+		return sb.toString();
 	}
 }

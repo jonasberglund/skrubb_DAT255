@@ -1,0 +1,1589 @@
+{
+   "data": [
+      {
+         "id": "109143889143301_590520271005658",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "S\u00f6k Valberedningen!\n\nVill du h\u00e5lla i rekryteringar och intervjuer f\u00f6r poster inom Chalmers Studentk\u00e5r? \u00c4r det din tur att sitta p\u00e5 andra sidan bordet?\n\nChalmers Studentk\u00e5rs Valberedning s\u00f6ker nu personer som vill l\u00e4ra sig mer om intervjuteknik och k\u00e5rens verksamhet. Du blir del av en grupp som tillsammans arbetar med att rekrytera, intervjua och nominera kommitt\u00e9ordf\u00f6randen, styrelseledam\u00f6ter, k\u00e5rledningen och andra poster inom Chalmers Studentk\u00e5r. Var med och p\u00e5verka, utvecklas personligen och f\u00e5 nyttiga erfarenheter f\u00f6r framtida arbetslivet. S\u00f6k valberedningen den 18 september! \n\nHar du fr\u00e5gor om uppdraget maila valberedningen\u0040chs.chalmers.se. F\u00f6r mer info om ans\u00f6kan kontakta Fullm\u00e4ktiges Talman p\u00e5 talmannapresidiet\u0040chs.chalmers.se",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-09-18T15:35:25+0000",
+         "updated_time": "2013-09-18T15:35:25+0000"
+      },
+      {
+         "id": "109143889143301_590509367673415",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Chalmersspexet Bob presenterar sin f\u00f6rest\u00e4llning Bellman den 27 september klockan 19.00 p\u00e5 Aftonstj\u00e4rnan (Lindholmen).\r\n\r\nEtt spex \u00e4r en humoristisk musikalteaterf\u00f6rest\u00e4llning med mycket s\u00e5ng, dans och musik skriven, producerad och framf\u00f6rd av chalmerister. Chalmersspexet har en l\u00e5ng tradition och fyller i \u00e5r 65 \u00e5r! Kom och fira med oss genom att se \u00e5rets f\u00f6rest\u00e4llning, Bellman.\r\n\r\nBer\u00e4ttelsen tar sin b\u00f6rjan i senare delen av 1700-talets Stockholm. Carl Michael Bellman tillbringar sina glada dagar tillsammans med v\u00e4nnerna p\u00e5 krogen Det Tappade Ankaret i jakt p\u00e5 inspiration till sina om\u00e5ttligt popul\u00e4ra dikter. Den lugna vardagen st\u00f6rs n\u00e4r ryktet om att en ny hovpoet beh\u00f6ver utses n\u00e5r hans \u00f6ron. Samtidigt dyker en ov\u00e4ntad konkurrent upp i form av den excentriske adelsmannen Harlekin, som inte skyr n\u00e5gra medel f\u00f6r att n\u00e5 ber\u00f6mmelse. De b\u00e5da poeternas jakt p\u00e5 hovpoetsplatsen slutar i ett oerh\u00f6rt rafflande \u00e4ventyr som inte l\u00e4mnar n\u00e5gon ober\u00f6rd!\r\n\r\nBiljetterna kostar 180 kr f\u00f6r vuxen, 140 kr f\u00f6r studenter och 120 kr f\u00f6r chalmers studenter. Biljetter kommer s\u00e4ljas p\u00e5 Lindholmen den 23 september. Annars p\u00e5 lunchen p\u00e5 Chalmersk\u00e5rhus eller p\u00e5 mail; bob\u0040chalmersspexet.se.",
+         "picture": "http://photos-f.ak.fbcdn.net/hphotos-ak-prn1/1235982_590509337673418_1679978210_s.jpg",
+         "link": "http://www.facebook.com/photo.php?fbid=590509337673418&set=a.154606754597014.33914.109143889143301&type=1&relevant_count=1",
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yz/r/StEh3RhPvjk.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "photo",
+         "status_type": "added_photos",
+         "object_id": "590509337673418",
+         "created_time": "2013-09-18T15:05:16+0000",
+         "updated_time": "2013-09-18T15:05:16+0000"
+      },
+      {
+         "id": "109143889143301_590492531008432",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Hej!\r\n\r\nEmil och Emiliastatyn \u00e4r f\u00f6rsvunnen fr\u00e5n Olgas trappor (se bifogad bild). Om ni h\u00f6rt eller sett n\u00e5got s\u00e5 h\u00f6r av er snarast!\r\n\r\nV\u00e4nliga h\u00e4lsningar\r\n\r\nJohanna Svensson\r\nK\u00e5rordf\u00f6rande 13/14",
+         "picture": "http://photos-d.ak.fbcdn.net/hphotos-ak-prn2/1208939_590492471008438_748546503_s.jpg",
+         "link": "http://www.facebook.com/photo.php?fbid=590492471008438&set=a.154606754597014.33914.109143889143301&type=1&relevant_count=1",
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yz/r/StEh3RhPvjk.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "photo",
+         "status_type": "added_photos",
+         "object_id": "590492471008438",
+         "created_time": "2013-09-18T14:11:10+0000",
+         "updated_time": "2013-09-18T14:35:53+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "100001105756524",
+                  "name": "Tomas Lukas Szulc"
+               },
+               {
+                  "id": "556553088",
+                  "name": "Erik Eklund"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NTU2NTUzMDg4",
+                  "before": "MTAwMDAxMTA1NzU2NTI0"
+               }
+            }
+         },
+         "comments": {
+            "data": [
+               {
+                  "id": "590492471008438_1748905",
+                  "from": {
+                     "name": "Danny Lam",
+                     "id": "596047408"
+                  },
+                  "message": "Senast jag s\u00e5g dem var nog i b\u00f6rjan av f\u00f6rra veckan! Men har tyv\u00e4rr inte h\u00f6rt/sett ngt efter\u00e5t.",
+                  "can_remove": false,
+                  "created_time": "2013-09-18T14:35:53+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MQ==",
+                  "before": "MQ=="
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_586828431374842",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Nollkampen \u00e4r nu \u00f6ver. I \u00e5r l\u00e4t vi, f\u00f6r omv\u00e4xlings skull, andra sektioner k\u00e4nna p\u00e5 hur det \u00e4r att st\u00e5 p\u00e5 prispallen. Trots utebliven vinst fick HnollK \u00e4nd\u00e5 bada och de l\u00e4r knappast klaga, d\u00e5 solen alltid skiner p\u00e5 Lindholmen.",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-09-10T14:20:27+0000",
+         "updated_time": "2013-09-10T14:20:27+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "1790495119",
+                  "name": "Veronika Aspvall"
+               },
+               {
+                  "id": "1387211750",
+                  "name": "Emelie Roos"
+               },
+               {
+                  "id": "100000132362651",
+                  "name": "David Johnsson"
+               },
+               {
+                  "id": "736983005",
+                  "name": "Amanda Granstr\u00f6m"
+               },
+               {
+                  "id": "609214047",
+                  "name": "Henrik Berglund"
+               },
+               {
+                  "id": "100003592228005",
+                  "name": "Philip Rudolfsson"
+               },
+               {
+                  "id": "1361234619",
+                  "name": "Victoria Renner"
+               },
+               {
+                  "id": "612649577",
+                  "name": "Wilhelm R\u00e5bergh"
+               },
+               {
+                  "id": "556867713",
+                  "name": "Johan 'wertigo' Schyberg"
+               },
+               {
+                  "id": "1055216363",
+                  "name": "Jacob Thorsell"
+               },
+               {
+                  "id": "601448628",
+                  "name": "Charlie Hansson"
+               },
+               {
+                  "id": "100002239151260",
+                  "name": "Pontus Carlander"
+               },
+               {
+                  "id": "656393503",
+                  "name": "Charlie Sj\u00f6din"
+               },
+               {
+                  "id": "100000290087199",
+                  "name": "Ismail Shojai"
+               },
+               {
+                  "id": "665503339",
+                  "name": "Clobbe Norman"
+               },
+               {
+                  "id": "1558885834",
+                  "name": "Victoria Peterson"
+               },
+               {
+                  "id": "605565849",
+                  "name": "Daniel B\u00f6rjesson"
+               },
+               {
+                  "id": "742337840",
+                  "name": "David S\u00e4wemark"
+               },
+               {
+                  "id": "633141675",
+                  "name": "Stefan Torp Andersson"
+               },
+               {
+                  "id": "656465578",
+                  "name": "Lina Olsson"
+               },
+               {
+                  "id": "741328471",
+                  "name": "Niklas Redgert"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NzQxMzI4NDcx",
+                  "before": "MTc5MDQ5NTExOQ=="
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_583861385004880",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Bra tips till er p\u00e5 sektionen som vill till\u00e4mpa er kunskaper fr\u00e5n utbildningen i praktiken!",
+         "story": "H Sektionen shared Chalmers Teknologkonsulter AB's photo.",
+         "story_tags": {
+            "0": [
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen",
+                  "offset": 0,
+                  "length": 11,
+                  "type": "page"
+               }
+            ],
+            "19": [
+               {
+                  "id": "135622596115",
+                  "name": "Chalmers Teknologkonsulter AB",
+                  "offset": 19,
+                  "length": 29,
+                  "type": "page"
+               }
+            ]
+         },
+         "picture": "http://photos-c.ak.fbcdn.net/hphotos-ak-prn2/1209307_10151510560316116_1077293901_s.png",
+         "link": "http://www.facebook.com/photo.php?fbid=10151510560316116&set=a.388982426115.172928.135622596115&type=1",
+         "name": "Timeline Photos",
+         "caption": "Nu har \u00e5rets stora rekrytering b\u00f6rjat! Chalmers Teknologkonsulter \u00e4r arbetsplatsen f\u00f6r dig som \u00e4r chalmersstudent och som vill jobba i riktiga projekt, med kvalificerade uppgifter gentemot de f\u00f6retag du dr\u00f6mmer om att jobba hos i framtiden. \r\n\r\nH\u00e4r hos oss har du chansen att utvecklas som person, tr\u00e4ffa nya v\u00e4nner, skapa ett st\u00f6rre kontaktn\u00e4tverk och omvandla teori till praktik. S\u00f6k dig till oss p\u00e5 CTK senast 14:e september!",
+         "properties": [
+            {
+               "name": "By",
+               "text": "Chalmers Teknologkonsulter AB",
+               "href": "http://www.facebook.com/ChalmersTeknologkonsulter?ref=stream"
+            }
+         ],
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yD/r/aS8ecmYRys0.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "photo",
+         "status_type": "shared_story",
+         "object_id": "10151510560316116",
+         "created_time": "2013-09-04T15:00:19+0000",
+         "updated_time": "2013-09-04T15:00:19+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "606656790",
+                  "name": "Christoffer M\u00e5rtensson"
+               },
+               {
+                  "id": "135622596115",
+                  "name": "Chalmers Teknologkonsulter AB"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTM1NjIyNTk2MTE1",
+                  "before": "NjA2NjU2Nzkw"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_583819538342398",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "F\u00f6retagsgrupp s\u00f6ker styrelseledamot!\n\nNu s\u00f6ker Chalmers Studentk\u00e5rs F\u00f6retagsgrupp en engagerad student som vill l\u00e4ra sig mer om styrelsearbete!\nF\u00f6retagsgruppen utg\u00f6r moderbolaget f\u00f6r k\u00e5rens \u00f6vriga f\u00f6retag och har som syfte att se till att studentk\u00e5ren genom sina f\u00f6retag arbetar f\u00f6r studentk\u00e5rens medlemmar och deras intressen. I k\u00e5rens samtliga f\u00f6retagsstyrelser sitter b\u00e5de studenter samt representanter fr\u00e5n n\u00e4ringslivet. \nSom styrelseledamot f\u00e5r du m\u00f6jligheten att representera samtliga k\u00e5rens medlemmar och p\u00e5verka hur k\u00e5rens f\u00f6retag arbetar. Arbetet ger en inblick i hur ett f\u00f6retag drivs och chansen att knyta ny intressanta kontakter. Det \u00e4r viktigt att du har m\u00f6jlighet att sitta p\u00e5 ett tv\u00e5 \u00e5rs mandat i styrelsen f\u00f6r att p\u00e5 b\u00e4sta s\u00e4tt kunna f\u00f6retr\u00e4da k\u00e5rens medlemmar och f\u00e5 kontinuitet i arbetet.\nS\u00e5 ta chansen att l\u00e4ra dig mer om k\u00e5ren och dess f\u00f6retag, var med och p\u00e5verka och utvecklas personligen. Bli en del av Sveriges ledande studentk\u00e5r!\nL\u00e4s mer om k\u00e5rens f\u00f6retag och vad det inneb\u00e4r att vara engagerad p\u00e5 k\u00e5rens hemsida http://www.chs.chalmers.se/sv/node/834 eller mejla valberedninge\u0040chs.chalmers.se. \nSkicka din ans\u00f6kan idag men senast den 11 september till valberedningen\u0040chs.chalmers.se. \nBifoga en kort presentation av dig sj\u00e4lv med kontaktuppgifter, CV \u00e4r valfritt.",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-09-04T12:28:16+0000",
+         "updated_time": "2013-09-04T12:28:16+0000"
+      },
+      {
+         "id": "109143889143301_583813571676328",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "\u00c4r du intresserad av vad k\u00e5rfullm\u00e4ktige arbetar med? Gillar du att skriva?\nD\u00e5 passar du som sekreterare i fullm\u00e4ktige.\n\nChalmers studentk\u00e5rs fullm\u00e4ktige \u00e4r k\u00e5rens h\u00f6gst beslutande organ och har\nm\u00f6te 2ggr per l\u00e4speriod. Som sekreterare deltar du i m\u00f6tena och f\u00f6r ett\nbeslutsprotokoll. D\u00e4rut\u00f6ver ser du till att protokollet blir justerat och\np\u00e5skrivet samt l\u00e4gger upp det p\u00e5 studentk\u00e5rens hemsida. Man kan v\u00e4lja att\nenbart vara sekreterare p\u00e5 enskillda fullm\u00e4ktigem\u00f6ten, men\ntalmannapresidiet skulle helst se att du \u00e4r intresserad av att v\u00e4ljas som\nsekreterare f\u00f6r hela verksamhets\u00e5ret 13/14.\n\nTj\u00e4nsten \u00e4r arvoderad.\n\nF\u00f6r mer information, h\u00f6r av dig till talmannapresidiet\u0040chs.chalmers.se\n\nF\u00f6rsta fullm\u00e4ktigem\u00f6tet \u00e4r Onsdag LV3 (18/9) kl:18.00",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-09-04T12:05:44+0000",
+         "updated_time": "2013-09-04T12:05:44+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "100001004976720",
+                  "name": "Josefin Bertilsson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTAwMDAxMDA0OTc2NzIw",
+                  "before": "MTAwMDAxMDA0OTc2NzIw"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_583808488343503",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Ig\u00e5r lyckades H-sektionen knipa \u00e5t sig en \u00e4rofull tredjeplats i NollpoQuarlen och med den viktiga po\u00e4ngen i Nollolympiaden! Hurra!!\nImorgon \u00e4r l\u00e4s\u00e5rets f\u00f6rsta pubrunda, s\u00e5 samla ett glatt g\u00e4ng och ha kul p\u00e5 Chalmers maner!",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-09-04T11:45:00+0000",
+         "updated_time": "2013-09-04T11:45:00+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "665503339",
+                  "name": "Clobbe Norman"
+               },
+               {
+                  "id": "100000124824089",
+                  "name": "Sofia Guldbrand"
+               },
+               {
+                  "id": "532916399",
+                  "name": "Sofia Andersson"
+               },
+               {
+                  "id": "1558885834",
+                  "name": "Victoria Peterson"
+               },
+               {
+                  "id": "1219640757",
+                  "name": "Oliver Zander"
+               },
+               {
+                  "id": "100000174998155",
+                  "name": "William Carlst\u00e9n"
+               },
+               {
+                  "id": "689443556",
+                  "name": "Sofie Bondeson"
+               },
+               {
+                  "id": "633141675",
+                  "name": "Stefan Torp Andersson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NjMzMTQxNjc1",
+                  "before": "NjY1NTAzMzM5"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_583104575080561",
+         "from": {
+            "name": "Maria Svahn",
+            "id": "750410715"
+         },
+         "to": {
+            "data": [
+               {
+                  "category": "Non-profit organization",
+                  "category_list": [
+                     {
+                        "id": "2603",
+                        "name": "Non-Profit Organization"
+                     }
+                  ],
+                  "name": "H Sektionen",
+                  "id": "109143889143301"
+               }
+            ]
+         },
+         "message": "Passa p\u00e5 att utnyttja H sektionens bokbytarsida, d\u00e4r kan du hitta f\u00f6rra \u00e5rets upplagor eller bli av med gamla. Byt b\u00f6cker!!!\n\nGilla \u00e4ven H sektionens studien\u00e4mnd s\u00e5 blir du uppdaterad p\u00e5 kommande event. Hoppas alla Nollan fick str\u00e5lande resultat p\u00e5 deras f\u00f6rsta dugga!",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "created_time": "2013-09-02T21:53:07+0000",
+         "updated_time": "2013-09-02T21:53:07+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "665503339",
+                  "name": "Clobbe Norman"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NjY1NTAzMzM5",
+                  "before": "NjY1NTAzMzM5"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_581885961869089",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Har du vart inne p\u00e5 sektionens hemsidan? www.htek.se d\u00e4r hittar du massa bra l\u00e4nkar (t.ex. till gratis Windows licenser och hur du ansluter till eduroam) och information om plugg och vad du kan g\u00f6ra vid sidan av studierna. Du kan \u00e4ven klicka dig vidare till sektionens och k\u00e5rens f\u00f6reningar och kommitt\u00e9ers hemsidor/facebook.",
+         "picture": "http://external.ak.fbcdn.net/safe_image.php?d=AQA6yPG7JCb0aGtB&w=154&h=154&url=https\u00253A\u00252F\u00252Ffbcdn-sphotos-a-a.akamaihd.net\u00252Fhphotos-ak-prn2\u00252Fq71\u00252Fs720x720\u00252F1150718_581885935202425_380178168_o.jpg",
+         "link": "http://www.htek.se/",
+         "name": "H-Sektionen",
+         "caption": "www.htek.se",
+         "description": "Ingenj\u00f6rsteknologsektionen vid Chalmers Studentk\u00e5r",
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yD/r/aS8ecmYRys0.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "link",
+         "status_type": "shared_story",
+         "created_time": "2013-08-31T09:00:42+0000",
+         "updated_time": "2013-09-01T20:08:24+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "665503339",
+                  "name": "Clobbe Norman"
+               },
+               {
+                  "id": "100000124824089",
+                  "name": "Sofia Guldbrand"
+               },
+               {
+                  "id": "1335859912",
+                  "name": "Peter Edlund"
+               },
+               {
+                  "id": "1813254049",
+                  "name": "David H\u00f6rnberg"
+               },
+               {
+                  "id": "664946949",
+                  "name": "Viktor Engstr\u00f6m"
+               },
+               {
+                  "id": "1730483348",
+                  "name": "Simon Rohlin"
+               },
+               {
+                  "id": "742337840",
+                  "name": "David S\u00e4wemark"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NzQyMzM3ODQw",
+                  "before": "NjY1NTAzMzM5"
+               }
+            }
+         },
+         "comments": {
+            "data": [
+               {
+                  "id": "581885961869089_5336105",
+                  "from": {
+                     "name": "Sofia Guldbrand",
+                     "id": "100000124824089"
+                  },
+                  "message": "Sweeet!",
+                  "can_remove": false,
+                  "created_time": "2013-09-01T20:08:24+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               },
+               {
+                  "id": "581885961869089_5332501",
+                  "from": {
+                     "name": "Philip S\u00f6derberg",
+                     "id": "568172787"
+                  },
+                  "message": "Timeedit och studentportalen utan en massa klickande! :)",
+                  "can_remove": false,
+                  "created_time": "2013-08-31T09:05:20+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MQ==",
+                  "before": "Mg=="
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_581879815203037",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Idag \u00e4r dagen d\u00e5 Nollan skriver sin f\u00f6rsta dugga, lycka till! Det viktigaste med att skriva en dugga eller tenta \u00e4r att man efter\u00e5t f\u00f6rs\u00f6ker sl\u00e4ppa all press genom att fira. Detta g\u00f6r Nollan l\u00e4mpligen p\u00e5 Dam- och Herrmiddagarna.\nF\u00f6r alla oss andra (och Nollan s\u00e5klart) arrar FestU Nollkalas senare ikv\u00e4ll i k\u00e5rhuset.",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-08-31T08:30:26+0000",
+         "updated_time": "2013-08-31T08:30:26+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "100000124824089",
+                  "name": "Sofia Guldbrand"
+               },
+               {
+                  "id": "100000174998155",
+                  "name": "William Carlst\u00e9n"
+               },
+               {
+                  "id": "100001004976720",
+                  "name": "Josefin Bertilsson"
+               },
+               {
+                  "id": "1813254049",
+                  "name": "David H\u00f6rnberg"
+               },
+               {
+                  "id": "742337840",
+                  "name": "David S\u00e4wemark"
+               },
+               {
+                  "id": "771152781",
+                  "name": "Pontus Savolainen"
+               },
+               {
+                  "id": "692471769",
+                  "name": "Josefine S\u00f6dling"
+               },
+               {
+                  "id": "1033821231",
+                  "name": "Christian Johannesson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTAzMzgyMTIzMQ==",
+                  "before": "MTAwMDAwMTI0ODI0MDg5"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_576545472403138",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "GP har lagt upp lite bilder p\u00e5 sin hemsidan och H sektionen finns s\u00e5klart med.",
+         "picture": "http://external.ak.fbcdn.net/safe_image.php?d=AQCQcEDqj5XYU5aV&w=154&h=154&url=http\u00253A\u00252F\u00252Fwww.gp.se\u00252Fimage_processor\u00252F1.1943811.1376998565\u002521\u00252Fimage\u00252F884571384.jpg_gen\u00252Fderivatives\u00252Fwide\u00252F884571384.jpg\u00253FmaxWidth\u00253D780\u002526maxHeight\u00253D520",
+         "link": "http://www.gp.se/image_processor/1.1943811.1376998565!/image/884571384.jpg_gen/derivatives/wide/884571384.jpg?maxWidth=780&maxHeight=520",
+         "name": "http://www.gp.se/image_processor/1.1943811.1376998565!/image/884571384.jpg_gen/derivatives/wide/8845",
+         "caption": "www.gp.se",
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yz/r/StEh3RhPvjk.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "link",
+         "status_type": "shared_story",
+         "created_time": "2013-08-20T18:25:29+0000",
+         "updated_time": "2013-08-20T21:48:07+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "1361234619",
+                  "name": "Victoria Renner"
+               },
+               {
+                  "id": "683617032",
+                  "name": "Edvard H\u00f6cke"
+               },
+               {
+                  "id": "531010824",
+                  "name": "Joacim Sv\u00e4rd"
+               },
+               {
+                  "id": "609214047",
+                  "name": "Henrik Berglund"
+               },
+               {
+                  "id": "656465578",
+                  "name": "Lina Olsson"
+               },
+               {
+                  "id": "627870422",
+                  "name": "Einar Bl\u00e5berg"
+               },
+               {
+                  "id": "634217953",
+                  "name": "Jennifer Maria Aqu\u00ed Nordqvist"
+               },
+               {
+                  "id": "579142008",
+                  "name": "Marcus Thersthol"
+               },
+               {
+                  "id": "614061511",
+                  "name": "Lobo Olsson"
+               },
+               {
+                  "id": "665503339",
+                  "name": "Clobbe Norman"
+               },
+               {
+                  "id": "579420929",
+                  "name": "Martina Magnusson"
+               },
+               {
+                  "id": "741328471",
+                  "name": "Niklas Redgert"
+               },
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen"
+               },
+               {
+                  "id": "100000290087199",
+                  "name": "Ismail Shojai"
+               },
+               {
+                  "id": "771152781",
+                  "name": "Pontus Savolainen"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NzcxMTUyNzgx",
+                  "before": "MTM2MTIzNDYxOQ=="
+               }
+            }
+         },
+         "comments": {
+            "data": [
+               {
+                  "id": "576545472403138_5304033",
+                  "from": {
+                     "name": "Maria Nilsson",
+                     "id": "100000984167641"
+                  },
+                  "message": "Finns \u00e4ven bilder p\u00e5 CFFC, litet tips bara :http://cffc.se/bilder/2013/forsta_dagen/",
+                  "can_remove": false,
+                  "created_time": "2013-08-20T21:48:07+0000",
+                  "like_count": 2,
+                  "user_likes": false
+               },
+               {
+                  "id": "576545472403138_5303594",
+                  "from": {
+                     "category": "Non-profit organization",
+                     "category_list": [
+                        {
+                           "id": "2603",
+                           "name": "Non-Profit Organization"
+                        }
+                     ],
+                     "name": "H Sektionen",
+                     "id": "109143889143301"
+                  },
+                  "message": "Nedan finns hela artikeln om ni skulle vilja l\u00e4sa texten som h\u00e4nger ihop med bilden.\nhttp://www.gp.se/nyheter/goteborg/1.1943805-tusentals-nya-chalmerister-i-stan",
+                  "can_remove": false,
+                  "created_time": "2013-08-20T18:26:45+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               },
+               {
+                  "id": "576545472403138_5303687",
+                  "from": {
+                     "name": "Joakim Carlsson",
+                     "id": "628211764"
+                  },
+                  "message": "G\u00f6ttig reklam f\u00f6r Nemo's Pizzeria =)",
+                  "can_remove": false,
+                  "created_time": "2013-08-20T19:10:10+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MQ==",
+                  "before": "Mw=="
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_576509325740086",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Det var en fr\u00f6jd f\u00f6r \u00f6gat att \u00e5ter st\u00e5 p\u00e5 G\u00f6taplatsen och f\u00e5 se ett hav av nyantagna b\u00e4randes sektionens vackra f\u00e4rg!\nVi hoppas att ni nu efter denna l\u00e5nga och h\u00e4ndelserika f\u00f6rsta dagen f\u00e5tt en uppfattning om hur otroligt roligt ni kommer ha det de n\u00e4rmsta fyra veckorna.\nPassa p\u00e5 och utnyttja mottagningstiden maximalt. L\u00e4r k\u00e4nna massa nya v\u00e4nner och se allt vad Chalmers har att erbjuda, b\u00e5de i studier och studentliv.\nVarmt v\u00e4lkomna till sektionen!",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-08-20T16:46:14+0000",
+         "updated_time": "2013-08-20T16:46:14+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "725066953",
+                  "name": "Mikael 'Gynther' Gr\u00fcner"
+               },
+               {
+                  "id": "124566064274012",
+                  "name": "Chalmers Studentk\u00e5r"
+               },
+               {
+                  "id": "683617032",
+                  "name": "Edvard H\u00f6cke"
+               },
+               {
+                  "id": "531010824",
+                  "name": "Joacim Sv\u00e4rd"
+               },
+               {
+                  "id": "605565849",
+                  "name": "Daniel B\u00f6rjesson"
+               },
+               {
+                  "id": "1053391664",
+                  "name": "Henrik Merlander"
+               },
+               {
+                  "id": "100001567819782",
+                  "name": "Therese Klingberg"
+               },
+               {
+                  "id": "664017419",
+                  "name": "Christoffer Lindvall"
+               },
+               {
+                  "id": "1361234619",
+                  "name": "Victoria Renner"
+               },
+               {
+                  "id": "614061511",
+                  "name": "Lobo Olsson"
+               },
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen"
+               },
+               {
+                  "id": "634217953",
+                  "name": "Jennifer Maria Aqu\u00ed Nordqvist"
+               },
+               {
+                  "id": "771152781",
+                  "name": "Pontus Savolainen"
+               },
+               {
+                  "id": "553966609",
+                  "name": "David Nordentjell"
+               },
+               {
+                  "id": "633141675",
+                  "name": "Stefan Torp Andersson"
+               },
+               {
+                  "id": "100000290087199",
+                  "name": "Ismail Shojai"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTAwMDAwMjkwMDg3MTk5",
+                  "before": "NzI1MDY2OTUz"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_539645239426495",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Nu s\u00e5 har har styrets \u00f6verl\u00e4mning till det nya styret skett. Vi hoppas att vi r\u00e4tat ut m\u00e5nga fr\u00e5getecken och att nya styrelsen nu k\u00e4nner sig manad att ta \u00f6ver efter oss.",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "created_time": "2013-06-07T01:24:59+0000",
+         "updated_time": "2013-06-07T01:24:59+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "633275684",
+                  "name": "Martin Skilbred"
+               },
+               {
+                  "id": "553966609",
+                  "name": "David Nordentjell"
+               },
+               {
+                  "id": "100000124824089",
+                  "name": "Sofia Guldbrand"
+               },
+               {
+                  "id": "736983005",
+                  "name": "Amanda Granstr\u00f6m"
+               },
+               {
+                  "id": "531010824",
+                  "name": "Joacim Sv\u00e4rd"
+               },
+               {
+                  "id": "561014457",
+                  "name": "Lovisa Westblom"
+               },
+               {
+                  "id": "100005230811879",
+                  "name": "Ewa Bexell"
+               },
+               {
+                  "id": "538197098",
+                  "name": "Anton Bondesson"
+               },
+               {
+                  "id": "573175478",
+                  "name": "Viktor Robertsson"
+               },
+               {
+                  "id": "741328471",
+                  "name": "Niklas Redgert"
+               },
+               {
+                  "id": "724481465",
+                  "name": "Ida Kl\u00e4ppevik"
+               },
+               {
+                  "id": "100001004976720",
+                  "name": "Josefin Bertilsson"
+               },
+               {
+                  "id": "771152781",
+                  "name": "Pontus Savolainen"
+               },
+               {
+                  "id": "1335859912",
+                  "name": "Peter Edlund"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTMzNTg1OTkxMg==",
+                  "before": "NjMzMjc1Njg0"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_534799566577729",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Sommar och ledighet \u00e4r snart h\u00e4r. Nu finns det \u00e4ntligen tid att spela golf!\n\nFredagen den 7 juni kommer Chalmers Golfklubb att arrangera en prova-p\u00e5-dag f\u00f6r teknologer som vill l\u00e4ra dig att spela golf. Under dagen f\u00e5r ni testa p\u00e5 golf med hj\u00e4lp av golfklubbens legitimerade instrukt\u00f6rer. Dagen \u00e4r helt kostnadsfri f\u00f6r alla teknologer. Tid 10.00-14-00. Veckan efter kommer det att starta en Gr\u00f6nt kort-kurs f\u00f6r er som f\u00e5r blodad tand. Teknologpriset f\u00f6r denna kurs \u00e4r mycket f\u00f6rdelaktiga 995kr. F\u00f6r anm\u00e4lan och mer information h\u00f6r av dig p\u00e5 teknologgolf\u0040gmail.com.\n\nP\u00e5 Chalmers golfklubb finns det 150 vigda platser \u00e5t golfintresserade chalmerister. Som teknolog finns flera f\u00f6rdelaktiga medlemsformer. Nytt f\u00f6r i sommar \u00e4r ett dubbelmedlemskap Det g\u00e4ller f\u00f6r alla er som redan har ett A-medlemskap p\u00e5 en annan klubb men vill kunna spela golf \u00e4ven i G\u00f6teborg. Teknologmedlemskapen ger obegr\u00e4nsad tillg\u00e5ng till en 18-h\u00e5lsbana av h\u00f6g klass som ligger ca 15 min utanf\u00f6r G\u00f6teborg (vid Landvetter). Banan n\u00e5s enkelt med kollektivtrafik fr\u00e5n Korsv\u00e4gen.\n\nTeknologkommitt\u00e9n p\u00e5 Chalmers GK",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "application": {
+            "name": "Facebook for Android",
+            "namespace": "fbandroid",
+            "id": "350685531728"
+         },
+         "created_time": "2013-05-27T06:12:51+0000",
+         "updated_time": "2013-05-27T06:12:51+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "755898122",
+                  "name": "Ludvig Karlsson"
+               },
+               {
+                  "id": "606656790",
+                  "name": "Christoffer M\u00e5rtensson"
+               },
+               {
+                  "id": "553966609",
+                  "name": "David Nordentjell"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NTUzOTY2NjA5",
+                  "before": "NzU1ODk4MTIy"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_533999526657733",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Som en paus i tentaplugget arrar SnH idag pluggfika! Kom till loungen v\u00e5n 3 i hus Jupiter d\u00e4r det bjuds p\u00e5 kaffe och fika.",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "application": {
+            "name": "Facebook for Android",
+            "namespace": "fbandroid",
+            "id": "350685531728"
+         },
+         "created_time": "2013-05-25T09:16:28+0000",
+         "updated_time": "2013-05-25T09:16:28+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "571352390",
+                  "name": "Daniel Arnlund"
+               },
+               {
+                  "id": "780072027",
+                  "name": "Lena Andersson"
+               },
+               {
+                  "id": "100001004976720",
+                  "name": "Josefin Bertilsson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTAwMDAxMDA0OTc2NzIw",
+                  "before": "NTcxMzUyMzkw"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_531810096876676",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "story": "\"Det \u00e4r datumet som g\u00e4ller;...\" on their own status.",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "application": {
+            "name": "Facebook for Android",
+            "namespace": "fbandroid",
+            "id": "350685531728"
+         },
+         "created_time": "2013-05-20T11:43:39+0000",
+         "updated_time": "2013-05-20T11:43:39+0000"
+      },
+      {
+         "id": "109143889143301_531733110217708",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Dykkurs!\n\nUnder Juni-Juli kommer Chalmers DK h\u00e5lla en grundkurs i dykning. \nPassa p\u00e5 att h\u00e4nga med ett g\u00f6tt g\u00e4ng under ytan och ha ett par soliga sommardagar. \n\nOm man klarar alla moment under kurser erh\u00e5ller man ett CMAS entsj\u00e4rnigt dykcertifikat. \n\nKom p\u00e5 informationstr\u00e4ff torsdagen 5 juni klockan 18 f\u00f6r att veta mer!\nKlarar man inte av att h\u00e5lla sig till den 5e juni kan man maila till kurs\u0040chalmersdykarklubb.se s\u00e5 f\u00e5r man svar p\u00e5 sina fr\u00e5gor.\n\nwww.chalmersdykarklubb.se\n//Chalmers DK",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "application": {
+            "name": "Facebook for Android",
+            "namespace": "fbandroid",
+            "id": "350685531728"
+         },
+         "created_time": "2013-05-20T06:55:28+0000",
+         "updated_time": "2013-05-20T17:49:10+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "100000230872086",
+                  "name": "Anna Thomsen"
+               },
+               {
+                  "id": "755866591",
+                  "name": "Victor Neugebauer"
+               },
+               {
+                  "id": "780072027",
+                  "name": "Lena Andersson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NzgwMDcyMDI3",
+                  "before": "MTAwMDAwMjMwODcyMDg2"
+               }
+            }
+         },
+         "comments": {
+            "data": [
+               {
+                  "id": "531733110217708_5038693",
+                  "from": {
+                     "name": "Daniel B\u00f6rjesson",
+                     "id": "605565849"
+                  },
+                  "message": "Det ser ut som att 5e juni \u00e4r en onsdag, vilken dag g\u00e4ller?",
+                  "can_remove": false,
+                  "created_time": "2013-05-20T07:30:54+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               },
+               {
+                  "id": "531733110217708_5039069",
+                  "from": {
+                     "category": "Non-profit organization",
+                     "category_list": [
+                        {
+                           "id": "2603",
+                           "name": "Non-Profit Organization"
+                        }
+                     ],
+                     "name": "H Sektionen",
+                     "id": "109143889143301"
+                  },
+                  "message": "Det \u00e4r datumet som g\u00e4ller; allts\u00e5 onsdagen den 5 juni",
+                  "can_remove": false,
+                  "created_time": "2013-05-20T11:43:39+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               },
+               {
+                  "id": "531733110217708_5039306",
+                  "from": {
+                     "name": "Anna Thomsen",
+                     "id": "100000230872086"
+                  },
+                  "message": "Vart h\u00e5lls informationsm\u00f6tet?",
+                  "can_remove": false,
+                  "created_time": "2013-05-20T13:26:42+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               },
+               {
+                  "id": "531733110217708_5040007",
+                  "from": {
+                     "category": "Non-profit organization",
+                     "category_list": [
+                        {
+                           "id": "2603",
+                           "name": "Non-Profit Organization"
+                        }
+                     ],
+                     "name": "H Sektionen",
+                     "id": "109143889143301"
+                  },
+                  "message": "Kontakta Chalmers dykarklubb f\u00f6r ytterligare information",
+                  "can_remove": false,
+                  "created_time": "2013-05-20T17:49:10+0000",
+                  "like_count": 0,
+                  "user_likes": false
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NA==",
+                  "before": "MQ=="
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_530562603668092",
+         "from": {
+            "category": "Organization",
+            "name": "IAESTE G\u00f6teborg",
+            "id": "127278393995037"
+         },
+         "to": {
+            "data": [
+               {
+                  "category": "Non-profit organization",
+                  "category_list": [
+                     {
+                        "id": "2603",
+                        "name": "Non-Profit Organization"
+                     }
+                  ],
+                  "name": "H Sektionen",
+                  "id": "109143889143301"
+               }
+            ]
+         },
+         "message": "Hej H-sektionen! Vi gillar er och vi skulle uppskatta om ni gjorde detsamma! Vi i IAESTE erbjuder betald arbetspraktik utomlands i runt 90 l\u00e4nder och vi f\u00e5r titt som t\u00e4tt in en massa internships som vi beh\u00f6ver fylla med duktiga chalmerister! S\u00e5 ni f\u00e5r g\u00e4rna gilla oss som sida och sen dela v\u00e5ra inl\u00e4gg som \u00e4r relevanta f\u00f6r er - vi tror att ni precis som oss \u00e4r intresserade av att f\u00e5 arbetslivserfarenhet i n\u00e5got sp\u00e4nnande land och p\u00e5 s\u00e5 s\u00e4tt f\u00e5 ett grymt CV! Dessutom rekryterar vi till kommitt\u00e9n d\u00e5 och d\u00e5 och med engagemang i kommitt\u00e9n f\u00e5r man extrapo\u00e4ng till sin ans\u00f6kan! ",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "created_time": "2013-05-17T14:25:36+0000",
+         "updated_time": "2013-05-17T14:25:36+0000"
+      },
+      {
+         "id": "109143889143301_548347838541350",
+         "from": {
+            "name": "Maria Nilsson",
+            "id": "100000984167641"
+         },
+         "to": {
+            "data": [
+               {
+                  "category": "Non-profit organization",
+                  "category_list": [
+                     {
+                        "id": "2603",
+                        "name": "Non-Profit Organization"
+                     }
+                  ],
+                  "name": "H Sektionen",
+                  "id": "109143889143301"
+               }
+            ]
+         },
+         "message": "Nu h\u00e4nder det p\u00e5 Lindholmen!",
+         "story": "Maria Nilsson posted an event to H Sektionen's timeline.",
+         "story_tags": {
+            "0": [
+               {
+                  "id": "100000984167641",
+                  "name": "Maria Nilsson",
+                  "offset": 0,
+                  "length": 13,
+                  "type": "user"
+               }
+            ],
+            "33": [
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen",
+                  "offset": 33,
+                  "length": 11,
+                  "type": "page"
+               }
+            ]
+         },
+         "link": "http://www.facebook.com/events/134332890089943/",
+         "privacy": {
+            "value": ""
+         },
+         "type": "link",
+         "created_time": "2013-05-08T19:38:45+0000",
+         "updated_time": "2013-05-08T19:38:45+0000"
+      },
+      {
+         "id": "109143889143301_526260754098277",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "story": "H Sektionen shared Chalmers Teknologkonsulter AB's photo.",
+         "story_tags": {
+            "0": [
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen",
+                  "offset": 0,
+                  "length": 11,
+                  "type": "page"
+               }
+            ],
+            "19": [
+               {
+                  "id": "135622596115",
+                  "name": "Chalmers Teknologkonsulter AB",
+                  "offset": 19,
+                  "length": 29,
+                  "type": "page"
+               }
+            ]
+         },
+         "picture": "http://photos-d.ak.fbcdn.net/hphotos-ak-prn1/945266_10151316799721116_469535211_s.jpg",
+         "link": "http://www.facebook.com/photo.php?fbid=10151316799721116&set=a.388982426115.172928.135622596115&type=1",
+         "name": "Timeline Photos",
+         "caption": "Vill du oms\u00e4tta teori till praktik och arbeta med n\u00e5gra av Chalmers mest drivna studenter? Vill du skapa dig ett stort kontaktn\u00e4tverk, bland annat genom v\u00e5ra partnerbolag Accenture, Goovinn, Triahtlon, \u00c5F, och XDIN?\n\nS\u00f6k dig d\u00e5 till Chalmers Teknologkonsulter (CTK), en konsultfirma f\u00f6r studenter av studenter. P\u00e5 CTK kommer du att kunna utf\u00f6ra konsulttj\u00e4nster till flera av Sveriges h\u00e4ftigaste f\u00f6retag. \n\nVill du veta mer? Kom f\u00f6rbi CTK's kontor p\u00e5 Stena Center 1C nu p\u00e5 onsdag fr\u00e5n 18.00 och fram\u00e5t, d\u00e5 har vi After-Work!\n\nSista ans\u00f6kningsdag \u00e4r nu p\u00e5 l\u00f6rdag 11/5, d\u00e4r ans\u00f6kan och fr\u00e5gor skickas till work\u0040ctk.se.",
+         "properties": [
+            {
+               "name": "By",
+               "text": "Chalmers Teknologkonsulter AB",
+               "href": "http://www.facebook.com/ChalmersTeknologkonsulter?ref=stream"
+            }
+         ],
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yD/r/aS8ecmYRys0.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "photo",
+         "status_type": "shared_story",
+         "object_id": "10151316799721116",
+         "application": {
+            "name": "Photos",
+            "id": "2305272732"
+         },
+         "created_time": "2013-05-06T05:56:27+0000",
+         "updated_time": "2013-05-06T05:56:27+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "603569218",
+                  "name": "Niklas Johansson"
+               },
+               {
+                  "id": "606656790",
+                  "name": "Christoffer M\u00e5rtensson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NjA2NjU2Nzkw",
+                  "before": "NjAzNTY5MjE4"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_524980267559659",
+         "from": {
+            "name": "Philip S\u00f6derberg",
+            "id": "568172787"
+         },
+         "to": {
+            "data": [
+               {
+                  "category": "Non-profit organization",
+                  "category_list": [
+                     {
+                        "id": "2603",
+                        "name": "Non-Profit Organization"
+                     }
+                  ],
+                  "name": "H Sektionen",
+                  "id": "109143889143301"
+               }
+            ]
+         },
+         "message": "Tjena! Missa inte att r\u00f6sta p\u00e5 mig i Fumvalet. Jag har f\u00f6r avsikt att jobba f\u00f6r \"mer till Lindholmen\". Ni kan g\u00e5 in p\u00e5 fumval.se och r\u00f6sta p\u00e5 kandidat 118. Desto flera fr\u00e5n Lindholmen som r\u00f6star desto mera kan jag s\u00e4ga till om!",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "created_time": "2013-05-03T08:56:55+0000",
+         "updated_time": "2013-05-03T08:56:55+0000"
+      },
+      {
+         "id": "109143889143301_524950087562677",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Chalmers studentk\u00e5r nr 1 i Europa\n\nhttp://www.chs.chalmers.se/sv/nyheter/chalmers-studentk\u0025C3\u0025A5r-nummer-ett-i-europa",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "application": {
+            "name": "Facebook for Android",
+            "namespace": "fbandroid",
+            "id": "350685531728"
+         },
+         "created_time": "2013-05-03T06:06:35+0000",
+         "updated_time": "2013-05-03T06:06:35+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "100000995674752",
+                  "name": "Adam Book"
+               },
+               {
+                  "id": "1335859912",
+                  "name": "Peter Edlund"
+               },
+               {
+                  "id": "1217851672",
+                  "name": "Simon Lehtonen"
+               },
+               {
+                  "id": "545095788",
+                  "name": "Fredrik Samuelsson"
+               },
+               {
+                  "id": "1019917018",
+                  "name": "Sabira Becic"
+               },
+               {
+                  "id": "100000290087199",
+                  "name": "Ismail Shojai"
+               },
+               {
+                  "id": "100001004976720",
+                  "name": "Josefin Bertilsson"
+               },
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen"
+               },
+               {
+                  "id": "553966609",
+                  "name": "David Nordentjell"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NTUzOTY2NjA5",
+                  "before": "MTAwMDAwOTk1Njc0NzUy"
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_524532917604394",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Sektionsm\u00f6te 4 \nIdag \u00e4r det dags f\u00f6r sektionsm\u00f6te 4. Pedagogiska priset ska delas ut, en ny styrelse ska v\u00e4ljas och m\u00e5nga fler intressanta punkter! Sj\u00e4lvklart bjuds det p\u00e5 delicat mat serverad av HACK. \n\nPlats: Omega\nTid: Del 1 12:15\n        Del 2 17:15\n\nV\u00e4lkommen!",
+         "privacy": {
+            "value": ""
+         },
+         "type": "status",
+         "status_type": "mobile_status_update",
+         "application": {
+            "name": "Facebook for Android",
+            "namespace": "fbandroid",
+            "id": "350685531728"
+         },
+         "created_time": "2013-05-02T06:36:44+0000",
+         "updated_time": "2013-05-02T06:36:44+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "1335859912",
+                  "name": "Peter Edlund"
+               },
+               {
+                  "id": "553966609",
+                  "name": "David Nordentjell"
+               },
+               {
+                  "id": "100001004976720",
+                  "name": "Josefin Bertilsson"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "MTAwMDAxMDA0OTc2NzIw",
+                  "before": "MTMzNTg1OTkxMg=="
+               }
+            }
+         }
+      },
+      {
+         "id": "109143889143301_521991711191848",
+         "from": {
+            "category": "Non-profit organization",
+            "category_list": [
+               {
+                  "id": "2603",
+                  "name": "Non-Profit Organization"
+               }
+            ],
+            "name": "H Sektionen",
+            "id": "109143889143301"
+         },
+         "message": "Nu \u00e4r det dags f\u00f6r l\u00e4speriodens happening, sektionsm\u00f6te! M\u00f6tet \u00e4r i Omega torsdagen den 2 maj under lunchen och efter kl 17 som vanligt. V\u00e4lkommen!",
+         "picture": "http://photos-h.ak.fbcdn.net/hphotos-ak-ash4/377198_521991694525183_555569968_s.png",
+         "link": "http://www.facebook.com/photo.php?fbid=521991694525183&set=a.154606754597014.33914.109143889143301&type=1&relevant_count=1",
+         "icon": "http://static.ak.fbcdn.net/rsrc.php/v2/yz/r/StEh3RhPvjk.gif",
+         "privacy": {
+            "value": ""
+         },
+         "type": "photo",
+         "status_type": "added_photos",
+         "object_id": "521991694525183",
+         "created_time": "2013-04-25T18:48:46+0000",
+         "updated_time": "2013-04-25T18:48:46+0000",
+         "likes": {
+            "data": [
+               {
+                  "id": "531010824",
+                  "name": "Joacim Sv\u00e4rd"
+               },
+               {
+                  "id": "553966609",
+                  "name": "David Nordentjell"
+               },
+               {
+                  "id": "100000124824089",
+                  "name": "Sofia Guldbrand"
+               },
+               {
+                  "id": "100000290087199",
+                  "name": "Ismail Shojai"
+               },
+               {
+                  "id": "109143889143301",
+                  "name": "H Sektionen"
+               },
+               {
+                  "id": "724481465",
+                  "name": "Ida Kl\u00e4ppevik"
+               }
+            ],
+            "paging": {
+               "cursors": {
+                  "after": "NzI0NDgxNDY1",
+                  "before": "NTMxMDEwODI0"
+               }
+            }
+         }
+      }
+   ],
+   "paging": {
+      "previous": "https://graph.facebook.com/109143889143301/feed?access_token=161725214029162|BzWvqgod38ZodPCz5Shub0PTld0&limit=25&since=1379518525&__previous=1",
+      "next": "https://graph.facebook.com/109143889143301/feed?access_token=161725214029162|BzWvqgod38ZodPCz5Shub0PTld0&limit=25&until=1366915725"
+   }
+}

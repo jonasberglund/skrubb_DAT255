@@ -1,6 +1,9 @@
 package se.chalmers.h_sektionen;
 
+import java.util.ArrayList;
+
 import se.chalmers.h_sektionen.utils.MenuItems;
+import se.chalmers.h_sektionen.utils.MockTemp;
 import android.os.Bundle;
 import android.app.Activity;
 import android.support.v4.widget.DrawerLayout;
@@ -22,6 +25,9 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
+   
+    
+    
 	
 	
     @Override
@@ -63,7 +69,7 @@ public class MainActivity extends Activity {
         	
         	switch (position) {
         	case MenuItems.NEWS:
-        		frameLayout.addView(inflater.inflate(R.layout.activity_main, null));
+        		createNewsView();
         		break;
         	case MenuItems.LUNCH:
         		frameLayout.addView(inflater.inflate(R.layout.view_lunch, null));
@@ -89,6 +95,25 @@ public class MainActivity extends Activity {
         	
         	mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
+    }
+    
+    private void createNewsView(){
+		frameLayout.addView(getLayoutInflater().inflate(R.layout.view_news, null));
+    	
+    	ListView newsFeed;
+        ArrayAdapter<String> feedAdapter;
+        //String[] dummyStrings = {"HEJ", "TJOLA", "HOPP", "BULAN", "AER", "DU", "HEMMA", "HEJ", "TJOLA", "HOPP", "BULAN", "AER", "DU", "HEMMA", "HEJ", "TJOLA", "HOPP", "BULAN", "AER", "DU", "HEMMA"};
+        ArrayList<String> l = new ArrayList<String>();
+        
+        if (MockTemp.getData() == null)
+        	l.add("FAIL");
+        else
+        	l.add("WIN");
+        
+    
+		newsFeed = (ListView) findViewById(R.id.news_feed);
+		feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, l.toArray(new String[l.size()]));
+		newsFeed.setAdapter(feedAdapter);
     }
 	
 	@Override

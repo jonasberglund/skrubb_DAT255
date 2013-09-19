@@ -5,6 +5,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.graphics.Color;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -39,6 +40,7 @@ public class MainActivity extends ActionBarActivity {
         menuTitles = getResources().getStringArray(R.array.menu_titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        mDrawerList.setCacheColorHint(Color.BLACK);
         
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
@@ -108,7 +110,7 @@ public class MainActivity extends ActionBarActivity {
     	LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	View v = inflator.inflate(R.layout.action_bar_title, null);
 
-//    	Om vi vill ha nån schysst font till titlen tydligen
+//    	Om vi vill ha  schysst font till titlen tydligen
 //    	TextView titleTV = (TextView) v.findViewById(R.id.title);
 //    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/your_custom_font.ttf");
 //    	titleTV.setTypeface(font);

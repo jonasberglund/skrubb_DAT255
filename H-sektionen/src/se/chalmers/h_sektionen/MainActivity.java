@@ -1,7 +1,9 @@
 package se.chalmers.h_sektionen;
 
 import se.chalmers.h_sektionen.utils.MenuItems;
+import android.os.Build;
 import android.os.Bundle;
+import android.annotation.TargetApi;
 import android.content.Context;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
@@ -96,6 +98,7 @@ public class MainActivity extends ActionBarActivity {
         }
     }
 	
+    
     private void setupActionBar() {
     	ActionBar ab = getSupportActionBar();
     	ab.setDisplayShowCustomEnabled(true);
@@ -105,14 +108,23 @@ public class MainActivity extends ActionBarActivity {
     	LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	View v = inflator.inflate(R.layout.action_bar_title, null);
 
-//    	Om vi vill ha nån schysst font till titlen tydligen
+//    	Om vi vill ha nÃ¥n schysst font till titlen tydligen
 //    	TextView titleTV = (TextView) v.findViewById(R.id.title);
 //    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/your_custom_font.ttf");
 //    	titleTV.setTypeface(font);
     	
     	ab.setCustomView(v);
-    	ab.setHomeButtonEnabled(true);  	
-    } 
+    	
+    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
+    		enableHomeButton();
+    	} else {
+    		ab.setHomeButtonEnabled(true);
+    	}
+    }
+    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
+    private void enableHomeButton() {
+    	getActionBar().setHomeButtonEnabled(true);
+    }
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {

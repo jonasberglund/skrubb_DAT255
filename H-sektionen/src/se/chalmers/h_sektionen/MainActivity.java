@@ -2,32 +2,37 @@ package se.chalmers.h_sektionen;
 
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.os.Bundle;
-import android.app.Activity;
+import android.content.Context;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
-import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
-public class MainActivity extends Activity {
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
+
+public class MainActivity extends ActionBarActivity {
     private String[] menuTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
-	
+    	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main);        
+        setupActionBar();
         
         menuTitles = getResources().getStringArray(R.array.menu_titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
@@ -91,11 +96,41 @@ public class MainActivity extends Activity {
         }
     }
 	
+    private void setupActionBar() {
+    	ActionBar ab = getSupportActionBar();
+    	ab.setDisplayShowCustomEnabled(true);
+    	ab.setDisplayShowTitleEnabled(false);
+    	ab.setIcon(R.drawable.ic_action_overflow);
+    	
+    	LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+    	View v = inflator.inflate(R.layout.action_bar_title, null);
+
+//    	Om vi vill ha nån schysst font till titlen tydligen
+//    	TextView titleTV = (TextView) v.findViewById(R.id.title);
+//    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/your_custom_font.ttf");
+//    	titleTV.setTypeface(font);
+    	
+    	ab.setCustomView(v);
+    	ab.setHomeButtonEnabled(true);  	
+    } 
+	
 	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
+	public boolean onOptionsItemSelected(MenuItem item) {
+		
+		 switch(item.getItemId()) {		 	
+		 	case android.R.id.home:
+		 		openMenu();
+		 		return true;
+		 	default:
+		 		return super.onOptionsItemSelected(item);
+		 }
+	}
+	
+	private void openMenu() {
+		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
+			mDrawerLayout.closeDrawer(Gravity.LEFT);
+		else
+			mDrawerLayout.openDrawer(Gravity.LEFT);
 	}
 
 }

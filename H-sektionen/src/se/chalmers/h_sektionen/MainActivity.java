@@ -1,7 +1,14 @@
 package se.chalmers.h_sektionen;
 
+import java.util.ArrayList;
+
 import se.chalmers.h_sektionen.utils.MenuItems;
+import se.chalmers.h_sektionen.utils.MockTemp;
+import android.os.Build;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
 import android.app.Activity;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
@@ -22,9 +29,12 @@ public class MainActivity extends Activity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
+   
+    
+    
 	
 	
-    @Override
+	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
@@ -34,7 +44,7 @@ public class MainActivity extends Activity {
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
-        
+    
 
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
@@ -63,7 +73,7 @@ public class MainActivity extends Activity {
         	
         	switch (position) {
         	case MenuItems.NEWS:
-        		frameLayout.addView(inflater.inflate(R.layout.activity_main, null));
+        		createNewsView();
         		break;
         	case MenuItems.LUNCH:
         		frameLayout.addView(inflater.inflate(R.layout.view_lunch, null));
@@ -89,6 +99,17 @@ public class MainActivity extends Activity {
         	
         	mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
+    }
+    
+    private void createNewsView(){
+		frameLayout.addView(getLayoutInflater().inflate(R.layout.view_news, null));
+    	
+    	ListView newsFeed;
+        ArrayAdapter<String> feedAdapter;
+    
+		newsFeed = (ListView) findViewById(R.id.news_feed);
+		feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseData(MockTemp.getDummyData(getAssets())));
+		newsFeed.setAdapter(feedAdapter);
     }
 	
 	@Override

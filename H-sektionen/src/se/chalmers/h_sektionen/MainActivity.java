@@ -4,6 +4,8 @@ import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.MockTemp;
+import se.chalmers.h_sektionen.utils.NewsAdapter;
+import se.chalmers.h_sektionen.utils.NewsItem;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -105,11 +107,11 @@ public class MainActivity extends Activity {
 		frameLayout.addView(getLayoutInflater().inflate(R.layout.view_news, null));
     	
     	ListView newsFeed;
-        ArrayAdapter<String> feedAdapter;
+        NewsAdapter newsAdapter;
     
 		newsFeed = (ListView) findViewById(R.id.news_feed);
-		feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseData(MockTemp.getDummyData(getAssets())));
-		newsFeed.setAdapter(feedAdapter);
+		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
+		newsFeed.setAdapter(newsAdapter);
     }
 	
 	@Override

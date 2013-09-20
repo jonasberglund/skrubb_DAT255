@@ -58,26 +58,29 @@ public class MockTemp {
 		return result;
 	}
 	
-	public static String[] parseData(String data){
+	public static List<NewsItem> parseData(String data){
+		List<NewsItem> posts = new ArrayList<NewsItem>();
+		
 		try {
 			JSONObject json_obj = new JSONObject(data);
 			JSONArray json_arr = json_obj.getJSONArray("data");
 			
-			List<String> posts = new ArrayList<String>();
-			
 			for (int i = 0; i < json_arr.length(); i++){
 				String message = json_arr.getJSONObject(i).optString("message");
-				if (!message.equals(""))
-					posts.add(message);
+				String date = json_arr.getJSONObject(i).optString("created_time");
+				String image = json_arr.getJSONObject(i).optString("picture");
+				if ((!message.equals("")) && (!message.equals(""))){
+					posts.add(new NewsItem(message, date, image));
+				}
 			}
 			
-			return posts.toArray(new String[posts.size()]);
+			return posts;
 		} catch (JSONException e) {
 			e.printStackTrace();
-			String p = Log.getStackTraceString(e);
-			String[] s = {"Det haer gick inte bra", p};
-			return s;
+			posts.add(new NewsItem(Log.getStackTraceString(e), "infinity", "bild"));
 		}
+		
+		return posts;
 	}
 	
 	public static String getDummyData(AssetManager am){

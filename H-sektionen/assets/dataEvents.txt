@@ -1,0 +1,1702 @@
+{
+  "version": "1.0",
+  "encoding": "UTF-8",
+  "feed": {
+    "xmlns": "http://www.w3.org/2005/Atom",
+    "xmlns$openSearch": "http://a9.com/-/spec/opensearchrss/1.0/",
+    "xmlns$gCal": "http://schemas.google.com/gCal/2005",
+    "xmlns$gd": "http://schemas.google.com/g/2005",
+    "id": {
+      "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full"
+    },
+    "updated": {
+      "$t": "2013-09-20T12:17:31.000Z"
+    },
+    "category": [
+      {
+        "scheme": "http://schemas.google.com/g/2005#kind",
+        "term": "http://schemas.google.com/g/2005#event"
+      }
+    ],
+    "title": {
+      "$t": "www.htek.se",
+      "type": "text"
+    },
+    "subtitle": {
+      "$t": "",
+      "type": "text"
+    },
+    "link": [
+      {
+        "rel": "alternate",
+        "type": "text/html",
+        "href": "https://www.google.com/calendar/embed?src=5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com"
+      },
+      {
+        "rel": "http://schemas.google.com/g/2005#feed",
+        "type": "application/atom+xml",
+        "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full"
+      },
+      {
+        "rel": "http://schemas.google.com/g/2005#batch",
+        "type": "application/atom+xml",
+        "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/batch"
+      },
+      {
+        "rel": "self",
+        "type": "application/atom+xml",
+        "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full?alt=json&max-results=25"
+      }
+    ],
+    "author": [
+      {
+        "name": {
+          "$t": "Joacim Svärd"
+        },
+        "email": {
+          "$t": "joacim.svard@gmail.com"
+        }
+      }
+    ],
+    "generator": {
+      "$t": "Google Calendar",
+      "version": "1.0",
+      "uri": "http://www.google.com/calendar"
+    },
+    "openSearch$totalResults": {
+      "$t": 17
+    },
+    "openSearch$startIndex": {
+      "$t": 1
+    },
+    "openSearch$itemsPerPage": {
+      "$t": 25
+    },
+    "gCal$timezone": {
+      "value": "Europe/Stockholm"
+    },
+    "gCal$timesCleaned": {
+      "value": 0
+    },
+    "gd$where": {
+      "valueString": ""
+    },
+    "entry": [
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/e565o0kt2ckpn80k7sg1vi93t0"
+        },
+        "published": {
+          "$t": "2013-09-16T12:23:01.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-18T15:56:35.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "ChS Promotion i Jupiter",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=ZTU2NW8wa3QyY2twbjgwazdzZzF2aTkzdDAgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/e565o0kt2ckpn80k7sg1vi93t0"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "joacim.svard@gmail.com"
+            },
+            "email": {
+              "$t": "joacim.svard@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/e565o0kt2ckpn80k7sg1vi93t0/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Jupiters korridor"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-24T13:00:00.000+02:00",
+            "startTime": "2013-09-24T12:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "e565o0kt2ckpn80k7sg1vi93t0@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/khrd6fb51onrmcjgd66n8rakv0"
+        },
+        "published": {
+          "$t": "2013-09-18T12:57:13.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-18T13:08:33.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Oktoberfest",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Ikväll blir det kul, åh vad skojigt det kommer bli, fest hela kvällen, wihooo! \n",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=a2hyZDZmYjUxb25ybWNqZ2Q2Nm44cmFrdjAgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/khrd6fb51onrmcjgd66n8rakv0"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "h6masteri@gmail.com"
+            },
+            "email": {
+              "$t": "h6masteri@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/khrd6fb51onrmcjgd66n8rakv0/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Gasquen"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-29T03:00:00.000+02:00",
+            "startTime": "2013-09-28T22:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "khrd6fb51onrmcjgd66n8rakv0@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/p477nmoloj13k2178i6pdv4i3c"
+        },
+        "published": {
+          "$t": "2013-09-18T12:54:52.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-18T13:08:23.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Oktoberfest",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Gasquen öppnar för festligheter \u003c3",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=cDQ3N25tb2xvajEzazIxNzhpNnBkdjRpM2MgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/p477nmoloj13k2178i6pdv4i3c"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "h6masteri@gmail.com"
+            },
+            "email": {
+              "$t": "h6masteri@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/p477nmoloj13k2178i6pdv4i3c/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-28T03:00:00.000+02:00",
+            "startTime": "2013-09-27T22:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "p477nmoloj13k2178i6pdv4i3c@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/em2fn12aaledm5vkc4pt1m7mro"
+        },
+        "published": {
+          "$t": "2013-09-18T12:52:08.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-18T13:08:00.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "H6 oktoberfestsittnining-i-Gasquen-som-ingen-vill-missa",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Oktoberfest kickas igång med en sittning ni sent kommer glömma!",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=ZW0yZm4xMmFhbGVkbTV2a2M0cHQxbTdtcm8gNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/em2fn12aaledm5vkc4pt1m7mro"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "h6masteri@gmail.com"
+            },
+            "email": {
+              "$t": "h6masteri@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/em2fn12aaledm5vkc4pt1m7mro/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Gasguen"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-27T21:30:00.000+02:00",
+            "startTime": "2013-09-27T18:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "em2fn12aaledm5vkc4pt1m7mro@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/amkg33b4sbjspcpqkdag64k1po"
+        },
+        "published": {
+          "$t": "2013-09-18T12:59:21.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-18T13:07:16.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Biljettsläpp till Oktoberfest",
+          "type": "text"
+        },
+        "content": {
+          "$t": "H6 älskar alla \u003c3",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=YW1rZzMzYjRzYmpzcGNwcWtkYWc2NGsxcG8gNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/amkg33b4sbjspcpqkdag64k1po"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "h6masteri@gmail.com"
+            },
+            "email": {
+              "$t": "h6masteri@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/amkg33b4sbjspcpqkdag64k1po/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Kårhuset, Lindholmen"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-24T13:00:00.000+02:00",
+            "startTime": "2013-09-24T12:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "amkg33b4sbjspcpqkdag64k1po@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/jb03ecogvr95a6ct0ni6jk32lo"
+        },
+        "published": {
+          "$t": "2013-09-09T08:25:36.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-09T08:25:36.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Pubrunda",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=amIwM2Vjb2d2cjk1YTZjdDBuaTZqazMybG8gNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/jb03ecogvr95a6ct0ni6jk32lo"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/jb03ecogvr95a6ct0ni6jk32lo/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-11-01",
+            "startTime": "2013-10-31"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "jb03ecogvr95a6ct0ni6jk32lo@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/o6ibt960jl75kkl7gc07lb93g0"
+        },
+        "published": {
+          "$t": "2013-09-09T08:25:07.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-09T08:25:07.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Fullmäktigemöte 2",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Ni förväntas inte delta på FuM-mötena men ni är väldigt välkomna att vara med.",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=bzZpYnQ5NjBqbDc1a2tsN2djMDdsYjkzZzAgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/o6ibt960jl75kkl7gc07lb93g0"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/o6ibt960jl75kkl7gc07lb93g0/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Johanneberg, Göteborg"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-10-09T21:00:00.000+02:00",
+            "startTime": "2013-10-09T18:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "o6ibt960jl75kkl7gc07lb93g0@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/r8g7bjp7n9a33bvggusea4iaa4"
+        },
+        "published": {
+          "$t": "2013-08-25T11:01:24.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T21:23:20.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Chalmersspexet Bob kommer till Lindholmen",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Fredagen den 27/9 kommer Bob-spexet till Lindholmen, närmare bestämt teatern Aftonstjärnan. Pris 130kr för Chalmerister, 150kr\nför övriga studenter och 200kr för vuxna. Biljetter köpes via bokning eller kårhuset Johanneberg.",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=cjhnN2JqcDduOWEzM2J2Z2d1c2VhNGlhYTQgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/r8g7bjp7n9a33bvggusea4iaa4"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/r8g7bjp7n9a33bvggusea4iaa4/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Teater Aftonstjärnan"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-27T22:00:00.000+02:00",
+            "startTime": "2013-09-27T19:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "r8g7bjp7n9a33bvggusea4iaa4@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/2lq2q8qjar63s4bl88pjhegco8"
+        },
+        "published": {
+          "$t": "2013-09-08T14:30:59.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:31:05.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Fullmäktigemöte 1",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Plats: Kårrestaurangen, Johanneberg  \nTid: Onsdagen den 18:e september 2013 kl:18.00  \n  \nMötet kommer bland annat att behandla fyllnadsval till valberedningen  \nvarför alla fullmäktiges ledamöter uppmanas att hålla utkik efter lämpliga  \nkandidater.",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=MmxxMnE4cWphcjYzczRibDg4cGpoZWdjbzggNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/2lq2q8qjar63s4bl88pjhegco8"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/2lq2q8qjar63s4bl88pjhegco8/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Johanneberg, Göteborg"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-09-18T21:00:00.000+02:00",
+            "startTime": "2013-09-18T18:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "2lq2q8qjar63s4bl88pjhegco8@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/q29safjgli9gm6sh2vpcsa0fuc"
+        },
+        "published": {
+          "$t": "2013-09-08T14:29:38.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:29:38.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Fullmäktigemöte 4",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Ni förväntas inte delta på FuM-mötena men ni är väldigt välkomna att vara med.",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=cTI5c2FmamdsaTlnbTZzaDJ2cGNzYTBmdWMgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/q29safjgli9gm6sh2vpcsa0fuc"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/q29safjgli9gm6sh2vpcsa0fuc/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "Johanneberg, Göteborg"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-12-11T21:30:00.000+01:00",
+            "startTime": "2013-12-11T18:00:00.000+01:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "q29safjgli9gm6sh2vpcsa0fuc@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/96752efaqvi3as1hle225plq1g"
+        },
+        "published": {
+          "$t": "2013-09-08T14:29:09.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:29:19.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Sektionsmöte 2, del2",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=OTY3NTJlZmFxdmkzYXMxaGxlMjI1cGxxMWcgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/96752efaqvi3as1hle225plq1g"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/96752efaqvi3as1hle225plq1g/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-11-28T20:00:00.000+01:00",
+            "startTime": "2013-11-28T17:00:00.000+01:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "96752efaqvi3as1hle225plq1g@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/0akqhu4dlgulkobpnupuhgsink"
+        },
+        "published": {
+          "$t": "2013-09-08T14:29:01.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:29:01.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Sektionsmöte 2, del1",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=MGFrcWh1NGRsZ3Vsa29icG51cHVoZ3NpbmsgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/0akqhu4dlgulkobpnupuhgsink"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/0akqhu4dlgulkobpnupuhgsink/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-11-28T13:00:00.000+01:00",
+            "startTime": "2013-11-28T12:00:00.000+01:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "0akqhu4dlgulkobpnupuhgsink@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/7qcgai1q59nrj8584dvm3ea31s"
+        },
+        "published": {
+          "$t": "2013-09-08T14:28:40.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:28:40.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Fullmäktigemöte 3",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Ni förväntas inte delta på FuM-mötena men ni är väldigt välkomna att vara med.",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=N3FjZ2FpMXE1OW5yajg1ODRkdm0zZWEzMXMgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/7qcgai1q59nrj8584dvm3ea31s"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/7qcgai1q59nrj8584dvm3ea31s/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-11-20T20:00:00.000+01:00",
+            "startTime": "2013-11-20T18:00:00.000+01:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "7qcgai1q59nrj8584dvm3ea31s@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/9tdbhoe3cu32375vdmhn20t3ag"
+        },
+        "published": {
+          "$t": "2013-09-08T14:27:43.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:27:43.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "HMS lunchföreläsning",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=OXRkYmhvZTNjdTMyMzc1dmRtaG4yMHQzYWcgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/9tdbhoe3cu32375vdmhn20t3ag"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/9tdbhoe3cu32375vdmhn20t3ag/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-10-15T13:15:00.000+02:00",
+            "startTime": "2013-10-15T12:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "9tdbhoe3cu32375vdmhn20t3ag@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/31lvh8187bld984pfi70avjf0c"
+        },
+        "published": {
+          "$t": "2013-09-08T14:27:03.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:27:08.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Sektionsmöte 1, del2",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=MzFsdmg4MTg3YmxkOTg0cGZpNzBhdmpmMGMgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/31lvh8187bld984pfi70avjf0c"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/31lvh8187bld984pfi70avjf0c/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-10-03T20:00:00.000+02:00",
+            "startTime": "2013-10-03T17:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "31lvh8187bld984pfi70avjf0c@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/ru6l90pbsltfh8kd6godr77eo8"
+        },
+        "published": {
+          "$t": "2013-09-08T14:26:23.000Z"
+        },
+        "updated": {
+          "$t": "2013-09-08T14:26:40.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "Sektionsmöte 1, del1",
+          "type": "text"
+        },
+        "content": {
+          "$t": "",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=cnU2bDkwcGJzbHRmaDhrZDZnb2RyNzdlbzggNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/ru6l90pbsltfh8kd6godr77eo8"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/ru6l90pbsltfh8kd6godr77eo8/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": ""
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-10-03T13:00:00.000+02:00",
+            "startTime": "2013-10-03T12:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 0
+        },
+        "gCal$uid": {
+          "value": "ru6l90pbsltfh8kd6godr77eo8@google.com"
+        }
+      },
+      {
+        "id": {
+          "$t": "http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/ps8re4l3tdncj5laa3e2856pt0"
+        },
+        "published": {
+          "$t": "2013-08-25T11:25:42.000Z"
+        },
+        "updated": {
+          "$t": "2013-08-28T03:09:22.000Z"
+        },
+        "category": [
+          {
+            "scheme": "http://schemas.google.com/g/2005#kind",
+            "term": "http://schemas.google.com/g/2005#event"
+          }
+        ],
+        "title": {
+          "$t": "H6-Open Mic Pub",
+          "type": "text"
+        },
+        "content": {
+          "$t": "Efter stadsvandringen kommer nollan kunna visa upp sina musikaliska talanger, hur dåliga eller bra de än må vara. De som inte känner sig lika sugna för att gå upp kan istället njuta utav en blå med en garanterad underhållande uppvisning!",
+          "type": "text"
+        },
+        "link": [
+          {
+            "rel": "alternate",
+            "type": "text/html",
+            "href": "https://www.google.com/calendar/event?eid=cHM4cmU0bDN0ZG5jajVsYWEzZTI4NTZwdDAgNWlkMTUwOHRrMmF0dW1tdWowdnEzM2Q3bGNAZw",
+            "title": "alternate"
+          },
+          {
+            "rel": "self",
+            "type": "application/atom+xml",
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/ps8re4l3tdncj5laa3e2856pt0"
+          }
+        ],
+        "author": [
+          {
+            "name": {
+              "$t": "berggren.alexander@gmail.com"
+            },
+            "email": {
+              "$t": "berggren.alexander@gmail.com"
+            }
+          }
+        ],
+        "gd$comments": {
+          "gd$feedLink": {
+            "href": "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc%40group.calendar.google.com/public/full/ps8re4l3tdncj5laa3e2856pt0/comments"
+          }
+        },
+        "gd$eventStatus": {
+          "value": "http://schemas.google.com/g/2005#event.confirmed"
+        },
+        "gd$where": [
+          {
+            "valueString": "11:an"
+          }
+        ],
+        "gd$who": [
+          {
+            "email": "5id1508tk2atummuj0vq33d7lc@group.calendar.google.com",
+            "rel": "http://schemas.google.com/g/2005#event.organizer",
+            "valueString": "www.htek.se"
+          }
+        ],
+        "gd$when": [
+          {
+            "endTime": "2013-08-28T22:00:00.000+02:00",
+            "startTime": "2013-08-28T17:00:00.000+02:00"
+          }
+        ],
+        "gd$transparency": {
+          "value": "http://schemas.google.com/g/2005#event.opaque"
+        },
+        "gCal$anyoneCanAddSelf": {
+          "value": "false"
+        },
+        "gCal$guestsCanInviteOthers": {
+          "value": "true"
+        },
+        "gCal$guestsCanModify": {
+          "value": "false"
+        },
+        "gCal$guestsCanSeeGuests": {
+          "value": "true"
+        },
+        "gCal$sequence": {
+          "value": 1
+        },
+        "gCal$uid": {
+          "value": "ps8re4l3tdncj5laa3e2856pt0@google.com"
+        }
+      }
+    ]
+  }
+}

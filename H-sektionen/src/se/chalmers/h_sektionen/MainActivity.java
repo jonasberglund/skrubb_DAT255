@@ -90,7 +90,7 @@ public class MainActivity extends ActionBarActivity {
         		frameLayout.addView(inflater.inflate(R.layout.view_info, null));
         		break;
         	case MenuItems.EVENTS:
-        		frameLayout.addView(inflater.inflate(R.layout.view_events, null));
+        		createEventsView();
         		break;
         	case MenuItems.VOTE:
         		frameLayout.addView(inflater.inflate(R.layout.view_vote, null));
@@ -115,6 +115,27 @@ public class MainActivity extends ActionBarActivity {
 		newsFeed = (ListView) findViewById(R.id.news_feed);
 		feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseData(MockTemp.getDummyData(getAssets())));
 		newsFeed.setAdapter(feedAdapter);
+    }
+    
+    private void createEventsView(){
+    	frameLayout.addView(getLayoutInflater().inflate(R.layout.view_events, null));
+    	
+    	ListView eventsFeed;
+    	ArrayAdapter<String> feedAdapter;
+    	
+    	eventsFeed = (ListView) findViewById(R.id.events_feed);
+    	
+    	//textfile
+    	//feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseEventsData(MockTemp.getDummyDataEvents(getAssets())));
+    	
+    	//text plus background
+    	feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseEventsData(MockTemp.getDummyDataEvents(getAssets())));
+    	
+    	//http
+    	//feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseEventsData(MockTemp.getData()));
+    	
+    	eventsFeed.setAdapter(feedAdapter);
+    	
     }
 	
     

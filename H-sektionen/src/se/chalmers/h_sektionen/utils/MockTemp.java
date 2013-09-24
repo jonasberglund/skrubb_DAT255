@@ -87,7 +87,7 @@ public class MockTemp {
 		StringBuilder sb = new StringBuilder();
 		try {
 
-			Scanner sc = new Scanner(am.open("data.txt"));
+			Scanner sc = new Scanner(am.open("newsfeed.txt"));
 			
 			while (sc.hasNext()){
 				sb.append(sc.nextLine());

@@ -1,18 +1,42 @@
 package se.chalmers.h_sektionen.utils;
 
+
+
+import android.graphics.Bitmap;
+
 public class NewsItem {
 	
 	private String message;
 	private String date;
-	private String image;
+	private String imageAdr;
+	private Bitmap bitImage;
+	
 	
 	/**
 	 * CONSTRUCTOR
 	 */
-	public NewsItem(String message, String date, String image){
+	public NewsItem(String message, String date, String imageAdr){
+		
+		PicLoaderThread t = new PicLoaderThread(imageAdr);
+		t.start();
+		
+		
 		this.message = message;
 		this.date = date;
-		this.image = image;
+		this.imageAdr = imageAdr;
+		
+		try {
+			t.join();
+			bitImage = t.getPicture();
+			if (bitImage != null) {
+				bitImage.prepareToDraw();
+			}
+
+		} catch (InterruptedException e) {
+			e.printStackTrace();
+		}
+		
+		
 	}
 	
 	/**
@@ -28,7 +52,10 @@ public class NewsItem {
 	}
 	
 	public void setImage(String image){
-		this.image = image;
+		this.imageAdr = image;
+	}
+	public void setbitImage(Bitmap bitImage){
+		this.bitImage=bitImage;
 	}
 	
 	/**
@@ -44,7 +71,10 @@ public class NewsItem {
 	}
 	
 	public String getImage(){
-		return image;
+		return imageAdr;
+	}
+	public Bitmap getBitImage(){
+		return bitImage;
 	}
 
 }

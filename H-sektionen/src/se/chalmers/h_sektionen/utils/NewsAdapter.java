@@ -52,6 +52,7 @@ public class NewsAdapter extends BaseAdapter{
 	public static class ItemHolder{
 		public TextView message;
 		public TextView date;
+		//public TextView image;
 		public ImageView image;
 	}
 	
@@ -66,6 +67,7 @@ public class NewsAdapter extends BaseAdapter{
 			holder = new ItemHolder();
 			holder.message = (TextView) view.findViewById(R.id.item_message);
 			holder.date = (TextView) view.findViewById(R.id.item_date);
+			//holder.image = (TextView) view.findViewById(R.id.item_image);
 			holder.image = (ImageView) view.findViewById(R.id.item_image);
 			
 			view.setTag(holder);
@@ -81,7 +83,10 @@ public class NewsAdapter extends BaseAdapter{
 			item = (NewsItem) data.get(position);
 			holder.message.setText(item.getMessage());
 			holder.date.setText(item.getDate());
-			holder.image.setImageURI(Uri.parse(item.getImage()));
+			//holder.image.setText(item.getImage());
+			//holder.image.setImageURI(Uri.parse(item.getBitImage()));
+			//holder.image.setImageURI(Uri.parse(item.getBitImage()));
+			holder.image.setImageBitmap(item.getBitImage());
 		}
 		
 		return view;

@@ -1,5 +1,14 @@
 package se.chalmers.h_sektionen;
 
+import java.util.ArrayList;
+import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import se.chalmers.h_sektionen.utils.ContactCard;
+import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
+import se.chalmers.h_sektionen.utils.InfoThread;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.os.Build;
 import android.os.Bundle;
@@ -29,7 +38,6 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
-    	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -44,10 +52,7 @@ public class MainActivity extends ActionBarActivity {
         
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
-
-        // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
-        // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
 		//Parse.com Add your Parse API keys
@@ -65,8 +70,6 @@ public class MainActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-//            Intent intent = new Intent(parent.getContext(), LunchActivity.class);
-//        	startActivity(intent);
         	frameLayout.removeAllViews();
         	LayoutInflater inflater = getLayoutInflater();
         	
@@ -82,6 +85,7 @@ public class MainActivity extends ActionBarActivity {
         		break;
         	case MenuItems.INFO:
         		frameLayout.addView(inflater.inflate(R.layout.view_info, null));
+        		setupInfoView();
         		break;
         	case MenuItems.EVENTS:
         		frameLayout.addView(inflater.inflate(R.layout.view_events, null));
@@ -96,10 +100,61 @@ public class MainActivity extends ActionBarActivity {
         		return;
         	}
         	
+
         	mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
     }
 	
+    private void setupInfoView() {
+    	try {
+    		StringBuilder sb =  new StringBuilder();
+    		
+//    		URL url = new URL("http://10.0.2.2/info/");
+//    		URLConnection conn = url.openConnection();
+//    		conn.addRequestProperty("Accept", "application/json");
+//    		conn.connect();
+//    		
+//    		
+//    		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//    		
+//    		String line;
+//    		while ((line = br.readLine()) != null) {
+//    			sb.append(line);
+//    		}
+//    		br.close();
+    		
+    		Thread t = new InfoThread(sb);
+    		t.start();
+    		t.join();
+    		
+    		JSONObject json = new JSONObject(sb.toString());
+    		JSONArray members = json.getJSONArray("members");
+    		
+    		List<ContactCard> contactCards = new ArrayList<ContactCard>();
+    		
+    		for (int i=0; i<members.length(); i++) {
+    			//System.out.println(members.getJSONObject(i).getString("name"));
+    			String name = members.getJSONObject(i).getString("name");
+    			String position = members.getJSONObject(i).getString("position");
+    			String email = members.getJSONObject(i).getString("email");
+    			String picAddr = members.getJSONObject(i).getString("picture");
+    			String phoneNumber = members.getJSONObject(i).getString("phone");
+    			contactCards.add(new ContactCard(name, position, email, phoneNumber, picAddr));
+    		}
+    		
+    		ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
+    		contactListView.setCacheColorHint(Color.WHITE);
+    		
+    		contactListView.setAdapter(new ContactCardArrayAdapter(this, R.layout.contact_list_item, contactCards));
+    		contactListView.setClickable(false);
+
+    		contactListView.getRootView().invalidate();
+    		
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
+    }
     
     private void setupActionBar() {
     	ActionBar ab = getSupportActionBar();
@@ -133,14 +188,14 @@ public class MainActivity extends ActionBarActivity {
 		
 		 switch(item.getItemId()) {		 	
 		 	case android.R.id.home:
-		 		openMenu();
+		 		toggleMenu();
 		 		return true;
 		 	default:
 		 		return super.onOptionsItemSelected(item);
 		 }
 	}
 	
-	private void openMenu() {
+	private void toggleMenu() {
 		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
 			mDrawerLayout.closeDrawer(Gravity.LEFT);
 		else

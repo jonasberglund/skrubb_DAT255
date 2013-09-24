@@ -16,8 +16,8 @@
             android:text="@string/news_header"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-
     </FrameLayout>
+    
     <!-- The navigation drawer -->
     <ListView android:id="@+id/left_drawer"
         android:layout_width="240dp"

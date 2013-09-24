@@ -10,11 +10,18 @@ import se.chalmers.h_sektionen.utils.ContactCard;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
 import se.chalmers.h_sektionen.utils.InfoThread;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import android.os.Build;
-import android.os.Bundle;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
+import se.chalmers.h_sektionen.utils.MockTemp;
+import android.os.Build;
+import android.os.Bundle;
+import android.os.StrictMode;
+import android.annotation.SuppressLint;
+import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Color;
+import android.app.Activity;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
 import android.view.LayoutInflater;
@@ -38,6 +45,7 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
+    	
 	
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,7 +60,10 @@ public class MainActivity extends ActionBarActivity {
         
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
+
+        // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
+        // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
 		//Parse.com Add your Parse API keys
@@ -70,12 +81,13 @@ public class MainActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
+
         	frameLayout.removeAllViews();
         	LayoutInflater inflater = getLayoutInflater();
         	
         	switch (position) {
         	case MenuItems.NEWS:
-        		frameLayout.addView(inflater.inflate(R.layout.activity_main, null));
+        		createNewsView();
         		break;
         	case MenuItems.LUNCH:
         		frameLayout.addView(inflater.inflate(R.layout.view_lunch, null));
@@ -100,9 +112,19 @@ public class MainActivity extends ActionBarActivity {
         		return;
         	}
         	
-
         	mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
+    }
+    
+    private void createNewsView(){
+		frameLayout.addView(getLayoutInflater().inflate(R.layout.view_news, null));
+    	
+    	ListView newsFeed;
+        ArrayAdapter<String> feedAdapter;
+    
+		newsFeed = (ListView) findViewById(R.id.news_feed);
+		feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseData(MockTemp.getDummyData(getAssets())));
+		newsFeed.setAdapter(feedAdapter);
     }
 	
     private void setupInfoView() {

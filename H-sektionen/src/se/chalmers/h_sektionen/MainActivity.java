@@ -2,6 +2,14 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.json.JSONArray;
+import org.json.JSONObject;
+
+import se.chalmers.h_sektionen.utils.ContactCard;
+import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
+import se.chalmers.h_sektionen.utils.InfoThread;
+
 import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
 
@@ -13,12 +21,17 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
 import se.chalmers.h_sektionen.utils.MockTemp;
+import se.chalmers.h_sektionen.utils.NewsAdapter;
+import se.chalmers.h_sektionen.utils.NewsItem;
+
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
+import android.content.Context;
+import android.graphics.Color;
 import android.app.Activity;
 import android.support.v4.widget.DrawerLayout;
 import android.view.Gravity;
@@ -44,8 +57,9 @@ public class MainActivity extends ActionBarActivity {
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
+    	
 	
-	@Override
+    @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);        
@@ -57,7 +71,7 @@ public class MainActivity extends ActionBarActivity {
         mDrawerList.setCacheColorHint(Color.BLACK);
         
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
-    
+        
 
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
@@ -79,8 +93,7 @@ public class MainActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-//            Intent intent = new Intent(parent.getContext(), LunchActivity.class);
-//        	startActivity(intent);
+
         	frameLayout.removeAllViews();
         	LayoutInflater inflater = getLayoutInflater();
         	
@@ -96,6 +109,7 @@ public class MainActivity extends ActionBarActivity {
         		break;
         	case MenuItems.INFO:
         		frameLayout.addView(inflater.inflate(R.layout.view_info, null));
+        		setupInfoView();
         		break;
         	case MenuItems.EVENTS:
         		createEventsView();
@@ -117,11 +131,62 @@ public class MainActivity extends ActionBarActivity {
 		frameLayout.addView(getLayoutInflater().inflate(R.layout.view_news, null));
     	
     	ListView newsFeed;
-        ArrayAdapter<String> feedAdapter;
+        NewsAdapter newsAdapter;
     
 		newsFeed = (ListView) findViewById(R.id.news_feed);
-		feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseData(MockTemp.getDummyData(getAssets())));
-		newsFeed.setAdapter(feedAdapter);
+		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
+		newsFeed.setAdapter(newsAdapter);
+    }
+	
+    private void setupInfoView() {
+    	try {
+    		StringBuilder sb =  new StringBuilder();
+    		
+//    		URL url = new URL("http://10.0.2.2/info/");
+//    		URLConnection conn = url.openConnection();
+//    		conn.addRequestProperty("Accept", "application/json");
+//    		conn.connect();
+//    		
+//    		
+//    		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+//    		
+//    		String line;
+//    		while ((line = br.readLine()) != null) {
+//    			sb.append(line);
+//    		}
+//    		br.close();
+    		
+    		Thread t = new InfoThread(sb);
+    		t.start();
+    		t.join();
+    		
+    		JSONObject json = new JSONObject(sb.toString());
+    		JSONArray members = json.getJSONArray("members");
+    		
+    		List<ContactCard> contactCards = new ArrayList<ContactCard>();
+    		
+    		for (int i=0; i<members.length(); i++) {
+    			//System.out.println(members.getJSONObject(i).getString("name"));
+    			String name = members.getJSONObject(i).getString("name");
+    			String position = members.getJSONObject(i).getString("position");
+    			String email = members.getJSONObject(i).getString("email");
+    			String picAddr = members.getJSONObject(i).getString("picture");
+    			String phoneNumber = members.getJSONObject(i).getString("phone");
+    			contactCards.add(new ContactCard(name, position, email, phoneNumber, picAddr));
+    		}
+    		
+    		ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
+    		contactListView.setCacheColorHint(Color.WHITE);
+    		
+    		contactListView.setAdapter(new ContactCardArrayAdapter(this, R.layout.contact_list_item, contactCards));
+    		contactListView.setClickable(false);
+
+    		contactListView.getRootView().invalidate();
+    		
+    		
+    	} catch (Exception e) {
+    		e.printStackTrace();
+    	}
     }
     
     private void createEventsView(){
@@ -192,14 +257,14 @@ public class MainActivity extends ActionBarActivity {
 		
 		 switch(item.getItemId()) {		 	
 		 	case android.R.id.home:
-		 		openMenu();
+		 		toggleMenu();
 		 		return true;
 		 	default:
 		 		return super.onOptionsItemSelected(item);
 		 }
 	}
 	
-	private void openMenu() {
+	private void toggleMenu() {
 		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
 			mDrawerLayout.closeDrawer(Gravity.LEFT);
 		else

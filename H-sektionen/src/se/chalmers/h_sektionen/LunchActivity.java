@@ -6,11 +6,12 @@ import android.os.Bundle;
 public class LunchActivity extends BaseActivity {
 
 	@Override
-	public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
+	protected void onResume() {
+
 		setCurrentView(MenuItems.LUNCH);
 		createLunchView();
+		
+		super.onResume();
 	}
 	
 	private void createLunchView(){

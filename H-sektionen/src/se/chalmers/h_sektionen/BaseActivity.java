@@ -14,7 +14,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Build;
-import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -35,13 +34,10 @@ public class BaseActivity extends ActionBarActivity {
     private static ListView mDrawerList;
     private static FrameLayout frameLayout;
     private static int currentView;
-    private boolean b = true;
-    	
-	
+    
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);        
+    protected void onStart() {
+    	setContentView(R.layout.activity_main);        
         setupActionBar();
         
         menuTitles = getResources().getStringArray(R.array.menu_titles);
@@ -67,13 +63,15 @@ public class BaseActivity extends ActionBarActivity {
 //		
 //		//Parse.com track statistics around application opens
 //		ParseAnalytics.trackAppOpened(getIntent());
-	}
+        
+        super.onStart();
+    }
     
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-        	//toggleMenu();
-        	mDrawerLayout.closeDrawer(Gravity.LEFT);
+        	//mDrawerLayout.closeDrawer(Gravity.LEFT);
+        	mDrawerLayout.closeDrawers();
         	if(currentView != position){
         		switch (position) {
 		        	case MenuItems.NEWS:

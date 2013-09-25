@@ -60,11 +60,12 @@ import android.text.method.LinkMovementMethod;
 public class MainActivity extends BaseActivity {
     
 	@Override
-    public void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		
+	protected void onResume() {
+
 		setCurrentView(MenuItems.NEWS);
 		createNewsView();
+		
+		super.onResume();
 	}
     
     private void createNewsView(){

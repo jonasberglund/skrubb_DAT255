@@ -9,6 +9,13 @@ import org.json.JSONObject;
 import se.chalmers.h_sektionen.utils.ContactCard;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
 import se.chalmers.h_sektionen.utils.InfoThread;
+
+import java.util.TreeMap;
+import java.util.concurrent.ExecutionException;
+
+import se.chalmers.h_sektionen.utils.ExpandAnimation;
+import se.chalmers.h_sektionen.utils.LoadData;
+import se.chalmers.h_sektionen.utils.LoadEvents;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.annotation.TargetApi;
 import android.content.Context;
@@ -16,6 +23,8 @@ import android.graphics.Color;
 import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 import se.chalmers.h_sektionen.utils.NewsItem;
+
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -33,6 +42,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -102,7 +112,7 @@ public class MainActivity extends ActionBarActivity {
         		setupInfoView();
         		break;
         	case MenuItems.EVENTS:
-        		frameLayout.addView(inflater.inflate(R.layout.view_events, null));
+        		createEventsView();
         		break;
         	case MenuItems.VOTE:
         		frameLayout.addView(inflater.inflate(R.layout.view_vote, null));
@@ -113,7 +123,6 @@ public class MainActivity extends ActionBarActivity {
         	default:
         		return;
         	}
-        	
         	mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
     }
@@ -180,6 +189,42 @@ public class MainActivity extends ActionBarActivity {
     	}
     }
     
+    private void createEventsView(){
+    	frameLayout.addView(getLayoutInflater().inflate(R.layout.view_events, null));
+    	
+    	List<TreeMap<String, String>> data = new ArrayList<TreeMap<String, String>>();
+    	
+    	try {
+    		
+    		ListView eventsFeed = (ListView) findViewById(R.id.events_feed);
+    		ArrayAdapter<String> feedAdapter = new ArrayAdapter<String>(this, R.layout.events_feed_item, new LoadEvents().execute().get());
+			eventsFeed.setAdapter(feedAdapter);
+			
+			eventsFeed.setOnItemClickListener(new EventsItemClickListener());
+    	}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+    	
+    	
+    	
+    }
+
+    private class EventsItemClickListener implements ListView.OnItemClickListener{
+
+    	public void onItemClick(AdapterView parent, View view, int position, long id) {
+
+    		/*View toolbar = view.findViewById(R.id.toolbar);
+            // Creating the expand animation for the item
+            ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
+            // Start the animation on the toolbar
+            toolbar.startAnimation(expandAni);*/
+
+		  }
+		
+		
+	}
+    
     private void setupActionBar() {
     	ActionBar ab = getSupportActionBar();
     	ab.setDisplayShowCustomEnabled(true);
@@ -227,3 +272,6 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 }
+
+
+

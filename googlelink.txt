@@ -1,0 +1,7 @@
+http://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json-in-script&callback=insertAgenda&orderby=starttime&max-results=15&singleevents=true&sortorder=ascending&futureevents=true
+
+http://www.google.com/calendar/feeds/developer-calendar@google.com/public/full?alt=json
+
+5id1508tk2atummuj0vq33d7lc@group.calendar.google.com
+
+https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json

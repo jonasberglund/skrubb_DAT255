@@ -10,20 +10,22 @@ import se.chalmers.h_sektionen.utils.ContactCard;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
 import se.chalmers.h_sektionen.utils.InfoThread;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Color;
 import se.chalmers.h_sektionen.utils.MockTemp;
+import android.R.menu;
+import android.annotation.TargetApi;
+import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ActivityInfo;
+import android.content.res.Configuration;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
-import android.os.StrictMode;
-import android.annotation.SuppressLint;
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.graphics.Color;
-import android.app.Activity;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -37,14 +39,12 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-
 public class MainActivity extends ActionBarActivity {
     private String[] menuTitles;
     private DrawerLayout mDrawerLayout;
     private ListView mDrawerList;
     private FrameLayout frameLayout;
+    private int currentView = 0;
     	
 	
     @Override
@@ -53,12 +53,14 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);        
         setupActionBar();
         
+        
         menuTitles = getResources().getStringArray(R.array.menu_titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setCacheColorHint(Color.BLACK);
         
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
+        createNewsView();
         
 
         // Set the adapter for the list view
@@ -88,25 +90,32 @@ public class MainActivity extends ActionBarActivity {
         	switch (position) {
         	case MenuItems.NEWS:
         		createNewsView();
+        		currentView = MenuItems.NEWS;
         		break;
         	case MenuItems.LUNCH:
         		frameLayout.addView(inflater.inflate(R.layout.view_lunch, null));
+        		currentView = MenuItems.LUNCH;
         		break;
         	case MenuItems.PUB:
         		frameLayout.addView(inflater.inflate(R.layout.view_pub, null));
+        		currentView = MenuItems.PUB;
         		break;
         	case MenuItems.INFO:
         		frameLayout.addView(inflater.inflate(R.layout.view_info, null));
         		setupInfoView();
+        		currentView = MenuItems.INFO;
         		break;
         	case MenuItems.EVENTS:
         		frameLayout.addView(inflater.inflate(R.layout.view_events, null));
+        		currentView = MenuItems.EVENTS;
         		break;
         	case MenuItems.VOTE:
         		frameLayout.addView(inflater.inflate(R.layout.view_vote, null));
+        		currentView = MenuItems.VOTE;
         		break;
         	case MenuItems.SUGGEST:
         		frameLayout.addView(inflater.inflate(R.layout.view_suggest, null));
+        		currentView = MenuItems.SUGGEST;
         		break;	
         	default:
         		return;
@@ -205,6 +214,37 @@ public class MainActivity extends ActionBarActivity {
     	getActionBar().setHomeButtonEnabled(true);
     }
 	
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
+    }
+    
+    @Override
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+    	if(event.getAction() == KeyEvent.ACTION_DOWN && keyCode == KeyEvent.KEYCODE_BACK){
+   			if(MenuItems.NEWS != currentView){
+   				frameLayout.removeAllViews();
+   				createNewsView();
+				return true;
+    		} else {
+    			onPause();
+//    			Intent startMain = new Intent(Intent.ACTION_MAIN);
+//    			startMain.addCategory(Intent.CATEGORY_HOME);
+//    			startMain.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+//    			startActivity(startMain);
+    		}
+    	}
+    	
+    	return super.onKeyDown(keyCode, event);
+    }
+    
+    @Override
+    public void onPause(){
+    	super.onPause();
+    	
+    }
+    
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		

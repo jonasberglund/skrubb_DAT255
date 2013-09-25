@@ -1,12 +1,19 @@
 package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
+import java.util.List;
+import java.util.TreeMap;
+import java.util.concurrent.ExecutionException;
 
+import se.chalmers.h_sektionen.utils.ExpandAnimation;
+import se.chalmers.h_sektionen.utils.LoadData;
+import se.chalmers.h_sektionen.utils.LoadEvents;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
 import se.chalmers.h_sektionen.utils.MockTemp;
+import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
@@ -22,6 +29,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -101,7 +109,6 @@ public class MainActivity extends ActionBarActivity {
         	default:
         		return;
         	}
-        	
         	mDrawerLayout.closeDrawer(Gravity.LEFT);
         }
     }
@@ -120,24 +127,38 @@ public class MainActivity extends ActionBarActivity {
     private void createEventsView(){
     	frameLayout.addView(getLayoutInflater().inflate(R.layout.view_events, null));
     	
-    	ListView eventsFeed;
-    	ArrayAdapter<String> feedAdapter;
+    	List<TreeMap<String, String>> data = new ArrayList<TreeMap<String, String>>();
     	
-    	eventsFeed = (ListView) findViewById(R.id.events_feed);
+    	try {
+    		
+    		ListView eventsFeed = (ListView) findViewById(R.id.events_feed);
+    		ArrayAdapter<String> feedAdapter = new ArrayAdapter<String>(this, R.layout.events_feed_item, new LoadEvents().execute().get());
+			eventsFeed.setAdapter(feedAdapter);
+			
+			eventsFeed.setOnItemClickListener(new EventsItemClickListener());
+    	}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
     	
-    	//textfile
-    	//feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseEventsData(MockTemp.getDummyDataEvents(getAssets())));
     	
-    	//text plus background
-    	feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseEventsData(MockTemp.getDummyDataEvents(getAssets())));
-    	
-    	//http
-    	//feedAdapter = new ArrayAdapter<String>(this, R.layout.news_feed_item, MockTemp.parseEventsData(MockTemp.getData()));
-    	
-    	eventsFeed.setAdapter(feedAdapter);
     	
     }
-	
+
+    private class EventsItemClickListener implements ListView.OnItemClickListener{
+
+    	public void onItemClick(AdapterView parent, View view, int position, long id) {
+
+    		/*View toolbar = view.findViewById(R.id.toolbar);
+            // Creating the expand animation for the item
+            ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
+            // Start the animation on the toolbar
+            toolbar.startAnimation(expandAni);*/
+
+		  }
+		
+		
+	}
     
     private void setupActionBar() {
     	ActionBar ab = getSupportActionBar();
@@ -186,3 +207,6 @@ public class MainActivity extends ActionBarActivity {
 	}
 
 }
+
+
+

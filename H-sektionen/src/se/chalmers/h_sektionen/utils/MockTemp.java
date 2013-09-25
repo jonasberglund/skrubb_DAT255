@@ -61,16 +61,15 @@ public class MockTemp {
 		return result;
 	}
 	
-	public static List<NewsItem> parseData(String data){
-		List<NewsItem> posts = new ArrayList<NewsItem>();
-		
 	
 	/**
 	 * FOR NEWS FEED JSON
 	 * ---------------
 	 */
 	
-	public static String[] parseData(String data){
+	public static List<NewsItem> parseData(String data){
+		List<NewsItem> posts = new ArrayList<NewsItem>();
+		
 		try {
 			JSONObject json_obj = new JSONObject(data);
 			JSONArray json_arr = json_obj.getJSONArray("data");

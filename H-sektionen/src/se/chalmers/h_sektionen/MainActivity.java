@@ -26,6 +26,8 @@ import com.parse.ParseAnalytics;
 import com.parse.ParseInstallation;
 import com.parse.PushService;
 
+@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+@SuppressLint("NewApi")
 public class MainActivity extends Activity {
     private String[] menuTitles;
     private DrawerLayout mDrawerLayout;
@@ -36,6 +38,8 @@ public class MainActivity extends Activity {
     
 	
 	
+	@TargetApi(Build.VERSION_CODES.GINGERBREAD)
+	@SuppressLint("NewApi")
 	@Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -63,6 +67,13 @@ public class MainActivity extends Activity {
 		
 		//Parse.com track statistics around application opens
 		ParseAnalytics.trackAppOpened(getIntent());
+		
+		/**
+		 * TEST
+		 */
+		StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+		StrictMode.setThreadPolicy(policy); 
 	}
 	
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
@@ -110,7 +121,7 @@ public class MainActivity extends Activity {
         NewsAdapter newsAdapter;
     
 		newsFeed = (ListView) findViewById(R.id.news_feed);
-		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
+		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getData()), getResources());
 		newsFeed.setAdapter(newsAdapter);
     }
 	

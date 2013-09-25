@@ -10,6 +10,7 @@
     <string name="events_header">KOMMANDE EVENTS</string>
     <string name="vote_header">RÖSTA</string>
     <string name="suggest_header">FÖRESLÅ</string>
+
     <string-array name="menu_titles">
         <item>Nyheter</item>
         <item>Dagens Lunch</item>
@@ -19,11 +20,14 @@
         <item>Rösta</item>
         <item>Föreslå</item>
     </string-array>
+
     <string name="action_side_menu"></string>
     <string name="links_header">Länkar</string>
     <string name="opening_hours_header">Öppettider</string>
     <string name="app_id">161725214029162</string>
     <string name="no_info">Ingen information tillgänglig</string>
     <string name="board_members_header">Styret</string>
+    <string name="title_activity_lunch">LunchActivity</string>
+    <string name="hello_world">Hello world!</string>
 
 </resources>

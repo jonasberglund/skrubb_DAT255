@@ -57,84 +57,18 @@ import android.support.v7.app.ActionBarActivity;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 
-public class MainActivity extends ActionBarActivity {
-    private String[] menuTitles;
-    private DrawerLayout mDrawerLayout;
-    private ListView mDrawerList;
-    private FrameLayout frameLayout;
-    	
-	
-    @Override
+public class MainActivity extends BaseActivity {
+    
+	@Override
     public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);        
-        setupActionBar();
-        
-        menuTitles = getResources().getStringArray(R.array.menu_titles);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        mDrawerList = (ListView) findViewById(R.id.left_drawer);
-        mDrawerList.setCacheColorHint(Color.BLACK);
-        
-        frameLayout = (FrameLayout) findViewById(R.id.content_frame);
-        
-
-        // Set the adapter for the list view
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
-        // Set the list's click listener
-        mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
+		super.onCreate(savedInstanceState);
 		
-		//Parse.com Add your Parse API keys
-		Parse.initialize(this, "f4nb9heDlUu0uBmPiOJlYCXxlNnHftMkoBRkurLN", 
-				"y7raMOFCv6mkDLm953GFBuRI6P3XAzDYtvbgzmm4");
-		
-		//Parse.com inform the Parse Push Service that it is ready for notifications.
-		PushService.setDefaultPushCallback(this, MainActivity.class);
-		ParseInstallation.getCurrentInstallation().saveInBackground();
-		
-		//Parse.com track statistics around application opens
-		ParseAnalytics.trackAppOpened(getIntent());
+		setCurrentView(MenuItems.NEWS);
+		createNewsView();
 	}
-	
-    private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
-        public void onItemClick(AdapterView parent, View view, int position, long id) {
-
-        	frameLayout.removeAllViews();
-        	LayoutInflater inflater = getLayoutInflater();
-        	
-        	switch (position) {
-        	case MenuItems.NEWS:
-        		createNewsView();
-        		break;
-        	case MenuItems.LUNCH:
-        		frameLayout.addView(inflater.inflate(R.layout.view_lunch, null));
-        		break;
-        	case MenuItems.PUB:
-        		frameLayout.addView(inflater.inflate(R.layout.view_pub, null));
-        		break;
-        	case MenuItems.INFO:
-        		frameLayout.addView(inflater.inflate(R.layout.view_info, null));
-        		setupInfoView();
-        		break;
-        	case MenuItems.EVENTS:
-        		createEventsView();
-        		break;
-        	case MenuItems.VOTE:
-        		frameLayout.addView(inflater.inflate(R.layout.view_vote, null));
-        		break;
-        	case MenuItems.SUGGEST:
-        		frameLayout.addView(inflater.inflate(R.layout.view_suggest, null));
-        		break;	
-        	default:
-        		return;
-        	}
-        	
-        	mDrawerLayout.closeDrawer(Gravity.LEFT);
-        }
-    }
     
     private void createNewsView(){
-		frameLayout.addView(getLayoutInflater().inflate(R.layout.view_news, null));
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
     	
     	ListView newsFeed;
         NewsAdapter newsAdapter;
@@ -214,7 +148,7 @@ public class MainActivity extends ActionBarActivity {
     }
     
     private void createEventsView(){
-    	frameLayout.addView(getLayoutInflater().inflate(R.layout.view_events, null));
+    	getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_events, null));
     	
     	List<TreeMap<String, String>> data = new ArrayList<TreeMap<String, String>>();
     	
@@ -247,52 +181,6 @@ public class MainActivity extends ActionBarActivity {
 		  }
 		
 		
-	}
-    
-    private void setupActionBar() {
-    	ActionBar ab = getSupportActionBar();
-    	ab.setDisplayShowCustomEnabled(true);
-    	ab.setDisplayShowTitleEnabled(false);
-    	ab.setIcon(R.drawable.ic_action_overflow);
-    	
-    	LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-    	View v = inflator.inflate(R.layout.action_bar_title, null);
-
-//    	Om vi vill ha  schysst font till titlen tydligen
-//    	TextView titleTV = (TextView) v.findViewById(R.id.title);
-//    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/your_custom_font.ttf");
-//    	titleTV.setTypeface(font);
-    	
-    	ab.setCustomView(v);
-    	
-    	if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-    		enableHomeButton();
-    	} else {
-    		ab.setHomeButtonEnabled(true);
-    	}
-    }
-    @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
-    private void enableHomeButton() {
-    	getActionBar().setHomeButtonEnabled(true);
-    }
-	
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		
-		 switch(item.getItemId()) {		 	
-		 	case android.R.id.home:
-		 		toggleMenu();
-		 		return true;
-		 	default:
-		 		return super.onOptionsItemSelected(item);
-		 }
-	}
-	
-	private void toggleMenu() {
-		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
-			mDrawerLayout.closeDrawer(Gravity.LEFT);
-		else
-			mDrawerLayout.openDrawer(Gravity.LEFT);
 	}
 
 }

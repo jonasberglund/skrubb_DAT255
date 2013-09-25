@@ -31,8 +31,11 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.FrameLayout;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -41,6 +44,8 @@ import com.parse.PushService;
 
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
+import android.text.Html;
+import android.text.method.LinkMovementMethod;
 
 public class MainActivity extends ActionBarActivity {
     private String[] menuTitles;
@@ -133,20 +138,6 @@ public class MainActivity extends ActionBarActivity {
     	try {
     		StringBuilder sb =  new StringBuilder();
     		
-//    		URL url = new URL("http://10.0.2.2/info/");
-//    		URLConnection conn = url.openConnection();
-//    		conn.addRequestProperty("Accept", "application/json");
-//    		conn.connect();
-//    		
-//    		
-//    		BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-//    		
-//    		String line;
-//    		while ((line = br.readLine()) != null) {
-//    			sb.append(line);
-//    		}
-//    		br.close();
-    		
     		Thread t = new InfoThread(sb);
     		t.start();
     		t.join();
@@ -157,7 +148,6 @@ public class MainActivity extends ActionBarActivity {
     		List<ContactCard> contactCards = new ArrayList<ContactCard>();
     		
     		for (int i=0; i<members.length(); i++) {
-    			//System.out.println(members.getJSONObject(i).getString("name"));
     			String name = members.getJSONObject(i).getString("name");
     			String position = members.getJSONObject(i).getString("position");
     			String email = members.getJSONObject(i).getString("email");
@@ -169,12 +159,45 @@ public class MainActivity extends ActionBarActivity {
     		ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
     		contactListView.setCacheColorHint(Color.WHITE);
     		
+    		// Links
+    		LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
+    		TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
+    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
+    		
+    		StringBuilder htmlLinks = new StringBuilder();
+    		JSONArray links = json.getJSONArray("links");
+    		
+    		for (int i=0; i<links.length(); i++) {
+    			htmlLinks.append("<a href=\"");
+    			htmlLinks.append(links.getJSONObject(i).getString("href"));
+    			htmlLinks.append("\">");
+    			htmlLinks.append(links.getJSONObject(i).getString("name"));
+    			htmlLinks.append("</a><br />");
+    		}
+    		
+    		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
+    		
+    		// Opening Hours
+    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
+    		
+    		StringBuilder openingHoursString = new StringBuilder();
+    		JSONArray openingHours = json.getJSONArray("openinghours");
+    		
+    		for (int i=0; i<openingHours.length(); i++) {
+    			openingHoursString.append("<b>");
+    			openingHoursString.append(openingHours.getJSONObject(i).getString("name"));
+    			openingHoursString.append("</b>:<br />");
+    			openingHoursString.append(openingHours.getJSONObject(i).getString("opentime"));
+    			openingHoursString.append("<br />");
+    		}
+    		
+    		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
+    		
+    		contactListView.addHeaderView(linksLayout);
+    		
     		contactListView.setAdapter(new ContactCardArrayAdapter(this, R.layout.contact_list_item, contactCards));
-    		contactListView.setClickable(false);
+    		//contactListView.setClickable(true);
 
-    		contactListView.getRootView().invalidate();
-    		
-    		
     	} catch (Exception e) {
     		e.printStackTrace();
     	}

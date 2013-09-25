@@ -28,6 +28,8 @@ public class MockTemp {
 	public static String getData(){
 		DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
 		HttpPost httppost = new HttpPost("http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/");
+		//HttpPost httppost = new HttpPost("https://graph.facebook.com/109143889143301/feed?access_token=161725214029162%7CBzWvqgod38ZodPCz5Shub0PTld0");
+		//HttpPost httppost = new HttpPost("https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json");
 		// Depends on your web service
 		httppost.setHeader("Accept", "application/json");
 
@@ -58,6 +60,12 @@ public class MockTemp {
 		return result;
 	}
 	
+	
+	/**
+	 * FOR NEWS FEED JSON
+	 * ---------------
+	 */
+	
 	public static List<NewsItem> parseData(String data){
 		List<NewsItem> posts = new ArrayList<NewsItem>();
 		
@@ -82,12 +90,62 @@ public class MockTemp {
 		
 		return posts;
 	}
-	
+		
 	public static String getDummyData(AssetManager am){
 		StringBuilder sb = new StringBuilder();
 		try {
 
 			Scanner sc = new Scanner(am.open("newsfeed.txt"));
+			
+			while (sc.hasNext()){
+				sb.append(sc.nextLine());
+			}
+		} catch (IOException e) {
+			sb.append("SKIT");
+			e.printStackTrace();
+		}
+		
+		return sb.toString();
+	}
+	
+	
+	/**
+	 * FOR EVENTS JSON
+	 * ---------------
+	 */
+	public static String[] parseEventsData(String data){
+		try {
+			JSONObject json_obj = new JSONObject(data).getJSONObject("feed");
+			JSONArray json_arr = json_obj.getJSONArray("entry");
+			
+			List<String> posts = new ArrayList<String>();
+			
+			for (int i = 0; i < json_arr.length(); i++){
+				
+				
+				
+				String message = json_arr.getJSONObject(i).getJSONObject("title").optString("$t");
+				
+				
+				if (!message.equals(""))
+					posts.add(message);
+			}
+			
+			return posts.toArray(new String[posts.size()]);
+			
+		} catch (JSONException e) {
+			e.printStackTrace();
+			String p = Log.getStackTraceString(e);
+			String[] s = {"Det haer gick inte bra", data, p};
+			return s;
+		}
+	}
+	
+	public static String getDummyDataEvents(AssetManager am){
+		StringBuilder sb = new StringBuilder();
+		try {
+
+			Scanner sc = new Scanner(am.open("dataEvents.txt"));
 			
 			while (sc.hasNext()){
 				sb.append(sc.nextLine());

@@ -68,8 +68,9 @@ public class BaseActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-        	//mDrawerLayout.closeDrawer(Gravity.LEFT);
+
         	mDrawerLayout.closeDrawers();
+        	
         	if(currentView != position){
         		switch (position) {
 		        	case MenuItems.NEWS:
@@ -103,6 +104,7 @@ public class BaseActivity extends ActionBarActivity {
     private void startActivityByClass(Class c) {
     	Intent i =  new Intent(this, c);
     	i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
+    	i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
     	startActivity(i);
     }
     
@@ -157,7 +159,7 @@ public class BaseActivity extends ActionBarActivity {
 	}
 	
 	static protected void setCurrentView(int currentView) {
-		currentView = currentView;
+		BaseActivity.currentView = currentView;
 	}
 	
 	@Override

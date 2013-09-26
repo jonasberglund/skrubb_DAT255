@@ -7,13 +7,10 @@ import java.util.TreeMap;
 
 import se.chalmers.h_sektionen.utils.LoadEvents;
 import se.chalmers.h_sektionen.utils.MenuItems;
-<<<<<<< HEAD
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
-=======
->>>>>>> develop
 import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 
@@ -44,44 +41,4 @@ public class MainActivity extends BaseActivity {
 		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
 		newsFeed.setAdapter(newsAdapter);
     }
-    
-    private void createEventsView(){
-
-    	getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_events, null));
-    	
-    	List<TreeMap<String, String>> data = new ArrayList<TreeMap<String, String>>();
-    	
-    	try {
-    		
-    		ListView eventsFeed = (ListView) findViewById(R.id.events_feed);
-    		ArrayAdapter<String> feedAdapter = new ArrayAdapter<String>(this, R.layout.events_feed_item, new LoadEvents().execute().get());
-			eventsFeed.setAdapter(feedAdapter);
-			
-			eventsFeed.setOnItemClickListener(new EventsItemClickListener());
-    	}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
-    	Intent intent = new Intent(this, EventsActivity.class);
-    	startActivity(intent);
-    	
-    	
-    }
-
-    private class EventsItemClickListener implements ListView.OnItemClickListener{
-
-    	public void onItemClick(AdapterView parent, View view, int position, long id) {
-
-    		/*View toolbar = view.findViewById(R.id.toolbar);
-            // Creating the expand animation for the item
-            ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
-            // Start the animation on the toolbar
-            toolbar.startAnimation(expandAni);*/
-
-		  }
-		
-		
-	}
-
 }

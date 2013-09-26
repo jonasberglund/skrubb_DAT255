@@ -57,7 +57,7 @@ public class LoadData {
 			JSONObject json_obj = new JSONObject(data).getJSONObject("feed");
 			JSONArray json_arr = json_obj.getJSONArray("entry");
 			
-			List<String> posts = new ArrayList<String>();
+			//List<String> posts = new ArrayList<String>();
 			List<Events> events = new ArrayList<Events>();
 			
 			
@@ -92,6 +92,7 @@ public class LoadData {
 		}
 	}
 	
+	//Old
 	public static String getData(){
 		
 		StringBuilder builder = new StringBuilder();

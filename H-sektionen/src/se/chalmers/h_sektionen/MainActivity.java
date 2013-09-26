@@ -19,6 +19,7 @@ import se.chalmers.h_sektionen.utils.LoadEvents;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.annotation.TargetApi;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
@@ -190,22 +191,10 @@ public class MainActivity extends ActionBarActivity {
     }
     
     private void createEventsView(){
-    	frameLayout.addView(getLayoutInflater().inflate(R.layout.view_events, null));
+    	//frameLayout.addView(getLayoutInflater().inflate(R.layout.view_events, null));
     	
-    	List<TreeMap<String, String>> data = new ArrayList<TreeMap<String, String>>();
-    	
-    	try {
-    		
-    		ListView eventsFeed = (ListView) findViewById(R.id.events_feed);
-    		ArrayAdapter<String> feedAdapter = new ArrayAdapter<String>(this, R.layout.events_feed_item, new LoadEvents().execute().get());
-			eventsFeed.setAdapter(feedAdapter);
-			
-			eventsFeed.setOnItemClickListener(new EventsItemClickListener());
-    	}
-		catch (Exception e) {
-			e.printStackTrace();
-		}
-    	
+    	Intent intent = new Intent(this, EventsActivity.class);
+    	startActivity(intent);
     	
     	
     }

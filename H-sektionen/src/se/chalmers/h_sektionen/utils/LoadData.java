@@ -24,7 +24,7 @@ import android.util.Log;
 
 public class LoadData {
 	
-	public static String[] loadEvents(){
+	public static List<Events> loadEvents(){
 		
 		StringBuilder builder = new StringBuilder();
 	    HttpClient client = new DefaultHttpClient();
@@ -58,6 +58,7 @@ public class LoadData {
 			JSONArray json_arr = json_obj.getJSONArray("entry");
 			
 			List<String> posts = new ArrayList<String>();
+			List<Events> events = new ArrayList<Events>();
 			
 			
 			for (int i = 0; i < json_arr.length(); i++){
@@ -69,19 +70,24 @@ public class LoadData {
 				String[] date = time.split("T");
 				
 				if (!title.equals("")){
-					posts.add(title + "\n\nVad: " + description
+					/*posts.add(title + "\n\nVad: " + description
 							+ "\n\nVar : " + where +
 							"\n\nTid: " + "13:37" + 
-							"\nDatum: " + date[0]);
+							"\nDatum: " + date[0]);*/
+					events.add(new Events(title, description, where, date[0]));
+					
 				}
 			}
 			
-			return posts.toArray(new String[posts.size()]);
+			//return posts.toArray(new String[posts.size()]);
+			return events;
 			
 		} catch (JSONException e) {
 			e.printStackTrace();
 			String p = Log.getStackTraceString(e);
-			String[] s = {"Det haer gick inte bra", data, p};
+			List<Events> s = new ArrayList<Events>();
+			s.add(new Events("Anslut till internet..", data, p, "inte bra"));
+					
 			return s;
 		}
 	}

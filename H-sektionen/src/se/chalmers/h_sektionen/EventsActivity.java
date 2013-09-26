@@ -3,12 +3,12 @@ package se.chalmers.h_sektionen;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.os.Bundle;
 
-public class LunchActivity extends BaseActivity {
+public class EventsActivity extends BaseActivity {
 
 	@Override
 	protected void onResume() {
 
-		setCurrentView(MenuItems.LUNCH);
+		setCurrentView(MenuItems.EVENTS);
 		createLunchView();
 		
 		super.onResume();
@@ -16,7 +16,7 @@ public class LunchActivity extends BaseActivity {
 	
 	private void createLunchView(){
 		getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_lunch, null));
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_events, null));
     	
     }
 

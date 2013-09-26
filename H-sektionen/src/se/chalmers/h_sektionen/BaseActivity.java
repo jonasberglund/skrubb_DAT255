@@ -1,7 +1,5 @@
 package se.chalmers.h_sektionen;
 
-import java.util.Currency;
-
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 import com.parse.Parse;
@@ -54,15 +52,15 @@ public class BaseActivity extends ActionBarActivity {
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
 		//Parse.com Add your Parse API keys
-//		Parse.initialize(this, "f4nb9heDlUu0uBmPiOJlYCXxlNnHftMkoBRkurLN", 
-//				"y7raMOFCv6mkDLm953GFBuRI6P3XAzDYtvbgzmm4");
-//		
-//		//Parse.com inform the Parse Push Service that it is ready for notifications.
-//		PushService.setDefaultPushCallback(this, MainActivity.class);
-//		ParseInstallation.getCurrentInstallation().saveInBackground();
-//		
-//		//Parse.com track statistics around application opens
-//		ParseAnalytics.trackAppOpened(getIntent());
+		Parse.initialize(this, "f4nb9heDlUu0uBmPiOJlYCXxlNnHftMkoBRkurLN", 
+				"y7raMOFCv6mkDLm953GFBuRI6P3XAzDYtvbgzmm4");
+		
+		//Parse.com inform the Parse Push Service that it is ready for notifications.
+		PushService.setDefaultPushCallback(this, MainActivity.class);
+		ParseInstallation.getCurrentInstallation().saveInBackground();
+		
+		//Parse.com track statistics around application opens
+		ParseAnalytics.trackAppOpened(getIntent());
         
         super.onStart();
     }
@@ -81,14 +79,19 @@ public class BaseActivity extends ActionBarActivity {
 		        		startActivityByClass(LunchActivity.class);
 		        		break;
 		        	case MenuItems.PUB:
+		        		startActivityByClass(PubActivity.class);
 		        		break;
 		        	case MenuItems.INFO:
+		        		startActivityByClass(InfoActivity.class);
 		        		break;
 		        	case MenuItems.EVENTS:
+		        		startActivityByClass(EventsActivity.class);
 		        		break;
 		        	case MenuItems.VOTE:
+		        		startActivityByClass(VoteActivity.class);
 		        		break;
 		        	case MenuItems.SUGGEST:
+		        		startActivityByClass(SuggestActivity.class);
 		        		break;	
 		        	default:
 		        		return;
@@ -153,8 +156,8 @@ public class BaseActivity extends ActionBarActivity {
 		return frameLayout;
 	}
 	
-	protected void setCurrentView(int currentView) {
-		this.currentView = currentView;
+	static protected void setCurrentView(int currentView) {
+		currentView = currentView;
 	}
 	
 	@Override

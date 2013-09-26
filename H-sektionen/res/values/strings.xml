@@ -27,7 +27,12 @@
     <string name="app_id">161725214029162</string>
     <string name="no_info">Ingen information tillgänglig</string>
     <string name="board_members_header">Styret</string>
-    <string name="title_activity_lunch">LunchActivity</string>
+    <string name="title_activity_lunch">Dagens Lunch</string>
+    <string name="title_activity_info">Information</string>
+    <string name="title_activity_pub">Pub</string>
+    <string name="title_activity_events">Events</string>
+    <string name="title_activity_vote">Rösta</string>
+    <string name="title_activity_suggest">Föreslå</string>
     <string name="hello_world">Hello world!</string>
 
 </resources>

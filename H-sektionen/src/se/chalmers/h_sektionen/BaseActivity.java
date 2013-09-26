@@ -20,9 +20,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class BaseActivity extends ActionBarActivity {
@@ -159,6 +161,13 @@ public class BaseActivity extends ActionBarActivity {
 	
 	static protected void setCurrentView(int currentView) {
 		BaseActivity.currentView = currentView;
+	}
+	
+	protected void runLoadAnimation() {
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
+		
+		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
 	}
 	
 	@Override

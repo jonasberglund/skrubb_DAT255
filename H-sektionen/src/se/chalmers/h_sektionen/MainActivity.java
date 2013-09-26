@@ -7,10 +7,12 @@ import java.util.TreeMap;
 
 import se.chalmers.h_sektionen.utils.LoadEvents;
 import se.chalmers.h_sektionen.utils.MenuItems;
+
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+
 import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 
@@ -41,4 +43,5 @@ public class MainActivity extends BaseActivity {
 		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
 		newsFeed.setAdapter(newsAdapter);
     }
+
 }

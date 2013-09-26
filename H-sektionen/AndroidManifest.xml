@@ -28,8 +28,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        
-		
 
         <!-- Parse.com push notification register background service -->
         <service android:name="com.parse.PushService" />
@@ -43,11 +41,7 @@
 
         <activity
             android:name="se.chalmers.h_sektionen.EventsActivity"
-            android:label="@string/title_activity_events"
-            android:parentActivityName="se.chalmers.h_sektionen.MainActivity" >
-            <meta-data
-                android:name="android.support.PARENT_ACTIVITY"
-                android:value="se.chalmers.h_sektionen.MainActivity" />
+            android:label="@string/title_activity_events">
         </activity>
         <activity
             android:name="se.chalmers.h_sektionen.LunchActivity"

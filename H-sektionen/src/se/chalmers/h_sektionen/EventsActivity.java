@@ -6,13 +6,6 @@ import java.util.List;
 
 import se.chalmers.h_sektionen.utils.*;
 
-import android.annotation.TargetApi;
-import android.app.Activity;
-import android.os.Build;
-import android.os.Bundle;
-import android.support.v4.app.NavUtils;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -22,14 +15,13 @@ public class EventsActivity extends BaseActivity {
 
 	@Override
 	protected void onResume() {
-		
+
 		setCurrentView(MenuItems.EVENTS);
 		createEventsView();
 		
 		super.onResume();
 	}
-	
-	
+    
 	private void createEventsView(){
 
 		getFrameLayout().removeAllViews();
@@ -77,5 +69,4 @@ public class EventsActivity extends BaseActivity {
 	}
 		
 
-	
 }

@@ -15,6 +15,7 @@ public class InfoThread extends Thread {
 	
 	public void run() {
 		try {
+			//URL url = new URL("http://jpv-net.dyndns.org:1337/H-Sektionen/info/");
 			URL url = new URL("http://htek.comli.com/info/");
 			URLConnection conn = url.openConnection();
 			conn.addRequestProperty("Accept", "application/json");

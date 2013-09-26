@@ -1,5 +1,6 @@
 package se.chalmers.h_sektionen;
 
+<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.List;
 
@@ -98,7 +99,4 @@ public class EventsActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
-	
-	
 }

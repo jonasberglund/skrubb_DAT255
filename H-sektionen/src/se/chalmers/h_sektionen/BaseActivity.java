@@ -100,7 +100,7 @@ public class BaseActivity extends ActionBarActivity {
         }
     }
     
-    private void startActivityByClass(Class c) {
+    private void startActivityByClass(Class c) { 
     	Intent i =  new Intent(this, c);
     	i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     	startActivity(i);
@@ -157,12 +157,19 @@ public class BaseActivity extends ActionBarActivity {
 	}
 	
 	static protected void setCurrentView(int currentView) {
-		currentView = currentView;
+		BaseActivity.currentView = currentView;
 	}
 	
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		return super.onKeyDown(keyCode, event);
+	public void onBackPressed() {
+		if(currentView != MenuItems.NEWS)
+			startActivityByClass(MainActivity.class);
+		else{
+		    Intent i = new Intent(Intent.ACTION_MAIN);
+		    i.addCategory(Intent.CATEGORY_HOME);
+		    startActivity(i);
+		}
+		super.onBackPressed();
 	}
 
 }

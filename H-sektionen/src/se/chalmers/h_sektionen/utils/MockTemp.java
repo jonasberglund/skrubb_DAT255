@@ -75,10 +75,10 @@ public class MockTemp {
 			
 			for (int i = 0; i < json_arr.length(); i++){
 				String message = json_arr.getJSONObject(i).optString("message");
-				String date = json_arr.getJSONObject(i).optString("created_time");
+				String[] date = json_arr.getJSONObject(i).optString("created_time").split("T");
 				String image = json_arr.getJSONObject(i).optString("picture");
 				if ((!message.equals("")) && (!message.equals(""))){
-					posts.add(new NewsItem(message, date, image));
+					posts.add(new NewsItem(message, date[0], image));
 				}
 			}
 			

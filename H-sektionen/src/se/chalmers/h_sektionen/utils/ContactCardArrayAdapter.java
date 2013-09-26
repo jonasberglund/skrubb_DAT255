@@ -32,8 +32,9 @@ public class ContactCardArrayAdapter extends ArrayAdapter<ContactCard> {
 		View row = convertView;
 		ContactCardHolder holder = null;
 		
-			LayoutInflater inflater = ((Activity)context).getLayoutInflater();
-			if (row == null) {
+		LayoutInflater inflater = ((Activity)context).getLayoutInflater();
+		
+		if (row == null) {
 			row = inflater.inflate(resource, parent, false);
 			
 			holder = new ContactCardHolder();

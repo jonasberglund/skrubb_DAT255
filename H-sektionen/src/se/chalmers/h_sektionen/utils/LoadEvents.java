@@ -1,10 +1,12 @@
 package se.chalmers.h_sektionen.utils;
 
+import java.util.List;
+
 import android.os.AsyncTask;
 
-public class LoadEvents extends AsyncTask<Void, Void, String[]>{
+public class LoadEvents extends AsyncTask<Void, Void, List<Events>>{
 
-	protected String[] doInBackground(Void...voids) {
+	protected List<Events> doInBackground(Void...voids) {
 
 		return LoadData.loadEvents();
 		

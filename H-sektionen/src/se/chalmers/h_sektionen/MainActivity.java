@@ -13,10 +13,12 @@ import se.chalmers.h_sektionen.utils.InfoThread;
 import java.util.TreeMap;
 import java.util.concurrent.ExecutionException;
 
+import se.chalmers.h_sektionen.utils.DataSource;
 import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.LoadEvents;
 import se.chalmers.h_sektionen.utils.MenuItems;
+import se.chalmers.h_sektionen.utils.NewsAdapter;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.graphics.Color;
@@ -137,10 +139,18 @@ public class MainActivity extends ActionBarActivity {
     	
     	ListView newsFeed;
         NewsAdapter newsAdapter;
+        ArrayList<NewsItem> list = new ArrayList<NewsItem>();
     
 		newsFeed = (ListView) findViewById(R.id.news_feed);
-		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getData()), getResources());
+		newsAdapter = new NewsAdapter(this, R.layout.news_feed_item, list);
 		newsFeed.setAdapter(newsAdapter);
+		
+		newsAdapter.refresh(new DataSource<ArrayList<NewsItem>>(){	
+			@Override
+			public ArrayList<NewsItem> getData(){
+				return (ArrayList<NewsItem>) MockTemp.parseData(MockTemp.getData());
+			}
+		});
     }
 	
     private void setupInfoView() {
@@ -210,9 +220,6 @@ public class MainActivity extends ActionBarActivity {
 		catch (Exception e) {
 			e.printStackTrace();
 		}
-    	
-    	
-    	
     }
 
     private class EventsItemClickListener implements ListView.OnItemClickListener{
@@ -274,9 +281,9 @@ public class MainActivity extends ActionBarActivity {
 			mDrawerLayout.closeDrawer(Gravity.LEFT);
 		else
 			mDrawerLayout.openDrawer(Gravity.LEFT);
-	}
-
+	}	
 }
+
 
 
 

@@ -18,6 +18,7 @@ public class MainActivity extends BaseActivity {
 		super.onResume();
 		setCurrentView(MenuItems.NEWS);
 		createNewsView();
+	}
     
     private void createNewsView(){
     	getFrameLayout().removeAllViews();

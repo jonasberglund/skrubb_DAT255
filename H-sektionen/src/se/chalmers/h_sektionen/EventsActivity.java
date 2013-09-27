@@ -39,13 +39,16 @@ public class EventsActivity extends BaseActivity {
     		
     		ListView eventsFeed = (ListView) findViewById(R.id.events_feed);
     		//ArrayAdapter<String> feedAdapter = new ArrayAdapter<String>(this, R.layout.events_feed_item, new LoadEvents().execute().get());
-			List<Events> events = new ArrayList<Events>();
+			List<Event> events = new ArrayList<Event>();
 			
-			events = new LoadEvents().execute().get();
-			
-			
-    		ArrayAdapter<Events> feedAdapter = new EventsArrayAdapter(this, R.layout.events_feed_item, events);
+			//events = new LoadEvents().execute().get();
+
+    		EventsArrayAdapter feedAdapter;
+    				
+    		feedAdapter = new EventsArrayAdapter(this, R.layout.events_feed_item, events);
     		eventsFeed.setAdapter(feedAdapter);
+    		
+    		feedAdapter.refreshEvents();
     		
     		 // Creating an item click listener, to open/close our toolbar for each item
             eventsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {

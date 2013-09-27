@@ -1,29 +1,33 @@
 package se.chalmers.h_sektionen.utils;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
 
 import se.chalmers.h_sektionen.R;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter.ContactCardHolder;
 
 import android.app.Activity;
 import android.content.Context;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 
-public class EventsArrayAdapter extends ArrayAdapter<Events> {
+public class EventsArrayAdapter extends ArrayAdapter<Event> {
    
 	
 	private final Context context;
-	private final List<Events> events;
+	private final List<Event> events;
 	private final int resource;
 	
-	public EventsArrayAdapter(Context context, int resource, List<Events> events) {
+	public EventsArrayAdapter(Context context, int resource, List<Event> events) {
 		super(context, resource, events);
 		this.context = context;
 		this.resource = resource;
@@ -45,10 +49,6 @@ public class EventsArrayAdapter extends ArrayAdapter<Events> {
 				holder = new EventsHolder();
 			
 				holder.title = (TextView)row.findViewById(R.id.title);
-			
-				
-			    
-			    
 				holder.description  = (TextView)row.findViewById(R.id.description);
 				holder.place = (TextView)row.findViewById(R.id.place);
 				holder.date = (TextView)row.findViewById(R.id.date);
@@ -65,7 +65,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Events> {
 			holder = (EventsHolder)row.getTag();
 		}
 		
-		Events event = events.get(position);
+		Event event = events.get(position);
 		holder.title.setText(event.getTitle());
 		holder.description.setText("Description: " + event.getDescription());
 		holder.place.setText("\n Place: " + event.getPlace());
@@ -82,29 +82,38 @@ public class EventsArrayAdapter extends ArrayAdapter<Events> {
 	}
 	
 	
+	public void refreshEvents(){
+		new LoadEventsInBg().execute();
+	}
+	
+	private class LoadEventsInBg extends AsyncTask<String, String, String>{
 
+		
+		List<Event> events = new ArrayList<Event>();
+		
+		@Override
+		protected String doInBackground(String... params) {
+			events = new LoadData().loadEvents();
+			return "Done";
+		}
+		
+		@Override
+		protected void onPostExecute(String s){
+			
+			for(Event e : events){
+				EventsArrayAdapter.this.add(e);
+			}
+			//EventsArrayAdapter.this.add(events);
+			EventsArrayAdapter.this.notifyDataSetChanged();
+		}
+		
+		@Override
+		protected void onPreExecute(){
+
+		}
+		
+	}
+	
 
 	
-	/*
-        public CustomListAdapter(Context context, int textViewResourceId) {
-            super(context, textViewResourceId);
-        }
-
-        @Override
-        public View getView(int position, View convertView, ViewGroup parent) {
-
-            if (convertView == null) {
-                convertView = getLayoutInflater().inflate(R.layout.list_item, null);
-            }
-
-            ((TextView)convertView.findViewById(R.id.title)).setText(getItem(position));
-
-            // Resets the toolbar to be closed
-            View toolbar = convertView.findViewById(R.id.toolbar);
-            ((LinearLayout.LayoutParams) toolbar.getLayoutParams()).bottomMargin = -50;
-            toolbar.setVisibility(View.GONE);
-
-            return convertView;
-        }
- */
 }

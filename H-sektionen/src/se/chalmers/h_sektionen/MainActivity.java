@@ -40,7 +40,7 @@ public class MainActivity extends BaseActivity {
         NewsAdapter newsAdapter;
     
 		newsFeed = (ListView) findViewById(R.id.news_feed);
-		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
+		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getData()), getResources());
 		newsFeed.setAdapter(newsAdapter);
     }
 

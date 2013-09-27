@@ -1,18 +1,8 @@
 package Test;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ExecutionException;
-
 import org.junit.Test;
 
-import android.widget.ArrayAdapter;
-
-import se.chalmers.h_sektionen.R;
 import se.chalmers.h_sektionen.utils.Event;
-import se.chalmers.h_sektionen.utils.EventsArrayAdapter;
-import se.chalmers.h_sektionen.utils.LoadData;
-import se.chalmers.h_sektionen.utils.LoadEvents;
 
 import junit.framework.TestCase;
 	
@@ -27,29 +17,28 @@ import junit.framework.TestCase;
 		}
 
 		@Test
-		public void testEventsFeed(){
+		public void testCreateNewEvent(){
 			
-			assertEquals(true, connection());
-		}
-		
-		@Test
-		public void testListView(){
-			assertEquals(true, connection());
-		}
-		
-		public boolean connection(){
-			try {
-				//List<Events> events = new LoadEvents().execute().get();
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-			}
-			return true;
-		}
-		
-		public boolean listview(){
+			String title = "Oktoberfest";
+			String desc = "En fest med mycket bira";
+			String place = "I Tyskland";
+			String date = "2013-09-27";
 			
-			return true;
+			Event ev = new Event(title, desc, place, date);
+			
+			if(!title.equals(ev.getTitle()))
+				fail("Title is not equal");
+			
+			if(!desc.equals(ev.getDescription()))
+				fail("Description is not equal");
+			
+			if(!place.equals(ev.getPlace()))
+				fail("Place is not equal");
+			
+			if(!date.equals(ev.getDate()))
+				fail("Date is not equal");
 		}
+		
 		
 		
 

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.ExecutionException;
 
+import se.chalmers.h_sektionen.BaseActivity;
 import se.chalmers.h_sektionen.R;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter.ContactCardHolder;
 
@@ -79,39 +80,6 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		TextView description;
 		TextView place;
 		TextView date;
-	}
-	
-	
-	public void refreshEvents(){
-		new LoadEventsInBg().execute();
-	}
-	
-	private class LoadEventsInBg extends AsyncTask<String, String, String>{
-
-		
-		List<Event> events = new ArrayList<Event>();
-		
-		@Override
-		protected String doInBackground(String... params) {
-			events = new LoadData().loadEvents();
-			return "Done";
-		}
-		
-		@Override
-		protected void onPostExecute(String s){
-			
-			for(Event e : events){
-				EventsArrayAdapter.this.add(e);
-			}
-			//EventsArrayAdapter.this.add(events);
-			EventsArrayAdapter.this.notifyDataSetChanged();
-		}
-		
-		@Override
-		protected void onPreExecute(){
-
-		}
-		
 	}
 	
 

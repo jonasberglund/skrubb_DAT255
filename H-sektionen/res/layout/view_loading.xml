@@ -12,6 +12,7 @@
         android:src="@drawable/ic_launcher" />
 
     <TextView
+        android:id="@+id/load_label"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/load_image"

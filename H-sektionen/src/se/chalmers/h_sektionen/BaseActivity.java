@@ -20,9 +20,11 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class BaseActivity extends ActionBarActivity {
@@ -100,7 +102,7 @@ public class BaseActivity extends ActionBarActivity {
         }
     }
     
-    private void startActivityByClass(Class c) {
+    private void startActivityByClass(Class c) { 
     	Intent i =  new Intent(this, c);
     	i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     	i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -161,9 +163,27 @@ public class BaseActivity extends ActionBarActivity {
 		BaseActivity.currentView = currentView;
 	}
 	
+	protected void runLoadAnimation() {
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
+		
+		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
+	}
+	protected void setErrorView() {
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_error, null));
+	}
+	
 	@Override
-	public boolean onKeyDown(int keyCode, KeyEvent event) {
-		return super.onKeyDown(keyCode, event);
+	public void onBackPressed() {
+		if(currentView != MenuItems.NEWS)
+			startActivityByClass(MainActivity.class);
+		else{
+		    Intent i = new Intent(Intent.ACTION_MAIN);
+		    i.addCategory(Intent.CATEGORY_HOME);
+		    startActivity(i);
+		}
+		super.onBackPressed();
 	}
 
 }

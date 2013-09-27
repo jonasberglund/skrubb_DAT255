@@ -1,9 +1,5 @@
 package se.chalmers.h_sektionen;
 
-import java.io.BufferedReader;
-import java.io.InputStreamReader;
-import java.net.URL;
-import java.net.URLConnection;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -19,6 +15,7 @@ import android.widget.ListView;
 import android.widget.TextView;
 import se.chalmers.h_sektionen.utils.ContactCard;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
+import se.chalmers.h_sektionen.utils.JSONLoader;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 public class InfoActivity extends BaseActivity {
@@ -43,7 +40,8 @@ public class InfoActivity extends BaseActivity {
 		
 		@Override
 		protected JSONObject doInBackground(String... params) {
-			return getJSONFromUrl(params[0]);
+			JSONLoader jsonLoader =  new JSONLoader(params[0]);
+			return jsonLoader.getJSONFromUrl();
 		}
 		
 		@Override
@@ -117,31 +115,6 @@ public class InfoActivity extends BaseActivity {
 			}
 		}
 		
-	}
-	
-	// Lyft ut till egen klass för att kunna testa... eller kolla upp det där Android-testet...
-	public JSONObject getJSONFromUrl(String urlString) {
-		try {
-			URL url = new URL(urlString);
-			URLConnection conn = url.openConnection();
-			conn.setConnectTimeout(10000);
-			conn.setReadTimeout(10000);
-			conn.addRequestProperty("Accept", "application/json");
-			conn.connect();
-			
-			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			StringBuilder sb = new StringBuilder();
-			String line;
-			while ((line = br.readLine()) != null) {
-				sb.append(line);
-			}
-			br.close();
-			
-			return new JSONObject(sb.toString());
-			
-		} catch (Exception e) {
-			return null;
-		}
 	}
 	
 }

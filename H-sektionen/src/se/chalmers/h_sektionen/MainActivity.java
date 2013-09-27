@@ -15,10 +15,9 @@ public class MainActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 
+		super.onResume();
 		setCurrentView(MenuItems.NEWS);
 		createNewsView();
-	
-		super.onResume();
 	}
     
     private void createNewsView(){
@@ -30,7 +29,9 @@ public class MainActivity extends BaseActivity {
         ArrayList<NewsItem> list = new ArrayList<NewsItem>();
     
 		newsFeed = (ListView) findViewById(R.id.news_feed);
+
 		newsAdapter = new NewsAdapter(this, R.layout.news_feed_item, list);
+
 		newsFeed.setAdapter(newsAdapter);
 		
 		newsAdapter.refresh(new DataSource<ArrayList<NewsItem>>(){	

@@ -14,11 +14,9 @@ import android.graphics.Color;
 import android.os.AsyncTask;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
-import android.view.animation.AnimationUtils;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.ImageView;
 import se.chalmers.h_sektionen.utils.ContactCard;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
 import se.chalmers.h_sektionen.utils.MenuItems;
@@ -45,28 +43,7 @@ public class InfoActivity extends BaseActivity {
 		
 		@Override
 		protected JSONObject doInBackground(String... params) {
-			
-			StringBuilder sb = new StringBuilder();
-			
-			try {
-				URL url = new URL(params[0]);
-				URLConnection conn = url.openConnection();
-				conn.addRequestProperty("Accept", "application/json");
-				conn.connect();
-				
-				BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-				
-				String line;
-				while ((line = br.readLine()) != null) {
-					sb.append(line);
-				}
-				br.close();
-				
-				return new JSONObject(sb.toString());
-				
-			} catch (Exception e) {
-				return null;
-			}
+			return getJSONFromUrl(params[0]);
 		}
 		
 		@Override
@@ -136,10 +113,35 @@ public class InfoActivity extends BaseActivity {
 	    		}
 	    		
 			} else {
-				
+				setErrorView();
 			}
 		}
 		
+	}
+	
+	// Lyft ut till egen klass för att kunna testa... eller kolla upp det där Android-testet...
+	public JSONObject getJSONFromUrl(String urlString) {
+		try {
+			URL url = new URL(urlString);
+			URLConnection conn = url.openConnection();
+			conn.setConnectTimeout(10000);
+			conn.setReadTimeout(10000);
+			conn.addRequestProperty("Accept", "application/json");
+			conn.connect();
+			
+			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			StringBuilder sb = new StringBuilder();
+			String line;
+			while ((line = br.readLine()) != null) {
+				sb.append(line);
+			}
+			br.close();
+			
+			return new JSONObject(sb.toString());
+			
+		} catch (Exception e) {
+			return null;
+		}
 	}
 	
 }

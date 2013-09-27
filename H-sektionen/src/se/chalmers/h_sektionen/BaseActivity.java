@@ -169,6 +169,10 @@ public class BaseActivity extends ActionBarActivity {
 		
 		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
 	}
+	protected void setErrorView() {
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_error, null));
+	}
 	
 	@Override
 	public void onBackPressed() {

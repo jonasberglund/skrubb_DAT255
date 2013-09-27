@@ -1,16 +1,16 @@
 package se.chalmers.h_sektionen.utils;
 
-public class Events {
+public class Event {
 	private String title;
 	private String description;
 	private String place;
 	private String date;
 
-	public Events(){
+	public Event(){
 
 	}
 
-	public Events(String title, String description, String place, String date){
+	public Event(String title, String description, String place, String date){
 		this.title = title;
 		this.description = description;
 		this.place = place;

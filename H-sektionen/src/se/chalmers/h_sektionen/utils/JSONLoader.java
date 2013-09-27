@@ -4,33 +4,36 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.net.URLConnection;
+import org.json.JSONObject;
 
-public class InfoThread extends Thread {
+public class JSONLoader {
+	private String urlString;
 	
-	private StringBuilder sb;
-	
-	public InfoThread(StringBuilder sb) {
-		this.sb = sb;
+	public JSONLoader(String urlString) {
+		this.urlString = urlString;
 	}
 	
-	public void run() {
+	public JSONObject getJSONFromUrl() {
 		try {
-			//URL url = new URL("http://jpv-net.dyndns.org:1337/H-Sektionen/info/");
-			URL url = new URL("http://htek.comli.com/info/");
+			URL url = new URL(urlString);
 			URLConnection conn = url.openConnection();
+			conn.setConnectTimeout(10000);
+			conn.setReadTimeout(10000);
 			conn.addRequestProperty("Accept", "application/json");
 			conn.connect();
 			
 			BufferedReader br = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-			
+			StringBuilder sb = new StringBuilder();
 			String line;
 			while ((line = br.readLine()) != null) {
 				sb.append(line);
 			}
 			br.close();
 			
+			return new JSONObject(sb.toString());
+			
 		} catch (Exception e) {
-			sb = null;
+			return null;
 		}
 	}
 	

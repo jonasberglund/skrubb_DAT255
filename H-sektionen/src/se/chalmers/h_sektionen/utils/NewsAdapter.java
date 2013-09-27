@@ -54,32 +54,7 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 		return v;
 	}
 	
-	public void refresh(DataSource<ArrayList<NewsItem>> ds){
-		new LoadNews().execute(ds);
-	}
+
 	
-	private class LoadNews extends AsyncTask<DataSource<ArrayList<NewsItem>>, String, String>{
-		
-		ArrayList<NewsItem> data;
-		
-		@Override
-		protected String doInBackground(DataSource<ArrayList<NewsItem>>... ds) {
-			
-			data = ds[0].getData();
-			
-			if (data == null){
-				data = new ArrayList<NewsItem>();
-			}
-			
-			return "";
-		}
-		
-		@Override
-        protected void onPostExecute(String s){
-				for (NewsItem item : data){ 
-					NewsAdapter.this.add(item);
-				}
-                NewsAdapter.this.notifyDataSetChanged();
-            }
-        }
+	
 	}

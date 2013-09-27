@@ -5,7 +5,6 @@ import java.util.ArrayList;
 import se.chalmers.h_sektionen.utils.DataSource;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 import se.chalmers.h_sektionen.utils.NewsItem;
 import android.os.AsyncTask;
@@ -33,7 +32,6 @@ public class MainActivity extends BaseActivity {
 		refresh(new DataSource<ArrayList<NewsItem>>(){
 			@Override
 			public ArrayList<NewsItem> getData(){
-				//return (ArrayList<NewsItem>) MockTemp.parseData(MockTemp.getData());
 				return LoadData.loadNews();
 			}
 		});

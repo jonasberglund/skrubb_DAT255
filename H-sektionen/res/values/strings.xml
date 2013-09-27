@@ -10,6 +10,7 @@
     <string name="events_header">KOMMANDE EVENTS</string>
     <string name="vote_header">RÖSTA</string>
     <string name="suggest_header">FÖRESLÅ</string>
+
     <string-array name="menu_titles">
         <item>Nyheter</item>
         <item>Dagens Lunch</item>
@@ -19,8 +20,29 @@
         <item>Rösta</item>
         <item>Föreslå</item>
     </string-array>
-    <string name="action_side_menu"></string>
 
+    <string name="action_side_menu"></string>
+    <string name="loading">Laddar...</string>
+    <string name="error">Något har gått fel...</string>
     <string name="title_activity_lunch">Lunch</string>
+    <string name="app_id">161725214029162</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Background">bg</string>
+    <string name="links_header">Länkar</string>
+    <string name="opening_hours_header">Öppettider</string>
+    <string name="no_info">Ingen information tillgänglig</string>
+    <string name="board_members_header">Styret</string>
+    <string name="title_activity_lunch">Dagens Lunch</string>
+    <string name="title_activity_info">Information</string>
+    <string name="title_activity_pub">Pub</string>
+    <string name="title_activity_events">Events</string>
+    <string name="title_activity_vote">Rösta</string>
+    <string name="title_activity_suggest">Föreslå</string>
+    
+    <string name="suggest_header_textView">Föreslå</string>
+    <string name="suggest_text">Här kan du skicka in förslag till H-sektionen. Är det något du är missnöjd med eller saknar? Låt oss veta!</string>
+    <string name="suggest_edit_message">Skriv här</string>
+    <string name="suggest_button_send">Skicka</string>
+    
 
 </resources>

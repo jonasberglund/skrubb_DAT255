@@ -4,9 +4,9 @@ import java.util.List;
 
 import android.os.AsyncTask;
 
-public class LoadEvents extends AsyncTask<Void, Void, List<Events>>{
+public class LoadEvents extends AsyncTask<Void, Void, List<Event>>{
 
-	protected List<Events> doInBackground(Void...voids) {
+	protected List<Event> doInBackground(Void...voids) {
 
 		return LoadData.loadEvents();
 		

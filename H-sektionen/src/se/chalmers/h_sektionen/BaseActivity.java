@@ -26,6 +26,8 @@ import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class BaseActivity extends ActionBarActivity {
 
@@ -169,6 +171,27 @@ public class BaseActivity extends ActionBarActivity {
 		
 		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
 	}
+	
+	protected void runTransparentLoadAnimation() {
+		//getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
+		
+		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
+	}
+	
+	protected void stopAnimation(){
+		ImageView img = ((ImageView)findViewById(R.id.load_image));
+		TextView txt = (TextView) findViewById(R.id.load_label);
+		
+		View view = getLayoutInflater().inflate(R.layout.view_loading, null);
+		getFrameLayout().removeView(view);
+		
+		img.clearAnimation();
+		img.setVisibility(View.GONE);
+		txt.setVisibility(View.GONE);
+	}
+	
+	
 	protected void setErrorView() {
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_error, null));

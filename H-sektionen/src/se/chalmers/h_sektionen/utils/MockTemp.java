@@ -27,14 +27,12 @@ public class MockTemp {
 	
 	public static String getData(){
 		DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
+		HttpPost httppost = new HttpPost("http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/");
 		//HttpPost httppost = new HttpPost("https://graph.facebook.com/109143889143301/feed?access_token=161725214029162%7CBzWvqgod38ZodPCz5Shub0PTld0");
 		//HttpPost httppost = new HttpPost("https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json");
-		HttpPost httppost = new HttpPost("http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/");
-		
+
 		// Depends on your web service
-		httppost.setHeader("Content-type", "application/json;charset=UTF-8");
 		httppost.setHeader("Accept", "application/json");
-		httppost.setHeader("Accept-Charset", "utf-8");
 
 		InputStream inputStream = null;
 		String result = null;

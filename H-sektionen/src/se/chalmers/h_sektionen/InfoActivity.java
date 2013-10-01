@@ -48,6 +48,8 @@ public class InfoActivity extends BaseActivity {
 			
 			if (json != null) {
 				try {
+					
+					// Board members
 					JSONArray members = json.getJSONArray("members");
 					contactCards = new ArrayList<ContactCard>();
 		    		
@@ -60,6 +62,7 @@ public class InfoActivity extends BaseActivity {
 		    			contactCards.add(new ContactCard(name, position, email, phoneNumber, picAddr));
 		    		}
 		    		
+		    		//Links
 		    		JSONArray links = json.getJSONArray("links");
 		    		htmlLinks = new StringBuilder();
 		    		
@@ -71,6 +74,7 @@ public class InfoActivity extends BaseActivity {
 		    			htmlLinks.append("</a><br />");
 		    		}
 		    		
+		    		// Opening hours
 		    		JSONArray openingHours = json.getJSONArray("openinghours");
 		    		openingHoursString = new StringBuilder();
 		    		

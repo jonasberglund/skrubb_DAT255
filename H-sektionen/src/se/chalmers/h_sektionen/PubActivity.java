@@ -8,10 +8,12 @@ import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.PubArrayAdapter;
+import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class PubActivity extends BaseActivity {
@@ -48,9 +50,9 @@ public class PubActivity extends BaseActivity {
 	private void addActionListner(){
 		 pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-	                View toolbar = view.findViewById(R.id.toolbarPubs);
-	                ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
-	                toolbar.startAnimation(expandAni);
+		            	View toolbar = view.findViewById(R.id.toolbarPubs);
+		                ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
+		                toolbar.startAnimation(expandAni);
 	            }
 	        });
 	}
@@ -75,6 +77,11 @@ public class PubActivity extends BaseActivity {
 		
 		@Override
 		protected void onPostExecute(String s){
+			
+			ImageView img = new ImageView(PubActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.pubf);
+			pubsFeed.addHeaderView(img,null,false);
 			pubsFeed.setAdapter(pubFeedAdapter);
     		stopAnimation();
 		}

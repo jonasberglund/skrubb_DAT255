@@ -19,6 +19,9 @@ import se.chalmers.h_sektionen.utils.JSONLoader;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 public class InfoActivity extends BaseActivity {
+	private List<ContactCard> contactCards = null;
+	private StringBuilder htmlLinks = null;
+	private StringBuilder openingHoursString = null;
 	
 	@Override
 	protected void onResume() {
@@ -29,7 +32,7 @@ public class InfoActivity extends BaseActivity {
 		super.onResume();
 	}
 	
-	private class GetInfoTask extends AsyncTask<String, String, JSONObject> {
+	private class GetInfoTask extends AsyncTask<String, String, Boolean> {
 
 		@Override
 		protected void onPreExecute() {
@@ -39,20 +42,14 @@ public class InfoActivity extends BaseActivity {
 		}
 		
 		@Override
-		protected JSONObject doInBackground(String... params) {
+		protected Boolean doInBackground(String... params) {
 			JSONLoader jsonLoader =  new JSONLoader(params[0]);
-			return jsonLoader.getJSONFromUrl();
-		}
-		
-		@Override
-		protected void onPostExecute(JSONObject json) {
-			super.onPostExecute(json);
+			JSONObject json = jsonLoader.getJSONFromUrl();
 			
 			if (json != null) {
 				try {
 					JSONArray members = json.getJSONArray("members");
-		    		
-		    		List<ContactCard> contactCards = new ArrayList<ContactCard>();
+					contactCards = new ArrayList<ContactCard>();
 		    		
 		    		for (int i=0; i<members.length(); i++) {
 		    			String name = members.getJSONObject(i).getString("name");
@@ -63,20 +60,8 @@ public class InfoActivity extends BaseActivity {
 		    			contactCards.add(new ContactCard(name, position, email, phoneNumber, picAddr));
 		    		}
 		    		
-		    		getFrameLayout().removeAllViews();
-					getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
-		    		
-		    		ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
-		    		contactListView.setCacheColorHint(Color.WHITE);
-		    		
-		    		// Links
-		    		LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
-		    		TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
-		    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
-		    		
-		    		StringBuilder htmlLinks = new StringBuilder();
-		    		
 		    		JSONArray links = json.getJSONArray("links");
+		    		htmlLinks = new StringBuilder();
 		    		
 		    		for (int i=0; i<links.length(); i++) {
 		    			htmlLinks.append("<a href=\"");
@@ -86,13 +71,8 @@ public class InfoActivity extends BaseActivity {
 		    			htmlLinks.append("</a><br />");
 		    		}
 		    		
-		    		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
-		    		
-		    		// Opening Hours
-		    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
-		    		
-		    		StringBuilder openingHoursString = new StringBuilder();
 		    		JSONArray openingHours = json.getJSONArray("openinghours");
+		    		openingHoursString = new StringBuilder();
 		    		
 		    		for (int i=0; i<openingHours.length(); i++) {
 		    			openingHoursString.append("<b>");
@@ -100,16 +80,38 @@ public class InfoActivity extends BaseActivity {
 		    			openingHoursString.append("</b>:<br />");
 		    			openingHoursString.append(openingHours.getJSONObject(i).getString("opentime"));
 		    			openingHoursString.append("<br />");
-	
-			    		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
 		    		}
-		    		contactListView.addHeaderView(linksLayout);
 		    		
-		    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
-	    		} catch (Exception e) {
-	    			
-	    		}
+				} catch (Exception e) {
+					return false;
+				}
+			}
+			
+			return true;
+		}
+		
+		@Override
+		protected void onPostExecute(Boolean done) {
+			super.onPostExecute(done);
+			
+			if (done) {
+				getFrameLayout().removeAllViews();
+				getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
+				
+				ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
+	    		contactListView.setCacheColorHint(Color.WHITE);
 	    		
+	    		LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
+	    		TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
+	    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
+	    		
+	    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
+	    		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
+	    		
+	    		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
+	    		contactListView.addHeaderView(linksLayout);
+	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
+			
 			} else {
 				setErrorView();
 			}

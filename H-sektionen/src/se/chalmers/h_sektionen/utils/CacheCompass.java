@@ -21,19 +21,15 @@ public class CacheCompass {
 		
 	}
 	
-	public static CacheCompass getInstance()
+	public static CacheCompass getInstance(Context con)
 	{
-		
+		if(CC==null){
+			CC=new CacheCompass(con);
+		}
 		return CC;
 	}
 	
-	public static void initcacheCompass(Context con)
-	{
-		if(CC==null)
-			CC=new CacheCompass(con);
-			
-	}
-	
+		
 	public BitmapCache getBitmapCache(){
 		
 		return bitmapCache;

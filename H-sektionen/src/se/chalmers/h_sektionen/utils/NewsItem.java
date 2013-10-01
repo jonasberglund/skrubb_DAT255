@@ -70,7 +70,7 @@ public class NewsItem {
 		return date;
 	}
 	
-	public String getImage(){
+	public String getImageAdr(){
 		return imageAdr;
 	}
 	public Bitmap getBitImage(){

@@ -30,32 +30,7 @@ public class LoadData {
 	
 	public static List<Event> loadEvents(){
 		
-		StringBuilder builder = new StringBuilder();
-	    HttpClient client = new DefaultHttpClient();
-	    HttpGet httpGet = new HttpGet("https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json&" +
-	    		"orderby=starttime&" +
-	    		"sortorder=ascending&" +
-	    		"futureevents=true&" + //Overrides start-min and max
-	    		//"start-min=2013-08-31T10:57:00-08:00&" +
-	    		//"start-max=2013-09-31T10:57:00-08:00" +
-	    		"");
-	    try {
-	        HttpResponse response = client.execute(httpGet);
-	        HttpEntity entity = response.getEntity();
-	        InputStream content = entity.getContent();
-	        BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-	        
-	        String line;
-	        while ((line = reader.readLine()) != null) {
-	          builder.append(line);
-	        }
-	    } catch (ClientProtocolException e) {
-	      e.printStackTrace();
-	    } catch (IOException e) {
-	      e.printStackTrace();
-	    }
-	    
-	    String data = builder.toString();
+		String data = getJSON(Constants.GOOGLEEVENTS);
 		
 		try {
 			JSONObject json_obj = new JSONObject(data).getJSONObject("feed");
@@ -73,16 +48,10 @@ public class LoadData {
 				String[] date = time.split("T");
 				
 				if (!title.equals("")){
-					/*posts.add(title + "\n\nVad: " + description
-							+ "\n\nVar : " + where +
-							"\n\nTid: " + "13:37" + 
-							"\nDatum: " + date[0]);*/
 					events.add(new Event(title, description, where, date[0]));
-					
 				}
 			}
 			
-			//return posts.toArray(new String[posts.size()]);
 			return events;
 			
 		} catch (JSONException e) {
@@ -97,32 +66,7 @@ public class LoadData {
 	
 	public static List<Event> loadPubs(){
 		
-		StringBuilder builder = new StringBuilder();
-	    HttpClient client = new DefaultHttpClient();
-	    HttpGet httpGet = new HttpGet("https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json&" +
-	    		"orderby=starttime&" +
-	    		"sortorder=ascending&" +
-	    		"futureevents=true&" + //Overrides start-min and max
-	    		//"start-min=2013-08-31T10:57:00-08:00&" +
-	    		//"start-max=2013-09-31T10:57:00-08:00" +
-	    		"");
-	    try {
-	        HttpResponse response = client.execute(httpGet);
-	        HttpEntity entity = response.getEntity();
-	        InputStream content = entity.getContent();
-	        BufferedReader reader = new BufferedReader(new InputStreamReader(content));
-	        
-	        String line;
-	        while ((line = reader.readLine()) != null) {
-	          builder.append(line);
-	        }
-	    } catch (ClientProtocolException e) {
-	      e.printStackTrace();
-	    } catch (IOException e) {
-	      e.printStackTrace();
-	    }
-	    
-	    String data = builder.toString();
+		String data = getJSON(Constants.PUBEVENTS);
 		
 		try {
 			JSONObject json_obj = new JSONObject(data).getJSONObject("feed");
@@ -140,16 +84,10 @@ public class LoadData {
 				String[] date = time.split("T");
 				
 				if (!title.equals("")){
-					/*posts.add(title + "\n\nVad: " + description
-							+ "\n\nVar : " + where +
-							"\n\nTid: " + "13:37" + 
-							"\nDatum: " + date[0]);*/
 					events.add(new Event(title, description, where, date[0]));
-					
 				}
 			}
 			
-			//return posts.toArray(new String[posts.size()]);
 			return events;
 			
 		} catch (JSONException e) {
@@ -163,9 +101,9 @@ public class LoadData {
 	}
 
 	public static ArrayList<NewsItem> loadNews(){
+
 		DefaultHttpClient   httpclient = new DefaultHttpClient(new BasicHttpParams());
-		HttpPost httppost = new HttpPost("http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/");
-		//HttpPost httppost = new HttpPost("https://graph.facebook.com/109143889143301/feed?access_token=161725214029162%7CBzWvqgod38ZodPCz5Shub0PTld0");
+		HttpPost httppost = new HttpPost(Constants.NEWSFEED);
 		
 		// Depends on your web service
 		httppost.setHeader("Accept", "application/json");
@@ -217,4 +155,35 @@ public class LoadData {
 		
 		return (ArrayList<NewsItem>) posts;
 	}
+
+
+
+	public static String getJSON(String url){
+		
+		StringBuilder builder = new StringBuilder();
+	    HttpClient client = new DefaultHttpClient();
+	    HttpGet httpGet = new HttpGet(url);
+	    try {
+	        HttpResponse response = client.execute(httpGet);
+	        HttpEntity entity = response.getEntity();
+	        InputStream content = entity.getContent();
+	        BufferedReader reader = new BufferedReader(new InputStreamReader(content));
+	        
+	        String line;
+	        while ((line = reader.readLine()) != null) {
+	          builder.append(line);
+	        }
+	    } catch (ClientProtocolException e) {
+	      e.printStackTrace();
+	    } catch (IOException e) {
+	      e.printStackTrace();
+	    }
+	    
+	    String data = builder.toString();
+		
+		
+		return data;
+	}
 }
+
+

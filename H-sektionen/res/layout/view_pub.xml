@@ -16,13 +16,14 @@
         android:visibility="gone"
         android:contentDescription="@string/Background"/>
     
-
-    
     <ListView
         android:id="@+id/pubs_feed"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@android:color/transparent"
-        android:cacheColorHint="@android:color/transparent" />
+        android:cacheColorHint="@android:color/transparent"
+        android:drawSelectorOnTop="false"    />
+    
+    
 
 </RelativeLayout>

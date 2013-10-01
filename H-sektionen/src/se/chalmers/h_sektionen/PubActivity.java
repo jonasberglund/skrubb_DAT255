@@ -9,6 +9,7 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.PubArrayAdapter;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
@@ -17,10 +18,11 @@ public class PubActivity extends BaseActivity {
 
 	PubArrayAdapter pubFeedAdapter;
 	ListView pubsFeed;
+	
 
+	
 	@Override
 	protected void onResume() {
-
 		setCurrentView(MenuItems.PUB);
 		createPubView();
 		

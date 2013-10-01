@@ -27,12 +27,15 @@ public class SuggestActivity extends BaseActivity {
 	public void sendSuggestEmail(View view){
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
 		intent.setType("text/plain");
-		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);	//fetch the text...
+		
+		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);	//fetch the text from the user
 		String message = editText.getText().toString();							//...and make it into a string
+		
 		intent.putExtra(Intent.EXTRA_SUBJECT, "Förslag till H-sektionen");		//the subject for the email
 		intent.putExtra(Intent.EXTRA_TEXT, message); 							//Adds the text from the editText field.
-		intent.setData(Uri.parse("mailto:någon@något.com")); // the address to send to. CHANGE THIS!
-		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); // this will make such that when user returns to your app, your app is displayed, instead of the email app.
+		intent.setData(Uri.parse("mailto:någon@något.com")); 					// the address to send to. CHANGE THIS!
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 						// make sure user returns to the app after sending the email.
+		
 		try{
 			startActivity(intent);	//try to start the intent, if there are any email clients on the phone.
 		}catch (android.content.ActivityNotFoundException ex) { //if not, post a toast to let the user know.

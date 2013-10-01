@@ -46,10 +46,8 @@ public class BaseActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setCacheColorHint(Color.BLACK);
-        
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
-
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
         // Set the list's click listener
@@ -72,7 +70,6 @@ public class BaseActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-        	//mDrawerLayout.closeDrawer(Gravity.LEFT);
         	mDrawerLayout.closeDrawers();
         	if(currentView != position){
         		switch (position) {
@@ -103,7 +100,7 @@ public class BaseActivity extends ActionBarActivity {
         }
     }
     
-    private void startActivityByClass(Class c) { 
+    private void startActivityByClass(Class<? extends BaseActivity> c) { 
     	Intent i =  new Intent(this, c);
     	i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     	i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);

@@ -8,17 +8,17 @@
     <string name="pub_header">PUB</string>
     <string name="info_header">INFORMATION</string>
     <string name="events_header">KOMMANDE EVENTS</string>
-    <string name="vote_header">RÖSTA</string>
-    <string name="suggest_header">FÖRESLÅ</string>
+    <string name="suggest_header">FÖRSLAGSLÅDAN</string>
+    <string name="faultreport_header">FELANMÄLAN</string>
 
     <string-array name="menu_titles">
         <item>Nyheter</item>
+        <item>Events</item>
         <item>Dagens Lunch</item>
         <item>11:an</item>
         <item>Information</item>
-        <item>Events</item>
-        <item>Rösta</item>
-        <item>Föreslå</item>
+        <item>Förslagsådan</item>
+        <item>Felanmälan</item>
     </string-array>
 
     <string name="action_side_menu"></string>
@@ -36,13 +36,22 @@
     <string name="title_activity_info">Information</string>
     <string name="title_activity_pub">Pub</string>
     <string name="title_activity_events">Events</string>
-    <string name="title_activity_vote">Rösta</string>
-    <string name="title_activity_suggest">Föreslå</string>
+    <string name="title_activity_suggest">Förslådan</string>
+    <string name="title_activity_faultreport">Felanmälan</string>
     
-    <string name="suggest_header_textView">Föreslå</string>
+    <string name="suggest_header_textView">Förslagslådan</string>
     <string name="suggest_text">Här kan du skicka in förslag till H-sektionen. Är det något du är missnöjd med eller saknar? Låt oss veta!</string>
     <string name="suggest_edit_message">Skriv här</string>
     <string name="suggest_button_send">Skicka</string>
-    
+
+	<string name="faultreport_header_textView">Felanmälan</string>
+    <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
+    <string name="faultreport_edit_message">Skriv här</string>
+    <string name="faultreport_button_send">Skicka</string>
+    <string name="faultreport_checkbox_text">Är det datorproblem? Kryssa då i rutan så kommer det rätt</string>
+    <string name="buildingEmail">lokal@något.com</string>
+    <string name="dataEmail">data@något.com</string>
+    <string name="faultreport_text2">Väktare:  Vid behov av kontakt med väktare kan man ringa 772 44 99, vid svar begär att bli kopplad till "Chalmersväktaren". Väktarna nås endast utanför ordinarie arbetstider.</string>
+	<string name="faultreport_text3">Akuta fastighetsfel:  Vid akuta fastighetsfel finns det möjlighet att kontakta fastighetsägarens beredskapssökare på 0746 36 62 98, aternativt SOS Alarmering 703 17 25.</string>
 
 </resources>

@@ -1,0 +1,80 @@
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content" >
+
+	<LinearLayout 
+    	android:layout_width="wrap_content" 
+    	android:layout_height="wrap_content" 
+    	android:orientation="vertical" >
+		
+	    <TextView
+	        android:id="@+id/faultreport_header_textView"
+	        android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:text="@string/faultreport_header_textView"
+        	android:textSize="20sp"
+        	android:layout_gravity="center_horizontal"
+        	/>
+	    
+    	<TextView
+        	android:id="@+id/faultreport_textView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:text="@string/faultreport_text"
+        	android:textSize="15sp"
+        	android:layout_gravity="center_horizontal" />
+    
+    	<EditText
+    	    android:id="@+id/faultreport_edit_message"
+    	    android:layout_width="fill_parent"
+    	    android:layout_height="match_parent"
+    	    android:layout_marginLeft="5dp"
+    	    android:layout_marginRight="5dp"
+    	    android:layout_marginTop="5dp"
+    	    android:minLines="4"
+    	    android:hint="@string/faultreport_edit_message"
+    	    />
+    	
+	    	<CheckBox
+	    	    android:id="@+id/checkBox1"
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_gravity="center_horizontal"
+	    	    android:layout_marginTop="5dp"
+	    	    android:textSize="15sp"
+	    	    android:text="@string/faultreport_checkbox_text" />
+
+	    	<Button
+	    	    android:layout_width="wrap_content"
+	    	    android:layout_height="wrap_content"
+	    	    android:layout_gravity="center_horizontal"
+	    	    android:layout_marginTop="5dp"
+	    	    android:layout_marginLeft="5dp"
+	    	    android:onClick="sendFaultreportEmail"
+	    	    android:text="@string/faultreport_button_send" />
+		
+    	<TextView
+        	android:id="@+id/faultreport_textView2"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="10dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:text="@string/faultreport_text2"
+        	android:textSize="15sp" />
+    	
+    	<TextView
+        	android:id="@+id/faultreport_textView3"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="10dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:text="@string/faultreport_text3"
+        	android:textSize="15sp" />
+    	
+	</LinearLayout>
+</ScrollView>

@@ -91,12 +91,11 @@ public class BaseActivity extends ActionBarActivity {
 		        	case MenuItems.EVENTS:
 		        		startActivityByClass(EventsActivity.class);
 		        		break;
-		        	case MenuItems.VOTE:
-		        		startActivityByClass(VoteActivity.class);
-		        		break;
 		        	case MenuItems.SUGGEST:
 		        		startActivityByClass(SuggestActivity.class);
-		        		break;	
+		        		break;
+		        	case MenuItems.FAULTREPORT:
+		        		startActivityByClass(FaultreportActivity.class);
 		        	default:
 		        		return;
 		        }

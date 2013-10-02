@@ -7,6 +7,7 @@ import java.util.List;
 import se.chalmers.h_sektionen.utils.*;
 
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -16,12 +17,31 @@ public class EventsActivity extends BaseActivity {
 	
 	EventsArrayAdapter feedAdapter;
 	ListView eventsFeed;
+	
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+		
+		
+		
+		
+    	
+    	super.onCreate(savedInstanceState);
+	}
+	
+	@Override
+	protected void onStart(){
+		
+		super.onStart();
+		
+		
+	}
 
 	@Override
 	protected void onResume() {
-
+		
 		setCurrentView(MenuItems.EVENTS);
 		createEventsView();
+		
 		
 		super.onResume();
 	}
@@ -31,9 +51,9 @@ public class EventsActivity extends BaseActivity {
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_events, null));
 		
-		eventsFeed = (ListView) findViewById(R.id.events_feed);;
+		eventsFeed = (ListView) findViewById(R.id.events_feed);
 		
-    	refreshEvents();
+		refreshEvents();
     	addActionListner();
 
 	}

@@ -8,6 +8,7 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 import se.chalmers.h_sektionen.utils.NewsItem;
 import android.os.AsyncTask;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
@@ -60,7 +61,11 @@ public class MainActivity extends BaseActivity {
 		
 		@Override
         protected void onPostExecute(String s){
-
+			
+			ImageView img = new ImageView(MainActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.news);
+			newsFeed.addHeaderView(img,null,false);
 			newsFeed.setAdapter(newsAdapter);
 			stopAnimation();
 			

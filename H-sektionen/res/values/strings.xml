@@ -50,7 +50,7 @@
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
     <string name="faultreport_edit_message">Skriv här</string>
     <string name="faultreport_button_send">Skicka</string>
-    <string name="faultreport_checkbox_text">Datorproblem? Kryssa i rutan så skickas det rätt!</string>
+    <string name="faultreport_checkbox_text">Datorproblem? Kryssa i rutan så skickas det till supporten.</string>
     <string name="faultreport_guardHeaderText">Väktare:</string>
     <string name="faultreport_guardText">Vid behov av kontakt med väktare kan man ringa 772 44 99, vid svar begär att bli kopplad till "Chalmersväktaren". Väktarna nås endast utanför ordinarie arbetstider.</string>
 	<string name="faultreport_emergencyHeaderText">Akuta fastighetsfel:</string>

@@ -9,6 +9,7 @@ import se.chalmers.h_sektionen.utils.*;
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class EventsActivity extends BaseActivity {
@@ -71,6 +72,11 @@ public class EventsActivity extends BaseActivity {
 		
 		@Override
 		protected void onPostExecute(String s){
+			
+			ImageView img = new ImageView(EventsActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.events);
+			eventsFeed.addHeaderView(img,null,false);
 			eventsFeed.setAdapter(feedAdapter);
     		stopAnimation();
 		}

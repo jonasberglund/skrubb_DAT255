@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,9 +83,9 @@ public class LoadData {
 				String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
 				String[] date = time.split("T");
-				
+								
 				if (!title.equals("")){
-					events.add(new Event(title, description, where, date[0]));
+					events.add(new Event(title, description, where, date[0] + ", kl: " + date[1].substring(0,5) + " - SENT. "));
 				}
 			}
 			

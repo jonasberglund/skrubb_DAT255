@@ -57,24 +57,103 @@
 	    	    android:text="@string/faultreport_button_send" />
 		
     	<TextView
-        	android:id="@+id/faultreport_textView2"
+        	android:id="@+id/faultreport_guardHeaderTextView"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"
         	android:layout_marginRight="5dp"
-        	android:text="@string/faultreport_text2"
-        	android:textSize="15sp" />
+        	android:textSize="15sp"
+        	android:text="@string/faultreport_guardHeaderText" />
+    	<TextView
+    	    android:id="@+id/faultreport_guardTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="12sp"
+        	android:text="@string/faultreport_guardText" />
     	
     	<TextView
-        	android:id="@+id/faultreport_textView3"
+        	android:id="@+id/faultreport_emergencyHeaderTextView"
         	android:layout_width="wrap_content"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"
         	android:layout_marginRight="5dp"
-        	android:text="@string/faultreport_text3"
-        	android:textSize="15sp" />
+        	android:textSize="15sp"
+        	android:text="@string/faultreport_emergencyHeaderText" />
     	
+    	<TextView
+    	    android:id="@+id/faultreport_emergencyTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="12sp"
+        	android:text="@string/faultreport_emergencyText" />
+    	
+    	<TextView
+        	android:id="@+id/faultreport_computerHeaderTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="10dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="15sp"
+        	android:text="@string/faultreport_computerHeaderText" />
+    	
+    	<TextView
+    	    android:id="@+id/faultreport_computerTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="12sp"
+        	android:text="@string/faultreport_computerText" />
+    	
+    	<TextView
+        	android:id="@+id/faultreport_lightingHeaderTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="10dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="15sp"
+        	android:text="@string/faultreport_lightingHeaderText" />
+    	
+    	<TextView
+    	    android:id="@+id/faultreport_lightingTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="12sp"
+        	android:text="@string/faultreport_lightingText" />
+    	
+    	<TextView
+        	android:id="@+id/faultreport_furnitureHeaderTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="10dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="15sp"
+        	android:text="@string/faultreport_furnitureHeaderText" />
+    	
+    	<TextView
+    	    android:id="@+id/faultreport_furnitureTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="12sp"
+        	android:text="@string/faultreport_furnitureText" />	
+        	
 	</LinearLayout>
 </ScrollView>

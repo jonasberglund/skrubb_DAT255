@@ -83,12 +83,9 @@ public class LoadData {
 				String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
 				String[] date = time.split("T");
-				
-				//SimpleDateFormat sdf = new SimpleDateFormat("EEE, MMM d, ''yy"); 
-				
-				
+								
 				if (!title.equals("")){
-					events.add(new Event(title, description, where, date[0] + ", kl: " + date[1].substring(0,5) + " - SENT"));
+					events.add(new Event(title, description, where, date[0] + ", kl: " + date[1].substring(0,5) + " - SENT. "));
 				}
 			}
 			

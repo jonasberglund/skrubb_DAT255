@@ -43,7 +43,8 @@
     <string name="suggest_text">Här kan du skicka in förslag till H-sektionen. Är det något du är missnöjd med eller saknar? Låt oss veta!</string>
     <string name="suggest_edit_message">Skriv här</string>
     <string name="suggest_button_send">Skicka</string>
-
+	<string name="suggest_emailReceiver">någon@något.com</string>
+    
 	<string name="faultreport_header_textView">Felanmälan</string>
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
     <string name="faultreport_edit_message">Skriv här</string>

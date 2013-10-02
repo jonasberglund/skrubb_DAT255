@@ -33,8 +33,8 @@ public class SuggestActivity extends BaseActivity {
 		
 		intent.putExtra(Intent.EXTRA_SUBJECT, "Förslag till H-sektionen");		//the subject for the email
 		intent.putExtra(Intent.EXTRA_TEXT, message); 							//Adds the text from the editText field.
-		intent.setData(Uri.parse("mailto:någon@något.com")); 					// the address to send to. CHANGE THIS!
-		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 						// make sure user returns to the app after sending the email.
+		intent.setData(Uri.parse("mailto:"+getString(R.string.suggest_emailReceiver))); //Sets the receiver of the email
+		intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK); 						
 		
 		try{
 			startActivity(intent);	//try to start the intent, if there are any email clients on the phone.

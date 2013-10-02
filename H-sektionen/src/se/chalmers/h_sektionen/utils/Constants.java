@@ -19,5 +19,7 @@ public class Constants {
     		"";
 	
 	public static final String NEWSFEED = "http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/";
+	
+	public static final String SUGGESTEMAIL = "foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com";
 
 }

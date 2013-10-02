@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
+import java.util.TimeZone;
 
 
 import org.apache.http.HttpEntity;
@@ -24,6 +26,7 @@ import org.json.JSONObject;
 import se.chalmers.h_sektionen.BaseActivity;
 
 
+import android.text.format.Time;
 import android.util.Log;
 
 
@@ -46,10 +49,14 @@ public class LoadData {
 				String time = json_arr.getJSONObject(i).getJSONArray("gd$when").getJSONObject(0).optString("startTime");
 				String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
-				String[] date = time.split("T");
+				//If time is not an all day event
+				if(time.length() > 10){
+					time = fromDate(time) + ". ";
+				}
+					
 				
 				if (!title.equals("")){
-					events.add(new Event(title, description, where, date[0]));
+					events.add(new Event(title, description, where, time));
 				}
 			}
 			
@@ -82,10 +89,17 @@ public class LoadData {
 				String time = json_arr.getJSONObject(i).getJSONArray("gd$when").getJSONObject(0).optString("startTime");
 				String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
-				String[] date = time.split("T");
-								
+				if(time.length() > 10){
+					//String[] date = time.split("T");
+					//time = date[0] + ", kl: " + date[1].substring(0,5) + " - SENT. ";
+					
+					time = fromDate(time) + " - SENT. ";
+				}
+				
+			  
+				
 				if (!title.equals("")){
-					events.add(new Event(title, description, where, date[0] + ", kl: " + date[1].substring(0,5) + " - SENT. "));
+					events.add(new Event(title, description, where, time));
 				}
 			}
 			
@@ -151,7 +165,10 @@ public class LoadData {
 			return (ArrayList<NewsItem>) posts;
 		} catch (JSONException e) {
 			e.printStackTrace();
-			posts.add(new NewsItem(Log.getStackTraceString(e), "infinity", "bild"));
+			//posts.add(new NewsItem(Log.getStackTraceString(e), "infinity", "bild"));
+		} catch (NullPointerException ne){
+			posts.add(new NewsItem("Kunde inte hämta nyhetsflödet", "Anslut till internet..", "X"));
+			
 		}
 		
 		return (ArrayList<NewsItem>) posts;
@@ -185,6 +202,25 @@ public class LoadData {
 		
 		return data;
 	}
+	
+	public static String fromDate(String s){
+		Time t = new Time();
+
+		
+		
+		String[] date = s.split("T");
+		String time = date[1].substring(0,5);
+		String[] dates = date[0].split("-"); 
+		//String year = dates[0];
+		//Months month = Months.values()[Integer.parseInt(dates[1])+1];
+		String month = dates[1];
+		String day = dates[2];
+		
+		int week = t.getWeekNumber();
+		
+		return day + "/" + month + ", kl: " + time;
+	}
 }
+
 
 

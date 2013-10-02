@@ -16,8 +16,8 @@ public class CacheCompass {
 		//Get the memory limit of the application
 		ActivityManager am = (ActivityManager) context.getSystemService(Context.ACTIVITY_SERVICE);
 		int memoryClassBytes = am.getMemoryClass() * 1024 * 1024;
-		// create a BitmapCahce with a 8th of available memory
-		bitmapCache = new BitmapCache(memoryClassBytes / 8);
+		// create a BitmapCahce with a 6th of available memory
+		bitmapCache = new BitmapCache(memoryClassBytes / 6);
 		
 	}
 	

@@ -49,7 +49,8 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 			if (date != null){
 				date.setText(item.getDate());
 			}
-			if (image != null){
+			if (image != null && (item.getImageAdr()!=null && !item.getImageAdr().equals(""))){
+				
 				if(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr())==null){
 				
 					PicLoaderThread pcl =new PicLoaderThread(item.getImageAdr());

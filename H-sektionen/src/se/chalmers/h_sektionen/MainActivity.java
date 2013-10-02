@@ -20,12 +20,15 @@ public class MainActivity extends BaseActivity {
 	ListView newsFeed;
 	private CacheCompass cacheCompass;
 	
+	
 	@Override
 	 protected void onCreate(Bundle savedInstanceState){
 		
+		super.onCreate(savedInstanceState);
 		cacheCompass = CacheCompass.getInstance(this);
 		
 	}
+	
 	
 	@Override
 	protected void onResume() {

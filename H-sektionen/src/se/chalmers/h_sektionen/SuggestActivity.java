@@ -28,7 +28,8 @@ public class SuggestActivity extends BaseActivity {
 	public void sendSuggestEmail(View view){
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
 		intent.setType("text/plain");
-		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);	//fetch the text...
+		
+		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);	//fetch the text from the user
 		String message = editText.getText().toString();							//...and make it into a string
 		intent.putExtra(Intent.EXTRA_SUBJECT, "Förslag till H-sektionen");		//the subject for the email
 		intent.putExtra(Intent.EXTRA_TEXT, message); 							//Adds the text from the editText field.

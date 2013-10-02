@@ -1,47 +1,69 @@
 package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
-import java.util.List;
 
-import java.util.TreeMap;
-
-import se.chalmers.h_sektionen.utils.LoadEvents;
+import se.chalmers.h_sektionen.utils.DataSource;
+import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-
-import android.annotation.TargetApi;
-import android.content.Context;
-import android.content.Intent;
-import android.graphics.Color;
-
-import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
-
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
+import se.chalmers.h_sektionen.utils.NewsItem;
+import android.os.AsyncTask;
 import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
+	
+	NewsAdapter newsAdapter;
+	ListView newsFeed;
     
 	@Override
 	protected void onResume() {
 
+		super.onResume();
 		setCurrentView(MenuItems.NEWS);
 		createNewsView();
-		
-		super.onResume();
 	}
     
     private void createNewsView(){
     	getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
-    	
-    	ListView newsFeed;
-        NewsAdapter newsAdapter;
-    
+		
 		newsFeed = (ListView) findViewById(R.id.news_feed);
-		newsAdapter = new NewsAdapter(this, MockTemp.parseData(MockTemp.getDummyData(getAssets())), getResources());
-		newsFeed.setAdapter(newsAdapter);
+		
+		refresh(new DataSource<ArrayList<NewsItem>>(){
+			@Override
+			public ArrayList<NewsItem> getData(){
+				return LoadData.loadNews();
+			}
+		});
     }
+    
+	public void refresh(DataSource<ArrayList<NewsItem>> ds){
+		new LoadNews().execute(ds);
+	}
+    
+    private class LoadNews extends AsyncTask<DataSource<ArrayList<NewsItem>>, String, String>{
+		
+		
+		@Override
+		protected void onPreExecute(){
+			runTransparentLoadAnimation();
+		}
+		
+		@Override
+		protected String doInBackground(DataSource<ArrayList<NewsItem>>... ds) {
+			
+			ArrayList<NewsItem> list = ds[0].getData();
+			newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, list);
+						
+			return "Done";
+		}
+		
+		@Override
+        protected void onPostExecute(String s){
 
+			newsFeed.setAdapter(newsAdapter);
+			stopAnimation();
+			
+		}
+    }
 }

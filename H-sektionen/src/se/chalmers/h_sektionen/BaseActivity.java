@@ -20,10 +20,14 @@ import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ListView;
+import android.widget.ProgressBar;
+import android.widget.TextView;
 
 public class BaseActivity extends ActionBarActivity {
 
@@ -42,10 +46,8 @@ public class BaseActivity extends ActionBarActivity {
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setCacheColorHint(Color.BLACK);
-        
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
-
         // Set the adapter for the list view
         mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
         // Set the list's click listener
@@ -68,7 +70,6 @@ public class BaseActivity extends ActionBarActivity {
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
-        	//mDrawerLayout.closeDrawer(Gravity.LEFT);
         	mDrawerLayout.closeDrawers();
         	if(currentView != position){
         		switch (position) {
@@ -87,12 +88,11 @@ public class BaseActivity extends ActionBarActivity {
 		        	case MenuItems.EVENTS:
 		        		startActivityByClass(EventsActivity.class);
 		        		break;
-		        	case MenuItems.VOTE:
-		        		startActivityByClass(VoteActivity.class);
-		        		break;
 		        	case MenuItems.SUGGEST:
 		        		startActivityByClass(SuggestActivity.class);
-		        		break;	
+		        		break;
+		        	case MenuItems.FAULTREPORT:
+		        		startActivityByClass(FaultreportActivity.class);
 		        	default:
 		        		return;
 		        }
@@ -100,7 +100,7 @@ public class BaseActivity extends ActionBarActivity {
         }
     }
     
-    private void startActivityByClass(Class c) { 
+    private void startActivityByClass(Class<? extends BaseActivity> c) { 
     	Intent i =  new Intent(this, c);
     	i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
     	i.setFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
@@ -159,6 +159,38 @@ public class BaseActivity extends ActionBarActivity {
 	
 	static protected void setCurrentView(int currentView) {
 		BaseActivity.currentView = currentView;
+	}
+	
+	protected void runLoadAnimation() {
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
+		
+		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
+	}
+	
+	protected void runTransparentLoadAnimation() {
+		//getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
+		
+		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
+	}
+	
+	protected void stopAnimation(){
+		ImageView img = ((ImageView)findViewById(R.id.load_image));
+		TextView txt = (TextView) findViewById(R.id.load_label);
+		
+		View view = getLayoutInflater().inflate(R.layout.view_loading, null);
+		getFrameLayout().removeView(view);
+		
+		img.clearAnimation();
+		img.setVisibility(View.GONE);
+		txt.setVisibility(View.GONE);
+	}
+	
+	
+	protected void setErrorView() {
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_error, null));
 	}
 	
 	@Override

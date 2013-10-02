@@ -1,95 +1,60 @@
 package se.chalmers.h_sektionen.utils;
 
-import java.net.URI;
-import java.util.List;
+import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.R;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.res.Resources;
-import android.net.Uri;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.BaseAdapter;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class NewsAdapter extends BaseAdapter{
+public class NewsAdapter extends ArrayAdapter<NewsItem> {
 	
-	private Activity activity;
-	private List data;
-	private static LayoutInflater inflater = null;
-	public Resources resources;
-	NewsItem item = null;
-	int i=0;
-
-	public NewsAdapter(Activity activity, List<NewsItem> data, Resources resources){
-		this.activity = activity;
-		this.data = data;
-		this.resources = resources;
-		
-		inflater = (LayoutInflater) activity.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	}
+	private ArrayList<NewsItem> objects;
 	
-	public int getCount(){
-		
-		//if(data.size()<=0)
-        //    return 1;
-        //return data.size();
-		return data.size();
-	}
-	
-	public Object getItem(int position){
-		return position;
-	}
-	
-	public long getItemId(int position){
-		return position;
-	}
-	
-	public static class ItemHolder{
-		public TextView message;
-		public TextView date;
-		//public TextView image;
-		public ImageView image;
+	public NewsAdapter(Context context, int resource, ArrayList<NewsItem> objects){
+		super(context, resource, objects);
+		this.objects = objects;
 	}
 	
 	public View getView(int position, View convertView, ViewGroup parent){
-		View view = convertView;
-		ItemHolder holder;
 		
-		if (convertView == null){
-			
-			view = inflater.inflate(R.layout.news_feed_item, null);
-			
-			holder = new ItemHolder();
-			holder.message = (TextView) view.findViewById(R.id.item_message);
-			holder.date = (TextView) view.findViewById(R.id.item_date);
-			//holder.image = (TextView) view.findViewById(R.id.item_image);
-			holder.image = (ImageView) view.findViewById(R.id.item_image);
-			
-			view.setTag(holder);
-		} else {
-			holder = (ItemHolder) view.getTag();
+		//Assign the view we are converting to a local variable
+		View v = convertView;
+		
+		
+		// first check to see if the view is null. if so, we have to inflate it.
+		// to inflate it basically means to render, or show, the view.
+		if(v == null){
+			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+			v = inflater.inflate(R.layout.news_feed_item, null);
 		}
 		
-		//ERROR CHECK
-		if (data.size() < 1){
-			holder.message.setText("No data");
-		} else {
-			item = null;
-			item = (NewsItem) data.get(position);
-			holder.message.setText(item.getMessage());
-			holder.date.setText(item.getDate());
-			//holder.image.setText(item.getImage());
-			//holder.image.setImageURI(Uri.parse(item.getBitImage()));
-			//holder.image.setImageURI(Uri.parse(item.getBitImage()));
-			holder.image.setImageBitmap(item.getBitImage());
+		NewsItem item = objects.get(position);
+		
+		if (item != null){
+			
+			TextView message = (TextView) v.findViewById(R.id.item_message);
+			TextView date = (TextView) v.findViewById(R.id.item_date);
+			ImageView image = (ImageView) v.findViewById(R.id.item_image);
+			
+			if (message != null){
+				message.setText(item.getMessage());
+			}
+			if (date != null){
+				date.setText(item.getDate());
+			}
 		}
 		
-		return view;
+		return v;
 	}
+	
 
-}
+	
+	
+	}

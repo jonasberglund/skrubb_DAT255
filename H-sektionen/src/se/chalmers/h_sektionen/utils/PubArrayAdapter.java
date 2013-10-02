@@ -13,24 +13,24 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class EventsArrayAdapter extends ArrayAdapter<Event> {
+public class PubArrayAdapter extends ArrayAdapter<Event> {
    
 	
 	private final Context context;
-	private final List<Event> events;
+	private final List<Event> pubs;
 	private final int resource;
 	
-	public EventsArrayAdapter(Context context, int resource, List<Event> events) {
-		super(context, resource, events);
+	public PubArrayAdapter(Context context, int resource, List<Event> pubs) {
+		super(context, resource, pubs);
 		this.context = context;
 		this.resource = resource;
-		this.events = events;
+		this.pubs = pubs;
 	}
 	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row = convertView;
-		EventsHolder holder = null;
+		PubsHolder holder = null;
 		
 	
 		
@@ -39,15 +39,15 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		if (row == null) {
 				row = inflater.inflate(resource, parent, false);
 			
-				holder = new EventsHolder();
+				holder = new PubsHolder();
 			
-				holder.title = (TextView)row.findViewById(R.id.title);
-				holder.description  = (TextView)row.findViewById(R.id.description);
-				holder.place = (TextView)row.findViewById(R.id.place);
-				holder.date = (TextView)row.findViewById(R.id.date);
+				holder.title = (TextView)row.findViewById(R.id.titlePub);
+				holder.description  = (TextView)row.findViewById(R.id.descriptionPub);
+				holder.place = (TextView)row.findViewById(R.id.placePub);
+				holder.date = (TextView)row.findViewById(R.id.datePub);
 				
 				// Resets the toolbar to be closed
-			    View toolbar = row.findViewById(R.id.toolbarEvents);
+			    View toolbar = row.findViewById(R.id.toolbarPubs);
 			    ((LinearLayout.LayoutParams) toolbar.getLayoutParams()).bottomMargin = -50;
 			    toolbar.setVisibility(View.GONE);
 				
@@ -55,22 +55,19 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 				row.setTag(holder);
 			
 		} else {
-			holder = (EventsHolder)row.getTag();
+			holder = (PubsHolder)row.getTag();
 		}
 		
-		Event event = events.get(position);
-		holder.title.setText(event.getTitle());
-		//if(!event.getDescription().equals(""))
-			holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
-		//if(!event.getPlace().equals(""))
-			holder.place.setText("Var: " + event.getPlace() + "\n");
-		//if(!event.getDate().equals(""))
-			holder.date.setText("När: " + String.valueOf(event.getDate()) );
+		Event pub = pubs.get(position);
+		holder.title.setText(pub.getTitle());
+		holder.description.setText("Beskrivning: " + pub.getDescription());
+		holder.place.setText("\n Var: " + pub.getPlace());
+		holder.date.setText("\n När: " + String.valueOf(pub.getDate()) );
 
 		return row;
 	}
 	
-	static class EventsHolder {
+	static class PubsHolder {
 		TextView title;
 		TextView description;
 		TextView place;

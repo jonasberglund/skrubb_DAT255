@@ -169,7 +169,6 @@ public class BaseActivity extends ActionBarActivity {
 	}
 	
 	protected void runTransparentLoadAnimation() {
-		//getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
 		
 		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
@@ -188,9 +187,13 @@ public class BaseActivity extends ActionBarActivity {
 	}
 	
 	
-	protected void setErrorView() {
+	protected void setErrorView(String message) {
+		View errorView = getLayoutInflater().inflate(R.layout.view_error, null);
+		TextView errorTextView = (TextView) errorView.findViewById(R.id.error_text_view);
+		errorTextView.setText(message);
+		
 		getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_error, null));
+		getFrameLayout().addView(errorView);
 	}
 	
 	@Override

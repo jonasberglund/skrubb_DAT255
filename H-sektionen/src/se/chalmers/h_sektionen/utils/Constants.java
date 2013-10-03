@@ -24,4 +24,6 @@ public class Constants {
 	
 	public static final String GET_FEED_ERROR_MSG = "Det gick inte att hämta flödet.";
 	public static final String INTERNET_CONNECTION_ERROR_MSG = "Ingen internetanslutning.";
+    
+	public static final String SERVER_ADDRESS = "http://jpv-net.dyndns.org:1337";
 }

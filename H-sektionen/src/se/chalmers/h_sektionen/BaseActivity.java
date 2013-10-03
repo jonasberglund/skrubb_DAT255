@@ -1,6 +1,8 @@
 package se.chalmers.h_sektionen;
 
+import se.chalmers.h_sektionen.utils.MenuArrayAdapter;
 import se.chalmers.h_sektionen.utils.MenuItems;
+import se.chalmers.h_sektionen.utils.MenuModel;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -11,6 +13,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -42,14 +46,26 @@ public class BaseActivity extends ActionBarActivity {
     	setContentView(R.layout.activity_main);        
         setupActionBar();
         
-        menuTitles = getResources().getStringArray(R.array.menu_titles);
-        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        MenuModel.LoadModel();
+        
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
+        String[] ids = new String[MenuModel.Items.size()];
+        for (int i= 0; i < ids.length; i++){
+
+            ids[i] = Integer.toString(i+1);
+        }
+        MenuArrayAdapter adapter = new MenuArrayAdapter(this,R.layout.row_menu, ids);
+        mDrawerList.setAdapter(adapter);
+        
+        
+        //menuTitles = getResources().getStringArray(R.array.menu_titles);
+        mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
+        //mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setCacheColorHint(Color.BLACK);
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
         // Set the adapter for the list view
-        mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
+        //mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
@@ -206,6 +222,18 @@ public class BaseActivity extends ActionBarActivity {
 		    startActivity(i);
 		}
 		super.onBackPressed();
+	}
+	
+	/**
+	 * Checks if device is connected to Internet.
+	 * 
+	 * @return True if connected, otherwise false
+	 */
+	protected boolean connectedToInternet(){
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo ni = cm.getActiveNetworkInfo();
+		
+		return (ni != null && ni.isConnected()) ? true : false;
 	}
 
 }

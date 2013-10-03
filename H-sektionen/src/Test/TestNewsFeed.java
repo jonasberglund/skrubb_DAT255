@@ -8,9 +8,13 @@ import java.net.URL;
 import java.net.URLConnection;
 import java.util.HashMap;
 
+
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.json.simple.parser.JSONParser;
 import org.junit.Test;
+
+import android.net.ParseException;
 
 
 
@@ -59,9 +63,24 @@ public class TestNewsFeed extends TestCase {
 	        System.out.println(JSon);	        
 
 	        // ej klart får fel i testet när jag vill köra det skriver om i morgon.
-			    
 	        
-		return true;
+	        boolean valid = false;
+	       
+	        JSONParser parser = new JSONParser();
+            
+	        
+	          try {
+				parser.parse(JSon);
+				valid = true;
+			} catch (org.json.simple.parser.ParseException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				return valid;
+			}
+	        
+	        return valid;
+	        
+		
 	}
 	
 	

@@ -3,6 +3,8 @@ package se.chalmers.h_sektionen;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+
 
 import se.chalmers.h_sektionen.utils.*;
 
@@ -38,20 +40,19 @@ public class EventsActivity extends BaseActivity {
     
 	/** Create events view */
 	private void createEventsView(){
-
-		getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_events, null));
 		
-		eventsFeed = (ListView) findViewById(R.id.events_feed);
-		
-		refreshEvents();
-    	addActionListner();
+		if (connectedToInternet()){
+			getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_events, null));
+			
+			eventsFeed = (ListView) findViewById(R.id.events_feed);
+			
+			new LoadEventsInBg().execute();
+	    	addActionListner();
+		} else {
+			setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+		}
 
-	}
-	
-	/** Adding action listner to all events */
-	public void refreshEvents(){
-		new LoadEventsInBg().execute();
 	}
 	
 	/** Adding action listner to all events and */
@@ -67,7 +68,7 @@ public class EventsActivity extends BaseActivity {
 	}
 	
 	/** Loading all events i background activity (AsyncTask) */
-	public class LoadEventsInBg extends AsyncTask<String, String, String>{
+	public class LoadEventsInBg extends AsyncTask<String, String, Boolean>{
 
 		@Override
 		protected void onPreExecute(){
@@ -75,28 +76,28 @@ public class EventsActivity extends BaseActivity {
 		}
 		
 		@Override
-		protected String doInBackground(String... params) {
-			List<Event> events = new ArrayList<Event>();
-			new LoadData();
-			
-			//Load data and creating adapter
-			events = LoadData.loadEvents();
-			feedAdapter = new EventsArrayAdapter(EventsActivity.this, R.layout.events_feed_item, events);
-
-			return "Done";
+		protected Boolean doInBackground(String... params) {
+			try {
+				List<Event> events = LoadData.loadEvents();
+				feedAdapter = new EventsArrayAdapter(EventsActivity.this, R.layout.events_feed_item, events);
+				return true;
+			} catch (JSONException e) {return false;}
 		}
 
 		@Override
-		protected void onPostExecute(String s){
+		protected void onPostExecute(Boolean success){
+			stopAnimation();
 			
-			//Adding header picture to array adapter
-			ImageView img = new ImageView(EventsActivity.this);
-			img.setAdjustViewBounds(true);
-			img.setImageResource(R.drawable.events);
-			eventsFeed.addHeaderView(img,null,false);
-			
-			eventsFeed.setAdapter(feedAdapter);
-    		stopAnimation();
+			if (success){
+				//Adding header picture to array adapter
+				ImageView img = new ImageView(EventsActivity.this);
+				img.setAdjustViewBounds(true);
+				img.setImageResource(R.drawable.events);
+				eventsFeed.addHeaderView(img,null,false);
+				eventsFeed.setAdapter(feedAdapter);
+			} else {
+				setErrorView(Constants.GET_FEED_ERROR_MSG);
+			}
 		}
 	}
 

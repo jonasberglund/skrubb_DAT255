@@ -3,6 +3,9 @@ package se.chalmers.h_sektionen;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.json.JSONException;
+
+import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.Event;
 import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
@@ -31,20 +34,19 @@ public class PubActivity extends BaseActivity {
     
 	/** Create pub view */
 	private void createPubView(){
-
-		getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_pub, null));
 		
-		pubsFeed = (ListView) findViewById(R.id.pubs_feed);;
-		
-    	refreshEvents();
-    	addActionListner();
+		if (connectedToInternet()){
+			getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_pub, null));
+			
+			pubsFeed = (ListView) findViewById(R.id.pubs_feed);;
+			
+			new LoadPubInBg().execute();
+	    	addActionListner();
+		} else {
+			setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+		}
 
-	}
-	
-	/** Adding action listner to all events */
-	public void refreshEvents(){
-		new LoadPubInBg().execute();
 	}
 	
 	/** Adding action listner to all events and */
@@ -59,7 +61,7 @@ public class PubActivity extends BaseActivity {
 	}
 	
 	/** Loading all events i background activity (AsyncTask) */
-	public class LoadPubInBg extends AsyncTask<String, String, String>{
+	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
 
 		@Override
 		protected void onPreExecute(){
@@ -67,28 +69,33 @@ public class PubActivity extends BaseActivity {
 		}
 		
 		@Override
-		protected String doInBackground(String... params){
-			List<Event> pubs = new ArrayList<Event>();
-			new LoadData();
-
-			//Load data and creating adapter 
-			pubs = LoadData.loadPubs();
-			pubFeedAdapter = new PubArrayAdapter(PubActivity.this, R.layout.pubs_feed_item, pubs);
-		
-			return "Done";
+		protected Boolean doInBackground(String... params){
+			
+			try {
+				//Load data and creating adapter
+				List<Event> pubs = LoadData.loadPubs();
+				pubFeedAdapter = new PubArrayAdapter(PubActivity.this, R.layout.pubs_feed_item, pubs);
+				return true;
+			} catch (JSONException e){
+				return false;
+			}
 		}
 		
 		@Override
-		protected void onPostExecute(String s){
+		protected void onPostExecute(Boolean success){
 			
-			//Adding header picture to array adapter
-			ImageView img = new ImageView(PubActivity.this);
-			img.setAdjustViewBounds(true);
-			img.setImageResource(R.drawable.pubf);
-			pubsFeed.addHeaderView(img,null,false);
-			
-			pubsFeed.setAdapter(pubFeedAdapter);
     		stopAnimation();
+    		
+    		if (success){
+			//Adding header picture to array adapter
+				ImageView img = new ImageView(PubActivity.this);
+				img.setAdjustViewBounds(true);
+				img.setImageResource(R.drawable.pubf);
+				pubsFeed.addHeaderView(img,null,false);
+				pubsFeed.setAdapter(pubFeedAdapter);
+    		} else {
+    			setErrorView(Constants.GET_FEED_ERROR_MSG);
+    		}
 		}
 	}
 

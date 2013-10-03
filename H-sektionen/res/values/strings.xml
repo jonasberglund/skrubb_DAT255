@@ -45,8 +45,8 @@
     <string name="suggest_button_send">Skicka</string>
     <string name="suggest_emailReceiver">någon@något.com</string>
     
-    <string name="buildingEmail">lokal@något.com</string>
-    <string name="dataEmail">data@något.com</string>
+    <string name="buildingEmail">8800@chalmers.se</string>
+    <string name="dataEmail">support@chalmers.se</string>
     <string name="faultreport_header_textView">Felanmälan</string>
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
     <string name="faultreport_edit_message">Skriv här</string>
@@ -62,4 +62,8 @@
     <string name="faultreport_lightingText">Underhåll av belysning utförs varje sommar av serviceavdelningen. Fel på belysningen under läsperioden i salar, grupprum och föreningslokaler anmäls till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se</string>
     <string name="faultreport_furnitureHeaderText">Möbler och utrustning:</string>
     <string name="faultreport_furnitureText">Felanmälan till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se</string>
+
+    <color name="pinkish">#C43D82</color>
+    <color name="white">#FFFFFF</color>
+    
 </resources>

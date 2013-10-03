@@ -6,12 +6,13 @@ import se.chalmers.h_sektionen.utils.CacheCompass;
 import se.chalmers.h_sektionen.utils.DataSource;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import se.chalmers.h_sektionen.utils.MockTemp;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 import se.chalmers.h_sektionen.utils.NewsItem;
 import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
+
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
@@ -47,7 +48,6 @@ public class MainActivity extends BaseActivity {
 		refresh(new DataSource<ArrayList<NewsItem>>(){
 			@Override
 			public ArrayList<NewsItem> getData(){
-				//return (ArrayList<NewsItem>) MockTemp.parseData(MockTemp.getData());
 				return LoadData.loadNews();
 			}
 		});
@@ -76,7 +76,11 @@ public class MainActivity extends BaseActivity {
 		
 		@Override
         protected void onPostExecute(String s){
-
+			
+			ImageView img = new ImageView(MainActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.news);
+			newsFeed.addHeaderView(img,null,false);
 			newsFeed.setAdapter(newsAdapter);
 			stopAnimation();
 			

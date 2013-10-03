@@ -42,7 +42,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 				holder = new EventsHolder();
 			
 				holder.title = (TextView)row.findViewById(R.id.title);
-				holder.description  = (TextView)row.findViewById(R.id.description);
+				holder.description  = (TextView)row.findViewById(R.id.descriptionEvents);
 				holder.place = (TextView)row.findViewById(R.id.place);
 				holder.date = (TextView)row.findViewById(R.id.date);
 				
@@ -60,9 +60,12 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		
 		Event event = events.get(position);
 		holder.title.setText(event.getTitle());
-		holder.description.setText("Description: " + event.getDescription());
-		holder.place.setText("\n Place: " + event.getPlace());
-		holder.date.setText("\n Date: " + String.valueOf(event.getDate()) );
+		holder.date.setText(String.valueOf(event.getDate()) );
+		//if(!event.getDescription().equals(""))
+			holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
+		//if(!event.getPlace().equals(""))
+			holder.place.setText("Var: " + event.getPlace() + "\n");
+
 
 		return row;
 	}

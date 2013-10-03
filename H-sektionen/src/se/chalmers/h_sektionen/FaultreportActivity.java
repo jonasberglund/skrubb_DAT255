@@ -36,10 +36,10 @@ public class FaultreportActivity extends BaseActivity {
 		
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
 		if(checkBox.isChecked()){
-			intent.setData(Uri.parse("mailto:"+getString(R.string.dataEmail))); //set the address to the datacenter. CHANGE THIS!
+			intent.setData(Uri.parse("mailto:"+getString(R.string.dataEmail))); //set the address to the datacenter.
 		}
 		else{
-			intent.setData(Uri.parse("mailto:"+getString(R.string.buildingEmail))); //set the address to the buildingcenter. CHANGE THIS!
+			intent.setData(Uri.parse("mailto:"+getString(R.string.buildingEmail))); //set the address to the buildingcenter.
 		}
 		
 		try{

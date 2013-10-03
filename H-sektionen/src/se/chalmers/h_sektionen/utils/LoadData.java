@@ -4,12 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -23,15 +19,10 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import se.chalmers.h_sektionen.BaseActivity;
-
-
-import android.text.format.Time;
 import android.util.Log;
 
-
 public class LoadData {
-	
+
 	public static List<Event> loadEvents(){
 		
 		String data = getJSON(Constants.GOOGLEEVENTS);
@@ -42,7 +33,7 @@ public class LoadData {
 			
 			List<Event> events = new ArrayList<Event>();
 			
-			
+			//Collection the right content from JSON
 			for (int i = 0; i < json_arr.length(); i++){
 				String title = json_arr.getJSONObject(i).getJSONObject("title").optString("$t");
 				String description = json_arr.getJSONObject(i).getJSONObject("content").optString("$t");
@@ -50,13 +41,10 @@ public class LoadData {
 				String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
 				//If time is not an all day event
-				if(time.length() > 10){
-					time = fromDate(time) + ". ";
-				}
-					
+				if(time.length() > "1967-09-03".length()) time = fromDate(time);
 				
 				if (!title.equals("")){
-					events.add(new Event(title, description, where, time));
+					events.add(new Event(title, description, where, time + ". "));
 				}
 			}
 			
@@ -66,7 +54,7 @@ public class LoadData {
 			e.printStackTrace();
 			String p = Log.getStackTraceString(e);
 			List<Event> s = new ArrayList<Event>();
-			s.add(new Event("Anslut till internet..", data, p, "inte bra"));
+			s.add(new Event("Kunde inte hämta events", null, p, "Kontrollera din internetanslutning.."));
 					
 			return s;
 		}
@@ -90,14 +78,9 @@ public class LoadData {
 				String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
 				if(time.length() > 10){
-					//String[] date = time.split("T");
-					//time = date[0] + ", kl: " + date[1].substring(0,5) + " - SENT. ";
-					
 					time = fromDate(time) + " - SENT. ";
 				}
-				
-			  
-				
+
 				if (!title.equals("")){
 					events.add(new Event(title, description, where, time));
 				}
@@ -204,9 +187,6 @@ public class LoadData {
 	}
 	
 	public static String fromDate(String s){
-		Time t = new Time();
-
-		
 		
 		String[] date = s.split("T");
 		String time = date[1].substring(0,5);
@@ -215,8 +195,6 @@ public class LoadData {
 		//Months month = Months.values()[Integer.parseInt(dates[1])+1];
 		String month = dates[1];
 		String day = dates[2];
-		
-		int week = t.getWeekNumber();
 		
 		return day + "/" + month + ", kl: " + time;
 	}

@@ -26,4 +26,8 @@ public class Constants {
 	public static final String INTERNET_CONNECTION_ERROR_MSG = "Ingen internetanslutning.";
     
 	public static final String SERVER_ADDRESS = "http://jpv-net.dyndns.org:1337";
+	public static final String[] LUNCH_URLS = {"http://www.lindholmen.se/sv/restaurang/ls-kitchen"
+		, "http://www.chalmerskonferens.se/dagens-menyer/lindholmen/","http://www.lindholmen.se/sv/restaurang/mimolett"
+		, "http://www.lindholmen.se/sv/restaurang/bistrot", "http://www.lindholmen.se/sv/restaurang/restaurang-aran"};
+	public static final String KOKBOKLUNCH = "http://www.chalmerskonferens.se/dagens-menyer/lindholmen/";
 }

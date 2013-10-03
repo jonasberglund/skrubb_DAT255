@@ -16,6 +16,7 @@
         android:visibility="gone"
         android:contentDescription="@string/Background"/>
     
+    
     <ListView
         android:id="@+id/pubs_feed"
         android:layout_width="match_parent"

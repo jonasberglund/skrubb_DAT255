@@ -60,9 +60,9 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 		
 		Event pub = pubs.get(position);
 		holder.title.setText(pub.getTitle());
-		holder.description.setText("Beskrivning: " + pub.getDescription());
-		holder.place.setText("\n Var: " + pub.getPlace());
-		holder.date.setText("\n När: " + String.valueOf(pub.getDate()) );
+		holder.description.setText(pub.getDescription());
+		//holder.place.setText("\n Var: " + pub.getPlace());
+		holder.date.setText(String.valueOf(pub.getDate()) );
 
 		return row;
 	}

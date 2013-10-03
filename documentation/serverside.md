@@ -15,5 +15,9 @@ a MySQL database and is easy to handle via the phpMyAdmin tool.
 ##News feed (Facebook)
 
 ##Events & Pub (Google Calendar)
+The information about events and pubs used in EventsActivity and PubActivity is reached from the respective Google calendar that returns JSON.
+	
+https://www.google.com/calendar/feeds/CALENDAR_ID/public/full?alt=json
 
+All events and pubs are editable using their calendar via google. 
 

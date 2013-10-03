@@ -63,7 +63,7 @@
     <string name="faultreport_furnitureHeaderText">Möbler och utrustning:</string>
     <string name="faultreport_furnitureText">Felanmälan till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se</string>
 
-    <color name="pinkish">#FA5882</color>
+    <color name="pinkish">#C43D82</color>
     <color name="white">#FFFFFF</color>
     
 </resources>

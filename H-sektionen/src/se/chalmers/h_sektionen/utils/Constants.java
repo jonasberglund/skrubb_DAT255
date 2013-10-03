@@ -21,5 +21,9 @@ public class Constants {
 	public static final String NEWSFEED = "http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/";
 	public static final String SUGGESTEMAIL = "foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com";
 	public static final String INFO = "http://jpv-net.dyndns.org:1337/H-Sektionen/info/";
+	
+	public static final String GET_FEED_ERROR_MSG = "Det gick inte att hämta flödet.";
+	public static final String INTERNET_CONNECTION_ERROR_MSG = "Ingen internetanslutning.";
+    
 	public static final String SERVER_ADDRESS = "http://jpv-net.dyndns.org:1337";
 }

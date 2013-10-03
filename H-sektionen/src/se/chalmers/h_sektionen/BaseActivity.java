@@ -13,6 +13,8 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
@@ -220,6 +222,18 @@ public class BaseActivity extends ActionBarActivity {
 		    startActivity(i);
 		}
 		super.onBackPressed();
+	}
+	
+	/**
+	 * Checks if device is connected to Internet.
+	 * 
+	 * @return True if connected, otherwise false
+	 */
+	protected boolean connectedToInternet(){
+		ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+		NetworkInfo ni = cm.getActiveNetworkInfo();
+		
+		return (ni != null && ni.isConnected()) ? true : false;
 	}
 
 }

@@ -60,7 +60,9 @@
 		
     	<TextView
         	android:id="@+id/faultreport_guardHeaderTextView"
-        	android:layout_width="wrap_content"
+        	android:background="@color/pinkish"
+        	android:textColor="@color/white"
+        	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"
@@ -79,7 +81,9 @@
     	
     	<TextView
         	android:id="@+id/faultreport_emergencyHeaderTextView"
-        	android:layout_width="wrap_content"
+        	android:background="@color/pinkish"
+        	android:textColor="@color/white"
+        	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"
@@ -99,7 +103,9 @@
     	
     	<TextView
         	android:id="@+id/faultreport_computerHeaderTextView"
-        	android:layout_width="wrap_content"
+        	android:background="@color/pinkish"
+        	android:textColor="@color/white"
+        	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"
@@ -119,7 +125,9 @@
     	
     	<TextView
         	android:id="@+id/faultreport_lightingHeaderTextView"
-        	android:layout_width="wrap_content"
+        	android:background="@color/pinkish"
+        	android:textColor="@color/white"
+        	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"
@@ -139,7 +147,9 @@
     	
     	<TextView
         	android:id="@+id/faultreport_furnitureHeaderTextView"
-        	android:layout_width="wrap_content"
+        	android:background="@color/pinkish"
+        	android:textColor="@color/white"
+        	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
         	android:layout_marginLeft="5dp"

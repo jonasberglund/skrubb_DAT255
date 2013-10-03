@@ -4,12 +4,8 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
-
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -22,9 +18,6 @@ import org.apache.http.params.BasicHttpParams;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import se.chalmers.h_sektionen.BaseActivity;
-
 
 import android.text.format.Time;
 import android.util.Log;

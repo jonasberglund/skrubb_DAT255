@@ -71,6 +71,11 @@
             android:screenOrientation="portrait"
 			android:configChanges="keyboardHidden|orientation|screenSize">
         </activity>
+        <activity
+            android:name="se.chalmers.h_sektionen.FaultreportActivity"
+            android:screenOrientation="portrait"
+			android:configChanges="keyboardHidden|orientation|screenSize">
+        </activity>
     </application>
 
 </manifest>

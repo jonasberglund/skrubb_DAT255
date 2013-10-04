@@ -1,7 +1,8 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.util.List;
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.Event;
 
 import android.app.Activity;
 import android.content.Context;
@@ -20,6 +21,12 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 	private final List<Event> events;
 	private final int resource;
 	
+	/**
+	 * Create array adapter
+	 * @param context
+	 * @param resource
+	 * @param events
+	 */
 	public EventsArrayAdapter(Context context, int resource, List<Event> events) {
 		super(context, resource, events);
 		this.context = context;
@@ -27,13 +34,12 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		this.events = events;
 	}
 	
+	/** Get view */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row = convertView;
 		EventsHolder holder = null;
-		
-	
-		
+
 		LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 			
 		if (row == null) {
@@ -42,7 +48,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 				holder = new EventsHolder();
 			
 				holder.title = (TextView)row.findViewById(R.id.title);
-				holder.description  = (TextView)row.findViewById(R.id.description);
+				holder.description  = (TextView)row.findViewById(R.id.descriptionEvents);
 				holder.place = (TextView)row.findViewById(R.id.place);
 				holder.date = (TextView)row.findViewById(R.id.date);
 				
@@ -60,13 +66,14 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		
 		Event event = events.get(position);
 		holder.title.setText(event.getTitle());
-		holder.description.setText("Description: " + event.getDescription());
-		holder.place.setText("\n Place: " + event.getPlace());
-		holder.date.setText("\n Date: " + String.valueOf(event.getDate()) );
+		holder.date.setText(String.valueOf(event.getDate()) );
+		holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
+		holder.place.setText("Var: " + event.getPlace() + "\n");
 
 		return row;
 	}
 	
+	/** Hold events */
 	static class EventsHolder {
 		TextView title;
 		TextView description;

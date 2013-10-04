@@ -2,20 +2,23 @@ package Test;
 
 import org.junit.Test;
 
-import se.chalmers.h_sektionen.utils.Event;
+import se.chalmers.h_sektionen.containers.Event;
 
 import junit.framework.TestCase;
 	
 	public class EventsFeedTest extends TestCase {
 		
+		/** Set up */
 		protected void setUp() throws Exception {
 			super.setUp();
 		}
 	
+		/** Tear down */
 		protected void tearDown() throws Exception {
 			super.tearDown();
 		}
 
+		/** Test to create a new envet */
 		@Test
 		public void testCreateNewEvent(){
 			
@@ -38,13 +41,4 @@ import junit.framework.TestCase;
 			if(!date.equals(ev.getDate()))
 				fail("Date is not equal");
 		}
-		
-		
-		
-
-		
-		
-		
-		
-
 }

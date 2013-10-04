@@ -2,19 +2,34 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 
-import se.chalmers.h_sektionen.utils.DataSource;
+import se.chalmers.h_sektionen.adapters.NewsAdapter;
+import se.chalmers.h_sektionen.containers.NewsItem;
+import se.chalmers.h_sektionen.utils.CacheCompass;
+import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import se.chalmers.h_sektionen.utils.NewsAdapter;
-import se.chalmers.h_sektionen.utils.NewsItem;
 import android.os.AsyncTask;
+import android.os.Bundle;
+
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
 	
 	NewsAdapter newsAdapter;
 	ListView newsFeed;
-    
+	private CacheCompass cacheCompass;
+	
+	
+	@Override
+	 protected void onCreate(Bundle savedInstanceState){
+		
+		super.onCreate(savedInstanceState);
+		cacheCompass = CacheCompass.getInstance(this);
+		
+	}
+	
+	
 	@Override
 	protected void onResume() {
 
@@ -24,24 +39,20 @@ public class MainActivity extends BaseActivity {
 	}
     
     private void createNewsView(){
-    	getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
-		
-		newsFeed = (ListView) findViewById(R.id.news_feed);
-		
-		refresh(new DataSource<ArrayList<NewsItem>>(){
-			@Override
-			public ArrayList<NewsItem> getData(){
-				return LoadData.loadNews();
-			}
-		});
+    	
+    	if (connectedToInternet()){
+	    	getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
+			
+			newsFeed = (ListView) findViewById(R.id.news_feed);
+			
+			new LoadNewsInBg().execute("");
+    	} else {
+    		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+    	}
     }
     
-	public void refresh(DataSource<ArrayList<NewsItem>> ds){
-		new LoadNews().execute(ds);
-	}
-    
-    private class LoadNews extends AsyncTask<DataSource<ArrayList<NewsItem>>, String, String>{
+    private class LoadNewsInBg extends AsyncTask<String, String, Boolean>{
 		
 		
 		@Override
@@ -50,19 +61,28 @@ public class MainActivity extends BaseActivity {
 		}
 		
 		@Override
-		protected String doInBackground(DataSource<ArrayList<NewsItem>>... ds) {
-			
-			ArrayList<NewsItem> list = ds[0].getData();
-			newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, list);
+		protected Boolean doInBackground(String... s) {
+			try {
+				ArrayList<NewsItem> list = LoadData.loadNews();
+				newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, list);
+				return true;
+			} catch (Exception e){return false;}
 						
-			return "Done";
 		}
 		
 		@Override
-        protected void onPostExecute(String s){
-
-			newsFeed.setAdapter(newsAdapter);
+        protected void onPostExecute(Boolean success){
 			stopAnimation();
+			
+			if (success){
+				ImageView img = new ImageView(MainActivity.this);
+				img.setAdjustViewBounds(true);
+				img.setImageResource(R.drawable.news);
+				newsFeed.addHeaderView(img,null,false);
+				newsFeed.setAdapter(newsAdapter);
+			} else {
+				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
+			}
 			
 		}
     }

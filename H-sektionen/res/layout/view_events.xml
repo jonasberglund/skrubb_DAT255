@@ -13,9 +13,9 @@
         android:cropToPadding="false"
         android:scaleType="center"
         android:src="@drawable/bak1" 
+        android:visibility="gone"
         android:contentDescription="@string/Background"/>
-    
-
+   
     
     <ListView
         android:id="@+id/events_feed"

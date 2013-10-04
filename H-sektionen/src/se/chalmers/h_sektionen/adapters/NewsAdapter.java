@@ -1,8 +1,11 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.NewsItem;
+import se.chalmers.h_sektionen.utils.CacheCompass;
+import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 import android.content.Context;
 import android.os.AsyncTask;
@@ -48,6 +51,27 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 			}
 			if (date != null){
 				date.setText(item.getDate());
+			}
+			if (image != null && (item.getImageAdr()!=null && !item.getImageAdr().equals(""))){
+				
+				if(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr())==null){
+				
+					PicLoaderThread pcl =new PicLoaderThread(item.getImageAdr());
+					pcl.start();
+					try {
+						pcl.join();
+						image.setImageBitmap(pcl.getPicture());
+						CacheCompass.getInstance(getContext()).getBitmapCache().put(item.getImageAdr(), pcl.getPicture());
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
+					
+				}
+				else
+					image.setImageBitmap(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr()));
+				//if(item.getImageAdr())
+				
 			}
 		}
 		

@@ -8,44 +8,58 @@ import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Activity that displays a view for reporting faults.
+ */
 public class FaultreportActivity extends BaseActivity {
 	
+	/**
+	 * On resume.
+	 */
     @Override
 	protected void onResume() {
 
 		setCurrentView(MenuItems.FAULTREPORT);
-		createLunchView();
+		createFaultView();
 		
 		super.onResume();
 	}
 	
-	private void createLunchView(){
+    /**
+     * Create fault report view.
+     */
+	private void createFaultView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_faultreport, null));
     }
 	
+	/**
+	 * Starts an e-mail client with all fields filled in.
+	 * Message is taken from the view, subject is decided by a checkbox status.
+	 * @param view the view to get the message from.
+	 */
 	public void sendFaultreportEmail(View view){
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
 		intent.setType("text/plain");
 		
-		EditText editText = (EditText) findViewById(R.id.faultreport_edit_message);	//fetch the text...
-		String message = editText.getText().toString();							//...and make it into a string
+		EditText editText = (EditText) findViewById(R.id.faultreport_edit_message);	//fetch the text from the view
+		String message = editText.getText().toString();							
 		
-		intent.putExtra(Intent.EXTRA_SUBJECT, "Felanmälan");					//the subject for the email
-		intent.putExtra(Intent.EXTRA_TEXT, message); 							//Adds the text from the editText field.
+		intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.faultreport_subject));
+		intent.putExtra(Intent.EXTRA_TEXT, message);
 		
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
 		if(checkBox.isChecked()){
-			intent.setData(Uri.parse("mailto:"+getString(R.string.dataEmail))); //set the address to the datacenter.
+			intent.setData(Uri.parse("mailto:"+getString(R.string.faultreport_dataEmail))); //set the address to the data center.
 		}
 		else{
-			intent.setData(Uri.parse("mailto:"+getString(R.string.buildingEmail))); //set the address to the buildingcenter.
+			intent.setData(Uri.parse("mailto:"+getString(R.string.faultreport_buildingEmail))); //set the address to the building center.
 		}
 		
 		try{
-			startActivity(intent);	//try to start the intent, if there are any email clients on the phone.
-		}catch (android.content.ActivityNotFoundException ex) { //if not, post a toast to let the user know.
-			Toast.makeText(FaultreportActivity.this, "Det verkar inte finnas någon E-mail applikation på din telefon.", Toast.LENGTH_SHORT).show();
+			startActivity(intent);	
+		}catch (android.content.ActivityNotFoundException ex) { //if no email clients on the phone, post a toast to let the user know.
+			Toast.makeText(FaultreportActivity.this, R.string.faultreport_noEmailClientFound, Toast.LENGTH_SHORT).show();
 		}
 	}
 

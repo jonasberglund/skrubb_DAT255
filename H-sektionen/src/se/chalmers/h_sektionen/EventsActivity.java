@@ -5,6 +5,8 @@ import java.util.List;
 import org.json.JSONException;
 
 
+import se.chalmers.h_sektionen.adapters.EventsArrayAdapter;
+import se.chalmers.h_sektionen.containers.Event;
 import se.chalmers.h_sektionen.utils.*;
 
 import android.os.AsyncTask;
@@ -12,7 +14,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
-
+/**
+ * Activity that displays the events for H-sektionen.
+ */
 public class EventsActivity extends BaseActivity {
 	
 	EventsArrayAdapter feedAdapter;
@@ -36,15 +40,15 @@ public class EventsActivity extends BaseActivity {
 			eventsFeed = (ListView) findViewById(R.id.events_feed);
 			
 			new LoadEventsInBg().execute();
-	    	addActionListner();
+	    	addActionListener();
 		} else {
-			setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 		}
 
 	}
 	
-	/** Add action listner */
-	private void addActionListner(){
+	/** Add action listener */
+	private void addActionListener(){
 		
 		 eventsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -55,10 +59,12 @@ public class EventsActivity extends BaseActivity {
 	        });
 	}
 	
-	/** Loading all events i background activity (AsyncTask) */
+	/** Loading all events in background activity (AsyncTask) */
 	public class LoadEventsInBg extends AsyncTask<String, String, Boolean>{
 
-		/** What to do before backgroud loding */
+		/** 
+		 * Runs a loading animation.
+		 */
 		@Override
 		protected void onPreExecute(){
 			runTransparentLoadAnimation();
@@ -74,7 +80,7 @@ public class EventsActivity extends BaseActivity {
 			} catch (JSONException e) {return false;}
 		}
 
-		/** After background work is done */
+		/** Display the events in the activity view if successful */
 		@Override
 		protected void onPostExecute(Boolean success){
 			stopAnimation();
@@ -87,7 +93,7 @@ public class EventsActivity extends BaseActivity {
 				eventsFeed.addHeaderView(img,null,false);
 				eventsFeed.setAdapter(feedAdapter);
 			} else {
-				setErrorView(Constants.GET_FEED_ERROR_MSG);
+				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
 			}
 		}
 	}

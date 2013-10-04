@@ -1,8 +1,9 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.util.List;
 
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.ContactCard;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,12 +14,21 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * ContactCardArrayAdapter inserts ContactCards into a ListView
+ */
 public class ContactCardArrayAdapter extends ArrayAdapter<ContactCard> {
 
 	private final Context context;
 	private final List<ContactCard> contactCards;
 	private final int resource;
 	
+	/**
+	 * Constructor
+	 * @param context The context
+	 * @param resource The resource to be inflated.
+	 * @param objects The ContactCards to 
+	 */
 	public ContactCardArrayAdapter(Context context, int resource, List<ContactCard> objects) {
 		super(context, resource, objects);
 		this.context = context;
@@ -26,6 +36,12 @@ public class ContactCardArrayAdapter extends ArrayAdapter<ContactCard> {
 		this.resource = resource;
 	}
 	
+	/**
+	 * Fills a row in the ListView with data.
+	 * @param position The row number
+	 * @param convertView
+	 * @param parent
+	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		
@@ -61,6 +77,9 @@ public class ContactCardArrayAdapter extends ArrayAdapter<ContactCard> {
 		return row;
 	}
 	
+	/**
+	 * ContactCardHolder is meant to hold the views in a contact_list_view.xml view.
+	 */
 	static class ContactCardHolder {
 		ImageView picture;
 		TextView name;

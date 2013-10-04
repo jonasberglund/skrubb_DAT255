@@ -1,6 +1,5 @@
 ﻿package se.chalmers.h_sektionen;
 
-import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.content.Intent;
 import android.net.Uri;
@@ -22,7 +21,6 @@ public class SuggestActivity extends BaseActivity {
 	private void createView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_suggest, null));
-    	
     }
 	
 	/**
@@ -30,9 +28,9 @@ public class SuggestActivity extends BaseActivity {
 	 * @param view the view to fetch the message text from.
 	 */
 	public void sendSuggestEmail(View view){
+		
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
 		intent.setType("text/plain");
-		
 
 		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);	//fetch the text from the view
 		String message = editText.getText().toString();							
@@ -43,9 +41,9 @@ public class SuggestActivity extends BaseActivity {
 		
 		try{
 			startActivity(intent);	
-			}catch (android.content.ActivityNotFoundException ex) { //if no E-mail client is found, post a toast to let the user know.
+			}
+		catch (android.content.ActivityNotFoundException ex) { //if no E-mail client is found, post a toast to let the user know.
 			Toast.makeText(SuggestActivity.this,getString(R.string.suggest_noEmailClientFound), Toast.LENGTH_SHORT).show();
 		}
 	}
-
 }

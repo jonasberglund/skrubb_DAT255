@@ -9,28 +9,12 @@ public class ContactCard {
 	private String phoneNumber;
 	private Bitmap pic = null;
 	
-	public ContactCard(String name, String position, String email, String phoneNumber, String picAddr) {
-		// To make sure that the BitmapFactory can render the picture, the picture should be ".png"
-		PicLoaderThread t = new PicLoaderThread(picAddr);
-		t.start();
-		
+	public ContactCard(String name, String position, String email, String phoneNumber, Bitmap pic) {
 		this.name = name;
 		this.position = position;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		
-		// Try to get the picture from the given url.
-		try {
-			t.join();
-			pic = t.getPicture();
-			if (pic != null) {
-				pic.prepareToDraw();
-			}
-			
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		this.pic = pic;
 	}
 	
 	public String getName() {

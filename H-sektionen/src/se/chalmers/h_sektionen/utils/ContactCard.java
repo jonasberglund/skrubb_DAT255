@@ -2,6 +2,11 @@ package se.chalmers.h_sektionen.utils;
 
 import android.graphics.Bitmap;
 
+/**
+ * 
+ * @author robin
+ * ContactCard is a container class.
+ */
 public class ContactCard {
 	private String name;
 	private String position;
@@ -9,46 +14,58 @@ public class ContactCard {
 	private String phoneNumber;
 	private Bitmap pic = null;
 	
-	public ContactCard(String name, String position, String email, String phoneNumber, String picAddr) {
-		// To make sure that the BitmapFactory can render the picture, the picture should be ".png"
-		PicLoaderThread t = new PicLoaderThread(picAddr);
-		t.start();
-		
+	/**
+	 * Initiating the variables.
+	 * @param name The name of a person
+	 * @param position The position of a person 
+	 * @param email The email address to a person
+	 * @param phoneNumber The phone number to a person
+	 * @param pic A Bitmap picture of the person
+	 */
+	public ContactCard(String name, String position, String email, String phoneNumber, Bitmap pic) {
 		this.name = name;
 		this.position = position;
 		this.email = email;
 		this.phoneNumber = phoneNumber;
-		
-		// Try to get the picture from the given url.
-		try {
-			t.join();
-			pic = t.getPicture();
-			if (pic != null) {
-				pic.prepareToDraw();
-			}
-			
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		
+		this.pic = pic;
 	}
 	
+	/**
+	 * 
+	 * @return The name stored in the ContactCard
+	 */
 	public String getName() {
 		return name;
 	}
 
+	/**
+	 * 
+	 * @return The position stored in the ContactCard
+	 */
 	public String getPosition() {
 		return position;
 	}
 
+	/**
+	 * 
+	 * @return The email address stored in the ContactCard
+	 */
 	public String getEmail() {
 		return email;
 	}
 	
+	/**
+	 * 
+	 * @return The phone number stored in the ContactCard
+	 */
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 	
+	/**
+	 * 
+	 * @return The Bitmap picture stored in the ContactCard
+	 */
 	public Bitmap getPic() {
 		return pic;
 	}

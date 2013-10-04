@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.text.Html;
@@ -13,17 +14,28 @@ import android.text.method.LinkMovementMethod;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
+import se.chalmers.h_sektionen.utils.CacheCompass;
 import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.ContactCard;
 import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
+import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
+/**
+ * @author robin
+ * InfoActivity takes care about the info view
+ */
 public class InfoActivity extends BaseActivity {
+	
 	private List<ContactCard> contactCards = null;
 	private StringBuilder htmlLinks = null;
 	private StringBuilder openingHoursString = null;
 	
+	/**
+	 * Sets the static "currentView" variable in the super class, BaseActivity.
+	 * The method also start the AsyncTask that fetches the information data.
+	 */
 	@Override
 	protected void onResume() {
 		
@@ -36,11 +48,13 @@ public class InfoActivity extends BaseActivity {
 	
 	/**
 	 * @author robin
-	 * GetInfoTask loads the info data and set up the view.
-	 * 
+	 * GetInfoTask loads the info data and sets up the view.
 	 */
 	private class GetInfoTask extends AsyncTask<String, String, Boolean> {
 
+		/**
+		 * Runs super method and starts the load animation.
+		 */
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -48,6 +62,10 @@ public class InfoActivity extends BaseActivity {
 			runLoadAnimation();
 		}
 		
+		/**
+		 * Requests a JSONObject, tries to parse it and puts the data into arrays.
+		 * @return false if the parsing did not succeed, else true
+		 */
 		@Override
 		protected Boolean doInBackground(String... params) {
 			
@@ -65,10 +83,32 @@ public class InfoActivity extends BaseActivity {
 	    			String email = members.getJSONObject(i).getString("email");
 	    			String picAddr = members.getJSONObject(i).getString("picture");
 	    			String phoneNumber = members.getJSONObject(i).getString("phone");
-	    			contactCards.add(new ContactCard(name, position, email, phoneNumber, picAddr));
+	    			Bitmap pic;
+	    			
+	    			// Download the picture if it does not exists in the cache.
+	    			if(CacheCompass.getInstance(InfoActivity.this).getBitmapCache().get(picAddr)==null){
+	    				
+						PicLoaderThread pcl = new PicLoaderThread(picAddr);
+						pcl.start();
+						
+						try {
+							pcl.join();
+							pic = pcl.getPicture();
+							pic.prepareToDraw();
+							CacheCompass.getInstance(InfoActivity.this).getBitmapCache().put(picAddr, pic);
+						
+						} catch (InterruptedException e) {
+							pic = null;
+						}
+						
+					} else {
+						pic = CacheCompass.getInstance(InfoActivity.this).getBitmapCache().get(picAddr);
+					}
+					
+	    			contactCards.add(new ContactCard(name, position, email, phoneNumber, pic));
 	    		}
 	    		
-	    		//Links
+	    		// Create a HTML-string containing links. The TextView can handle HTML
 	    		JSONArray links = json.getJSONArray("links");
 	    		htmlLinks = new StringBuilder();
 	    		
@@ -80,7 +120,7 @@ public class InfoActivity extends BaseActivity {
 	    			htmlLinks.append("</a><br />");
 	    		}
 	    		
-	    		// Opening hours
+	    		// Create a HTML-string containing opening hours. 
 	    		JSONArray openingHours = json.getJSONArray("openinghours");
 	    		openingHoursString = new StringBuilder();
 	    		
@@ -100,6 +140,11 @@ public class InfoActivity extends BaseActivity {
 			}
 		}
 		
+		/**
+		 * Sets up the view with data from doInBackground method.
+		 * If doInBackground returns false, an error view is going to show up.
+		 * @param done True if doInBackground could parse and prepare the data correct, else false.
+		 */
 		@Override
 		protected void onPostExecute(Boolean done) {
 			super.onPostExecute(done);
@@ -124,7 +169,7 @@ public class InfoActivity extends BaseActivity {
 	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
 			
 			} else {
-				setErrorView("Kunde inte hämta information från internet.");
+				setErrorView(Constants.INFO_ERROR);
 			}
 		}
 		

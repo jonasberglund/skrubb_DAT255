@@ -23,7 +23,6 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 /**
- * @author robin
  * InfoActivity takes care about the info view
  */
 public class InfoActivity extends BaseActivity {
@@ -47,7 +46,6 @@ public class InfoActivity extends BaseActivity {
 	
 	
 	/**
-	 * @author robin
 	 * GetInfoTask loads the info data and sets up the view.
 	 */
 	private class GetInfoTask extends AsyncTask<String, String, Boolean> {
@@ -69,6 +67,9 @@ public class InfoActivity extends BaseActivity {
 		@Override
 		protected Boolean doInBackground(String... params) {
 			
+			if(!connectedToInternet())
+				return false;
+				
 			// Try to download and prepare all info data.
 			try {
 				JSONObject json = new JSONObject(LoadData.getJSON(params[0]));
@@ -135,7 +136,7 @@ public class InfoActivity extends BaseActivity {
 				return true;
 				
 			} catch (Exception e) {
-				// Incorrect JSON string or there was no Internet connection
+				// Incorrect JSON string.
 				return false;
 			}
 		}

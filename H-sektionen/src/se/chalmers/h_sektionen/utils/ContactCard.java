@@ -3,8 +3,6 @@ package se.chalmers.h_sektionen.utils;
 import android.graphics.Bitmap;
 
 /**
- * 
- * @author robin
  * ContactCard is a container class.
  */
 public class ContactCard {
@@ -31,7 +29,6 @@ public class ContactCard {
 	}
 	
 	/**
-	 * 
 	 * @return The name stored in the ContactCard
 	 */
 	public String getName() {
@@ -39,7 +36,6 @@ public class ContactCard {
 	}
 
 	/**
-	 * 
 	 * @return The position stored in the ContactCard
 	 */
 	public String getPosition() {
@@ -47,7 +43,6 @@ public class ContactCard {
 	}
 
 	/**
-	 * 
 	 * @return The email address stored in the ContactCard
 	 */
 	public String getEmail() {
@@ -55,7 +50,6 @@ public class ContactCard {
 	}
 	
 	/**
-	 * 
 	 * @return The phone number stored in the ContactCard
 	 */
 	public String getPhoneNumber() {
@@ -63,7 +57,6 @@ public class ContactCard {
 	}
 	
 	/**
-	 * 
 	 * @return The Bitmap picture stored in the ContactCard
 	 */
 	public Bitmap getPic() {

@@ -14,8 +14,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 /**
- * 
- * @author robin
  * ContactCardArrayAdapter inserts ContactCards into a ListView
  */
 public class ContactCardArrayAdapter extends ArrayAdapter<ContactCard> {

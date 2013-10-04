@@ -7,19 +7,26 @@ import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Toast;
-
+/**
+ * Activity that displays a view for reporting faults.
+ */
 public class FaultreportActivity extends BaseActivity {
 	
+	/**
+	 * On resume.
+	 */
     @Override
 	protected void onResume() {
 
 		setCurrentView(MenuItems.FAULTREPORT);
-		createLunchView();
+		createFaultView();
 		
 		super.onResume();
 	}
-	
-	private void createLunchView(){
+	/**
+	 * Create fault report view
+	 */
+	private void createFaultView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_faultreport, null));
     }
@@ -36,10 +43,10 @@ public class FaultreportActivity extends BaseActivity {
 		
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
 		if(checkBox.isChecked()){
-			intent.setData(Uri.parse("mailto:"+getString(R.string.dataEmail))); //set the address to the datacenter.
+			intent.setData(Uri.parse("mailto:"+getString(R.string.dataEmail))); //set the address to the data center.
 		}
 		else{
-			intent.setData(Uri.parse("mailto:"+getString(R.string.buildingEmail))); //set the address to the buildingcenter.
+			intent.setData(Uri.parse("mailto:"+getString(R.string.buildingEmail))); //set the address to the building center.
 		}
 		
 		try{

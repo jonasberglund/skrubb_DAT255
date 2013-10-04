@@ -8,18 +8,27 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
 
+/**
+ * Activity that displays the view for the user to input
+ * suggestions.
+ */
 public class SuggestActivity extends BaseActivity {
 
+	/**
+	 * On resume.
+	 */
 	@Override
 	protected void onResume() {
 
 		setCurrentView(MenuItems.SUGGEST);
-		createLunchView();
+		createSuggestView();
 		
 		super.onResume();
 	}
-	
-	private void createLunchView(){
+	/**
+	 * Creates the suggest view. 
+	 */
+	private void createSuggestView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_suggest, null));
     	

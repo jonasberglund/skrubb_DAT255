@@ -169,7 +169,7 @@ public class InfoActivity extends BaseActivity {
 	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
 			
 			} else {
-				setErrorView(Constants.INFO_ERROR);
+				setErrorView(getString(R.string.INFO_ERROR));
 			}
 		}
 		

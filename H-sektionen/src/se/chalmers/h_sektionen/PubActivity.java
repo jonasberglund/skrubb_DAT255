@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.json.JSONException;
 
-import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.Event;
 import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
@@ -41,7 +40,7 @@ public class PubActivity extends BaseActivity {
 			new LoadPubInBg().execute();
 	    	addActionListner();
 		} else {
-			setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 		}
 
 	}
@@ -60,7 +59,7 @@ public class PubActivity extends BaseActivity {
 	/** Loading all events i background activity (AsyncTask) */
 	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
 
-		/** What to do before backgroud loding */
+		/** What to do before background loading */
 		@Override
 		protected void onPreExecute(){
 			runTransparentLoadAnimation();
@@ -94,7 +93,7 @@ public class PubActivity extends BaseActivity {
 				pubsFeed.addHeaderView(img,null,false);
 				pubsFeed.setAdapter(pubFeedAdapter);
     		} else {
-    			setErrorView(Constants.GET_FEED_ERROR_MSG);
+    			setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
     		}
 		}
 	}

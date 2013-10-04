@@ -37,7 +37,7 @@ public class LunchActivity extends BaseActivity {
 		if (connectedToInternet())
 			new DownLoadWebPage().execute("");
 		else 
-		    textView.setText(Constants.INTERNET_CONNECTION_ERROR_MSG);
+		    textView.setText(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 				
 		super.onResume();
 	}

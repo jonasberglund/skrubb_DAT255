@@ -48,7 +48,7 @@ public class MainActivity extends BaseActivity {
 			
 			new LoadNewsInBg().execute("");
     	} else {
-    		setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+    		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
     }
     
@@ -81,7 +81,7 @@ public class MainActivity extends BaseActivity {
 				newsFeed.addHeaderView(img,null,false);
 				newsFeed.setAdapter(newsAdapter);
 			} else {
-				setErrorView(Constants.GET_FEED_ERROR_MSG);
+				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
 			}
 			
 		}

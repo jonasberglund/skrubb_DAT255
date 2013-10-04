@@ -45,8 +45,10 @@
     <string name="suggest_button_send">Skicka</string>
     <string name="suggest_emailReceiver">någon@något.com</string>
     
-    <string name="buildingEmail">8800@chalmers.se</string>
-    <string name="dataEmail">support@chalmers.se</string>
+    <string name="faultreport_buildingEmail">8800@chalmers.se</string>
+    <string name="faultreport_dataEmail">support@chalmers.se</string>
+    <string name="faultreport_noEmailClientFound">Det verkar inte finnas någon E-mail applikation på din telefon.</string>
+    <string name="faultreport_subject">Felanmälan</string>
     <string name="faultreport_header_textView">Felanmälan</string>
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
     <string name="faultreport_edit_message">Skriv här</string>

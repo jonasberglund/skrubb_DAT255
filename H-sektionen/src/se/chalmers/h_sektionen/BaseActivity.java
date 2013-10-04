@@ -46,7 +46,7 @@ public class BaseActivity extends ActionBarActivity {
     	setContentView(R.layout.activity_main);        
         setupActionBar();
         
-        MenuModel.LoadModel();
+        MenuModel.LoadModel(this);
         
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         String[] ids = new String[MenuModel.Items.size()];

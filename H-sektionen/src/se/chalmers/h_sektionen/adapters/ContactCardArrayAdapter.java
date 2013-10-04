@@ -1,8 +1,9 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.util.List;
 
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.ContactCard;
 
 import android.app.Activity;
 import android.content.Context;

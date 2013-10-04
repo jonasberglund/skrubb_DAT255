@@ -3,6 +3,7 @@ package se.chalmers.h_sektionen.utils;
 import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.MenuItem;
 
 import android.content.Context;
 import android.content.res.Resources;

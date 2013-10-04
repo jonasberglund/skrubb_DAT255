@@ -1,4 +1,4 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.containers;
 
 import android.graphics.Bitmap;
 

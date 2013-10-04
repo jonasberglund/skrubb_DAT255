@@ -1,6 +1,6 @@
 package se.chalmers.h_sektionen;
 
-import se.chalmers.h_sektionen.utils.MenuArrayAdapter;
+import se.chalmers.h_sektionen.adapters.MenuArrayAdapter;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.MenuModel;
 import android.annotation.TargetApi;
@@ -35,7 +35,6 @@ import com.parse.PushService;
  */
 public class BaseActivity extends ActionBarActivity {
 
-	private static String[] menuTitles;
     private static DrawerLayout mDrawerLayout;
     private static ListView mDrawerList;
     private static FrameLayout frameLayout;

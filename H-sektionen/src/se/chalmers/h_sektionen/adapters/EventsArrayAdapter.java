@@ -1,7 +1,8 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.util.List;
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.Event;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,46 +14,46 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 
-public class PubArrayAdapter extends ArrayAdapter<Event> {
+public class EventsArrayAdapter extends ArrayAdapter<Event> {
    
 	
 	private final Context context;
-	private final List<Event> pubs;
+	private final List<Event> events;
 	private final int resource;
 	
 	/**
 	 * Create array adapter
 	 * @param context
 	 * @param resource
-	 * @param pubs
+	 * @param events
 	 */
-	public PubArrayAdapter(Context context, int resource, List<Event> pubs) {
-		super(context, resource, pubs);
+	public EventsArrayAdapter(Context context, int resource, List<Event> events) {
+		super(context, resource, events);
 		this.context = context;
 		this.resource = resource;
-		this.pubs = pubs;
+		this.events = events;
 	}
 	
 	/** Get view */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row = convertView;
-		PubsHolder holder = null;
-	
+		EventsHolder holder = null;
+
 		LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 			
 		if (row == null) {
 				row = inflater.inflate(resource, parent, false);
 			
-				holder = new PubsHolder();
+				holder = new EventsHolder();
 			
-				holder.title = (TextView)row.findViewById(R.id.titlePub);
-				holder.description  = (TextView)row.findViewById(R.id.descriptionPub);
-				holder.place = (TextView)row.findViewById(R.id.placePub);
-				holder.date = (TextView)row.findViewById(R.id.datePub);
+				holder.title = (TextView)row.findViewById(R.id.title);
+				holder.description  = (TextView)row.findViewById(R.id.descriptionEvents);
+				holder.place = (TextView)row.findViewById(R.id.place);
+				holder.date = (TextView)row.findViewById(R.id.date);
 				
 				// Resets the toolbar to be closed
-			    View toolbar = row.findViewById(R.id.toolbarPubs);
+			    View toolbar = row.findViewById(R.id.toolbarEvents);
 			    ((LinearLayout.LayoutParams) toolbar.getLayoutParams()).bottomMargin = -50;
 			    toolbar.setVisibility(View.GONE);
 				
@@ -60,20 +61,20 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 				row.setTag(holder);
 			
 		} else {
-			holder = (PubsHolder)row.getTag();
+			holder = (EventsHolder)row.getTag();
 		}
 		
-		Event pub = pubs.get(position);
-		holder.title.setText(pub.getTitle());
-		holder.description.setText(pub.getDescription());
-		//holder.place.setText("\n Var: " + pub.getPlace());
-		holder.date.setText(String.valueOf(pub.getDate()) );
+		Event event = events.get(position);
+		holder.title.setText(event.getTitle());
+		holder.date.setText(String.valueOf(event.getDate()) );
+		holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
+		holder.place.setText("Var: " + event.getPlace() + "\n");
 
 		return row;
 	}
 	
-	/** Holder for a pub */
-	static class PubsHolder {
+	/** Hold events */
+	static class EventsHolder {
 		TextView title;
 		TextView description;
 		TextView place;

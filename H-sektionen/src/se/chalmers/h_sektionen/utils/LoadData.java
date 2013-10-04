@@ -15,6 +15,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import se.chalmers.h_sektionen.containers.Event;
+import se.chalmers.h_sektionen.containers.NewsItem;
+
 /**
  * Class for retrieving and parsing data for different feeds
  */

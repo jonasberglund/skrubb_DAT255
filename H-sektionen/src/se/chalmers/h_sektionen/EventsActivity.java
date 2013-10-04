@@ -5,6 +5,8 @@ import java.util.List;
 import org.json.JSONException;
 
 
+import se.chalmers.h_sektionen.adapters.EventsArrayAdapter;
+import se.chalmers.h_sektionen.containers.Event;
 import se.chalmers.h_sektionen.utils.*;
 
 import android.os.AsyncTask;

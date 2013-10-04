@@ -1,9 +1,10 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.io.IOException;
 import java.io.InputStream;
 
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.utils.MenuModel;
 
 import android.content.Context;
 import android.graphics.drawable.Drawable;

@@ -1,4 +1,4 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.containers;
 
 /**
  * Class to create events.

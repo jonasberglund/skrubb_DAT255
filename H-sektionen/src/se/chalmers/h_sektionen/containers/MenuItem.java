@@ -1,4 +1,4 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.containers;
 
 /**
  *  Container for a item in the Menu list

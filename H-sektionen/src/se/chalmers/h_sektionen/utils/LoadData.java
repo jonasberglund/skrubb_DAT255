@@ -1,7 +1,6 @@
 package se.chalmers.h_sektionen.utils;
 
 import java.io.BufferedReader;
-import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
@@ -9,15 +8,12 @@ import java.util.List;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
-import org.apache.http.client.ClientProtocolException;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
-
-import android.util.Log;
 
 /**
  * Class for retrieving and parsing data for different feeds
@@ -47,12 +43,15 @@ public class LoadData {
 			String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
 				
 			//If time is not an all day event
-			if(time.length() > "1967-09-03".length()) time = fromDate(time);
-				
-				if (!title.equals("")){
-					events.add(new Event(title, description, where, time + ". "));
-				}
-			}	
+			if(time.length() > "1967-09-03".length()){
+				time = fromDate(time);
+			}
+			
+			//Add events if it has i title
+			if (!title.equals("")){
+				events.add(new Event(title, description, where, time + ". "));
+			}
+		}	
 		return events;
 	}
 	
@@ -76,10 +75,12 @@ public class LoadData {
 			String description = json_arr.getJSONObject(i).getJSONObject("content").optString("$t");
 			String time = json_arr.getJSONObject(i).getJSONArray("gd$when").getJSONObject(0).optString("startTime");
 			String where = json_arr.getJSONObject(i).getJSONArray("gd$where").getJSONObject(0).optString("valueString");
-				
-			if(time.length() > 10){
+			
+			//If time is not an all day event
+			if(time.length() > "1967-09-03".length()){
 				time = fromDate(time) + " - SENT. ";
 			}
+			
 
 			if (!title.equals("")){
 				events.add(new Event(title, description, where, time));
@@ -151,20 +152,19 @@ public class LoadData {
 		return builder.toString(); 
 	}
 	
-	
+	/**
+	 * Convert date string to another format
+	 * @param s
+	 * @return String with date and time
+	 */
 	public static String fromDate(String s){
 		
 		String[] date = s.split("T");
 		String time = date[1].substring(0,5);
 		String[] dates = date[0].split("-"); 
-		//String year = dates[0];
-		//Months month = Months.values()[Integer.parseInt(dates[1])+1];
 		String month = dates[1];
 		String day = dates[2];
 		
 		return day + "/" + month + ", kl: " + time;
 	}
 }
-
-
-

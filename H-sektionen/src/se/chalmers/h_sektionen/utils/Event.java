@@ -10,6 +10,13 @@ public class Event {
 
 	}
 
+	/**
+	 * Creating event
+	 * @param title
+	 * @param description
+	 * @param place
+	 * @param date
+	 */
 	public Event(String title, String description, String place, String date){
 		this.title = title;
 		this.description = description;
@@ -17,36 +24,35 @@ public class Event {
 		this.date = date;
 	}
 
+	/**
+	 * Get title
+	 * @return String title
+	 */
 	public String getTitle() {
 		return title;
 	}
-
-	public void setTitle(String title) {
-		this.title = title;
-	}
 	
+	/**
+	 * Get Description
+	 * @return String description
+	 */
 	public String getDescription(){
 		return description;
 	}
 	
-	public void setDescription(String description){
-		this.description = description;
-	}
-	
+	/**
+	 * Get place
+	 * @return String Place
+	 */
 	public String getPlace(){
 		return place;
 	}
-	public void setPlace(String place){
-		this.place = place;
-	}
 	
+	/**
+	 * Get date
+	 * @return String date
+	 */
 	public String getDate(){
 		return date;
 	}
-	
-	public void setDate(String date){
-		this.date = date;
-	}
-	
-	
 }

@@ -7,14 +7,12 @@
     	android:layout_height="wrap_content" 
     	android:orientation="vertical" >
 		
-	    <TextView
-	        android:id="@+id/suggest_header_textView"
-	        android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:text="@string/suggest_header_textView"
-        	android:textSize="20sp"
-        	android:layout_gravity="center_horizontal"
-        	/>
+		   <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:src="@drawable/suggest" 
+        android:contentDescription="@string/Background"/>
 	    
     	<TextView
         	android:id="@+id/suggest_textView"

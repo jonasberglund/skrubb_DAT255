@@ -47,14 +47,26 @@
 	<string name="suggest_subject">Förslag till H-sektionen</string>
 	<string name="suggest_noEmailClientFound">"Det verkar inte finnas någon E-mail applikation på din telefon."</string>
 	
-	<string name="faultreport_header_textView">Felanmälan</string>
+	
+    <string name="buildingEmail">8800@chalmers.se</string>
+    <string name="dataEmail">support@chalmers.se</string>
+    <string name="faultreport_header_textView">Felanmälan</string>
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
     <string name="faultreport_edit_message">Skriv här</string>
     <string name="faultreport_button_send">Skicka</string>
-    <string name="faultreport_checkbox_text">Är det datorproblem? Kryssa då i rutan så kommer det rätt</string>
-    <string name="buildingEmail">lokal@något.com</string>
-    <string name="dataEmail">data@något.com</string>
-    <string name="faultreport_text2">Väktare:  Vid behov av kontakt med väktare kan man ringa 772 44 99, vid svar begär att bli kopplad till "Chalmersväktaren". Väktarna nås endast utanför ordinarie arbetstider.</string>
-	<string name="faultreport_text3">Akuta fastighetsfel:  Vid akuta fastighetsfel finns det möjlighet att kontakta fastighetsägarens beredskapssökare på 0746 36 62 98, aternativt SOS Alarmering 703 17 25.</string>
+    <string name="faultreport_checkbox_text">Datorproblem? Kryssa i rutan så skickas det till supporten.</string>
+    <string name="faultreport_guardHeaderText">Väktare:</string>
+    <string name="faultreport_guardText">Vid behov av kontakt med väktare kan man ringa 772 44 99, vid svar begär att bli kopplad till "Chalmersväktaren". Väktarna nås endast utanför ordinarie arbetstider.</string>
+	<string name="faultreport_emergencyHeaderText">Akuta fastighetsfel:</string>
+	<string name="faultreport_emergencyText">Vid akuta fastighetsfel finns det möjlighet att kontakta fastighetsägarens beredskapssökare på 0746 36 62 98, aternativt SOS Alarmering 703 17 25.</string>
+	<string name="faultreport_computerHeaderText">Datorfel:</string>
+    <string name="faultreport_computerText">Fel på datorerna anmäls till support@chalmers.se. Beskriv vad som är fel och ange vilken dator det gäller. Om dator ej kan anges, v.v. uppge rumsnummer och vilket hus(!) det gäller.</string>
+	<string name="faultreport_lightingHeaderText">Belysning och ljuskällor:</string>
+    <string name="faultreport_lightingText">Underhåll av belysning utförs varje sommar av serviceavdelningen. Fel på belysningen under läsperioden i salar, grupprum och föreningslokaler anmäls till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se</string>
+    <string name="faultreport_furnitureHeaderText">Möbler och utrustning:</string>
+    <string name="faultreport_furnitureText">Felanmälan till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se</string>
 
+    <color name="pinkish">#C43D82</color>
+    <color name="white">#FFFFFF</color>
+    
 </resources>

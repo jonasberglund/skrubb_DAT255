@@ -20,6 +20,12 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 	private final List<Event> pubs;
 	private final int resource;
 	
+	/**
+	 * Create array adapter
+	 * @param context
+	 * @param resource
+	 * @param pubs
+	 */
 	public PubArrayAdapter(Context context, int resource, List<Event> pubs) {
 		super(context, resource, pubs);
 		this.context = context;
@@ -27,13 +33,12 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 		this.pubs = pubs;
 	}
 	
+	/** Get view */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row = convertView;
 		PubsHolder holder = null;
-		
 	
-		
 		LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 			
 		if (row == null) {
@@ -60,13 +65,14 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 		
 		Event pub = pubs.get(position);
 		holder.title.setText(pub.getTitle());
-		holder.description.setText("Beskrivning: " + pub.getDescription());
-		holder.place.setText("\n Var: " + pub.getPlace());
-		holder.date.setText("\n När: " + String.valueOf(pub.getDate()) );
+		holder.description.setText(pub.getDescription());
+		//holder.place.setText("\n Var: " + pub.getPlace());
+		holder.date.setText(String.valueOf(pub.getDate()) );
 
 		return row;
 	}
 	
+	/** Holder for a pub */
 	static class PubsHolder {
 		TextView title;
 		TextView description;

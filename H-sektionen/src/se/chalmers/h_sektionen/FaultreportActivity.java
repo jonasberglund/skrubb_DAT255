@@ -45,7 +45,7 @@ public class FaultreportActivity extends BaseActivity {
 		EditText editText = (EditText) findViewById(R.id.faultreport_edit_message);	//fetch the text from the view
 		String message = editText.getText().toString();							
 		
-		intent.putExtra(Intent.EXTRA_SUBJECT, R.string.faultreport_subject);
+		intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.faultreport_subject));
 		intent.putExtra(Intent.EXTRA_TEXT, message);
 		
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);

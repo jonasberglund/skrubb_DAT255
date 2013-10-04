@@ -2,16 +2,12 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 
-import org.json.JSONException;
 import se.chalmers.h_sektionen.utils.CacheCompass;
-
 import se.chalmers.h_sektionen.utils.Constants;
-import se.chalmers.h_sektionen.utils.DataSource;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 import se.chalmers.h_sektionen.utils.NewsItem;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -52,7 +48,7 @@ public class MainActivity extends BaseActivity {
 			
 			new LoadNewsInBg().execute("");
     	} else {
-    		setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+    		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
     }
     
@@ -85,7 +81,7 @@ public class MainActivity extends BaseActivity {
 				newsFeed.addHeaderView(img,null,false);
 				newsFeed.setAdapter(newsAdapter);
 			} else {
-				setErrorView(Constants.GET_FEED_ERROR_MSG);
+				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
 			}
 			
 		}

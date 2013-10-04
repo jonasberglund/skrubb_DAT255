@@ -72,7 +72,7 @@ public class LunchActivity extends BaseActivity {
 			try {
                 return downloadUrl();
             } catch (IOException e) {
-                return "Det gick ej att h‰mta sidan";
+                return "Det gick ej att h√§mta sidan";
             }
 
 		}

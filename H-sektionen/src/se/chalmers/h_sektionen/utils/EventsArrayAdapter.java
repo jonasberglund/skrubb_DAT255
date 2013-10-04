@@ -20,6 +20,12 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 	private final List<Event> events;
 	private final int resource;
 	
+	/**
+	 * Create array adapter
+	 * @param context
+	 * @param resource
+	 * @param events
+	 */
 	public EventsArrayAdapter(Context context, int resource, List<Event> events) {
 		super(context, resource, events);
 		this.context = context;
@@ -27,13 +33,12 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		this.events = events;
 	}
 	
+	/** Get view */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		View row = convertView;
 		EventsHolder holder = null;
-		
-	
-		
+
 		LayoutInflater inflater = ((Activity)context).getLayoutInflater();
 			
 		if (row == null) {
@@ -61,15 +66,13 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		Event event = events.get(position);
 		holder.title.setText(event.getTitle());
 		holder.date.setText(String.valueOf(event.getDate()) );
-		//if(!event.getDescription().equals(""))
-			holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
-		//if(!event.getPlace().equals(""))
-			holder.place.setText("Var: " + event.getPlace() + "\n");
-
+		holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
+		holder.place.setText("Var: " + event.getPlace() + "\n");
 
 		return row;
 	}
 	
+	/** Hold events */
 	static class EventsHolder {
 		TextView title;
 		TextView description;

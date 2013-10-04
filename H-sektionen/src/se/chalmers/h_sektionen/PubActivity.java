@@ -1,6 +1,5 @@
 package se.chalmers.h_sektionen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
@@ -11,9 +10,7 @@ import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.PubArrayAdapter;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
@@ -31,7 +28,7 @@ public class PubActivity extends BaseActivity {
 		createPubView();
 		super.onResume();
 	}
-    
+
 	/** Create pub view */
 	private void createPubView(){
 		
@@ -49,7 +46,7 @@ public class PubActivity extends BaseActivity {
 
 	}
 	
-	/** Adding action listner to all events and */
+	/** Add action listner */
 	private void addActionListner(){
 		 pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
@@ -63,11 +60,13 @@ public class PubActivity extends BaseActivity {
 	/** Loading all events i background activity (AsyncTask) */
 	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
 
+		/** What to do before backgroud loding */
 		@Override
 		protected void onPreExecute(){
 			runTransparentLoadAnimation();
 		}
 		
+		/** Do background work */
 		@Override
 		protected Boolean doInBackground(String... params){
 			
@@ -81,6 +80,7 @@ public class PubActivity extends BaseActivity {
 			}
 		}
 		
+		/** After background work is done */
 		@Override
 		protected void onPostExecute(Boolean success){
 			

@@ -22,12 +22,20 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
+/**
+ * @author robin
+ * InfoActivity takes care about the info view
+ */
 public class InfoActivity extends BaseActivity {
 	
 	private List<ContactCard> contactCards = null;
 	private StringBuilder htmlLinks = null;
 	private StringBuilder openingHoursString = null;
 	
+	/**
+	 * Sets the static "currentView" variable in the super class, BaseActivity.
+	 * The method also start the AsyncTask that fetches the information data.
+	 */
 	@Override
 	protected void onResume() {
 		
@@ -41,10 +49,12 @@ public class InfoActivity extends BaseActivity {
 	/**
 	 * @author robin
 	 * GetInfoTask loads the info data and sets up the view.
-	 * 
 	 */
 	private class GetInfoTask extends AsyncTask<String, String, Boolean> {
 
+		/**
+		 * Runs super method and starts the load animation.
+		 */
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -52,6 +62,10 @@ public class InfoActivity extends BaseActivity {
 			runLoadAnimation();
 		}
 		
+		/**
+		 * Requests a JSONObject, tries to parse it and puts the data into arrays.
+		 * @return false if the parsing did not succeed, else true
+		 */
 		@Override
 		protected Boolean doInBackground(String... params) {
 			
@@ -126,6 +140,11 @@ public class InfoActivity extends BaseActivity {
 			}
 		}
 		
+		/**
+		 * Sets up the view with data from doInBackground method.
+		 * If doInBackground returns false, an error view is going to show up.
+		 * @param done True if doInBackground could parse and prepare the data correct, else false.
+		 */
 		@Override
 		protected void onPostExecute(Boolean done) {
 			super.onPostExecute(done);

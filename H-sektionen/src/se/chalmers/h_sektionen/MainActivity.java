@@ -2,16 +2,12 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 
-import org.json.JSONException;
 import se.chalmers.h_sektionen.utils.CacheCompass;
-
 import se.chalmers.h_sektionen.utils.Constants;
-import se.chalmers.h_sektionen.utils.DataSource;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.NewsAdapter;
 import se.chalmers.h_sektionen.utils.NewsItem;
-import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 

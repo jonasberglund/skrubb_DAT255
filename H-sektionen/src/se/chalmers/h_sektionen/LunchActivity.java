@@ -58,7 +58,7 @@ public class DownLoadWebPage extends AsyncTask<String, String, String>{
 			try {
                 return downloadUrl(urls[0]);
             } catch (IOException e) {
-                return "Det gick ej att h‰mta sidan";
+                return "Det gick ej att h√§mta sidan";
             }
 
 		}

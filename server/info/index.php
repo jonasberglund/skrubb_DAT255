@@ -8,9 +8,11 @@ $mysql_database = "";
 $mysql_user = "";
 $mysql_password = "";
 
+// Connect to the server.
 $mysql_connection = mysql_connect($mysql_host, $mysql_user, $mysql_password);
 mysql_select_db($mysql_database);
 
+// Fetch the board members.
 $result = mysql_query("SELECT * FROM members ORDER BY id");
 $members = array();
 while($row = mysql_fetch_array($result)) {
@@ -24,6 +26,7 @@ while($row = mysql_fetch_array($result)) {
 }
 mysql_free_result($result);
 
+// Fetch the links.
 $result = mysql_query("SELECT * FROM links ORDER BY id");
 $links = array();
 while($row = mysql_fetch_array($result)) {
@@ -34,6 +37,7 @@ while($row = mysql_fetch_array($result)) {
 }
 mysql_free_result($result);
 
+// Fetch the opening hours.
 $result = mysql_query("SELECT * FROM openinghours ORDER BY id");
 $openinghours = array();
 while($row = mysql_fetch_array($result)) {
@@ -46,11 +50,13 @@ mysql_free_result($result);
 
 mysql_close($mysql_connection);
 
+// Put all values in one array.
 $infoArray = array();
 $infoArray['members'] = $members;
 $infoArray['links'] = $links;
 $infoArray['openinghours'] = $openinghours;
 
+// Print the array as JSON.
 print json_encode($infoArray);
 
 ?>

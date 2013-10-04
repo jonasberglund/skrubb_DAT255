@@ -9,20 +9,23 @@ import java.net.URL;
 
 import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import android.content.Context;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
+
 import android.os.AsyncTask;
 import android.text.Html;
 import android.util.Log;
 import android.widget.TextView;
-
+/**
+ * Activity responsible of the lunch menu view.
+ */
 public class LunchActivity extends BaseActivity {
 
     private static final String DEBUG_TAG = "HttpExample";
     private String[] lunchUrls = Constants.LUNCH_URLS; 
 	private TextView textView;
-
+	
+	/**
+	 * On resume.
+	 */
 	@Override
 	protected void onResume() {
 
@@ -30,53 +33,73 @@ public class LunchActivity extends BaseActivity {
 		createLunchView();
 		
 		textView = (TextView)findViewById(R.id.LunchTextView);
-		ConnectivityManager connMgr = (ConnectivityManager)getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo networkInfo = connMgr.getActiveNetworkInfo();
-		    if (networkInfo != null && networkInfo.isConnected()) {
-		        new DownLoadWebPage().execute("test");
-		    } else {
-		        textView.setText("Ingen internetanslutning funnen");
-		    }
 		
+		if (connectedToInternet())
+			new DownLoadWebPage().execute("");
+		else 
+		    textView.setText(Constants.INTERNET_CONNECTION_ERROR_MSG);
+				
 		super.onResume();
 	}
-	
+	/**
+	 * Creates the lunch view.
+	 */
 	private void createLunchView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_lunch, null));
     	
     }
-public class DownLoadWebPage extends AsyncTask<String, String, String>{
+	
+	/**
+	 * Thread that starts the download and parsing function
+	 * of the lunch menus.
+	 */
+	public class DownLoadWebPage extends AsyncTask<String, String, String>{
+		/**
+		 * Runs a loading animation
+		 */
 		@Override
 		protected void onPreExecute(){
 			runTransparentLoadAnimation();
 		}
-		
+		/**
+		 * Starts the download of a web page and returns
+		 * the string value of the data which was parsed. 
+		 */
 		@Override
 		protected String doInBackground(String... urls) {
 			
 			try {
-                return downloadUrl(urls[0]);
+                return downloadUrl();
             } catch (IOException e) {
-                return "Det gick ej att h‰mta sidan";
+                return "Det gick ej att h√§mta sidan";
             }
 
 		}
-		
+		/**
+		 * Receives the result string and sets it in
+		 * the text view in the activity view.
+		 */
 		@Override
 		protected void onPostExecute(String result){
     		textView.setText(Html.fromHtml(result));
     		stopAnimation();
 		}
 	}
-
-	private String downloadUrl(String myurl) throws IOException {
+	/**
+	 * Starts a connection to the web page and call
+	 * the parser to create the string to be returned.
+	 * @return string with the text to be displayed.
+	 * @throws IOException
+	 */
+	private String downloadUrl() throws IOException {
 	    InputStream is = null;
 	    StringBuffer sb = new StringBuffer();    
 	    try {
-	    	for(String aUrl : lunchUrls){
-		        URL url = new URL(aUrl);
-		        HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+	    	for(String url : lunchUrls){
+		        URL currentUrl = new URL(url);
+		        HttpURLConnection conn = (HttpURLConnection) currentUrl.openConnection();
+		        
 		        conn.setReadTimeout(50000 /* milliseconds */);
 		        conn.setConnectTimeout(10000 /* milliseconds */);
 		        conn.setRequestMethod("GET");
@@ -88,27 +111,27 @@ public class DownLoadWebPage extends AsyncTask<String, String, String>{
 		        is = conn.getInputStream();
 		        
 		     // Convert the InputStream into a string
-		        if(aUrl.equals(Constants.KOKBOKLUNCH))
-		        	sb.append(fetchKokBoken(is));
+		        if(url.equals(Constants.KOKBOKLUNCH))
+		        	sb.append(parseKokBoken(is));
 		        else
-		        	sb.append(readIt(is));
+		        	sb.append(parseLunchPage(is));
 		        
 		        is = null;
 	    	}
-//	        String contentAsString = readIt(is);
 	        return sb.toString();
-//	        		contentAsString;
-	        
-	    // Makes sure that the InputStream is closed after the app is
-	    // finished using it.
+	    	   
 	    } finally {
-	        if (is != null) {
-	            is.close();
-	        } 
+	        if (is != null) 
+	            is.close();	         
 	    }
 	}
-
-	public String readIt(InputStream stream) throws IOException{
+	/**
+	 * Parses the data of the web page into a string.
+	 * @param the input stream that contains the data that will be parsed.
+	 * @return the string that will be displayed in the activity view.
+	 * @throws IOException
+	 */
+	public String parseLunchPage(InputStream stream) throws IOException{
 		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));
 		StringBuilder sb = new StringBuilder();
 		String line;
@@ -148,8 +171,13 @@ public class DownLoadWebPage extends AsyncTask<String, String, String>{
 		return sb.toString();
 	
 	} 
-	
-	public String fetchKokBoken(InputStream stream) throws IOException{
+	/**
+	 * Parses the web page that displays the lunch from Kokboken.
+	 * @param the input stream that contains the data that will be parsed.
+	 * @return the string that will be displayed in the activity view.
+	 * @throws IOException
+	 */
+	public String parseKokBoken(InputStream stream) throws IOException{
 	
 		BufferedReader reader = new BufferedReader(new InputStreamReader(stream));		
 		StringBuilder sb = new StringBuilder();

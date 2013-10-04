@@ -3,12 +3,6 @@ package se.chalmers.h_sektionen;
 import se.chalmers.h_sektionen.utils.MenuArrayAdapter;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.MenuModel;
-
-import com.parse.Parse;
-import com.parse.ParseAnalytics;
-import com.parse.ParseInstallation;
-import com.parse.PushService;
-
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.Intent;
@@ -20,19 +14,25 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
-import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
-import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.parse.Parse;
+import com.parse.ParseAnalytics;
+import com.parse.ParseInstallation;
+import com.parse.PushService;
+
+/**
+ * The base activity which every activity extends to get the same
+ * action bar and menu drawer.
+ */
 public class BaseActivity extends ActionBarActivity {
 
 	private static String[] menuTitles;
@@ -41,6 +41,10 @@ public class BaseActivity extends ActionBarActivity {
     private static FrameLayout frameLayout;
     private static int currentView;
     
+    /**
+     * Creates the view for the main activity, the action bar
+     * and the menu drawer.
+     */
     @Override
     protected void onStart() {
     	setContentView(R.layout.activity_main);        
@@ -83,8 +87,14 @@ public class BaseActivity extends ActionBarActivity {
         super.onStart();
     }
     
+    /**
+     * Sets up a listener for the drawer menu.
+     */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        @Override
+        /**
+         * 
+         */
+    	@Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {
         	mDrawerLayout.closeDrawers();
         	if(currentView != position){
@@ -116,6 +126,10 @@ public class BaseActivity extends ActionBarActivity {
         }
     }
     
+    /**
+     * Help method to start an activity.
+     * @param Which activity to start.
+     */
     private void startActivityByClass(Class<? extends BaseActivity> c) { 
     	Intent i =  new Intent(this, c);
     	i.setFlags(Intent.FLAG_ACTIVITY_REORDER_TO_FRONT);
@@ -123,6 +137,9 @@ public class BaseActivity extends ActionBarActivity {
     	startActivity(i);
     }
     
+    /**
+     * Sets up the custom action bar.
+     */
     private void setupActionBar() {
     	ActionBar ab = getSupportActionBar();
     	ab.setDisplayShowCustomEnabled(true);
@@ -145,11 +162,18 @@ public class BaseActivity extends ActionBarActivity {
     		ab.setHomeButtonEnabled(true);
     	}
     }
+    
+    /**
+     * Enables the home button if the user has an newer device.
+     */
     @TargetApi(Build.VERSION_CODES.ICE_CREAM_SANDWICH)
     private void enableHomeButton() {
     	getActionBar().setHomeButtonEnabled(true);
     }
 	
+    /**
+     * Enables the home icon to open the sliding drawer menu.
+     */
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		
@@ -162,6 +186,9 @@ public class BaseActivity extends ActionBarActivity {
 		 }
 	}
 	
+	/**
+	 * Toggles the sliding drawer menu to open or close.
+	 */
 	private void toggleMenu() {
 		if(mDrawerLayout.isDrawerOpen(Gravity.LEFT))
 			mDrawerLayout.closeDrawer(Gravity.LEFT);
@@ -169,14 +196,24 @@ public class BaseActivity extends ActionBarActivity {
 			mDrawerLayout.openDrawer(Gravity.LEFT);
 	}
 	
+	/**
+	 * @return The frame layout.
+	 */
 	protected FrameLayout getFrameLayout() {
 		return frameLayout;
 	}
 	
+	/**
+	 * Sets the current activity view.
+	 * @param The current view active.
+	 */
 	static protected void setCurrentView(int currentView) {
 		BaseActivity.currentView = currentView;
 	}
 	
+	/**
+	 * Runs a loading animation image.
+	 */
 	protected void runLoadAnimation() {
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
@@ -184,12 +221,18 @@ public class BaseActivity extends ActionBarActivity {
 		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
 	}
 	
+	/**
+	 * Runs a transparent loading animation image.
+	 */
 	protected void runTransparentLoadAnimation() {
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
 		
 		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
 	}
 	
+	/**
+	 * Stops the loading animation image.
+	 */
 	protected void stopAnimation(){
 		ImageView img = ((ImageView)findViewById(R.id.load_image));
 		TextView txt = (TextView) findViewById(R.id.load_label);
@@ -202,7 +245,10 @@ public class BaseActivity extends ActionBarActivity {
 		txt.setVisibility(View.GONE);
 	}
 	
-	
+	/**
+	 * Starts an error view with a supplied message.
+	 * @param What error message to be displayed.
+	 */
 	protected void setErrorView(String message) {
 		View errorView = getLayoutInflater().inflate(R.layout.view_error, null);
 		TextView errorTextView = (TextView) errorView.findViewById(R.id.error_text_view);
@@ -212,6 +258,10 @@ public class BaseActivity extends ActionBarActivity {
 		getFrameLayout().addView(errorView);
 	}
 	
+	/**
+	 * Returns to the main activity if in another activity
+	 * otherwise returns the user to the home screen of their device.
+	 */
 	@Override
 	public void onBackPressed() {
 		if(currentView != MenuItems.NEWS)
@@ -226,7 +276,6 @@ public class BaseActivity extends ActionBarActivity {
 	
 	/**
 	 * Checks if device is connected to Internet.
-	 * 
 	 * @return True if connected, otherwise false
 	 */
 	protected boolean connectedToInternet(){

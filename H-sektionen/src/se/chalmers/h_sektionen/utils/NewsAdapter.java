@@ -21,6 +21,10 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 		super(context, resource, objects);
 		this.objects = objects;
 	}
+	 
+	public ArrayList<NewsItem> getItems(){
+		return objects;
+	}
 	
 	public View getView(int position, View convertView, ViewGroup parent){
 		

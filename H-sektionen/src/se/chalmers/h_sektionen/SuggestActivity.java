@@ -8,20 +8,19 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * @author Oskar
- * InfoActivity takes care about the info view
+ * Activity that displays the view for the user to input
+ * suggestions.
  */
 public class SuggestActivity extends BaseActivity {
 
 	/**
-	 * Sets the static "currentView" variable in the super class, BaseActivity.
-	 * The method also start the AsyncTask that fetches the information data.
+	 * On resume.
 	 */
 	@Override
 	protected void onResume() {
 
 		setCurrentView(MenuItems.SUGGEST);
-		createView();
+		createSuggestView();
 		
 		super.onResume();
 	}
@@ -29,7 +28,7 @@ public class SuggestActivity extends BaseActivity {
 	/**
 	 * Creates the suggest view.
 	 */
-	private void createView(){
+	private void createSuggestView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_suggest, null));
     }

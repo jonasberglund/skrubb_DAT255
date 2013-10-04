@@ -1,5 +1,7 @@
 package se.chalmers.h_sektionen.utils;
-
+/**
+ * A class full of different constants used in the project. 
+ */
 public class Constants {
 	public static final String GOOGLEEVENTS = "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json&" +
     		"orderby=starttime&" +

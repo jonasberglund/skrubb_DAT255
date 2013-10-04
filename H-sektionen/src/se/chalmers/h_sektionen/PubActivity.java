@@ -15,6 +15,9 @@ import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+/**
+ * Activity that displays pub events at Lindholmen.
+ */
 public class PubActivity extends BaseActivity {
 
 	PubArrayAdapter pubFeedAdapter;
@@ -38,15 +41,15 @@ public class PubActivity extends BaseActivity {
 			pubsFeed = (ListView) findViewById(R.id.pubs_feed);;
 			
 			new LoadPubInBg().execute();
-	    	addActionListner();
+	    	addActionListener();
 		} else {
 			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 		}
 
 	}
 	
-	/** Add action listner */
-	private void addActionListner(){
+	/** Add action listener */
+	private void addActionListener(){
 		 pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 		            	View toolbar = view.findViewById(R.id.toolbarPubs);
@@ -59,7 +62,9 @@ public class PubActivity extends BaseActivity {
 	/** Loading all events i background activity (AsyncTask) */
 	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
 
-		/** What to do before background loading */
+		/**
+		 * Runs a loading animation
+		 */
 		@Override
 		protected void onPreExecute(){
 			runTransparentLoadAnimation();
@@ -79,7 +84,7 @@ public class PubActivity extends BaseActivity {
 			}
 		}
 		
-		/** After background work is done */
+		/** Display the events in the activity view if successful */
 		@Override
 		protected void onPostExecute(Boolean success){
 			

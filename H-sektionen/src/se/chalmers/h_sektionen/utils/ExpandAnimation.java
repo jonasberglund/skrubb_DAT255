@@ -9,7 +9,6 @@ import android.widget.LinearLayout.LayoutParams;
  * This animation class is animating the expanding and reducing the size of a view.
  * The animation toggles between the Expand and Reduce, depending on the current state of the view
  * @author Udinic
- *
  */
 public class ExpandAnimation extends Animation {
     private View mAnimatedView;
@@ -37,7 +36,9 @@ public class ExpandAnimation extends Animation {
 
         view.setVisibility(View.VISIBLE);
     }
-
+    /**
+     * Apply transformation.
+     */
     @Override
     protected void applyTransformation(float interpolatedTime, Transformation t) {
         super.applyTransformation(interpolatedTime, t);

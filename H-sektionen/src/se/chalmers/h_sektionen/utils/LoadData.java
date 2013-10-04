@@ -23,7 +23,6 @@ public class LoadData {
 	
 	/**
 	 * Retrieves and parses event posts
-	 * 
 	 * @return List containing events
 	 */
 	public static List<Event> loadEvents() throws JSONException {
@@ -57,7 +56,6 @@ public class LoadData {
 	
 	/**
 	 * Retrieves and parses pub events
-	 * 
 	 * @return List containing pub events
 	 */
 	public static List<Event> loadPubs() throws JSONException {
@@ -92,7 +90,6 @@ public class LoadData {
 
 	/**
 	 * Retrieves and parses news feed posts
-	 * 
 	 * @return List containing news feed posts
 	 * @throws JSONException 
 	 */
@@ -128,7 +125,6 @@ public class LoadData {
 
 	/**
 	 * Retrieves data from url and returns it in a string
-	 * 
 	 * @param url The url to retrieve data from
 	 * @return String containing the retrieved data
 	 */

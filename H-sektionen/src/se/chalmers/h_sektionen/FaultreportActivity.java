@@ -9,28 +9,26 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * @author Oskar
- * InfoActivity takes care about the info view
+ * Activity that displays a view for reporting faults.
  */
 public class FaultreportActivity extends BaseActivity {
 	
 	/**
-	 * Sets the static "currentView" variable in the super class, BaseActivity.
-	 * The method also start the AsyncTask that fetches the information data.
+	 * On resume.
 	 */
     @Override
 	protected void onResume() {
 
 		setCurrentView(MenuItems.FAULTREPORT);
-		createView();
+		createFaultView();
 		
 		super.onResume();
 	}
 	
     /**
-     * Creates the faultReport view.
+     * Create fault report view.
      */
-	private void createView(){
+	private void createFaultView(){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_faultreport, null));
     }
@@ -52,10 +50,10 @@ public class FaultreportActivity extends BaseActivity {
 		
 		CheckBox checkBox = (CheckBox) findViewById(R.id.checkBox1);
 		if(checkBox.isChecked()){
-			intent.setData(Uri.parse("mailto:"+getString(R.string.faultreport_dataEmail))); //set the address to the datacenter.
+			intent.setData(Uri.parse("mailto:"+getString(R.string.faultreport_dataEmail))); //set the address to the data center.
 		}
 		else{
-			intent.setData(Uri.parse("mailto:"+getString(R.string.faultreport_buildingEmail))); //set the address to the buildingcenter.
+			intent.setData(Uri.parse("mailto:"+getString(R.string.faultreport_buildingEmail))); //set the address to the building center.
 		}
 		
 		try{

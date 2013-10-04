@@ -92,7 +92,7 @@ public class BaseActivity extends ActionBarActivity {
      */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
         /**
-         * 
+         * Checks which icon was pressed in the drawer menu.
          */
     	@Override
         public void onItemClick(AdapterView parent, View view, int position, long id) {

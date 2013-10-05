@@ -95,10 +95,10 @@ public class LoadData {
 	 * @return List containing news feed posts
 	 * @throws JSONException 
 	 */
-	public static ArrayList<NewsItem> loadNews() throws JSONException{
+	public static ArrayList<NewsItem> loadNews(int descending) throws JSONException{
 		
 		//Get JSON string from server
-		String result = getJSON(Constants.NEWSFEED); 
+		String result = getJSON(Constants.NEWSFEED + descending); 
 		
 		List<NewsItem> posts = new ArrayList<NewsItem>();
 		

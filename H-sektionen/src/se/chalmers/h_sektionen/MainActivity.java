@@ -24,19 +24,18 @@ import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
 	
-	NewsAdapter newsAdapter;
-	ListView newsFeed;
-	private CacheCompass cacheCompass;
-	private boolean initializeListView; 
+	private NewsAdapter newsAdapter;
+	private ListView newsFeed;
+	private boolean initializeListView;
+	private int descending;
 	
 	/**
 	 * Superclass method onCreate
 	 */
 	@Override
-	 protected void onCreate(Bundle savedInstanceState){
-		
+	 protected void onCreate(Bundle savedInstanceState){	
 		super.onCreate(savedInstanceState);
-		cacheCompass = CacheCompass.getInstance(this);
+		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
 	}
 	
 	
@@ -50,6 +49,7 @@ public class MainActivity extends BaseActivity {
 		initializeListView = true;
 		setCurrentView(MenuItems.NEWS);
 		createNewsView();
+		descending = 0;
 	}
     
 	/**
@@ -66,11 +66,11 @@ public class MainActivity extends BaseActivity {
 			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
 				@Override
 				protected void doOnScrollCompleted() {
-					new LoadNewsInBg().execute(true);
+					new LoadNewsInBg().execute(++descending);
 					
 				}});
 			
-			new LoadNewsInBg().execute(false);
+			new LoadNewsInBg().execute(descending);
     	} else {
     		setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
     	}
@@ -79,7 +79,7 @@ public class MainActivity extends BaseActivity {
     /**
      * AsyncTask for loading news feed posts in background.
      */
-    private class LoadNewsInBg extends AsyncTask<Boolean, String, Boolean>{
+    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
 		
 		
     	/**
@@ -96,28 +96,13 @@ public class MainActivity extends BaseActivity {
 		 * Superclass method doInBackground
 		 */
 		@Override
-		protected Boolean doInBackground(Boolean... loadMorePosts) {
-			
-			/**
-			 * Temp solution for loading more posts until functionality implemented on server.
-			 * For now loads the same 5 posts each time.
-			 */
-			if (loadMorePosts[0]){
-				try {
-					for (NewsItem ni : LoadData.loadNews()){
-						newsAdapter.getItems().add(ni);
-					}
-					return true;
-				} catch (Exception e){return false;}
+		protected Boolean doInBackground(Integer... descending) {	
+			try {
+				newsAdapter.addAll(LoadData.loadNews(descending[0]));
+				return true;
+			} catch (Exception e){
+				return false;
 			}
-			else{
-				try {
-					ArrayList<NewsItem> list = LoadData.loadNews();
-					newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, list);
-					return true;
-				} catch (Exception e){return false;}
-			}
-						
 		}
 		
 		/**

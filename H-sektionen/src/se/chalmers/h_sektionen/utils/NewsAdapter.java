@@ -1,6 +1,7 @@
 package se.chalmers.h_sektionen.utils;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import se.chalmers.h_sektionen.R;
 
@@ -25,6 +26,17 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 	public ArrayList<NewsItem> getItems(){
 		return objects;
 	}
+	
+	/**
+	 * Overrided and added manually because method unsupported in target API.
+	 */
+	@Override
+	public void addAll(Collection<? extends NewsItem> collection){
+		for (NewsItem item : collection){
+			objects.add(item);
+		}
+	}
+	
 	
 	public View getView(int position, View convertView, ViewGroup parent){
 		

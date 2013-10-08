@@ -13,8 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
+import se.chalmers.h_sektionen.containers.ContactCard;
 import se.chalmers.h_sektionen.utils.Constants;
-import se.chalmers.h_sektionen.utils.ContactCard;
 
 public class InfoTest {
 
@@ -30,45 +30,42 @@ public class InfoTest {
 	}
 
 	@Test
-	public void connectionTest() {
+	public void serverConnectionTest() {
 		try {
 			URL url = new URL(Constants.SERVER_ADDRESS);
 			URLConnection conn = url.openConnection();
 			conn.connect();
 			
 		} catch (Exception e) {
-			fail("Not connected to server");
+			fail("Could not connect to server");
 		}
 	}
 	
 	@Test
 	public void createContactCardTest() {
-		ContactCard c = new ContactCard("Kalle Anka", "Städare", "kalle@ankeborg.se", "070-1231232", "http://jpv-net.dyndns.org:1337/H-Sektionen/info/pics/jonas.png");
+		ContactCard c = new ContactCard("Kalle Anka", "Städare", "kalle@ankeborg.se", "070-1231232", null);
 		assertTrue("Name fail", c.getName().equals("Kalle Anka"));
 		assertTrue("Position fail", c.getPosition().equals("Städare"));
 		assertTrue("Email fail", c.getEmail().equals("kalle@ankeborg.se"));
 		assertTrue("Phone number fail", c.getPhoneNumber().equals("070-1231232"));
-		
 	}
 	
 	@Test
-	public void JSONTest() {
+	public void JSONFromServerTest() {
 		try {
-			URL oracle = new URL(Constants.INFO);
-			URLConnection yc = oracle.openConnection();
-			BufferedReader in = new BufferedReader(new InputStreamReader(yc.getInputStream()));
-			String JSon = "";
+			URL infoURL = new URL(Constants.INFO);
+			URLConnection conn = infoURL.openConnection();
+			BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+			StringBuilder jsonStringBuilder = new StringBuilder();
 			
-			String inputLine;
-			while ((inputLine = in.readLine()) != null) 
-				JSon=JSon+inputLine;
+			String line;
+			while ((line = in.readLine()) != null)
+				jsonStringBuilder.append(line);
 			
 			in.close();
-			System.out.println(JSon);
 			
 			JSONParser parser = new JSONParser();
-			
-			JSONObject o = (JSONObject) parser.parse(JSon);
+			JSONObject o = (JSONObject) parser.parse(jsonStringBuilder.toString());
 			
 			// Check if expected values are found in the JSONObject.
 			assertTrue("key \"members\" was not found", o.containsKey("members"));

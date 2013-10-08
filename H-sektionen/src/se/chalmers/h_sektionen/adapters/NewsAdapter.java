@@ -1,9 +1,12 @@
-package se.chalmers.h_sektionen.utils;
+package se.chalmers.h_sektionen.adapters;
 
 import java.util.ArrayList;
 import java.util.Collection;
 
 import se.chalmers.h_sektionen.R;
+import se.chalmers.h_sektionen.containers.NewsItem;
+import se.chalmers.h_sektionen.utils.CacheCompass;
+import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 import android.content.Context;
 import android.os.AsyncTask;

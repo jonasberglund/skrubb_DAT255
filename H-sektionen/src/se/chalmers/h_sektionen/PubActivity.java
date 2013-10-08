@@ -1,24 +1,23 @@
 package se.chalmers.h_sektionen;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import org.json.JSONException;
 
-import se.chalmers.h_sektionen.utils.Constants;
-import se.chalmers.h_sektionen.utils.Event;
+import se.chalmers.h_sektionen.adapters.PubArrayAdapter;
+import se.chalmers.h_sektionen.containers.Event;
 import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import se.chalmers.h_sektionen.utils.PubArrayAdapter;
-import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+/**
+ * Activity that displays pub events at Lindholmen.
+ */
 public class PubActivity extends BaseActivity {
 
 	PubArrayAdapter pubFeedAdapter;
@@ -31,7 +30,7 @@ public class PubActivity extends BaseActivity {
 		createPubView();
 		super.onResume();
 	}
-    
+
 	/** Create pub view */
 	private void createPubView(){
 		
@@ -42,15 +41,15 @@ public class PubActivity extends BaseActivity {
 			pubsFeed = (ListView) findViewById(R.id.pubs_feed);;
 			
 			new LoadPubInBg().execute();
-	    	addActionListner();
+	    	addActionListener();
 		} else {
-			setErrorView(Constants.INTERNET_CONNECTION_ERROR_MSG);
+			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 		}
 
 	}
 	
-	/** Adding action listner to all events and */
-	private void addActionListner(){
+	/** Add action listener */
+	private void addActionListener(){
 		 pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
 		            	View toolbar = view.findViewById(R.id.toolbarPubs);
@@ -63,11 +62,15 @@ public class PubActivity extends BaseActivity {
 	/** Loading all events i background activity (AsyncTask) */
 	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
 
+		/**
+		 * Runs a loading animation
+		 */
 		@Override
 		protected void onPreExecute(){
 			runTransparentLoadAnimation();
 		}
 		
+		/** Do background work */
 		@Override
 		protected Boolean doInBackground(String... params){
 			
@@ -81,6 +84,7 @@ public class PubActivity extends BaseActivity {
 			}
 		}
 		
+		/** Display the events in the activity view if successful */
 		@Override
 		protected void onPostExecute(Boolean success){
 			
@@ -94,7 +98,7 @@ public class PubActivity extends BaseActivity {
 				pubsFeed.addHeaderView(img,null,false);
 				pubsFeed.setAdapter(pubFeedAdapter);
     		} else {
-    			setErrorView(Constants.GET_FEED_ERROR_MSG);
+    			setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
     		}
 		}
 	}

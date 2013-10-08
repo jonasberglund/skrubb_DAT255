@@ -20,7 +20,7 @@ public class Constants {
 	public static final String NEWSFEED = "http://www.prokrastinera.com/hsektionen/newsfeed/";
 	public static final String INFO = "http://www.prokrastinera.com/hsektionen/info/";
     
-	public static final String SERVER_ADDRESS = "http://jpv-net.dyndns.org:1337";
+	public static final String SERVER_ADDRESS = "http://www.prokrastinera.com/";
 	
 	public static final String LS_KITCHEN_RSS = "http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss";
 	public static final String KOKBOKEN_BASE = "http://cm.lskitchen.se/lindholmen/kokboken/sv/";

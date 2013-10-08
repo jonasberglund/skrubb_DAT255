@@ -98,7 +98,7 @@ public class InfoActivity extends BaseActivity {
 							pic.prepareToDraw();
 							CacheCompass.getInstance(InfoActivity.this).getBitmapCache().put(picAddr, pic);
 						
-						} catch (InterruptedException e) {
+						} catch (Exception e) {
 							pic = null;
 						}
 						

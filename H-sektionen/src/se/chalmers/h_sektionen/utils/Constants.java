@@ -19,8 +19,8 @@ public class Constants {
 	public static final String INFO = "http://jpv-net.dyndns.org:1337/H-Sektionen/info/";
     
 	public static final String SERVER_ADDRESS = "http://jpv-net.dyndns.org:1337";
-	public static final String[] LUNCH_URLS = {"http://www.lindholmen.se/sv/restaurang/ls-kitchen"
-		, "http://www.chalmerskonferens.se/dagens-menyer/lindholmen/","http://www.lindholmen.se/sv/restaurang/mimolett"
-		, "http://www.lindholmen.se/sv/restaurang/bistrot", "http://www.lindholmen.se/sv/restaurang/restaurang-aran"};
-	public static final String KOKBOKLUNCH = "http://www.chalmerskonferens.se/dagens-menyer/lindholmen/";
+	
+	public static final String LS_KITCHEN_RSS = "http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss";
+	public static final String KOKBOKEN_BASE = "http://cm.lskitchen.se/lindholmen/kokboken/sv/";
+	
 }

@@ -32,6 +32,9 @@
     <string name="title_activity_suggest">Förslagslådan</string>
     <string name="title_activity_faultreport">Felanmälan</string>
     
+    <string name="title_kokboken">Kokboken</string>
+    <string name="title_ls_kitchen">L´s Kitchen</string>
+    
     <string name="GET_FEED_ERROR_MSG">Det gick inte att hämta flödet.</string>
     <string name="INTERNET_CONNECTION_ERROR_MSG">Ingen internetanslutning.</string>
     <string name="INFO_ERROR">Kunde inte hämta information.</string>

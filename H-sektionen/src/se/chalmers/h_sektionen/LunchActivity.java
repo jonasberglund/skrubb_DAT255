@@ -6,6 +6,14 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.net.URLConnection;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.Locale;
+
+import org.xmlpull.v1.XmlPullParser;
+import org.xmlpull.v1.XmlPullParserFactory;
 
 import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.MenuItems;
@@ -13,6 +21,7 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 import android.os.AsyncTask;
 import android.text.Html;
 import android.util.Log;
+import android.util.Xml;
 import android.widget.TextView;
 /**
  * Activity responsible of the lunch menu view.
@@ -68,12 +77,17 @@ public class LunchActivity extends BaseActivity {
 		 */
 		@Override
 		protected String doInBackground(String... urls) {
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+			return getLunchFromRSS("http://cm.lskitchen.se/lindholmen/kokboken/sv/"+sdf.format(new Date())+".rss") +
+					getLunchFromRSS("http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss");
 			
-			try {
-                return downloadUrl();
-            } catch (IOException e) {
-                return "Det gick ej att hämta sidan";
-            }
+			
+//			try {
+                //return downloadUrl();
+			
+//            } catch (IOException e) {
+//                return "Det gick ej att hämta sidan";
+//            }
 
 		}
 		/**
@@ -118,6 +132,7 @@ public class LunchActivity extends BaseActivity {
 		        
 		        is = null;
 	    	}
+
 	        return sb.toString();
 	    	   
 	    } finally {
@@ -193,6 +208,62 @@ public class LunchActivity extends BaseActivity {
 		dagensLunch = dagensLunch.substring(0, pos);
 		dagensLunch = "<h1>Kokboken</h1>"+dagensLunch;
 		return dagensLunch;
+	}
+	
+	/**
+	 * XML-pattern:
+	 * <item>
+	 *     <title>Title</title>
+	 *     <description>The dish</description>
+	 * </item>
+	 * 
+	 * @param urlString An URL String pointing to an XML document containing the lunch RSS.
+	 * @return An HTML string containing what is for lunch today.
+	 */
+	private String getLunchFromRSS(String urlString) {
+		try {
+			URL url = new URL(urlString);
+			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+			
+			XmlPullParserFactory pullParserFactory = XmlPullParserFactory.newInstance();
+			XmlPullParser parser = pullParserFactory.newPullParser();
+			parser.setFeature(XmlPullParser.FEATURE_PROCESS_NAMESPACES, false);
+			parser.setInput(conn.getInputStream(), null);
+			
+			StringBuilder lunchStringBuilder = new StringBuilder();
+			
+			int eventType = parser.getEventType();
+			while (eventType != XmlPullParser.END_DOCUMENT) {
+				
+				if ( eventType == XmlPullParser.START_TAG && parser.getName().equals("item") )
+					while ( !(eventType == XmlPullParser.END_TAG && parser.getName().equals("item")) ) {
+						eventType = parser.next();
+						if (eventType == XmlPullParser.START_TAG && parser.getName().equals("title")) {
+							lunchStringBuilder.append("<h1>");
+							lunchStringBuilder.append(parser.nextText());
+							lunchStringBuilder.append("</h1>");
+						}
+						
+						if (eventType == XmlPullParser.START_TAG && parser.getName().equals("description")) {
+							String dish = parser.nextText();
+							int pos = dish.indexOf('@');
+							if (pos != -1)
+								dish = dish.substring(0, pos);
+ 							
+							lunchStringBuilder.append(dish);
+						}
+					}
+				
+				eventType = parser.next();
+				
+			}
+
+			return lunchStringBuilder.toString();
+			
+		} catch (Exception e) {
+			return "";
+		}
+		
 	}
 }
 

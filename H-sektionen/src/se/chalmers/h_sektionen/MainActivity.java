@@ -4,20 +4,13 @@ import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.adapters.NewsAdapter;
 import se.chalmers.h_sektionen.containers.NewsItem;
-import se.chalmers.h_sektionen.utils.CacheCompass;
-import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
-import android.content.Context;
 
 import android.os.AsyncTask;
 import android.os.Bundle;
 
-import android.view.View;
-import android.widget.AbsListView;
-import android.widget.AbsListView.OnScrollListener;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 

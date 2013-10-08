@@ -9,7 +9,6 @@ import se.chalmers.h_sektionen.utils.CacheCompass;
 import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;

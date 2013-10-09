@@ -52,6 +52,11 @@ public class MainActivity extends BaseActivity {
     	}
     }
     
+    @Override
+	protected void refresh(){
+    	new LoadNewsInBg().execute("");
+	}
+    
     private class LoadNewsInBg extends AsyncTask<String, String, Boolean>{
 		
 		

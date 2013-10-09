@@ -9,6 +9,7 @@ import org.json.JSONObject;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.LinearLayout;
@@ -30,7 +31,18 @@ public class InfoActivity extends BaseActivity {
 	private List<ContactCard> contactCards = null;
 	private StringBuilder htmlLinks = null;
 	private StringBuilder openingHoursString = null;
+	private boolean dataLoaded = false;
 	
+	@Override
+	protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		if(savedInstanceState != null){
+			htmlLinks.append(savedInstanceState.getString("html"));
+			openingHoursString.append(savedInstanceState.getString("openHours"));
+			dataLoaded = true;
+			setUpInfoView();
+		}
+	}
 	/**
 	 * Sets the static "currentView" variable in the super class, BaseActivity.
 	 * The method also start the AsyncTask that fetches the information data.
@@ -38,13 +50,45 @@ public class InfoActivity extends BaseActivity {
 	@Override
 	protected void onResume() {
 		
-		setCurrentView(MenuItems.INFO);
-		new GetInfoTask().execute(Constants.INFO);
-		
 		super.onResume();
+		setCurrentView(MenuItems.INFO);
+		
+		if(!dataLoaded)
+			new GetInfoTask().execute(Constants.INFO);
+				
+	}
+	@Override
+	protected void onSaveInstanceState(Bundle savingState){
+		super.onSaveInstanceState(savingState);
+		savingState.putString("html", htmlLinks.toString());
+		savingState.putString("openHours", openingHoursString.toString());
+	}
+	@Override
+	protected void refresh(){
+		dataLoaded = false;
+		new GetInfoTask().execute(Constants.INFO);
 	}
 	
+	private void setUpInfoView(){
+
+		getFrameLayout().removeAllViews();
+		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
+		
+		ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
+		contactListView.setCacheColorHint(Color.WHITE);
+		
+		LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
+		TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
+		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
+		
+		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
+		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
+		
+		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
+		contactListView.addHeaderView(linksLayout);
+		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
 	
+	}
 	/**
 	 * GetInfoTask loads the info data and sets up the view.
 	 */
@@ -73,7 +117,6 @@ public class InfoActivity extends BaseActivity {
 			// Try to download and prepare all info data.
 			try {
 				JSONObject json = new JSONObject(LoadData.getJSON(params[0]));
-				
 				// Board members
 				JSONArray members = json.getJSONArray("members");
 				contactCards = new ArrayList<ContactCard>();
@@ -148,27 +191,10 @@ public class InfoActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPostExecute(Boolean done) {
-			super.onPostExecute(done);
-			
+			super.onPostExecute(done);			
 			// If there was no error (connection or JSON string error), set up the view.
 			if (done) {
-				getFrameLayout().removeAllViews();
-				getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
-				
-				ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
-	    		contactListView.setCacheColorHint(Color.WHITE);
-	    		
-	    		LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
-	    		TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
-	    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
-	    		
-	    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
-	    		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
-	    		
-	    		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
-	    		contactListView.addHeaderView(linksLayout);
-	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
-			
+				setUpInfoView();
 			} else {
 				setErrorView(getString(R.string.INFO_ERROR));
 			}

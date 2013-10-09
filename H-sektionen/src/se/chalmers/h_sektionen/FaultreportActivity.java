@@ -33,6 +33,11 @@ public class FaultreportActivity extends BaseActivity {
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_faultreport, null));
     }
 	
+	@Override
+	protected void refresh(){
+		
+	}
+	
 	/**
 	 * Starts an e-mail client with all fields filled in.
 	 * Message is taken from the view, subject is decided by a checkbox status.

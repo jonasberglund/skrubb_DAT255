@@ -11,10 +11,12 @@ import java.util.Set;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserFactory;
 
+import se.chalmers.h_sektionen.utils.CacheCompass;
 import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 /**
@@ -23,33 +25,62 @@ import android.widget.TextView;
 public class LunchActivity extends BaseActivity {
 
 	private TextView textView;
+	private String lunchText;
+	private boolean dataLoaded = false;
 	
+		
+	@Override
+	 protected void onCreate(Bundle savedInstanceState){
+		super.onCreate(savedInstanceState);
+		if(savedInstanceState != null){
+			lunchText = savedInstanceState.getString("lunch");
+			setUpLunchView(lunchText);
+			dataLoaded = true;
+		}			
+		
+	}
 	/**
 	 * On resume.
 	 */
 	@Override
 	protected void onResume() {
-
-		setCurrentView(MenuItems.LUNCH);
-		createLunchView();
 		
-		textView = (TextView)findViewById(R.id.LunchTextView);
-		
-		if (connectedToInternet())
-			new DownLoadWebPage().execute("");
-		else 
-		    textView.setText(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
-				
 		super.onResume();
+		setCurrentView(MenuItems.LUNCH);
+		
+		
+		if(!dataLoaded){			
+			if (connectedToInternet())
+				new DownLoadWebPage().execute("");
+			else 
+			    textView.setText(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+		}		
+		
 	}
 	/**
 	 * Creates the lunch view.
 	 */
-	private void createLunchView(){
+	private void setUpLunchView(String result){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_lunch, null));
+		
+		textView = (TextView)findViewById(R.id.LunchTextView);
+		textView.setText(Html.fromHtml(result));
+		
+		lunchText = result;
     	
     }
+	@Override
+	protected void onSaveInstanceState(Bundle savingState) {
+		super.onSaveInstanceState(savingState);
+		savingState.putString("lunch", lunchText);
+	}
+	
+	@Override
+	protected void refresh(){
+		dataLoaded = false;
+		new DownLoadWebPage().execute("");
+	}
 	
 	/**
 	 * Thread that starts the download and parsing function
@@ -92,8 +123,7 @@ public class LunchActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPostExecute(String result){
-    		textView.setText(Html.fromHtml(result));
-    		stopAnimation();
+			setUpLunchView(result);    		
 		}
 	}
 	

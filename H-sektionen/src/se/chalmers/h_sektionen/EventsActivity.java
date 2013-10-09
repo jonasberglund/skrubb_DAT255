@@ -59,6 +59,11 @@ public class EventsActivity extends BaseActivity {
 	        });
 	}
 	
+	@Override
+	protected void refresh(){
+		new LoadEventsInBg().execute("");
+	}
+	
 	/** Loading all events in background activity (AsyncTask) */
 	public class LoadEventsInBg extends AsyncTask<String, String, Boolean>{
 

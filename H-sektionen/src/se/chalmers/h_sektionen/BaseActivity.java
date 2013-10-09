@@ -15,6 +15,7 @@ import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.AnimationUtils;
@@ -23,6 +24,7 @@ import android.widget.FrameLayout;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.parse.Parse;
 import com.parse.ParseAnalytics;
@@ -33,7 +35,7 @@ import com.parse.PushService;
  * The base activity which every activity extends to get the same
  * action bar and menu drawer.
  */
-public class BaseActivity extends ActionBarActivity {
+public abstract class BaseActivity extends ActionBarActivity {
 
     private static DrawerLayout mDrawerLayout;
     private static ListView mDrawerList;
@@ -136,6 +138,12 @@ public class BaseActivity extends ActionBarActivity {
     	startActivity(i);
     }
     
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+      getMenuInflater().inflate(R.menu.main, menu);
+      return super.onCreateOptionsMenu(menu);
+    }
+    
     /**
      * Sets up the custom action bar.
      */
@@ -180,6 +188,9 @@ public class BaseActivity extends ActionBarActivity {
 		 	case android.R.id.home:
 		 		toggleMenu();
 		 		return true;
+		 	case R.id.action_refresh:
+		 		refresh();
+		 		return true;
 		 	default:
 		 		return super.onOptionsItemSelected(item);
 		 }
@@ -194,6 +205,8 @@ public class BaseActivity extends ActionBarActivity {
 		else
 			mDrawerLayout.openDrawer(Gravity.LEFT);
 	}
+	
+	protected abstract void refresh();
 	
 	/**
 	 * @return The frame layout.

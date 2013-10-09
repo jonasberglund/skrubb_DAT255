@@ -17,7 +17,7 @@ public class Constants {
 //	public static final String NEWSFEED = "http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/";
 	public static final String SUGGESTEMAIL = "foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com";
 //	public static final String INFO = "http://jpv-net.dyndns.org:1337/H-Sektionen/info/";
-	public static final String NEWSFEED = "http://www.prokrastinera.com/hsektionen/newsfeed/";
+	public static final String NEWSFEED = "http://www.prokrastinera.com/hsektionen/newsfeed/?week=";
 	public static final String INFO = "http://www.prokrastinera.com/hsektionen/info/";
     
 	public static final String SERVER_ADDRESS = "http://www.prokrastinera.com/";

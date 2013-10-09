@@ -58,6 +58,10 @@ public class PubActivity extends BaseActivity {
 	            }
 	        });
 	}
+	@Override
+	protected void refresh(){
+		new LoadPubInBg().execute("");
+	}
 	
 	/** Loading all events i background activity (AsyncTask) */
 	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{

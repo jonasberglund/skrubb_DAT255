@@ -32,6 +32,10 @@ public class SuggestActivity extends BaseActivity {
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_suggest, null));
     }
+	@Override
+	protected void refresh(){
+		
+	}
 	
 	/**
 	 * Starts an e-mail client and fill in all fields with text from the view and strings.

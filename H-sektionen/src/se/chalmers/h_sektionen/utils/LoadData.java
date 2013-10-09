@@ -117,6 +117,10 @@ public class LoadData {
 				//Get image url
 				String image = json_arr.getJSONObject(i).optString("picture");
 				
+				if(!image.equals("")){
+					image = image.replace("s.jpg", "n.jpg");
+				}
+				
 				//Add to posts if valid content
 				if ((!message.equals("")) && (!date.equals(""))){
 					posts.add(new NewsItem(message, date[0], image));

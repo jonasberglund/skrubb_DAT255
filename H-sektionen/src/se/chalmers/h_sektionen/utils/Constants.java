@@ -22,6 +22,8 @@ public class Constants {
     
 	public static final String SERVER_ADDRESS = "http://www.prokrastinera.com/";
 	
+	public static final String LS_KITCHEN_TITLE = "L´s Kitchen";
+	public static final String KOKBOKEN_TITLE = "Kokboken";
 	public static final String LS_KITCHEN_RSS = "http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss";
 	public static final String KOKBOKEN_BASE = "http://cm.lskitchen.se/lindholmen/kokboken/sv/";
 	

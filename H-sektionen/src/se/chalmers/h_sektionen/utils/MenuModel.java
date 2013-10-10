@@ -20,21 +20,18 @@ public class MenuModel {
 	 	 * @param con - Context of the calling activity
 	 	 */
 	    public static void LoadModel(Context con) {
-
-	    	//menu_titles
-	    	//con.getResources().getXml(R.xml.samplexml);
 	    	
 	    	Resources res = con.getResources();
-	    	String[] planets = res.getStringArray(R.array.menu_titles);
+	    	String[] menuTitles = res.getStringArray(R.array.menu_titles);
 	    	
 	        Items = new ArrayList<MenuItem>();
-	        Items.add(new MenuItem(1, "ic_news.png", planets[0]));
-	        Items.add(new MenuItem(2, "ic_events.png", planets[1]));
-	        Items.add(new MenuItem(3, "ic_lunch.png", planets[2]));
-	        Items.add(new MenuItem(4, "ic_11an.png", planets[3]));
-	        Items.add(new MenuItem(5, "ic_info.png", planets[4]));
-	        Items.add(new MenuItem(6, "ic_suggest.png", planets[5]));
-	        Items.add(new MenuItem(7, "ic_faultreport.png", planets[6]));
+	        Items.add(new MenuItem(1, "ic_news.png", menuTitles[0]));
+	        Items.add(new MenuItem(2, "ic_events.png", menuTitles[1]));
+	        Items.add(new MenuItem(3, "ic_lunch.png", menuTitles[2]));
+	        Items.add(new MenuItem(4, "ic_11an.png", menuTitles[3]));
+	        Items.add(new MenuItem(5, "ic_info.png", menuTitles[4]));
+	        Items.add(new MenuItem(6, "ic_suggest.png", menuTitles[5]));
+	        Items.add(new MenuItem(7, "ic_faultreport.png", menuTitles[6]));
 
 
 	    }

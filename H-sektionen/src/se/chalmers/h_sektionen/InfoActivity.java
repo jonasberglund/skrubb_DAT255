@@ -1,12 +1,5 @@
 package se.chalmers.h_sektionen;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
-import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.text.Html;
@@ -15,21 +8,14 @@ import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
 import se.chalmers.h_sektionen.adapters.ContactCardArrayAdapter;
-import se.chalmers.h_sektionen.containers.ContactCard;
-import se.chalmers.h_sektionen.utils.CacheCompass;
-import se.chalmers.h_sektionen.utils.Constants;
+import se.chalmers.h_sektionen.containers.InfoContainer;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 /**
  * InfoActivity takes care about the info view
  */
 public class InfoActivity extends BaseActivity {
-	
-	private List<ContactCard> contactCards = null;
-	private StringBuilder htmlLinks = null;
-	private StringBuilder openingHoursString = null;
 	
 	/**
 	 * Sets the static "currentView" variable in the super class, BaseActivity.
@@ -39,7 +25,7 @@ public class InfoActivity extends BaseActivity {
 	protected void onResume() {
 		
 		setCurrentView(MenuItems.INFO);
-		new GetInfoTask().execute(Constants.INFO);
+		new GetInfoTask().execute();
 		
 		super.onResume();
 	}
@@ -48,7 +34,7 @@ public class InfoActivity extends BaseActivity {
 	/**
 	 * GetInfoTask loads the info data and sets up the view.
 	 */
-	private class GetInfoTask extends AsyncTask<String, String, Boolean> {
+	private class GetInfoTask extends AsyncTask<String, String, InfoContainer> {
 
 		/**
 		 * Runs super method and starts the load animation.
@@ -65,80 +51,12 @@ public class InfoActivity extends BaseActivity {
 		 * @return false if the parsing did not succeed, else true
 		 */
 		@Override
-		protected Boolean doInBackground(String... params) {
+		protected InfoContainer doInBackground(String... params) {
 			
 			if(!connectedToInternet())
-				return false;
+				return null;
 				
-			// Try to download and prepare all info data.
-			try {
-				JSONObject json = new JSONObject(LoadData.getJSON(params[0]));
-				
-				// Board members
-				JSONArray members = json.getJSONArray("members");
-				contactCards = new ArrayList<ContactCard>();
-	    		
-	    		for (int i=0; i<members.length(); i++) {
-	    			String name = members.getJSONObject(i).getString("name");
-	    			String position = members.getJSONObject(i).getString("position");
-	    			String email = members.getJSONObject(i).getString("email");
-	    			String picAddr = members.getJSONObject(i).getString("picture");
-	    			String phoneNumber = members.getJSONObject(i).getString("phone");
-	    			Bitmap pic;
-	    			
-	    			// Download the picture if it does not exists in the cache.
-	    			if(CacheCompass.getInstance(InfoActivity.this).getBitmapCache().get(picAddr)==null){
-	    				
-						PicLoaderThread pcl = new PicLoaderThread(picAddr);
-						pcl.start();
-						
-						try {
-							pcl.join();
-							pic = pcl.getPicture();
-							pic.prepareToDraw();
-							CacheCompass.getInstance(InfoActivity.this).getBitmapCache().put(picAddr, pic);
-						
-						} catch (Exception e) {
-							pic = null;
-						}
-						
-					} else {
-						pic = CacheCompass.getInstance(InfoActivity.this).getBitmapCache().get(picAddr);
-					}
-					
-	    			contactCards.add(new ContactCard(name, position, email, phoneNumber, pic));
-	    		}
-	    		
-	    		// Create a HTML-string containing links. The TextView can handle HTML
-	    		JSONArray links = json.getJSONArray("links");
-	    		htmlLinks = new StringBuilder();
-	    		
-	    		for (int i=0; i<links.length(); i++) {
-	    			htmlLinks.append("<a href=\"");
-	    			htmlLinks.append(links.getJSONObject(i).getString("href"));
-	    			htmlLinks.append("\">");
-	    			htmlLinks.append(links.getJSONObject(i).getString("name"));
-	    			htmlLinks.append("</a><br />");
-	    		}
-	    		
-	    		// Create a HTML-string containing opening hours. 
-	    		JSONArray openingHours = json.getJSONArray("openinghours");
-	    		openingHoursString = new StringBuilder();
-	    		
-	    		for (int i=0; i<openingHours.length(); i++) {
-	    			openingHoursString.append("<b>");
-	    			openingHoursString.append(openingHours.getJSONObject(i).getString("name"));
-	    			openingHoursString.append("</b>:<br />");
-	    			openingHoursString.append(openingHours.getJSONObject(i).getString("opentime"));
-	    			openingHoursString.append("<br />");
-	    		}
-	    		
-				return true;
-				
-			} catch (Exception e) {
-				// Incorrect JSON string.
-				return false;
-			}
+			return LoadData.loadInfo(InfoActivity.this);
 		}
 		
 		/**
@@ -147,11 +65,11 @@ public class InfoActivity extends BaseActivity {
 		 * @param done True if doInBackground could parse and prepare the data correct, else false.
 		 */
 		@Override
-		protected void onPostExecute(Boolean done) {
-			super.onPostExecute(done);
+		protected void onPostExecute(InfoContainer container) {
+			super.onPostExecute(container);
 			
 			// If there was no error (connection or JSON string error), set up the view.
-			if (done) {
+			if (container != null) {
 				getFrameLayout().removeAllViews();
 				getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
 				
@@ -163,12 +81,11 @@ public class InfoActivity extends BaseActivity {
 	    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
 	    		
 	    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
-	    		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
+	    		linksTextView.setText(Html.fromHtml(container.getHtmlLinks()));
 	    		
-	    		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
+	    		openingHoursTextView.setText(Html.fromHtml(container.getOpeningHoursString()));
 	    		contactListView.addHeaderView(linksLayout);
-	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
-			
+	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, container.getContactCards()));
 			} else {
 				setErrorView(getString(R.string.INFO_ERROR));
 			}

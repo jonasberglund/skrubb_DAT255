@@ -9,7 +9,7 @@ to change on the server side and let the app connect to an address that is fixed
 
 ##Information
 The information used in the InfoActivity is reached from 
-http://jpv-net.dyndns.org:1337/H-Sektionen/info/ and given as JSON. The information is stored in
+http://www.prokrastinera.com/hsektionen/info/ and given as JSON. The information is stored in
 a MySQL database and is easy to handle via the phpMyAdmin tool.
 
 ##News feed (Facebook)

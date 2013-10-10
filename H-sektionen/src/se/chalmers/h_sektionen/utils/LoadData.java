@@ -119,6 +119,7 @@ public class LoadData {
 				
 				if(!image.equals("")){
 					image = image.replace("s.jpg", "n.jpg");
+					image = image.replace("s.png", "n.png");
 				}
 				
 				//Add to posts if valid content

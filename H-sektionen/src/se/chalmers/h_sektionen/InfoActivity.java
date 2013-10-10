@@ -1,11 +1,5 @@
 package se.chalmers.h_sektionen;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
-
 import android.graphics.Color;
 import android.os.AsyncTask;
 import android.text.Html;
@@ -13,27 +7,38 @@ import android.text.method.LinkMovementMethod;
 import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.TextView;
-import se.chalmers.h_sektionen.utils.ContactCard;
-import se.chalmers.h_sektionen.utils.ContactCardArrayAdapter;
-import se.chalmers.h_sektionen.utils.JSONLoader;
+import se.chalmers.h_sektionen.adapters.ContactCardArrayAdapter;
+import se.chalmers.h_sektionen.containers.InfoContainer;
+import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
+/**
+ * InfoActivity takes care about the info view
+ */
 public class InfoActivity extends BaseActivity {
-	private List<ContactCard> contactCards = null;
-	private StringBuilder htmlLinks = null;
-	private StringBuilder openingHoursString = null;
 	
+	/**
+	 * Sets the static "currentView" variable in the super class, BaseActivity.
+	 * The method also start the AsyncTask that fetches the information data.
+	 */
 	@Override
 	protected void onResume() {
 		
 		setCurrentView(MenuItems.INFO);
-		new GetInfoTask().execute("http://jpv-net.dyndns.org:1337/H-Sektionen/info/");
+		new GetInfoTask().execute();
 		
 		super.onResume();
 	}
 	
-	private class GetInfoTask extends AsyncTask<String, String, Boolean> {
+	
+	/**
+	 * GetInfoTask loads the info data and sets up the view.
+	 */
+	private class GetInfoTask extends AsyncTask<String, String, InfoContainer> {
 
+		/**
+		 * Runs super method and starts the load animation.
+		 */
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
@@ -41,64 +46,30 @@ public class InfoActivity extends BaseActivity {
 			runLoadAnimation();
 		}
 		
+		/**
+		 * Requests a JSONObject, tries to parse it and puts the data into arrays.
+		 * @return false if the parsing did not succeed, else true
+		 */
 		@Override
-		protected Boolean doInBackground(String... params) {
-			JSONLoader jsonLoader =  new JSONLoader(params[0]);
-			JSONObject json = jsonLoader.getJSONFromUrl();
+		protected InfoContainer doInBackground(String... params) {
 			
-			if (json != null) {
-				try {
-					
-					// Board members
-					JSONArray members = json.getJSONArray("members");
-					contactCards = new ArrayList<ContactCard>();
-		    		
-		    		for (int i=0; i<members.length(); i++) {
-		    			String name = members.getJSONObject(i).getString("name");
-		    			String position = members.getJSONObject(i).getString("position");
-		    			String email = members.getJSONObject(i).getString("email");
-		    			String picAddr = members.getJSONObject(i).getString("picture");
-		    			String phoneNumber = members.getJSONObject(i).getString("phone");
-		    			contactCards.add(new ContactCard(name, position, email, phoneNumber, picAddr));
-		    		}
-		    		
-		    		//Links
-		    		JSONArray links = json.getJSONArray("links");
-		    		htmlLinks = new StringBuilder();
-		    		
-		    		for (int i=0; i<links.length(); i++) {
-		    			htmlLinks.append("<a href=\"");
-		    			htmlLinks.append(links.getJSONObject(i).getString("href"));
-		    			htmlLinks.append("\">");
-		    			htmlLinks.append(links.getJSONObject(i).getString("name"));
-		    			htmlLinks.append("</a><br />");
-		    		}
-		    		
-		    		// Opening hours
-		    		JSONArray openingHours = json.getJSONArray("openinghours");
-		    		openingHoursString = new StringBuilder();
-		    		
-		    		for (int i=0; i<openingHours.length(); i++) {
-		    			openingHoursString.append("<b>");
-		    			openingHoursString.append(openingHours.getJSONObject(i).getString("name"));
-		    			openingHoursString.append("</b>:<br />");
-		    			openingHoursString.append(openingHours.getJSONObject(i).getString("opentime"));
-		    			openingHoursString.append("<br />");
-		    		}
-		    		
-				} catch (Exception e) {
-					return false;
-				}
-			}
-			
-			return true;
+			if(!connectedToInternet())
+				return null;
+				
+			return LoadData.loadInfo(InfoActivity.this);
 		}
 		
+		/**
+		 * Sets up the view with data from doInBackground method.
+		 * If doInBackground returns false, an error view is going to show up.
+		 * @param done True if doInBackground could parse and prepare the data correct, else false.
+		 */
 		@Override
-		protected void onPostExecute(Boolean done) {
-			super.onPostExecute(done);
+		protected void onPostExecute(InfoContainer container) {
+			super.onPostExecute(container);
 			
-			if (done) {
+			// If there was no error (connection or JSON string error), set up the view.
+			if (container != null) {
 				getFrameLayout().removeAllViews();
 				getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
 				
@@ -110,14 +81,13 @@ public class InfoActivity extends BaseActivity {
 	    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
 	    		
 	    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
-	    		linksTextView.setText(Html.fromHtml(htmlLinks.toString()));
+	    		linksTextView.setText(Html.fromHtml(container.getHtmlLinks()));
 	    		
-	    		openingHoursTextView.setText(Html.fromHtml(openingHoursString.toString()));
+	    		openingHoursTextView.setText(Html.fromHtml(container.getOpeningHoursString()));
 	    		contactListView.addHeaderView(linksLayout);
-	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, contactCards));
-			
+	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, container.getContactCards()));
 			} else {
-				setErrorView();
+				setErrorView(getString(R.string.INFO_ERROR));
 			}
 		}
 		

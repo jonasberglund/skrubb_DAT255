@@ -2,67 +2,132 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 
-import se.chalmers.h_sektionen.utils.DataSource;
+import se.chalmers.h_sektionen.adapters.NewsAdapter;
+import se.chalmers.h_sektionen.containers.NewsItem;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
-import se.chalmers.h_sektionen.utils.NewsAdapter;
-import se.chalmers.h_sektionen.utils.NewsItem;
+import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
+
 import android.os.AsyncTask;
+import android.os.Bundle;
+
+import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
 	
-	NewsAdapter newsAdapter;
-	ListView newsFeed;
-    
+	private NewsAdapter newsAdapter;
+	private ListView newsFeed;
+	private boolean initializeListView;
+	private int descending;
+	
+	/**
+	 * Superclass method onCreate
+	 */
+	@Override
+	 protected void onCreate(Bundle savedInstanceState){	
+		super.onCreate(savedInstanceState);
+		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
+	}
+	
+	
+	/**
+	 * Superclass method onResume
+	 */
 	@Override
 	protected void onResume() {
 
 		super.onResume();
+		initializeListView = true;
 		setCurrentView(MenuItems.NEWS);
 		createNewsView();
+		descending = 0;
 	}
     
+	/**
+	 * Creates news view GUI
+	 */
     private void createNewsView(){
-    	getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
-		
-		newsFeed = (ListView) findViewById(R.id.news_feed);
-		
-		refresh(new DataSource<ArrayList<NewsItem>>(){
-			@Override
-			public ArrayList<NewsItem> getData(){
-				return LoadData.loadNews();
-			}
-		});
+    	
+    	if (connectedToInternet()){
+	    	getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
+			
+			newsFeed = (ListView) findViewById(R.id.news_feed);
+			
+			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
+				@Override
+				protected void doOnScrollCompleted() {
+					new LoadNewsInBg().execute(++descending);
+					
+				}});
+			
+			new LoadNewsInBg().execute(descending);
+    	} else {
+    		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+    	}
     }
     
-	public void refresh(DataSource<ArrayList<NewsItem>> ds){
-		new LoadNews().execute(ds);
-	}
-    
-    private class LoadNews extends AsyncTask<DataSource<ArrayList<NewsItem>>, String, String>{
+    /**
+     * AsyncTask for loading news feed posts in background.
+     */
+    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
 		
 		
+    	/**
+		 * Superclass method onPreExecte
+		 */
 		@Override
 		protected void onPreExecute(){
-			runTransparentLoadAnimation();
+			if (initializeListView){
+				runTransparentLoadAnimation();
+			}
 		}
 		
+		/**
+		 * Superclass method doInBackground
+		 */
 		@Override
-		protected String doInBackground(DataSource<ArrayList<NewsItem>>... ds) {
+		protected Boolean doInBackground(Integer... descending) {	
+			try {
+				newsAdapter.addAll(LoadData.loadNews(descending[0]));
+				return true;
+			} catch (Exception e){
+				return false;
+			}
+		}
+		
+		/**
+		 * Superclass method onPostExecute
+		 */
+		@Override
+        protected void onPostExecute(Boolean feedLoadedSuccessfully){
 			
-			ArrayList<NewsItem> list = ds[0].getData();
-			newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, list);
-						
-			return "Done";
-		}
-		
-		@Override
-        protected void onPostExecute(String s){
-
-			newsFeed.setAdapter(newsAdapter);
-			stopAnimation();
+			if (feedLoadedSuccessfully){
+				if (initializeListView){
+					stopAnimation();
+					
+					//Initialize header
+					ImageView imgHeader = new ImageView(MainActivity.this);
+					imgHeader.setAdjustViewBounds(true);
+					imgHeader.setImageResource(R.drawable.news);
+					
+					//Intialize footer
+					ImageView imgFooter = new ImageView(MainActivity.this);
+					imgFooter.setAdjustViewBounds(true);
+					imgFooter.setImageResource(R.drawable.loadmore);
+					
+					//Add to list view
+					newsFeed.addHeaderView(imgHeader,null,false);
+					newsFeed.addFooterView(imgFooter,null,false);
+					newsFeed.setAdapter(newsAdapter);
+					initializeListView = false;
+				} else {
+					newsAdapter.notifyDataSetChanged();
+				}
+			} else {
+				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
+			}
 			
 		}
     }

@@ -11,6 +11,7 @@ import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
@@ -112,14 +113,12 @@ public class MainActivity extends BaseActivity {
 					imgHeader.setAdjustViewBounds(true);
 					imgHeader.setImageResource(R.drawable.news);
 					
-					//Intialize footer
-					ImageView imgFooter = new ImageView(MainActivity.this);
-					imgFooter.setAdjustViewBounds(true);
-					imgFooter.setImageResource(R.drawable.loadmore);
+					//Initialize footer
+					View aniFooter = getLayoutInflater().inflate(R.layout.footer_animation, null);
 					
 					//Add to list view
 					newsFeed.addHeaderView(imgHeader,null,false);
-					newsFeed.addFooterView(imgFooter,null,false);
+					newsFeed.addFooterView(aniFooter,null,false);
 					newsFeed.setAdapter(newsAdapter);
 					initializeListView = false;
 				} else {

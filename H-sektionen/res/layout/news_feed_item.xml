@@ -9,6 +9,8 @@
         android:layout_width="wrap_content"
         android:layout_gravity="left|top" 
         android:scaleType="centerCrop"
+      	android:contentDescription="@string/Background"
+        
     />
     
     <TextView
@@ -26,7 +28,7 @@
 	    android:layout_height="wrap_content"
 	    android:padding="10dp"
 	    android:gravity="center"
-	    android:textSize= "10sp"
+	    android:textSize= "12sp"
 	    android:textStyle="italic">
     </TextView>
 </LinearLayout>

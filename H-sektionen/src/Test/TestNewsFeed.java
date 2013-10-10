@@ -10,6 +10,8 @@ import java.net.URLConnection;
 import org.json.simple.parser.JSONParser;
 import org.junit.Test;
 
+import se.chalmers.h_sektionen.utils.Constants;
+
 
 
 import junit.framework.TestCase;
@@ -44,7 +46,7 @@ public class TestNewsFeed extends TestCase {
 	
 	public boolean testJson() throws IOException{
 		
-		URL oracle = new URL("http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/");
+		URL oracle = new URL(Constants.NEWSFEED);
 		URLConnection yc = oracle.openConnection();
 		BufferedReader in = new BufferedReader(new InputStreamReader(
 				yc.getInputStream()));
@@ -83,7 +85,7 @@ public class TestNewsFeed extends TestCase {
 		
 
 		try {
-		    URL myURL = new URL("http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/");
+		    URL myURL = new URL(Constants.NEWSFEED);
 		    URLConnection myURLConnection = myURL.openConnection();
 		    myURLConnection.connect();
 		} 

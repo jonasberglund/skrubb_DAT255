@@ -84,7 +84,7 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 							pcl.join();
 							image.setImageBitmap(pcl.getPicture());
 							CacheCompass.getInstance(getContext()).getBitmapCache().put(item.getImageAdr(), pcl.getPicture());
-						} catch (InterruptedException e) {}	
+						} catch (Exception e) {}	
 					} else {
 						//If already in cache, get from cache
 						image.setImageBitmap(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr()));

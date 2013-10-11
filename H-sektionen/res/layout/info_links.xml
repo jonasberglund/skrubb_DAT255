@@ -13,13 +13,15 @@
 
     <TextView
         android:id="@+id/opening_hours_header"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:text="@string/opening_hours_header"
-        android:textSize="@dimen/h2"
-        android:paddingTop="10dp"
+    	android:background="@color/pinkish"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
-    	android:paddingRight="10dp" />
+    	android:paddingRight="10dp"
+        android:textSize="20sp" />
     
     <TextView
         android:id="@+id/opening_hours"
@@ -31,27 +33,34 @@
     
     <TextView
         android:id="@+id/links_header"
-        android:layout_width="wrap_content"
+        android:background="@color/pinkish"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/links_header"
-        android:textSize="@dimen/h2"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
-    	android:paddingRight="10dp" />
+    	android:paddingRight="10dp"
+        android:textSize="20sp"
+        android:text="@string/links_header"/>
 
     <TextView
         android:id="@+id/links"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="15sp"
         android:paddingLeft="10dp"
     	android:paddingRight="10dp" />
     
     <TextView
         android:id="@+id/board_members_header"
-        android:layout_width="wrap_content"
+        android:background="@color/pinkish"
+        android:textColor="@color/white"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:text="@string/board_members_header"
-        android:textSize="@dimen/h2"
+        android:layout_marginTop="10dp"
         android:paddingLeft="10dp"
-    	android:paddingRight="10dp" />
+    	android:paddingRight="10dp"
+        android:textSize="20sp"
+        android:text="@string/board_members_header"/>
     
 </LinearLayout>

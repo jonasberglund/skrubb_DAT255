@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -45,7 +46,9 @@ public class BaseActivity extends ActionBarActivity {
      * and the menu drawer.
      */
     @Override
-    protected void onStart() {
+    protected void onCreate(Bundle savedInstance) {
+    	super.onCreate(savedInstance);
+    	
     	setContentView(R.layout.activity_main);        
         setupActionBar();
         
@@ -58,17 +61,12 @@ public class BaseActivity extends ActionBarActivity {
             ids[i] = Integer.toString(i+1);
         }
         MenuArrayAdapter adapter = new MenuArrayAdapter(this,R.layout.row_menu, ids);
+       
         mDrawerList.setAdapter(adapter);
-        
-        
-        //menuTitles = getResources().getStringArray(R.array.menu_titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setCacheColorHint(Color.BLACK);
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
-        // Set the adapter for the list view
-        //mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
@@ -82,8 +80,6 @@ public class BaseActivity extends ActionBarActivity {
 		
 		//Parse.com track statistics around application opens
 		ParseAnalytics.trackAppOpened(getIntent());
-        
-        super.onStart();
     }
     
     /**
@@ -147,11 +143,6 @@ public class BaseActivity extends ActionBarActivity {
     	
     	LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	View v = inflator.inflate(R.layout.action_bar_title, null);
-
-//    	Om vi vill ha  schysst font till titlen tydligen
-//    	TextView titleTV = (TextView) v.findViewById(R.id.title);
-//    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/your_custom_font.ttf");
-//    	titleTV.setTypeface(font);
     	
     	ab.setCustomView(v);
     	

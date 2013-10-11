@@ -4,10 +4,11 @@ import java.util.List;
 
 import org.json.JSONException;
 
-
 import se.chalmers.h_sektionen.adapters.EventsArrayAdapter;
 import se.chalmers.h_sektionen.containers.Event;
-import se.chalmers.h_sektionen.utils.*;
+import se.chalmers.h_sektionen.utils.ExpandAnimation;
+import se.chalmers.h_sektionen.utils.LoadData;
+import se.chalmers.h_sektionen.utils.MenuItems;
 
 import android.os.AsyncTask;
 import android.view.View;

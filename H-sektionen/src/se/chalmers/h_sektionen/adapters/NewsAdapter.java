@@ -1,6 +1,7 @@
 package se.chalmers.h_sektionen.adapters;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import se.chalmers.h_sektionen.R;
 import se.chalmers.h_sektionen.containers.NewsItem;
@@ -8,7 +9,6 @@ import se.chalmers.h_sektionen.utils.CacheCompass;
 import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 import android.content.Context;
-import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +24,21 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 		super(context, resource, objects);
 		this.objects = objects;
 	}
+	 
+	public ArrayList<NewsItem> getItems(){
+		return objects;
+	}
+	
+	/**
+	 * Overrided and added manually because method unsupported in target API.
+	 */
+	@Override
+	public void addAll(Collection<? extends NewsItem> collection){
+		for (NewsItem item : collection){
+			objects.add(item);
+		}
+	}
+	
 	
 	public View getView(int position, View convertView, ViewGroup parent){
 		
@@ -52,26 +67,29 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 			if (date != null){
 				date.setText(item.getDate());
 			}
-			if (image != null && (item.getImageAdr()!=null && !item.getImageAdr().equals(""))){
+			if (image != null){
 				
-				if(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr())==null){
+				//Remove current image
+				image.setImageBitmap(null);
 				
-					PicLoaderThread pcl =new PicLoaderThread(item.getImageAdr());
-					pcl.start();
-					try {
-						pcl.join();
-						image.setImageBitmap(pcl.getPicture());
-						CacheCompass.getInstance(getContext()).getBitmapCache().put(item.getImageAdr(), pcl.getPicture());
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+				//Check if post has image adress
+				if (item.getImageAdr()!=null && !item.getImageAdr().equals("")) {
 					
+					//Download image if not in cache
+					if(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr())==null){
+					
+						PicLoaderThread pcl =new PicLoaderThread(item.getImageAdr());
+						pcl.start();
+						try {
+							pcl.join();
+							image.setImageBitmap(pcl.getPicture());
+							CacheCompass.getInstance(getContext()).getBitmapCache().put(item.getImageAdr(), pcl.getPicture());
+						} catch (Exception e) {}	
+					} else {
+						//If already in cache, get from cache
+						image.setImageBitmap(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr()));
+					}
 				}
-				else
-					image.setImageBitmap(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr()));
-				//if(item.getImageAdr())
-				
 			}
 		}
 		

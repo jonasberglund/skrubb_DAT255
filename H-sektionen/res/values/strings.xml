@@ -16,7 +16,6 @@
 
     <string name="action_side_menu"></string>
     <string name="loading">Laddar...</string>
-    <string name="error">Något har gått fel...</string>
     <string name="title_activity_lunch">Lunch</string>
     <string name="app_id">161725214029162</string>
     <string name="hello_world">Hello world!</string>
@@ -43,7 +42,8 @@
 	<string name="suggest_emailReceiver">foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com</string>
 	<string name="suggest_subject">Förslag till H-sektionen</string>
 	<string name="suggest_noEmailClientFound">"Det verkar inte finnas någon E-mail applikation på din telefon."</string>	
-
+	<string name="suggest_button_secret">       </string>
+		
     <string name="faultreport_buildingEmail">8800@chalmers.se</string>
     <string name="faultreport_dataEmail">support@chalmers.se</string>
     <string name="faultreport_noEmailClientFound">Det verkar inte finnas någon E-mail applikation på din telefon.</string>
@@ -53,7 +53,7 @@
     <string name="faultreport_edit_message">Skriv här</string>
     <string name="faultreport_button_send">Skicka</string>
     <string name="faultreport_infoHeaderText">Vad kan du anmäla och var? Se nedan!</string>
-    <string name="faultreport_checkbox_text">Datorproblem? Kryssa i rutan så skickas det till data-enheten</string>
+    <string name="faultreport_checkbox_text">Datorproblem? Kryssa i rutan så skickas det till data-enheten.</string>
     <string name="faultreport_guardHeaderText">Väktare:</string>
     <string name="faultreport_guardText">Vid behov av kontakt med väktare kan man ringa 772 44 99, vid svar begär att bli kopplad till "Chalmersväktaren". Väktarna nås endast utanför ordinarie arbetstider.</string>
 	<string name="faultreport_emergencyHeaderText">Akuta fastighetsfel:</string>
@@ -64,7 +64,11 @@
     <string name="faultreport_lightingText">Underhåll av belysning utförs varje sommar av serviceavdelningen. Fel på belysningen under läsperioden i salar, grupprum och föreningslokaler anmäls till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se eller i fältet ovan.</string>
     <string name="faultreport_furnitureHeaderText">Möbler och utrustning:</string>
     <string name="faultreport_furnitureText">Felanmälan till Serviceavdelningen tel 031 772 88 00 e-post  8800@chalmers.se eller i fältet ovan.</string>
-
+	<string name="faultreport_appProblemHeaderText">Fel eller buggar i appen:</string>
+	<string name="faultreport_appProblemText">Skicka gärna alla detaljer om buggar i H-sektionsappen via förslagslådan.</string>
+	
+	<string name="video">http://www.youtube.com/watch?v=eE8PISJ_0jY</string>
+	
     <color name="pinkish">#C43D82</color>
     <color name="white">#FFFFFF</color>
     

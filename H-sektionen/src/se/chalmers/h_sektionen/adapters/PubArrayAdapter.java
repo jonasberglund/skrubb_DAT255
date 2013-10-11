@@ -51,6 +51,7 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 				holder.description  = (TextView)row.findViewById(R.id.descriptionPub);
 				holder.place = (TextView)row.findViewById(R.id.placePub);
 				holder.date = (TextView)row.findViewById(R.id.datePub);
+				holder.fullDate = (TextView)row.findViewById(R.id.full_datePub);
 				
 				// Resets the toolbar to be closed
 			    View toolbar = row.findViewById(R.id.toolbarPubs);
@@ -66,9 +67,10 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 		
 		Event pub = pubs.get(position);
 		holder.title.setText(pub.getTitle());
-		holder.description.setText(pub.getDescription());
+		holder.description.setText(pub.getDescription() + "\n");
 		//holder.place.setText("\n Var: " + pub.getPlace());
 		holder.date.setText(String.valueOf(pub.getDate()) );
+		holder.fullDate.setText(String.valueOf(pub.getFullDate()) + "\n");
 
 		return row;
 	}
@@ -79,6 +81,7 @@ public class PubArrayAdapter extends ArrayAdapter<Event> {
 		TextView description;
 		TextView place;
 		TextView date;
+		TextView fullDate;
 	}
 	
 

@@ -73,10 +73,11 @@
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
-        	android:layout_marginLeft="5dp"
-        	android:layout_marginRight="5dp"
+        	android:paddingLeft="5dp"
+    		android:paddingRight="5dp"
         	android:textSize="15sp"
         	android:text="@string/faultreport_guardHeaderText" />
+    	
     	<TextView
     	    android:id="@+id/faultreport_guardTextView"
         	android:layout_width="wrap_content"
@@ -94,8 +95,8 @@
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
-        	android:layout_marginLeft="5dp"
-        	android:layout_marginRight="5dp"
+        	android:paddingLeft="5dp"
+    		android:paddingRight="5dp"
         	android:textSize="15sp"
         	android:text="@string/faultreport_emergencyHeaderText" />
     	
@@ -116,8 +117,8 @@
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
-        	android:layout_marginLeft="5dp"
-        	android:layout_marginRight="5dp"
+            android:paddingLeft="5dp"
+    		android:paddingRight="5dp"
         	android:textSize="15sp"
         	android:text="@string/faultreport_computerHeaderText" />
     	
@@ -138,8 +139,8 @@
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
-        	android:layout_marginLeft="5dp"
-        	android:layout_marginRight="5dp"
+        	android:paddingLeft="5dp"
+    		android:paddingRight="5dp"
         	android:textSize="15sp"
         	android:text="@string/faultreport_lightingHeaderText" />
     	
@@ -160,9 +161,9 @@
         	android:layout_width="fill_parent"
         	android:layout_height="wrap_content"
         	android:layout_marginTop="10dp"
-        	android:layout_marginLeft="5dp"
-        	android:layout_marginRight="5dp"
-        	android:textSize="15sp"
+        	android:paddingLeft="5dp"
+    		android:paddingRight="5dp"
+    		android:textSize="15sp"
         	android:text="@string/faultreport_furnitureHeaderText" />
     	
     	<TextView
@@ -174,6 +175,27 @@
         	android:layout_marginRight="5dp"
         	android:textSize="12sp"
         	android:text="@string/faultreport_furnitureText" />	
-        	
+        <TextView
+        	android:id="@+id/faultreport_appProblemHeaderTextView"
+        	android:background="@color/pinkish"
+        	android:textColor="@color/white"
+        	android:layout_width="fill_parent"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="10dp"
+        	android:paddingLeft="5dp"
+    		android:paddingRight="5dp"
+    		android:textSize="15sp"
+        	android:text="@string/faultreport_appProblemHeaderText" />
+    	
+    	<TextView
+    	    android:id="@+id/faultreport_appProblemTextView"
+        	android:layout_width="wrap_content"
+        	android:layout_height="wrap_content"
+        	android:layout_marginTop="5dp"
+        	android:layout_marginLeft="5dp"
+        	android:layout_marginRight="5dp"
+        	android:textSize="12sp"
+        	android:text="@string/faultreport_appProblemText" />	
+        		
 	</LinearLayout>
 </ScrollView>

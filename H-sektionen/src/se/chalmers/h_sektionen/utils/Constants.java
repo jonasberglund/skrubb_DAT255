@@ -14,13 +14,17 @@ public class Constants {
     		"sortorder=ascending&" +
     		"futureevents=true&";
 	
-	public static final String NEWSFEED = "http://jpv-net.dyndns.org:1337/H-Sektionen/newsfeed/";
+
 	public static final String SUGGESTEMAIL = "foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com";
-	public static final String INFO = "http://jpv-net.dyndns.org:1337/H-Sektionen/info/";
+//	public static final String INFO = "http://jpv-net.dyndns.org:1337/H-Sektionen/info/";
+	public static final String NEWSFEED = "http://www.prokrastinera.com/hsektionen/newsfeed/?week=";
+	public static final String INFO = "http://www.prokrastinera.com/hsektionen/info/";
     
-	public static final String SERVER_ADDRESS = "http://jpv-net.dyndns.org:1337";
-	public static final String[] LUNCH_URLS = {"http://www.lindholmen.se/sv/restaurang/ls-kitchen"
-		, "http://www.chalmerskonferens.se/dagens-menyer/lindholmen/","http://www.lindholmen.se/sv/restaurang/mimolett"
-		, "http://www.lindholmen.se/sv/restaurang/bistrot", "http://www.lindholmen.se/sv/restaurang/restaurang-aran"};
-	public static final String KOKBOKLUNCH = "http://www.chalmerskonferens.se/dagens-menyer/lindholmen/";
+	public static final String SERVER_ADDRESS = "http://www.prokrastinera.com/";
+	
+	public static final String LS_KITCHEN_TITLE = "L's Kitchen";
+	public static final String KOKBOKEN_TITLE = "Kokboken";
+	public static final String LS_KITCHEN_RSS = "http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss";
+	public static final String KOKBOKEN_BASE = "http://cm.lskitchen.se/lindholmen/kokboken/sv/";
+	
 }

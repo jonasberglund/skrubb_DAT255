@@ -4,40 +4,53 @@ import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.adapters.NewsAdapter;
 import se.chalmers.h_sektionen.containers.NewsItem;
-import se.chalmers.h_sektionen.utils.CacheCompass;
-import se.chalmers.h_sektionen.utils.Constants;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
+import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
+
 import android.os.AsyncTask;
 import android.os.Bundle;
 
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
 	
-	NewsAdapter newsAdapter;
-	ListView newsFeed;
-	private CacheCompass cacheCompass;
+	private NewsAdapter newsAdapter;
+	private ListView newsFeed;
+	private View aniFooter;
+	private boolean loadingFirstTime;
+	private boolean currentlyLoading;
+	private int descending;
 	
-	
+	/**
+	 * Superclass method onCreate
+	 */
 	@Override
-	 protected void onCreate(Bundle savedInstanceState){
-		
+	 protected void onCreate(Bundle savedInstanceState){	
 		super.onCreate(savedInstanceState);
-		cacheCompass = CacheCompass.getInstance(this);
-		
+		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
+		loadingFirstTime = true;
+		currentlyLoading = false;
+		setCurrentView(MenuItems.NEWS);
+		createNewsView();
+		descending = 0;
 	}
 	
 	
+	/**
+	 * Superclass method onResume
+	 */
 	@Override
 	protected void onResume() {
 
 		super.onResume();
-		setCurrentView(MenuItems.NEWS);
-		createNewsView();
 	}
     
+	/**
+	 * Creates news view GUI
+	 */
     private void createNewsView(){
     	
     	if (connectedToInternet()){
@@ -45,41 +58,94 @@ public class MainActivity extends BaseActivity {
 			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
 			
 			newsFeed = (ListView) findViewById(R.id.news_feed);
+			aniFooter = getLayoutInflater().inflate(R.layout.footer_animation, null);
 			
-			new LoadNewsInBg().execute("");
+			//Initialize header
+			ImageView imgHeader = new ImageView(MainActivity.this);
+			imgHeader.setAdjustViewBounds(true);
+			imgHeader.setImageResource(R.drawable.news);
+
+			//Add to list view
+			newsFeed.addHeaderView(imgHeader,null,false);
+			newsFeed.setAdapter(newsAdapter);
+			
+			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
+				@Override
+				protected void doOnScrollCompleted() {
+					if (!currentlyLoading){
+						new LoadNewsInBg().execute(++descending);
+					}			
+				}});
+			
+			new LoadNewsInBg().execute(descending);
     	} else {
     		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
     }
     
-    private class LoadNewsInBg extends AsyncTask<String, String, Boolean>{
+    /**
+     * Adds a loading animation to the listview footer.
+     */
+    private void addFooterAnimation(){
+		newsFeed.addFooterView(aniFooter,null,false);
+    }
+    
+    /**
+     * Removes loading animation from listview footer.
+     */
+    private void removeFooterAnimation(){
+    	newsFeed.removeFooterView(aniFooter);
+    }
+    
+    /**
+     * AsyncTask for loading news feed posts in background.
+     */
+    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
 		
 		
+    	/**
+		 * Superclass method onPreExecte
+		 */
 		@Override
 		protected void onPreExecute(){
-			runTransparentLoadAnimation();
-		}
-		
-		@Override
-		protected Boolean doInBackground(String... s) {
-			try {
-				ArrayList<NewsItem> list = LoadData.loadNews();
-				newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, list);
-				return true;
-			} catch (Exception e){return false;}
-						
-		}
-		
-		@Override
-        protected void onPostExecute(Boolean success){
-			stopAnimation();
 			
-			if (success){
-				ImageView img = new ImageView(MainActivity.this);
-				img.setAdjustViewBounds(true);
-				img.setImageResource(R.drawable.news);
-				newsFeed.addHeaderView(img,null,false);
-				newsFeed.setAdapter(newsAdapter);
+			if (loadingFirstTime){
+				runTransparentLoadAnimation();
+			} else {
+				addFooterAnimation();
+			}
+		}
+		
+		/**
+		 * Superclass method doInBackground
+		 */
+		@Override
+		protected Boolean doInBackground(Integer... descending) {	
+			try {
+				newsAdapter.addAll(LoadData.loadNews(descending[0]));
+				return true;
+			} catch (Exception e){
+				return false;
+			}
+		}
+		
+		/**
+		 * Superclass method onPostExecute
+		 */
+		@Override
+        protected void onPostExecute(Boolean feedLoadedSuccessfully){
+			
+			if (feedLoadedSuccessfully){
+				if (loadingFirstTime){
+					stopAnimation();
+					loadingFirstTime = false;
+				} else {
+					removeFooterAnimation();
+				}
+				
+				currentlyLoading = false;
+				newsAdapter.notifyDataSetChanged();
+				
 			} else {
 				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
 			}

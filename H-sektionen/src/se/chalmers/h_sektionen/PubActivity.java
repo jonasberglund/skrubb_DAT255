@@ -9,6 +9,7 @@ import se.chalmers.h_sektionen.containers.Event;
 import se.chalmers.h_sektionen.utils.ExpandAnimation;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
+
 import android.os.AsyncTask;
 import android.view.View;
 import android.widget.AdapterView;

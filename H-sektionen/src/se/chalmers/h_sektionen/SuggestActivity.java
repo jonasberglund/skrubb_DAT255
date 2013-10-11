@@ -68,4 +68,9 @@ public class SuggestActivity extends BaseActivity {
 			Toast.makeText(SuggestActivity.this,getString(R.string.suggest_noEmailClientFound), Toast.LENGTH_SHORT).show();
 		}
 	}
+	
+	public void startSecret(View view){
+		Intent intent = new Intent(Intent.ACTION_VIEW ,Uri.parse(getString(R.string.video)));
+		startActivity(intent);
+	}
 }

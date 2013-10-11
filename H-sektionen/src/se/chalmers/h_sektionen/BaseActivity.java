@@ -10,6 +10,7 @@ import android.graphics.Color;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.Build;
+import android.os.Bundle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
@@ -45,7 +46,9 @@ public class BaseActivity extends ActionBarActivity {
      * and the menu drawer.
      */
     @Override
-    protected void onStart() {
+    protected void onCreate(Bundle savedInstanceState) {
+    	super.onCreate(savedInstanceState);
+    	
     	setContentView(R.layout.activity_main);        
         setupActionBar();
         
@@ -82,8 +85,6 @@ public class BaseActivity extends ActionBarActivity {
 		
 		//Parse.com track statistics around application opens
 		ParseAnalytics.trackAppOpened(getIntent());
-        
-        super.onStart();
     }
     
     /**

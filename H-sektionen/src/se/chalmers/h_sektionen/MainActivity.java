@@ -19,7 +19,9 @@ public class MainActivity extends BaseActivity {
 	
 	private NewsAdapter newsAdapter;
 	private ListView newsFeed;
-	private boolean initializeListView;
+	private View aniFooter;
+	private boolean loadingFirstTime;
+	private boolean currentlyLoading;
 	private int descending;
 	
 	/**
@@ -29,6 +31,11 @@ public class MainActivity extends BaseActivity {
 	 protected void onCreate(Bundle savedInstanceState){	
 		super.onCreate(savedInstanceState);
 		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
+		loadingFirstTime = true;
+		currentlyLoading = false;
+		setCurrentView(MenuItems.NEWS);
+		createNewsView();
+		descending = 0;
 	}
 	
 	
@@ -39,10 +46,6 @@ public class MainActivity extends BaseActivity {
 	protected void onResume() {
 
 		super.onResume();
-		initializeListView = true;
-		setCurrentView(MenuItems.NEWS);
-		createNewsView();
-		descending = 0;
 	}
     
 	/**
@@ -55,18 +58,43 @@ public class MainActivity extends BaseActivity {
 			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
 			
 			newsFeed = (ListView) findViewById(R.id.news_feed);
+			aniFooter = getLayoutInflater().inflate(R.layout.footer_animation, null);
+			
+			//Initialize header
+			ImageView imgHeader = new ImageView(MainActivity.this);
+			imgHeader.setAdjustViewBounds(true);
+			imgHeader.setImageResource(R.drawable.news);
+
+			//Add to list view
+			newsFeed.addHeaderView(imgHeader,null,false);
+			newsFeed.setAdapter(newsAdapter);
 			
 			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
 				@Override
 				protected void doOnScrollCompleted() {
-					new LoadNewsInBg().execute(++descending);
-					
+					if (!currentlyLoading){
+						new LoadNewsInBg().execute(++descending);
+					}			
 				}});
 			
 			new LoadNewsInBg().execute(descending);
     	} else {
     		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
+    }
+    
+    /**
+     * Adds a loading animation to the listview footer.
+     */
+    private void addFooterAnimation(){
+		newsFeed.addFooterView(aniFooter,null,false);
+    }
+    
+    /**
+     * Removes loading animation from listview footer.
+     */
+    private void removeFooterAnimation(){
+    	newsFeed.removeFooterView(aniFooter);
     }
     
     /**
@@ -80,8 +108,11 @@ public class MainActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPreExecute(){
-			if (initializeListView){
+			
+			if (loadingFirstTime){
 				runTransparentLoadAnimation();
+			} else {
+				addFooterAnimation();
 			}
 		}
 		
@@ -105,25 +136,16 @@ public class MainActivity extends BaseActivity {
         protected void onPostExecute(Boolean feedLoadedSuccessfully){
 			
 			if (feedLoadedSuccessfully){
-				if (initializeListView){
+				if (loadingFirstTime){
 					stopAnimation();
-					
-					//Initialize header
-					ImageView imgHeader = new ImageView(MainActivity.this);
-					imgHeader.setAdjustViewBounds(true);
-					imgHeader.setImageResource(R.drawable.news);
-					
-					//Initialize footer
-					View aniFooter = getLayoutInflater().inflate(R.layout.footer_animation, null);
-					
-					//Add to list view
-					newsFeed.addHeaderView(imgHeader,null,false);
-					newsFeed.addFooterView(aniFooter,null,false);
-					newsFeed.setAdapter(newsAdapter);
-					initializeListView = false;
+					loadingFirstTime = false;
 				} else {
-					newsAdapter.notifyDataSetChanged();
+					removeFooterAnimation();
 				}
+				
+				currentlyLoading = false;
+				newsAdapter.notifyDataSetChanged();
+				
 			} else {
 				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));
 			}

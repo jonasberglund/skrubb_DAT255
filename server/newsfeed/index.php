@@ -1,39 +1,44 @@
 
 
 <?php
+// NewsFeed: Revive a post from H-sektionen with the week number corresponding to the date span for the news post
+// week = 0 is the current week.
 
+//If there is no variable in url the var_week=0 
+if(count($_GET)==0){
+$var_week=0;
+}
+else{$var_week=$_GET['week'];}
+
+//Produce a date span of three weeks
+$var_week=-3*$var_week;
+$untilWeek ="{$var_week} Week";
+$var_week=-3+$var_week;
+$sinceWeek ="{$var_week} Week";
+
+$until=strtotime($untilWeek);
+$since=strtotime($sinceWeek);
+
+//Since
+$yearS = date('Y', $since);
+$monthS = date('m', $since);
+$dayS = date('d', $since);
+$sinceDate=''.$yearS . '-' . $monthS . '-' . $dayS;
+//Until
+$yearU = date('Y', $until);
+$monthU = date('m', $until);
+$dayU = date('d', $until);
+$untilDate=''.$yearU . '-' . $monthU . '-' . $dayU;
+
+//Get the apptoken with client id and appsecret
 $str = file_get_contents('https://graph.facebook.com/oauth/access_token?client_id=161725214029162&client_secret=bace54110f0ba764dd7f98af20f5bfea&grant_type=client_credentials');
 $tooken =explode("=",$str);
-//echo $tooken[0];
-echo $tooken[1];  //token finns i $tooken[1]
+//access token is now in $tooken[1]
+
+//Get newsfeed from facebook, limit the numver of post to the datespann. 
+$pageContent = file_get_contents('https://graph.facebook.com/109143889143301/posts?fields=id,name,message,picture&limit=25&since='.$sinceDate.'&until='.$untilDate.'&access_token='.$tooken[1]); 
+
+//Print the result
+echo $pageContent;	
 
 
-$pageContent = file_get_contents('https://graph.facebook.com/109143889143301/posts?fields=id,name,message&limit=5&access_token='.$tooken[1]); 
- // You can use your app token
-
-  //$parsedJson  = json_decode($pageContent); // decode JSON
-	
-	echo $pageContent;	
-	//echo json_encode($parsedJson);
-		/*
-		echo $id = $parsedJson->data[0]->id; // this echos only the latest post ID
-		echo $name = $parsedJson->data[0]->name;
-		echo $created_time = $parsedJson->data[0]->created_time;
-		echo $message = $parsedJson->data[0]->message;
-		
-		echo $id = $parsedJson->data[1]->id; // this echos only the latest post ID
-		echo $name = $parsedJson->data[1]->name;
-		echo $created_time = $parsedJson->data[1]->created_time;
-		echo $message = $parsedJson->data[1]->message;
-		
-		echo $id = $parsedJson->data[2]->id; // this echos only the latest post ID
-		echo $name = $parsedJson->data[2]->name;
-		echo $created_time = $parsedJson->data[2]->created_time;
-		echo $message = $parsedJson->data[2]->id->message;
-		
-		echo $id = $parsedJson->data[3]->id; // this echos only the latest post ID
-		echo $name = $parsedJson->data[3]->name;
-		echo $created_time = $parsedJson->data[3]->created_time;
-		echo $message = $parsedJson->data[3]->id->message;
-		*/
-?>

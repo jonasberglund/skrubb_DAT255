@@ -18,7 +18,7 @@ import junit.framework.TestCase;
 			super.tearDown();
 		}
 
-		/** Test to create a new envet */
+		/** Test to create a new event */
 		@Test
 		public void testCreateNewEvent(){
 			

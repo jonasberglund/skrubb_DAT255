@@ -51,6 +51,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 				holder.description  = (TextView)row.findViewById(R.id.descriptionEvents);
 				holder.place = (TextView)row.findViewById(R.id.place);
 				holder.date = (TextView)row.findViewById(R.id.date);
+				holder.fullDate = (TextView)row.findViewById(R.id.full_date);
 				
 				// Resets the toolbar to be closed
 			    View toolbar = row.findViewById(R.id.toolbarEvents);
@@ -69,6 +70,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		holder.date.setText(String.valueOf(event.getDate()) );
 		holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
 		holder.place.setText("Var: " + event.getPlace() + "\n");
+		holder.fullDate.setText("När: "+ event.getFullDate() + "\n");
 
 		return row;
 	}
@@ -79,6 +81,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		TextView description;
 		TextView place;
 		TextView date;
+		TextView fullDate;
 	}
 	
 

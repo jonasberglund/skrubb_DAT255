@@ -46,8 +46,8 @@ public class BaseActivity extends ActionBarActivity {
      * and the menu drawer.
      */
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-    	super.onCreate(savedInstanceState);
+    protected void onCreate(Bundle savedInstance) {
+    	super.onCreate(savedInstance);
     	
     	setContentView(R.layout.activity_main);        
         setupActionBar();
@@ -61,17 +61,12 @@ public class BaseActivity extends ActionBarActivity {
             ids[i] = Integer.toString(i+1);
         }
         MenuArrayAdapter adapter = new MenuArrayAdapter(this,R.layout.row_menu, ids);
+       
         mDrawerList.setAdapter(adapter);
-        
-        
-        //menuTitles = getResources().getStringArray(R.array.menu_titles);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
-        //mDrawerList = (ListView) findViewById(R.id.left_drawer);
         mDrawerList.setCacheColorHint(Color.BLACK);
         frameLayout = (FrameLayout) findViewById(R.id.content_frame);
         
-        // Set the adapter for the list view
-        //mDrawerList.setAdapter(new ArrayAdapter<String>(this, R.layout.drawer_list_item, menuTitles));
         // Set the list's click listener
         mDrawerList.setOnItemClickListener(new DrawerItemClickListener());
 		
@@ -148,11 +143,6 @@ public class BaseActivity extends ActionBarActivity {
     	
     	LayoutInflater inflator = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     	View v = inflator.inflate(R.layout.action_bar_title, null);
-
-//    	Om vi vill ha  schysst font till titlen tydligen
-//    	TextView titleTV = (TextView) v.findViewById(R.id.title);
-//    	Typeface font = Typeface.createFromAsset(getAssets(), "fonts/your_custom_font.ttf");
-//    	titleTV.setTypeface(font);
     	
     	ab.setCustomView(v);
     	

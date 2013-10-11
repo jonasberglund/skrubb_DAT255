@@ -17,27 +17,9 @@ public class NewsItem {
 	 */
 	public NewsItem(String message, String date, String imageAdr){
 		
-		//PicLoaderThread t = new PicLoaderThread(imageAdr);
-		//t.start();
-		
-		
 		this.message = message;
 		this.date = date;
 		this.imageAdr = imageAdr;
-		
-		/*
-		try {
-			t.join();
-			bitImage = t.getPicture();
-			if (bitImage != null) {
-				bitImage.prepareToDraw();
-			}
-
-		} catch (InterruptedException e) {
-			e.printStackTrace();
-		}
-		*/
-		
 	}
 	
 	/**

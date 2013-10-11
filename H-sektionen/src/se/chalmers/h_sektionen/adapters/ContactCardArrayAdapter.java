@@ -40,7 +40,7 @@ public class ContactCardArrayAdapter extends ArrayAdapter<ContactCard> {
 	 * Fills a row in the ListView with data.
 	 * @param position The row number
 	 * @param convertView
-	 * @param parent
+	 * @param parent The parent view
 	 */
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {

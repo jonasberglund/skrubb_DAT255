@@ -3,6 +3,7 @@ package se.chalmers.h_sektionen;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
 import android.widget.EditText;
@@ -14,15 +15,21 @@ import android.widget.Toast;
 public class FaultreportActivity extends BaseActivity {
 	
 	/**
-	 * On resume.
+	 * Creates the view by calling createFaultView();
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstance) {
+		super.onCreate(savedInstance);
+		createFaultView();
+	}
+	
+	/**
+	 * On resume. Sets the static currentView variable in BaseActivty.
 	 */
     @Override
 	protected void onResume() {
-
+    	super.onResume();
 		setCurrentView(MenuItems.FAULTREPORT);
-		createFaultView();
-		
-		super.onResume();
 	}
 	
     /**

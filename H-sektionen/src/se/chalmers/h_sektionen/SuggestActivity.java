@@ -3,6 +3,7 @@
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.content.Intent;
 import android.net.Uri;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.Toast;
@@ -12,17 +13,23 @@ import android.widget.Toast;
  * suggestions.
  */
 public class SuggestActivity extends BaseActivity {
-
+	
 	/**
-	 * On resume.
+	 * Creates the view by calling createSuggestView();
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstance) {
+		super.onCreate(savedInstance);
+		createSuggestView();
+	}
+	
+	/**
+	 * On resume. Sets the static currentView variable in BaseActivty.
 	 */
 	@Override
 	protected void onResume() {
-
-		setCurrentView(MenuItems.SUGGEST);
-		createSuggestView();
-		
 		super.onResume();
+		setCurrentView(MenuItems.SUGGEST);
 	}
 	
 	/**
@@ -42,17 +49,22 @@ public class SuggestActivity extends BaseActivity {
 		Intent intent = new Intent(Intent.ACTION_SENDTO);
 		intent.setType("text/plain");
 
-		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);	//fetch the text from the view
+		//fetch the text from the view
+		EditText editText = (EditText) findViewById(R.id.suggest_edit_message);
 		String message = editText.getText().toString();							
 		
 		intent.putExtra(Intent.EXTRA_SUBJECT, getString(R.string.suggest_subject));		
 		intent.putExtra(Intent.EXTRA_TEXT, message); 							
-		intent.setData(Uri.parse("mailto:"+getString(R.string.suggest_emailReceiver))); //Sets the receiver of the email						
+		
+		//Sets the receiver of the email
+		intent.setData(Uri.parse("mailto:"+getString(R.string.suggest_emailReceiver)));						
 		
 		try{
 			startActivity(intent);	
 			}
-		catch (android.content.ActivityNotFoundException ex) { //if no E-mail client is found, post a toast to let the user know.
+		
+		//if no E-mail client is found, post a toast to let the user know.
+		catch (android.content.ActivityNotFoundException ex) {
 			Toast.makeText(SuggestActivity.this,getString(R.string.suggest_noEmailClientFound), Toast.LENGTH_SHORT).show();
 		}
 	}

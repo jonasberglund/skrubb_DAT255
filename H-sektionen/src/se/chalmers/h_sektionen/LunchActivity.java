@@ -4,6 +4,7 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 /**
@@ -11,32 +12,38 @@ import android.widget.TextView;
  */
 public class LunchActivity extends BaseActivity {
 
-	private TextView textView;
+	/**
+	 * Sets an error view if no internet connection, else downloads the lunch RSS and shows it.
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstance) {
+		super.onCreate(savedInstance);
+		
+		if (connectedToInternet())
+			new DownloadLunchRSS().execute();
+		else 
+		    setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+	}
 	
 	/**
 	 * On resume.
 	 */
 	@Override
 	protected void onResume() {
-
-		setCurrentView(MenuItems.LUNCH);
-		createLunchView();
-		
-		textView = (TextView)findViewById(R.id.LunchTextView);
-		
-		if (connectedToInternet())
-			new DownLoadWebPage().execute();
-		else 
-		    textView.setText(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
-				
 		super.onResume();
+		setCurrentView(MenuItems.LUNCH);
 	}
 	/**
 	 * Creates the lunch view.
 	 */
-	private void createLunchView(){
+	private void setUpLunchView(String result){
 		getFrameLayout().removeAllViews();
 		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_lunch, null));
+		
+		TextView textView = (TextView)findViewById(R.id.LunchTextView);
+		textView.setText(Html.fromHtml(result));
+
+
     	
     }
 	
@@ -44,7 +51,7 @@ public class LunchActivity extends BaseActivity {
 	 * Thread that starts the download and parsing function
 	 * of the lunch menus.
 	 */
-	public class DownLoadWebPage extends AsyncTask<String, String, String>{
+	public class DownloadLunchRSS extends AsyncTask<String, String, String>{
 		/**
 		 * Runs a loading animation
 		 */
@@ -69,8 +76,7 @@ public class LunchActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPostExecute(String result){
-    		textView.setText(Html.fromHtml(result));
-    		stopAnimation();
+			setUpLunchView(result);
 		}
 	}
 }

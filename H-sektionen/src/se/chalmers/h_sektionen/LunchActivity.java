@@ -13,7 +13,7 @@ import android.widget.TextView;
 public class LunchActivity extends BaseActivity {
 
 	/**
-	 * Sets an error view if no internet connection, else downloads the lunch RSS and shows it.
+	 * Sets an error view if no Internet connection, else downloads the lunch RSS and shows it.
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstance) {

@@ -24,7 +24,11 @@ public class InfoActivity extends BaseActivity {
 	@Override
 	protected void onCreate(Bundle savedInstance) {
 		super.onCreate(savedInstance);
-		new GetInfoTask().execute();
+		if(!connectedToInternet()) {
+			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+		} else {
+			new GetInfoTask().execute();
+		}
 	}
 	
 	/**
@@ -54,16 +58,13 @@ public class InfoActivity extends BaseActivity {
 		}
 		
 		/**
-		 * Requests a JSONObject, tries to parse it and puts the data into arrays.
-		 * @return false if the parsing did not succeed, else true
+		 * Uses the LoadData class to download information and then returns it like
+		 * an InfoContainer object
+		 * @return null if the parsing did not succeed, else an InfoContainer object
 		 */
 		@Override
 		protected InfoContainer doInBackground(String... params) {
-			if(!connectedToInternet()) {
-				return null;
-			} else {
-				return LoadData.loadInfo(InfoActivity.this);
-			}
+			return LoadData.loadInfo(InfoActivity.this);
 		}
 		
 		/**

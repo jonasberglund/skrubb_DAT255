@@ -2,6 +2,7 @@ package se.chalmers.h_sektionen;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
+import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.LinearLayout;
@@ -18,16 +19,22 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 public class InfoActivity extends BaseActivity {
 	
 	/**
+	 * Sets up the view, via the GetInfoTask.
+	 */
+	@Override
+	protected void onCreate(Bundle savedInstance) {
+		super.onCreate(savedInstance);
+		new GetInfoTask().execute();
+	}
+	
+	/**
 	 * Sets the static "currentView" variable in the super class, BaseActivity.
 	 * The method also start the AsyncTask that fetches the information data.
 	 */
 	@Override
 	protected void onResume() {
-		
-		setCurrentView(MenuItems.INFO);
-		new GetInfoTask().execute();
-		
 		super.onResume();
+		setCurrentView(MenuItems.INFO);
 	}
 	
 	
@@ -52,45 +59,52 @@ public class InfoActivity extends BaseActivity {
 		 */
 		@Override
 		protected InfoContainer doInBackground(String... params) {
-			
-			if(!connectedToInternet())
+			if(!connectedToInternet()) {
 				return null;
-				
-			return LoadData.loadInfo(InfoActivity.this);
+			} else {
+				return LoadData.loadInfo(InfoActivity.this);
+			}
 		}
 		
 		/**
-		 * Sets up the view with data from doInBackground method.
-		 * If doInBackground returns false, an error view is going to show up.
-		 * @param done True if doInBackground could parse and prepare the data correct, else false.
+		 * runs setUpView()
+		 * @param container An InfoContainer object with info to be showed.
 		 */
 		@Override
 		protected void onPostExecute(InfoContainer container) {
 			super.onPostExecute(container);
-			
-			// If there was no error (connection or JSON string error), set up the view.
-			if (container != null) {
-				getFrameLayout().removeAllViews();
-				getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
-				
-				ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
-	    		contactListView.setCacheColorHint(Color.WHITE);
-	    		
-	    		LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
-	    		TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
-	    		TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
-	    		
-	    		linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
-	    		linksTextView.setText(Html.fromHtml(container.getHtmlLinks()));
-	    		
-	    		openingHoursTextView.setText(Html.fromHtml(container.getOpeningHoursString()));
-	    		contactListView.addHeaderView(linksLayout);
-	    		contactListView.setAdapter(new ContactCardArrayAdapter(InfoActivity.this, R.layout.contact_list_item, container.getContactCards()));
-			} else {
-				setErrorView(getString(R.string.INFO_ERROR));
-			}
+			setUpView(container);
 		}
 		
+	}
+	
+	/**
+	 * Sets up the view with data from doInBackground method.
+	 * If doInBackground returns null, an error view is going to show up.
+	 * @param container An InfoContainer object with info to be showed.
+	 */
+	private void setUpView(InfoContainer container) {
+		// If there was no error (connection or JSON string error), set up the view.
+		if (container != null) {
+			getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_info, null));
+
+			ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
+			contactListView.setCacheColorHint(Color.WHITE);
+
+			LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
+			TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
+			TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
+
+			linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
+			linksTextView.setText(Html.fromHtml(container.getHtmlLinks()));
+
+			openingHoursTextView.setText(Html.fromHtml(container.getOpeningHoursString()));
+			contactListView.addHeaderView(linksLayout);
+			contactListView.setAdapter(new ContactCardArrayAdapter(this, R.layout.contact_list_item, container.getContactCards()));
+		} else {
+			setErrorView(getString(R.string.INFO_ERROR));
+		}
 	}
 	
 }

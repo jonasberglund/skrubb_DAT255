@@ -1,5 +1,4 @@
 
-
 <?php
 // NewsFeed: Revive a post from H-sektionen with the week number corresponding to the date span for the news post
 // week = 0 is the current week.
@@ -16,8 +15,11 @@ $untilWeek ="{$var_week} Week";
 $var_week=-3+$var_week;
 $sinceWeek ="{$var_week} Week";
 
+//Date span moved one day into the future to include post of the current day
 $until=strtotime($untilWeek);
+$until = strtotime("+1 day", $until);
 $since=strtotime($sinceWeek);
+$since = strtotime("+1 day", $since);
 
 //Since
 $yearS = date('Y', $since);

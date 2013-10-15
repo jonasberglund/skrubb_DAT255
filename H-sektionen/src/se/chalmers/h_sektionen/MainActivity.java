@@ -4,10 +4,13 @@ import java.util.ArrayList;
 
 import se.chalmers.h_sektionen.adapters.NewsAdapter;
 import se.chalmers.h_sektionen.containers.NewsItem;
+import se.chalmers.h_sektionen.utils.Connectivity;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
 
+import android.app.Activity;
+import android.content.Context;
 import android.os.AsyncTask;
 import android.os.Bundle;
 
@@ -122,8 +125,22 @@ public class MainActivity extends BaseActivity {
 		@Override
 		protected Boolean doInBackground(Integer... descending) {	
 			try {
-				newsAdapter.addAll(LoadData.loadNews(descending[0]));
-				return true;
+				Connectivity con=new Connectivity();								
+				if(con.isConnectedFast(MainActivity.this))
+				{
+					//Fast
+					newsAdapter.addAll(LoadData.loadNews(descending[0]));
+					return true;
+					
+				}
+				else{
+					//Slow
+					newsAdapter.addAll(LoadData.loadNews(descending[0]));
+					return true;
+				}
+				
+				
+				
 			} catch (Exception e){
 				return false;
 			}

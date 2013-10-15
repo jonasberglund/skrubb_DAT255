@@ -12,6 +12,7 @@
         <item>Information</item>
         <item>Förslagslådan</item>
         <item>Felanmälan</item>
+        <item>Om appen</item>
     </string-array>
 
     <string name="action_side_menu"></string>
@@ -67,7 +68,7 @@
 	<string name="faultreport_appProblemHeaderText">Fel eller buggar i appen:</string>
 	<string name="faultreport_appProblemText">Skicka gärna alla detaljer om buggar i H-sektionsappen via förslagslådan.</string>
 	
-	<string name="video">http://www.youtube.com/watch?v=eE8PISJ_0jY</string>
+	<string name="video"><a href="http://www.youtube.com/watch?v=eE8PISJ_0j">H-sektionen Trailer</a></string>
 	
     <color name="pinkish">#C43D82</color>
     <color name="white">#FFFFFF</color>

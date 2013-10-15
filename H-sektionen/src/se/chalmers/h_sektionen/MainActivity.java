@@ -125,22 +125,9 @@ public class MainActivity extends BaseActivity {
 		@Override
 		protected Boolean doInBackground(Integer... descending) {	
 			try {
-				Connectivity con=new Connectivity();								
-				if(con.isConnectedFast(MainActivity.this))
-				{
-					//Fast
-					newsAdapter.addAll(LoadData.loadNews(descending[0]));
-					return true;
+				newsAdapter.addAll(LoadData.loadNews(descending[0], Connectivity.isConnectedFast(MainActivity.this)));
+				return true;
 					
-				}
-				else{
-					//Slow
-					newsAdapter.addAll(LoadData.loadNews(descending[0]));
-					return true;
-				}
-				
-				
-				
 			} catch (Exception e){
 				return false;
 			}

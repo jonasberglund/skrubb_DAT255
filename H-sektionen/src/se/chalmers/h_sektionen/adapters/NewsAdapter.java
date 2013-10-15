@@ -73,7 +73,9 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 			
 				//Remove current image
 				image.setImageBitmap(null);
-				new LoadImagesInBg().execute(v, item.getImageAdr());
+				if (item.getImageAdr()!=null && !item.getImageAdr().equals("")) {
+					new LoadImagesInBg().execute(v, item.getImageAdr());
+				}
 			}
 			
 		}
@@ -90,15 +92,12 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 	    protected Bitmap doInBackground(Object... parameters) {
 
 	        view = (View) parameters[0];
-	        String uri = (String)parameters[1];
-				
-				//Check
-				if (uri!=null && !uri.equals("")) {
+	        String uri = (String)parameters[1];	
 					
 					//Download image if not in cache
 					if(CacheCompass.getInstance(getContext()).getBitmapCache().get(uri)==null){
 					
-						PicLoaderThread pcl =new PicLoaderThread(uri);
+						PicLoaderThread pcl = new PicLoaderThread(uri);
 						pcl.start();
 						try {
 							pcl.join();
@@ -109,7 +108,6 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 						//If already in cache, get from cache
 						bitmap = CacheCompass.getInstance(getContext()).getBitmapCache().get(uri);
 					}
-				}
 	        
 	        return bitmap;
 	    }

@@ -109,7 +109,7 @@ public class LoadData {
 	 * @return List containing news feed posts
 	 * @throws JSONException 
 	 */
-	public static ArrayList<NewsItem> loadNews(int descending) throws JSONException{
+	public static ArrayList<NewsItem> loadNews(int descending, boolean highresPictures) throws JSONException{
 		
 		//Get JSON string from server
 		String result = getJSON(Constants.NEWSFEED + descending); 
@@ -130,7 +130,7 @@ public class LoadData {
 				//Get image url
 				String image = json_arr.getJSONObject(i).optString("picture");
 				
-				if(!image.equals("")){
+				if(highresPictures && !image.equals("")){
 					image = image.replace("s.jpg", "n.jpg");
 					image = image.replace("s.png", "n.png");
 				}

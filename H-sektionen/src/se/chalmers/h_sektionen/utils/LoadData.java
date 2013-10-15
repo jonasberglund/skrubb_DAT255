@@ -34,11 +34,12 @@ import se.chalmers.h_sektionen.containers.Event;
 import se.chalmers.h_sektionen.containers.InfoContainer;
 import se.chalmers.h_sektionen.containers.NewsItem;
 
+
 /**
  * Class for retrieving and parsing data for different feeds
  */
 public class LoadData {
-	
+
 	/**
 	 * Retrieves and parses event posts
 	 * @return List containing events
@@ -408,20 +409,21 @@ public class LoadData {
 		if(time.length() > "1967-09-03".length()){
 			clock = " kl: " +  date[1].substring(0,5);
 		}
-
+		
+		
 		if (years == 1)
-			return "Nästa år";
+			return Constants.NEXT_YEAR;
 		else if (years > 1)
-			return "Om " + years + " år";
+			return "Om " + years + Constants.YEAR;
 		else if (months == 1)
-			return "Nästa månad";
+			return Constants.NEXT_MONTH;
 		else if (months > 1)
-			return "Om " + months + " månader";
+			return "Om " + months + Constants.MONTH;
 		else if (days == 1)
-			return "I morgon" + clock;
+			return Constants.TOMORROW + clock;
 		else if (days > 1)
 			return "Om " + days + " dagar";
-
-		return "I dag kl: " + clock;
+		
+		return Constants.TODAY + clock;
 	}
 }

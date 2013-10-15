@@ -9,6 +9,8 @@ import se.chalmers.h_sektionen.utils.CacheCompass;
 import se.chalmers.h_sektionen.utils.PicLoaderThread;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.os.AsyncTask;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -68,34 +70,58 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 				date.setText(item.getDate());
 			}
 			if (image != null){
-				
+			
 				//Remove current image
 				image.setImageBitmap(null);
-				
-				//Check if post has image adress
-				if (item.getImageAdr()!=null && !item.getImageAdr().equals("")) {
-					
-					//Download image if not in cache
-					if(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr())==null){
-					
-						PicLoaderThread pcl =new PicLoaderThread(item.getImageAdr());
-						pcl.start();
-						try {
-							pcl.join();
-							image.setImageBitmap(pcl.getPicture());
-							CacheCompass.getInstance(getContext()).getBitmapCache().put(item.getImageAdr(), pcl.getPicture());
-						} catch (Exception e) {}	
-					} else {
-						//If already in cache, get from cache
-						image.setImageBitmap(CacheCompass.getInstance(getContext()).getBitmapCache().get(item.getImageAdr()));
-					}
-				}
+				new LoadImagesInBg().execute(v, item.getImageAdr());
 			}
+			
 		}
 		
 		return v;
 	}
 	
+	private class LoadImagesInBg extends AsyncTask<Object, String, Bitmap> {
+
+	    private View view;
+	    private Bitmap bitmap = null;
+
+	    @Override
+	    protected Bitmap doInBackground(Object... parameters) {
+
+	        view = (View) parameters[0];
+	        String uri = (String)parameters[1];
+				
+				//Check
+				if (uri!=null && !uri.equals("")) {
+					
+					//Download image if not in cache
+					if(CacheCompass.getInstance(getContext()).getBitmapCache().get(uri)==null){
+					
+						PicLoaderThread pcl =new PicLoaderThread(uri);
+						pcl.start();
+						try {
+							pcl.join();
+							bitmap = pcl.getPicture();
+							CacheCompass.getInstance(getContext()).getBitmapCache().put(uri, bitmap);
+						} catch (Exception e) {}	
+					} else {
+						//If already in cache, get from cache
+						bitmap = CacheCompass.getInstance(getContext()).getBitmapCache().get(uri);
+					}
+				}
+	        
+	        return bitmap;
+	    }
+
+	    @Override
+	    protected void onPostExecute(Bitmap bitmap) {
+	        if (bitmap != null && view != null) {
+	            ImageView image = (ImageView) view.findViewById(R.id.item_image);
+	            image.setImageBitmap(bitmap);
+	        }
+	    }
+	}
 
 	
 	

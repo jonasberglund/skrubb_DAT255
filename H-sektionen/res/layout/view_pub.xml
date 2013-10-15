@@ -3,20 +3,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
     
-    <ImageView
-        android:id="@+id/imageView1"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_alignParentTop="false"
-        android:adjustViewBounds="false"
-        android:baselineAlignBottom="false"
-        android:cropToPadding="false"
-        android:scaleType="center"
-        android:src="@drawable/bak1" 
-        android:visibility="gone"
-        android:contentDescription="@string/Background"/>
-    
-    
     <ListView
         android:id="@+id/pubs_feed"
         android:layout_width="match_parent"

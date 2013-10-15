@@ -292,13 +292,15 @@ public class LoadData {
 			// Create a HTML-string containing links. The TextView can handle HTML
 			JSONArray links = json.getJSONArray("links");
 			htmlLinks = new StringBuilder();
-
+			
 			for (int i=0; i<links.length(); i++) {
 				htmlLinks.append("<a href=\"");
 				htmlLinks.append(links.getJSONObject(i).getString("href"));
 				htmlLinks.append("\">");
 				htmlLinks.append(links.getJSONObject(i).getString("name"));
-				htmlLinks.append("</a><br />");
+				htmlLinks.append("</a><br>");
+				if(!(i == links.length()-1))
+					htmlLinks.append("<br>");
 			}
 
 			// Create a HTML-string containing opening hours. 

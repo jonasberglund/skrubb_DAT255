@@ -3,7 +3,7 @@
 1. Start the application, a view showing news from Facebook should now show up.
 2. Tap the H-icon in the upper left corner to show a menu. (Or slide it out from the left side)
 3. Click on "Information"
-4. Let the page load, if an error message, "Något har gått fel...", shows up, it is probably a connection error.
+4. Let the page load, if an error message, "Ingen internetanslutning", shows up, it is probably a connection error.
 5. If the view shows up, you should see "Öppettider", "Länkar" and "Styret" headers. "Öppettider" should have some info about opening hours, "Länkar" should have some links and "Styret" should have some pictures and contact information of board members from H. If pictures are missing, there is a connection or server problem.
 6. If the screen does not holds all the contents, you should be able to scroll.
 7. Try to click on a link. The web browser should show up and loading the link you clicked on.

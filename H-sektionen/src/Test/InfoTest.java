@@ -29,6 +29,9 @@ public class InfoTest {
 	public void tearDown() throws Exception {
 	}
 
+	/**
+	 * This test simply tests to connect to the server.
+	 */
 	@Test
 	public void serverConnectionTest() {
 		try {
@@ -41,6 +44,9 @@ public class InfoTest {
 		}
 	}
 	
+	/**
+	 * This test simply tests to create a ContactCard object and then read the data.
+	 */
 	@Test
 	public void createContactCardTest() {
 		ContactCard c = new ContactCard("Kalle Anka", "Städare", "kalle@ankeborg.se", "070-1231232", null);
@@ -50,6 +56,10 @@ public class InfoTest {
 		assertTrue("Phone number fail", c.getPhoneNumber().equals("070-1231232"));
 	}
 	
+	/**
+	 * This test downloads a JSON string from the server, checks if keys that should
+	 * be found, are found.
+	 */
 	@Test
 	public void JSONFromServerTest() {
 		try {
@@ -73,6 +83,7 @@ public class InfoTest {
 			assertTrue("key \"links\" was not found", o.containsKey("links"));
 			
 		} catch (Exception e) {
+			// Could also be connection error, see the test result of serverConnectionTest().
 			fail("Could not parse JSON");
 		}
 	}

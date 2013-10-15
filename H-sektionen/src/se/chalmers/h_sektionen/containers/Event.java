@@ -8,6 +8,7 @@ public class Event {
 	private String description;
 	private String place;
 	private String date;
+	private String fullDate;
 
 	public Event(){
 
@@ -20,6 +21,14 @@ public class Event {
 	 * @param place
 	 * @param date
 	 */
+	public Event(String title, String description, String place, String date, String fullDate){
+		this.title = title;
+		this.description = description;
+		this.place = place;
+		this.date = date;
+		this.fullDate = fullDate;
+	}
+	
 	public Event(String title, String description, String place, String date){
 		this.title = title;
 		this.description = description;
@@ -57,5 +66,13 @@ public class Event {
 	 */
 	public String getDate(){
 		return date;
+	}
+	
+	/**
+	 * Get place
+	 * @return String Place
+	 */
+	public String getFullDate(){
+		return fullDate;
 	}
 }

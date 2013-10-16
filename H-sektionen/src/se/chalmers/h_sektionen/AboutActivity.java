@@ -1,7 +1,12 @@
 package se.chalmers.h_sektionen;
 
 import se.chalmers.h_sektionen.utils.MenuItems;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.LinkMovementMethod;
+import android.view.View;
+import android.widget.TextView;
 
 /**
  * Activity that displays a view for reporting faults.
@@ -35,9 +40,13 @@ public class AboutActivity extends BaseActivity {
     }
 	
 	/**
-	 * Starts an e-mail client with all fields filled in.
-	 * Message is taken from the view, subject is decided by a checkbox status.
-	 * @param view the view to get the message from.
+	 * Open a link in a browser.
+	 * @param view the view that the method was called from.
 	 */
+	public void startVideo(View view){
+		Intent intent = new Intent(Intent.ACTION_VIEW ,Uri.parse(getString(R.string.video)));
+		startActivity(intent);
+	}
+
 	
 }

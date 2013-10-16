@@ -43,7 +43,6 @@
 	<string name="suggest_emailReceiver">foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com</string>
 	<string name="suggest_subject">Förslag till H-sektionen</string>
 	<string name="suggest_noEmailClientFound">"Det verkar inte finnas någon E-mail applikation på din telefon."</string>	
-	<string name="suggest_button_secret">       </string>
 		
     <string name="faultreport_buildingEmail">8800@chalmers.se</string>
     <string name="faultreport_dataEmail">support@chalmers.se</string>
@@ -68,7 +67,14 @@
 	<string name="faultreport_appProblemHeaderText">Fel eller buggar i appen:</string>
 	<string name="faultreport_appProblemText">Skicka gärna alla detaljer om buggar i H-sektionsappen via förslagslådan.</string>
 	
-	<string name="video"><a href="http://www.youtube.com/watch?v=eE8PISJ_0j">H-sektionen Trailer</a></string>
+	<string name="about_versionHeaderText">Version</string>
+	<string name="about_versionText">1.0</string>
+	<string name="about_creatorsHeader">Utvecklare</string>
+	<string name="about_creators">Jonas Berglund\nRobin Törnquist\nOlle Svensson\nRikard Ekbom\nOskar Gustavsson\nAnders Johansson</string>
+	<string name="about_trailerHeaderText">Skapandet av H-sektionen</string>
+	<string name="about_trailerText">Action, spänning, skräck och drama. H-sektionens trailer har allt!</string>
+	<string name="about_trailerButtonText">Se filmen</string>
+	<string name="video">http://www.youtube.com/watch?v=eE8PISJ_0j</string>
 	
     <color name="pinkish">#C43D82</color>
     <color name="white">#FFFFFF</color>

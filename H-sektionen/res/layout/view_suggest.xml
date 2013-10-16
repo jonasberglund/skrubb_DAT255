@@ -43,12 +43,5 @@
         	android:text="@string/suggest_button_send"
         	android:onClick="sendSuggestEmail" />
 
-    	<Button
-    	    android:background="@android:color/transparent"
-        	android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:layout_gravity="bottom|right"
-        	android:text="@string/suggest_button_secret"
-        	android:onClick="startSecret" />
 	</LinearLayout>
 </ScrollView>

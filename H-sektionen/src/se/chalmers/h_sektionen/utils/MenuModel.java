@@ -32,6 +32,7 @@ public class MenuModel {
 	        Items.add(new MenuItem(5, "ic_info.png", menuTitles[4]));
 	        Items.add(new MenuItem(6, "ic_suggest.png", menuTitles[5]));
 	        Items.add(new MenuItem(7, "ic_faultreport.png", menuTitles[6]));
+	        Items.add(new MenuItem(8, "ic_info.png", menuTitles[7]));
 
 
 	    }

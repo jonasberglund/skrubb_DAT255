@@ -114,6 +114,10 @@ public class BaseActivity extends ActionBarActivity {
 		        		break;
 		        	case MenuItems.FAULTREPORT:
 		        		startActivityByClass(FaultreportActivity.class);
+		        		break;
+		        	case MenuItems.ABOUT:
+		        		startActivityByClass(AboutActivity.class);
+		        		break;
 		        	default:
 		        		return;
 		        }

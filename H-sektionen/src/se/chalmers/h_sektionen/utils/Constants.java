@@ -34,6 +34,7 @@ public class Constants {
 	public static final String MONTH = " m\u00e5nad";
 	public static final String TOMORROW = "I morgon";
 	public static final String TODAY = "I dag";
+	public static final String WHEN = "N\u00e4r: ";
 	
 			
 }

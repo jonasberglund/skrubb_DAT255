@@ -26,9 +26,9 @@ public class EventsActivity extends BaseActivity {
 	/** On resume */
 	@Override
 	protected void onResume() {
+		super.onResume();
 		setCurrentView(MenuItems.EVENTS);
 		createEventsView();
-		super.onResume();
 	}
     
 	/** Create events view */ 
@@ -40,8 +40,18 @@ public class EventsActivity extends BaseActivity {
 			
 			eventsFeed = (ListView) findViewById(R.id.events_feed);
 			
+			//Adding header picture to array adapter
+			ImageView img = new ImageView(EventsActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.events);
+			eventsFeed.addHeaderView(img,null,false);
+			
+			// Need to set adapter to make the ListView visible.
+			eventsFeed.setAdapter(null);
+			
 			new LoadEventsInBg().execute();
 	    	addActionListener();
+	    	
 		} else {
 			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 		}
@@ -51,13 +61,13 @@ public class EventsActivity extends BaseActivity {
 	/** Add action listener */
 	private void addActionListener(){
 		
-		 eventsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-	                View toolbar = view.findViewById(R.id.toolbarEvents);
-	                ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
-	                toolbar.startAnimation(expandAni);
-	            }
-	        });
+		eventsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				View toolbar = view.findViewById(R.id.toolbarEvents);
+				ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
+				toolbar.startAnimation(expandAni);
+			}
+		});
 	}
 	
 	/** Loading all events in background activity (AsyncTask) */
@@ -87,11 +97,6 @@ public class EventsActivity extends BaseActivity {
 			stopAnimation();
 			
 			if (success){
-				//Adding header picture to array adapter
-				ImageView img = new ImageView(EventsActivity.this);
-				img.setAdjustViewBounds(true);
-				img.setImageResource(R.drawable.events);
-				eventsFeed.addHeaderView(img,null,false);
 				eventsFeed.setAdapter(feedAdapter);
 			} else {
 				setErrorView(getString(R.string.GET_FEED_ERROR_MSG));

@@ -27,9 +27,9 @@ public class PubActivity extends BaseActivity {
 	/** Notify BaseActivity this view is set and create this view */
 	@Override
 	protected void onResume() {
+		super.onResume();
 		setCurrentView(MenuItems.PUB);
 		createPubView();
-		super.onResume();
 	}
 
 	/** Create pub view */
@@ -41,6 +41,15 @@ public class PubActivity extends BaseActivity {
 			
 			pubsFeed = (ListView) findViewById(R.id.pubs_feed);;
 			
+			//Adding header picture to array adapter
+			ImageView img = new ImageView(PubActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.pubf);
+			pubsFeed.addHeaderView(img,null,false);
+			
+			// Need to set adapter to make the ListView visible.
+			pubsFeed.setAdapter(null);
+			
 			new LoadPubInBg().execute();
 	    	addActionListener();
 		} else {
@@ -51,13 +60,13 @@ public class PubActivity extends BaseActivity {
 	
 	/** Add action listener */
 	private void addActionListener(){
-		 pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-		            	View toolbar = view.findViewById(R.id.toolbarPubs);
-		                ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
-		                toolbar.startAnimation(expandAni);
-	            }
-	        });
+		pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				View toolbar = view.findViewById(R.id.toolbarPubs);
+				ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
+				toolbar.startAnimation(expandAni);
+			}
+		});
 	}
 	
 	/** Loading all events i background activity (AsyncTask) */
@@ -92,11 +101,6 @@ public class PubActivity extends BaseActivity {
     		stopAnimation();
     		
     		if (success){
-			//Adding header picture to array adapter
-				ImageView img = new ImageView(PubActivity.this);
-				img.setAdjustViewBounds(true);
-				img.setImageResource(R.drawable.pubf);
-				pubsFeed.addHeaderView(img,null,false);
 				pubsFeed.setAdapter(pubFeedAdapter);
     		} else {
     			setErrorView(getString(R.string.GET_FEED_ERROR_MSG));

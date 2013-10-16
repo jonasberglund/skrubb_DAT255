@@ -18,18 +18,7 @@ import se.chalmers.h_sektionen.utils.MenuItems;
  */
 public class InfoActivity extends BaseActivity {
 	
-	/**
-	 * Sets up the view, via the GetInfoTask.
-	 */
-	@Override
-	protected void onCreate(Bundle savedInstance) {
-		super.onCreate(savedInstance);
-		if(!connectedToInternet()) {
-			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
-		} else {
-			new GetInfoTask().execute();
-		}
-	}
+	private AsyncTask<String, String, InfoContainer> getInfoTask;
 	
 	/**
 	 * Sets the static "currentView" variable in the super class, BaseActivity.
@@ -39,8 +28,26 @@ public class InfoActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 		setCurrentView(MenuItems.INFO);
+		if(connectedToInternet()) {
+			getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.info_links, null));
+			getInfoTask = new GetInfoTask().execute();
+			
+		} else {
+			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+		}
 	}
 	
+	/**
+	 * Cancel the GetInfoTask task if the activity get paused.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (getInfoTask != null && !getInfoTask.isCancelled()) {
+			getInfoTask.cancel(true);
+		}
+	}
 	
 	/**
 	 * GetInfoTask loads the info data and sets up the view.
@@ -53,8 +60,7 @@ public class InfoActivity extends BaseActivity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			
-			runLoadAnimation();
+			runTransparentLoadAnimation();
 		}
 		
 		/**
@@ -68,12 +74,13 @@ public class InfoActivity extends BaseActivity {
 		}
 		
 		/**
-		 * runs setUpView()
+		 * runs setUpView() and stops the load animation.
 		 * @param container An InfoContainer object with info to be showed.
 		 */
 		@Override
 		protected void onPostExecute(InfoContainer container) {
 			super.onPostExecute(container);
+			stopAnimation();
 			setUpView(container);
 		}
 		

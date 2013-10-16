@@ -4,9 +4,7 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.text.method.LinkMovementMethod;
 import android.view.View;
-import android.widget.TextView;
 
 /**
  * Activity that displays a view for reporting faults.
@@ -32,7 +30,7 @@ public class AboutActivity extends BaseActivity {
 	}
 	
     /**
-     * Create fault report view.
+     * Create about view.
      */
 	private void createAboutView(){
 		getFrameLayout().removeAllViews();

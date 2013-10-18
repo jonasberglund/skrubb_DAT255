@@ -168,7 +168,7 @@ public class LoadData {
 		sb.append(Constants.LS_KITCHEN_TITLE);
 		sb.append("</h1>");
 		
-		// Append data from L´s RSS.
+		// Append data from Ls RSS.
 		sb.append(loadLunchFromRSS(Constants.LS_KITCHEN_RSS, "item", "title", "description", false));
 		
 		return sb.toString();

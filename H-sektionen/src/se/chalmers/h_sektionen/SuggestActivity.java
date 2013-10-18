@@ -1,4 +1,5 @@
-﻿package se.chalmers.h_sektionen;
+﻿
+package se.chalmers.h_sektionen;
 
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.content.Intent;
@@ -9,7 +10,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * Activity that displays the view for the user to input
+ * Class that displays the view for the user to input
  * suggestions.
  */
 public class SuggestActivity extends BaseActivity {

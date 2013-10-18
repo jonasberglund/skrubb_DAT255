@@ -1,6 +1,9 @@
 package se.chalmers.h_sektionen.utils;
 /**
  * A class full of different constants used in the project. 
+ * @Author 
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class Constants {
 	public static final String GOOGLEEVENTS = "https://www.google.com/calendar/feeds/5id1508tk2atummuj0vq33d7lc@group.calendar.google.com/public/full?alt=json&" +
@@ -27,7 +30,7 @@ public class Constants {
 	public static final String LS_KITCHEN_RSS = "http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss";
 	public static final String KOKBOKEN_BASE = "http://cm.lskitchen.se/lindholmen/kokboken/sv/";
 	
-	// å = \u00e5, ä = \u00e4, ö = \u00f6
+	// a = \u00e5, a = \u00e4, o = \u00f6
 	public static final String NEXT_YEAR = "N\u00e4sta \u00e5r";
 	public static final String YEAR = " \u00e5r";
 	public static final String NEXT_MONTH = "N\u00e4sta m\u00e5nad";

@@ -55,16 +55,15 @@ public class BaseActivity extends ActionBarActivity {
     	setContentView(R.layout.activity_main);        
         setupActionBar();
         
+        // Setup the menu.
         MenuModel.LoadModel(this);
-        
         mDrawerList = (ListView) findViewById(R.id.left_drawer);
         String[] ids = new String[MenuModel.Items.size()];
         for (int i= 0; i < ids.length; i++){
-
             ids[i] = Integer.toString(i+1);
         }
         MenuArrayAdapter adapter = new MenuArrayAdapter(this,R.layout.row_menu, ids);
-       
+        
         mDrawerList.setAdapter(adapter);
         mDrawerLayout = (DrawerLayout) findViewById(R.id.drawer_layout);
         mDrawerList.setCacheColorHint(Color.BLACK);
@@ -89,7 +88,8 @@ public class BaseActivity extends ActionBarActivity {
      * Sets up a listener for the drawer menu.
      */
     private class DrawerItemClickListener implements ListView.OnItemClickListener {
-        /**
+        
+    	/**
          * Checks which icon was pressed in the drawer menu.
          */
     	@Override
@@ -209,16 +209,6 @@ public class BaseActivity extends ActionBarActivity {
 	}
 	
 	/**
-	 * Runs a loading animation image.
-	 */
-	protected void runLoadAnimation() {
-		getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_loading, null));
-		
-		((ImageView)findViewById(R.id.load_image)).startAnimation(AnimationUtils.loadAnimation(this, R.anim.rotate_centre));
-	}
-	
-	/**
 	 * Runs a transparent loading animation image.
 	 */
 	protected void runTransparentLoadAnimation() {
@@ -268,7 +258,6 @@ public class BaseActivity extends ActionBarActivity {
 		    i.addCategory(Intent.CATEGORY_HOME);
 		    startActivity(i);
 		}
-		//super.onBackPressed();
 	}
 	
 	/**

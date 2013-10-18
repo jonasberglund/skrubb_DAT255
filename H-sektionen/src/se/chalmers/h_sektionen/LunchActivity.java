@@ -9,6 +9,7 @@ import android.widget.TextView;
 /**
  * Activity responsible of the lunch menu view.
  * @Author Robin Tornquist
+ * @Author Rikard Ekbom
  * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
  * @Licens Apache
  */
@@ -17,7 +18,7 @@ public class LunchActivity extends BaseActivity {
 	private AsyncTask<String, String, String> getLunchTask;
 	
 	/**
-	 * On resume. 
+	 * On resume. Sets the lunch view and starts a task that downloads the menu.
 	 */
 	@Override
 	protected void onResume() {

@@ -1,5 +1,4 @@
 
-
 package se.chalmers.h_sektionen.utils;
 
 import java.io.InputStream;

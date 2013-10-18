@@ -14,7 +14,7 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 
 /**
  * InfoActivity takes care about the info view
- * @Author Robin Tornqist
+ * @Author Robin Tornquist
  * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
  * @Licens Apache
  */
@@ -102,15 +102,20 @@ public class InfoActivity extends BaseActivity {
 			ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
 			contactListView.setCacheColorHint(Color.WHITE);
 
+			// Set the links text view.
 			LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
 			TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
 			TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
 
+			// Make links clickable
 			linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
 			linksTextView.setText(Html.fromHtml(container.getHtmlLinks()));
 
+			// Set the opening hours text view.
 			openingHoursTextView.setText(Html.fromHtml(container.getOpeningHoursString()));
 			contactListView.addHeaderView(linksLayout);
+			
+			// Set contacts list view
 			contactListView.setAdapter(new ContactCardArrayAdapter(this, R.layout.contact_list_item, container.getContactCards()));
 		} else {
 			setErrorView(getString(R.string.INFO_ERROR));

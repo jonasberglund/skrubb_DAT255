@@ -9,10 +9,7 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
 
-import android.app.Activity;
-import android.content.Context;
 import android.os.AsyncTask;
-import android.os.Bundle;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -26,7 +23,7 @@ public class MainActivity extends BaseActivity {
 	private boolean loadingFirstTime;
 	private boolean currentlyLoading;
 	private int descending;
-	private AsyncTask<Integer, String, Boolean> loadNewsTask;
+	private AsyncTask<Integer, String, ArrayList<NewsItem>> loadNewsTask;
 	
 	/**
 	 * Superclass method onResume
@@ -51,6 +48,8 @@ public class MainActivity extends BaseActivity {
 		super.onPause();
 		if (loadNewsTask != null && !loadNewsTask.isCancelled()) {
 			loadNewsTask.cancel(true);
+			currentlyLoading = false;
+			descending = 0;
 		}
 	}
     
@@ -80,7 +79,7 @@ public class MainActivity extends BaseActivity {
 				@Override
 				protected void doOnScrollCompleted() {
 					if (!currentlyLoading){
-						new LoadNewsInBg().execute(++descending);
+						loadNewsTask = new LoadNewsInBg().execute(++descending);
 					}			
 				}});
 			
@@ -107,11 +106,7 @@ public class MainActivity extends BaseActivity {
     /**
      * AsyncTask for loading news feed posts in background.
      */
-<<<<<<< HEAD
     private class LoadNewsInBg extends AsyncTask<Integer, String, ArrayList<NewsItem>>{
-=======
-    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean> {
->>>>>>> develop
 		
 		
     	/**
@@ -119,6 +114,8 @@ public class MainActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPreExecute(){
+			
+			currentlyLoading = true;
 			
 			if (loadingFirstTime){
 				runTransparentLoadAnimation();

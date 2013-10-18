@@ -71,7 +71,7 @@
 	<string name="about_versionText">1.0</string>
 	<string name="about_creatorsHeader">Utvecklare</string>
 	<string name="about_creators">Jonas Berglund\nRobin Törnquist\nOlle Svensson\nRikard Ekbom\nOskar Gustavsson\nAnders Johansson</string>
-	<string name="about_trailerHeaderText">Skapandet av H-sektionen</string>
+	<string name="about_trailerHeaderText">Skapandet av H-sektionsappen</string>
 	<string name="about_trailerText">Action, spänning, skräck och drama. H-sektionens trailer har allt!</string>
 	<string name="about_trailerButtonText">Se filmen</string>
 	<string name="video">http://www.youtube.com/watch?v=eE8PISJ_0jY</string>

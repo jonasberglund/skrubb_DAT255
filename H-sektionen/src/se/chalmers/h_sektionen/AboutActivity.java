@@ -12,7 +12,7 @@ import android.view.View;
 public class AboutActivity extends BaseActivity {
 	
 	/**
-	 * Creates the view by calling createFaultView();
+	 * Creates the view by calling createAboutView();
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstance) {

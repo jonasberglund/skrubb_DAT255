@@ -4,7 +4,6 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 /**

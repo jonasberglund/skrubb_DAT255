@@ -265,7 +265,7 @@ public class BaseActivity extends ActionBarActivity {
 		    i.addCategory(Intent.CATEGORY_HOME);
 		    startActivity(i);
 		}
-		super.onBackPressed();
+		//super.onBackPressed();
 	}
 	
 	/**

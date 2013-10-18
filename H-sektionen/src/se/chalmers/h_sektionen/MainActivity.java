@@ -23,13 +23,15 @@ public class MainActivity extends BaseActivity {
 	private boolean loadingFirstTime;
 	private boolean currentlyLoading;
 	private int descending;
+	private AsyncTask<Integer, String, Boolean> loadNewsTask;
 	
 	/**
-	 * Superclass method onCreate
+	 * Superclass method onResume
 	 */
 	@Override
-	 protected void onCreate(Bundle savedInstanceState){	
-		super.onCreate(savedInstanceState);
+	protected void onResume() {
+		super.onResume();
+		
 		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
 		loadingFirstTime = true;
 		currentlyLoading = false;
@@ -38,14 +40,15 @@ public class MainActivity extends BaseActivity {
 		descending = 0;
 	}
 	
-	
 	/**
-	 * Superclass method onResume
+	 * On pause: cancel the AsyncTask that downloads the lunch menu.
 	 */
 	@Override
-	protected void onResume() {
-
-		super.onResume();
+	protected void onPause() {
+		super.onPause();
+		if (loadNewsTask != null && !loadNewsTask.isCancelled()) {
+			loadNewsTask.cancel(true);
+		}
 	}
     
 	/**
@@ -68,6 +71,7 @@ public class MainActivity extends BaseActivity {
 			//Add to list view
 			newsFeed.addHeaderView(imgHeader,null,false);
 			newsFeed.setAdapter(newsAdapter);
+
 			
 			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
 				@Override
@@ -77,7 +81,7 @@ public class MainActivity extends BaseActivity {
 					}			
 				}});
 			
-			new LoadNewsInBg().execute(descending);
+			loadNewsTask = new LoadNewsInBg().execute(descending);
     	} else {
     		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
@@ -100,7 +104,7 @@ public class MainActivity extends BaseActivity {
     /**
      * AsyncTask for loading news feed posts in background.
      */
-    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
+    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean> {
 		
 		
     	/**

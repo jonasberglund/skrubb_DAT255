@@ -21,8 +21,9 @@ import android.widget.ListView;
  */
 public class PubActivity extends BaseActivity {
 
-	PubArrayAdapter pubFeedAdapter;
-	ListView pubsFeed;
+	private PubArrayAdapter pubFeedAdapter;
+	private ListView pubsFeed;
+	private AsyncTask<String, String, Boolean> loadPubsTask;
 
 	/** Notify BaseActivity this view is set and create this view */
 	@Override
@@ -30,6 +31,17 @@ public class PubActivity extends BaseActivity {
 		super.onResume();
 		setCurrentView(MenuItems.PUB);
 		createPubView();
+	}
+	
+	/**
+	 * On pause: cancel the AsyncTask that downloads the calendar.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (loadPubsTask != null && !loadPubsTask.isCancelled()) {
+			loadPubsTask.cancel(true);
+		}
 	}
 
 	/** Create pub view */
@@ -50,7 +62,7 @@ public class PubActivity extends BaseActivity {
 			// Need to set adapter to make the ListView visible.
 			pubsFeed.setAdapter(null);
 			
-			new LoadPubInBg().execute();
+			loadPubsTask = new LoadPubInBg().execute();
 	    	addActionListener();
 		} else {
 			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
@@ -70,7 +82,7 @@ public class PubActivity extends BaseActivity {
 	}
 	
 	/** Loading all events i background activity (AsyncTask) */
-	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
+	public class LoadPubInBg extends AsyncTask<String, String, Boolean> {
 
 		/**
 		 * Runs a loading animation

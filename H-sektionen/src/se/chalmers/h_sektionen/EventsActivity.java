@@ -20,8 +20,9 @@ import android.widget.ListView;
  */
 public class EventsActivity extends BaseActivity {
 	
-	EventsArrayAdapter feedAdapter;
-	ListView eventsFeed;
+	private EventsArrayAdapter feedAdapter;
+	private ListView eventsFeed;
+	private AsyncTask<String, String, Boolean> loadEventsTask;
 	
 	/** On resume */
 	@Override
@@ -49,13 +50,23 @@ public class EventsActivity extends BaseActivity {
 			// Need to set adapter to make the ListView visible.
 			eventsFeed.setAdapter(null);
 			
-			new LoadEventsInBg().execute();
+			loadEventsTask = new LoadEventsInBg().execute();
 	    	addActionListener();
 	    	
 		} else {
 			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
 		}
-
+	}
+	
+	/**
+	 * On pause: cancel the AsyncTask that downloads the calendar.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (loadEventsTask != null && !loadEventsTask.isCancelled()) {
+			loadEventsTask.cancel(true);
+		}
 	}
 	
 	/** Add action listener */

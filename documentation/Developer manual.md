@@ -72,9 +72,12 @@ Faultreport       -     (Intenet to send)
 ###Release procedure
 
 ##Tests
+  
+  Test are provided both in form of JUnit.java test and manual.md test. The package Test supplies the test. 
 
 ###Test libraies
 
+  
 
 ##Architecture
 

@@ -69,10 +69,7 @@ public class MainActivity extends BaseActivity {
 			imgHeader.setImageResource(R.drawable.news);
 
 			//Add to list view
-			if (newsFeed.getHeaderViewsCount() == 0) {
-				newsFeed.addHeaderView(imgHeader,null,false);
-			}
-			
+			newsFeed.addHeaderView(imgHeader,null,false);
 			newsFeed.setAdapter(newsAdapter);
 
 			

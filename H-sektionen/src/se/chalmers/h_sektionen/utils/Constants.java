@@ -1,7 +1,7 @@
 package se.chalmers.h_sektionen.utils;
 /**
  * A class full of different constants used in the project. 
- * @Author 
+ * @Author  Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
  * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
  * @Licens Apache
  */

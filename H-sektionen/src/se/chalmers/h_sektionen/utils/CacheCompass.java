@@ -4,9 +4,10 @@ import android.app.ActivityManager;
 import android.content.Context;
 
 /**
- *  Singleton Container for the BitmapCache.
- *  
- * *
+ * Singleton Container for the BitmapCache.
+ * @Author Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class CacheCompass {
 	

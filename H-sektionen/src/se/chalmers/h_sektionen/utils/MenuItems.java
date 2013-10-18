@@ -1,6 +1,9 @@
 package se.chalmers.h_sektionen.utils;
 /**
  * Class with the items in the menu drawer
+ * @Author Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class MenuItems {
 	public static final int NEWS = 0;

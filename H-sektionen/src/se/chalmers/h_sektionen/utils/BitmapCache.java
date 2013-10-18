@@ -7,8 +7,9 @@ import android.support.v4.util.LruCache;
 
 /**
  *  A cache for images in the application, uses the LruCache class.
- * @author Anders
- *
+ * @Author Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class BitmapCache extends LruCache<String, Bitmap> {
 	

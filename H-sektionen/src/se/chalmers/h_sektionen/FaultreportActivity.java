@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 /**
  * Activity that displays a view for reporting faults.
+ * @Author Oskar Gustavsson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class FaultreportActivity extends BaseActivity {
 	

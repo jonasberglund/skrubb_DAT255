@@ -16,6 +16,12 @@ import se.chalmers.h_sektionen.utils.Constants;
 
 import junit.framework.TestCase;
 
+/**
+ * Test News Feed
+ * @Author Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
 public class TestNewsFeed extends TestCase {
 
 	protected void setUp() throws Exception {

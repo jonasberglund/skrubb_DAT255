@@ -15,6 +15,13 @@ import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+/**
+ * Main Activity that creates the news view
+ * @Author Olle Svensson, Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
+
 public class MainActivity extends BaseActivity {
 	
 	private NewsAdapter newsAdapter;

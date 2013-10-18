@@ -2,7 +2,6 @@ package se.chalmers.h_sektionen;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.LinearLayout;
@@ -15,6 +14,9 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 
 /**
  * InfoActivity takes care about the info view
+ * @Author Robin Tornqist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class InfoActivity extends BaseActivity {
 	

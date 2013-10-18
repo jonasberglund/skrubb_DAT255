@@ -23,6 +23,7 @@ public class MainActivity extends BaseActivity {
 	private boolean loadingFirstTime;
 	private boolean currentlyLoading;
 	private int descending;
+	private AsyncTask<Integer, String, Boolean> loadNewsTask;
 	
 	/**
 	 * Superclass method onCreate
@@ -30,12 +31,7 @@ public class MainActivity extends BaseActivity {
 	@Override
 	 protected void onCreate(Bundle savedInstanceState){	
 		super.onCreate(savedInstanceState);
-		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
-		loadingFirstTime = true;
-		currentlyLoading = false;
-		setCurrentView(MenuItems.NEWS);
-		createNewsView();
-		descending = 0;
+		
 	}
 	
 	
@@ -44,8 +40,25 @@ public class MainActivity extends BaseActivity {
 	 */
 	@Override
 	protected void onResume() {
-
 		super.onResume();
+		
+		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
+		loadingFirstTime = true;
+		currentlyLoading = false;
+		setCurrentView(MenuItems.NEWS);
+		createNewsView();
+		descending = 0;
+	}
+	
+	/**
+	 * On pause: cancel the AsyncTask that downloads the lunch menu.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (loadNewsTask != null && !loadNewsTask.isCancelled()) {
+			loadNewsTask.cancel(true);
+		}
 	}
     
 	/**
@@ -77,7 +90,7 @@ public class MainActivity extends BaseActivity {
 					}			
 				}});
 			
-			new LoadNewsInBg().execute(descending);
+			loadNewsTask = new LoadNewsInBg().execute(descending);
     	} else {
     		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
@@ -100,7 +113,7 @@ public class MainActivity extends BaseActivity {
     /**
      * AsyncTask for loading news feed posts in background.
      */
-    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
+    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean> {
 		
 		
     	/**

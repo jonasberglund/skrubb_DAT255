@@ -114,6 +114,10 @@ public class BaseActivity extends ActionBarActivity {
 		        		break;
 		        	case MenuItems.FAULTREPORT:
 		        		startActivityByClass(FaultreportActivity.class);
+		        		break;
+		        	case MenuItems.ABOUT:
+		        		startActivityByClass(AboutActivity.class);
+		        		break;
 		        	default:
 		        		return;
 		        }
@@ -261,7 +265,7 @@ public class BaseActivity extends ActionBarActivity {
 		    i.addCategory(Intent.CATEGORY_HOME);
 		    startActivity(i);
 		}
-		super.onBackPressed();
+		//super.onBackPressed();
 	}
 	
 	/**

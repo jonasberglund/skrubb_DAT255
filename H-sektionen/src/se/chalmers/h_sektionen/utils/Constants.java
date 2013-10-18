@@ -27,4 +27,14 @@ public class Constants {
 	public static final String LS_KITCHEN_RSS = "http://cm.lskitchen.se/lindholmen/foodcourt/sv/today.rss";
 	public static final String KOKBOKEN_BASE = "http://cm.lskitchen.se/lindholmen/kokboken/sv/";
 	
+	// å = \u00e5, ä = \u00e4, ö = \u00f6
+	public static final String NEXT_YEAR = "N\u00e4sta \u00e5r";
+	public static final String YEAR = " \u00e5r";
+	public static final String NEXT_MONTH = "N\u00e4sta m\u00e5nad";
+	public static final String MONTH = " m\u00e5nad";
+	public static final String TOMORROW = "I morgon";
+	public static final String TODAY = "I dag";
+	public static final String WHEN = "N\u00e4r: ";
+	
+			
 }

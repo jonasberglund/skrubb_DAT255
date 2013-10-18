@@ -34,11 +34,15 @@ import se.chalmers.h_sektionen.containers.Event;
 import se.chalmers.h_sektionen.containers.InfoContainer;
 import se.chalmers.h_sektionen.containers.NewsItem;
 
+
 /**
  * Class for retrieving and parsing data for different feeds
+ * @Author Jonas Berglund, Olle Svensson, Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class LoadData {
-	
+
 	/**
 	 * Retrieves and parses event posts
 	 * @return List containing events
@@ -106,10 +110,13 @@ public class LoadData {
 
 	/**
 	 * Retrieves and parses news feed posts
+	 * 
+	 * @param descending Integer value deciding which interval of posts to get from server
+	 * @param highresPictures True if method should load high resolution pictures
 	 * @return List containing news feed posts
-	 * @throws JSONException 
+	 * @throws JSONException
 	 */
-	public static ArrayList<NewsItem> loadNews(int descending) throws JSONException{
+	public static ArrayList<NewsItem> loadNews(int descending, boolean highresPictures) throws JSONException{
 		
 		//Get JSON string from server
 		String result = getJSON(Constants.NEWSFEED + descending); 
@@ -128,22 +135,27 @@ public class LoadData {
 				String[] date = json_arr.getJSONObject(i).optString("created_time").split("T");
 				
 				//Get image url
-				String image = json_arr.getJSONObject(i).optString("picture");
+				String imageUrl = json_arr.getJSONObject(i).optString("picture");
 				
-				if(!image.equals("")){
-					image = image.replace("s.jpg", "n.jpg");
-					image = image.replace("s.png", "n.png");
+				//If true, change image url to high resolution pictures
+				if(highresPictures && !imageUrl.equals("")){
+					imageUrl = imageUrl.replace("s.jpg", "n.jpg");
+					imageUrl = imageUrl.replace("s.png", "n.png");
 				}
 				
 				//Add to posts if valid content
 				if ((!message.equals("")) && (!date.equals(""))){
-					posts.add(new NewsItem(message, date[0], image));
+					posts.add(new NewsItem(message, date[0], imageUrl));
 				}
 			}
 		
 		return (ArrayList<NewsItem>) posts;
 	}
 	
+	/**
+	 * 
+	 * @return A JSON formed string containing info such as contact information and links
+	 */
 	public static String loadInfoAsJSON() {
 		return getJSON(Constants.INFO);
 	}
@@ -167,7 +179,7 @@ public class LoadData {
 		sb.append(Constants.LS_KITCHEN_TITLE);
 		sb.append("</h1>");
 		
-		// Append data from L´s RSS.
+		// Append data from Ls RSS.
 		sb.append(loadLunchFromRSS(Constants.LS_KITCHEN_RSS, "item", "title", "description", false));
 		
 		return sb.toString();
@@ -292,13 +304,15 @@ public class LoadData {
 			// Create a HTML-string containing links. The TextView can handle HTML
 			JSONArray links = json.getJSONArray("links");
 			htmlLinks = new StringBuilder();
-
+			
 			for (int i=0; i<links.length(); i++) {
 				htmlLinks.append("<a href=\"");
 				htmlLinks.append(links.getJSONObject(i).getString("href"));
 				htmlLinks.append("\">");
 				htmlLinks.append(links.getJSONObject(i).getString("name"));
-				htmlLinks.append("</a><br />");
+				htmlLinks.append("</a><br>");
+				if(!(i == links.length()-1))
+					htmlLinks.append("<br>");
 			}
 
 			// Create a HTML-string containing opening hours. 
@@ -408,20 +422,21 @@ public class LoadData {
 		if(time.length() > "1967-09-03".length()){
 			clock = " kl: " +  date[1].substring(0,5);
 		}
-
+		
+		
 		if (years == 1)
-			return "Nästa år";
+			return Constants.NEXT_YEAR;
 		else if (years > 1)
-			return "Om " + years + " år";
+			return "Om " + years + Constants.YEAR;
 		else if (months == 1)
-			return "Nästa månad";
+			return Constants.NEXT_MONTH;
 		else if (months > 1)
-			return "Om " + months + " månader";
+			return "Om " + months + Constants.MONTH;
 		else if (days == 1)
-			return "I morgon" + clock;
+			return Constants.TOMORROW + clock;
 		else if (days > 1)
 			return "Om " + days + " dagar";
-
-		return "I dag kl: " + clock;
+		
+		return Constants.TODAY + clock;
 	}
 }

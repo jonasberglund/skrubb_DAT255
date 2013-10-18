@@ -18,18 +18,33 @@ import android.widget.ListView;
 
 /**
  * Activity that displays pub events at Lindholmen.
+ * @Author Jonas Berglund
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class PubActivity extends BaseActivity {
 
-	PubArrayAdapter pubFeedAdapter;
-	ListView pubsFeed;
+	private PubArrayAdapter pubFeedAdapter;
+	private ListView pubsFeed;
+	private AsyncTask<String, String, Boolean> loadPubsTask;
 
 	/** Notify BaseActivity this view is set and create this view */
 	@Override
 	protected void onResume() {
+		super.onResume();
 		setCurrentView(MenuItems.PUB);
 		createPubView();
-		super.onResume();
+	}
+	
+	/**
+	 * On pause: cancel the AsyncTask that downloads the calendar.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (loadPubsTask != null && !loadPubsTask.isCancelled()) {
+			loadPubsTask.cancel(true);
+		}
 	}
 
 	/** Create pub view */
@@ -41,7 +56,16 @@ public class PubActivity extends BaseActivity {
 			
 			pubsFeed = (ListView) findViewById(R.id.pubs_feed);;
 			
-			new LoadPubInBg().execute();
+			//Adding header picture to array adapter
+			ImageView img = new ImageView(PubActivity.this);
+			img.setAdjustViewBounds(true);
+			img.setImageResource(R.drawable.pubf);
+			pubsFeed.addHeaderView(img,null,false);
+			
+			// Need to set adapter to make the ListView visible.
+			pubsFeed.setAdapter(null);
+			
+			loadPubsTask = new LoadPubInBg().execute();
 	    	addActionListener();
 		} else {
 			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
@@ -51,17 +75,17 @@ public class PubActivity extends BaseActivity {
 	
 	/** Add action listener */
 	private void addActionListener(){
-		 pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-	            public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
-		            	View toolbar = view.findViewById(R.id.toolbarPubs);
-		                ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
-		                toolbar.startAnimation(expandAni);
-	            }
-	        });
+		pubsFeed.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+			public void onItemClick(AdapterView<?> parent, final View view, int position, long id) {
+				View toolbar = view.findViewById(R.id.toolbarPubs);
+				ExpandAnimation expandAni = new ExpandAnimation(toolbar, 500);
+				toolbar.startAnimation(expandAni);
+			}
+		});
 	}
 	
 	/** Loading all events i background activity (AsyncTask) */
-	public class LoadPubInBg extends AsyncTask<String, String, Boolean>{
+	public class LoadPubInBg extends AsyncTask<String, String, Boolean> {
 
 		/**
 		 * Runs a loading animation
@@ -92,11 +116,6 @@ public class PubActivity extends BaseActivity {
     		stopAnimation();
     		
     		if (success){
-			//Adding header picture to array adapter
-				ImageView img = new ImageView(PubActivity.this);
-				img.setAdjustViewBounds(true);
-				img.setImageResource(R.drawable.pubf);
-				pubsFeed.addHeaderView(img,null,false);
 				pubsFeed.setAdapter(pubFeedAdapter);
     		} else {
     			setErrorView(getString(R.string.GET_FEED_ERROR_MSG));

@@ -1,5 +1,4 @@
 
-
 package se.chalmers.h_sektionen.utils;
 
 import java.io.InputStream;
@@ -10,6 +9,9 @@ import android.graphics.BitmapFactory;
 /**
  * PicLoaderThread downloads a picture to a Bitmap object from a given url.
  * If fail, the pic variable is set to null.
+ * @Author Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class PicLoaderThread extends Thread {
 

@@ -3,6 +3,7 @@ package se.chalmers.h_sektionen.adapters;
 import java.util.List;
 import se.chalmers.h_sektionen.R;
 import se.chalmers.h_sektionen.containers.Event;
+import se.chalmers.h_sektionen.utils.Constants;
 
 import android.app.Activity;
 import android.content.Context;
@@ -13,6 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Events Array Adapter
+ * @Author Jonas Berglund
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
 
 public class EventsArrayAdapter extends ArrayAdapter<Event> {
    
@@ -70,7 +77,7 @@ public class EventsArrayAdapter extends ArrayAdapter<Event> {
 		holder.date.setText(String.valueOf(event.getDate()) );
 		holder.description.setText("Beskrivning: " + event.getDescription() + "\n");
 		holder.place.setText("Var: " + event.getPlace() + "\n");
-		holder.fullDate.setText("När: "+ event.getFullDate() + "\n");
+		holder.fullDate.setText(Constants.WHEN + event.getFullDate() + "\n");
 
 		return row;
 	}

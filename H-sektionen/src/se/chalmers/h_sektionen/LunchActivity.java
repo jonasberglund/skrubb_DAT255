@@ -4,47 +4,56 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 /**
  * Activity responsible of the lunch menu view.
+ * @Author Robin Tornquist
+ * @Author Rikard Ekbom
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class LunchActivity extends BaseActivity {
 
-	/**
-	 * Sets an error view if no Internet connection, else downloads the lunch RSS and shows it.
-	 */
-	@Override
-	protected void onCreate(Bundle savedInstance) {
-		super.onCreate(savedInstance);
-		
-		if (connectedToInternet())
-			new DownloadLunchRSS().execute();
-		else 
-		    setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
-	}
+	private AsyncTask<String, String, String> getLunchTask;
 	
 	/**
-	 * On resume.
+	 * On resume. Sets the lunch view and starts a task that downloads the menu.
 	 */
 	@Override
 	protected void onResume() {
 		super.onResume();
 		setCurrentView(MenuItems.LUNCH);
+		if (connectedToInternet()) {
+			getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_lunch, null));
+			
+			getLunchTask = new DownloadLunchRSS().execute();
+			
+		} else {
+		    setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+		}
 	}
+	
+	/**
+	 * On pause: cancel the AsyncTask that downloads the lunch menu.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (getLunchTask != null && !getLunchTask.isCancelled()) {
+			getLunchTask.cancel(true);
+		}
+	}
+	
 	/**
 	 * Creates the lunch view.
 	 */
 	private void setUpLunchView(String result){
-		getFrameLayout().removeAllViews();
-		getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_lunch, null));
 		
 		TextView textView = (TextView)findViewById(R.id.LunchTextView);
 		textView.setText(Html.fromHtml(result));
 
-
-    	
     }
 	
 	/**
@@ -76,6 +85,8 @@ public class LunchActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPostExecute(String result){
+			stopAnimation();
+			
 			setUpLunchView(result);
 		}
 	}

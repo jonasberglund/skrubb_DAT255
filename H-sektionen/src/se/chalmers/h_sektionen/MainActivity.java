@@ -2,35 +2,44 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 
-import se.chalmers.h_sektionen.adapters.NewsAdapter;
+import se.chalmers.h_sektionen.adapters.NewsArrayAdapter;
 import se.chalmers.h_sektionen.containers.NewsItem;
+import se.chalmers.h_sektionen.utils.Connectivity;
 import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 import se.chalmers.h_sektionen.utils.OnBottomScrollListener;
 
 import android.os.AsyncTask;
-import android.os.Bundle;
 
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.ListView;
 
+/**
+ * Main Activity that creates the news view
+ * @Author Olle Svensson, Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
+
 public class MainActivity extends BaseActivity {
 	
-	private NewsAdapter newsAdapter;
+	private NewsArrayAdapter newsAdapter;
 	private ListView newsFeed;
 	private View aniFooter;
 	private boolean loadingFirstTime;
 	private boolean currentlyLoading;
 	private int descending;
+	private AsyncTask<Integer, String, ArrayList<NewsItem>> loadNewsTask;
 	
 	/**
-	 * Superclass method onCreate
+	 * Superclass method onResume
 	 */
 	@Override
-	 protected void onCreate(Bundle savedInstanceState){	
-		super.onCreate(savedInstanceState);
-		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
+	protected void onResume() {
+		super.onResume();
+		
+		newsAdapter = new NewsArrayAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
 		loadingFirstTime = true;
 		currentlyLoading = false;
 		setCurrentView(MenuItems.NEWS);
@@ -38,14 +47,17 @@ public class MainActivity extends BaseActivity {
 		descending = 0;
 	}
 	
-	
 	/**
-	 * Superclass method onResume
+	 * On pause: cancel the AsyncTask that downloads the lunch menu.
 	 */
 	@Override
-	protected void onResume() {
-
-		super.onResume();
+	protected void onPause() {
+		super.onPause();
+		if (loadNewsTask != null && !loadNewsTask.isCancelled()) {
+			loadNewsTask.cancel(true);
+			currentlyLoading = false;
+			descending = 0;
+		}
 	}
     
 	/**
@@ -54,6 +66,7 @@ public class MainActivity extends BaseActivity {
     private void createNewsView(){
     	
     	if (connectedToInternet()){
+    		
 	    	getFrameLayout().removeAllViews();
 			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
 			
@@ -68,16 +81,17 @@ public class MainActivity extends BaseActivity {
 			//Add to list view
 			newsFeed.addHeaderView(imgHeader,null,false);
 			newsFeed.setAdapter(newsAdapter);
-			
+
+			//Add scroll listener
 			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
 				@Override
 				protected void doOnScrollCompleted() {
 					if (!currentlyLoading){
-						new LoadNewsInBg().execute(++descending);
+						loadNewsTask = new LoadNewsInBg().execute(++descending);
 					}			
 				}});
 			
-			new LoadNewsInBg().execute(descending);
+			loadNewsTask = new LoadNewsInBg().execute(descending);
     	} else {
     		setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
     	}
@@ -100,7 +114,7 @@ public class MainActivity extends BaseActivity {
     /**
      * AsyncTask for loading news feed posts in background.
      */
-    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
+    private class LoadNewsInBg extends AsyncTask<Integer, String, ArrayList<NewsItem>>{
 		
 		
     	/**
@@ -108,6 +122,8 @@ public class MainActivity extends BaseActivity {
 		 */
 		@Override
 		protected void onPreExecute(){
+			
+			currentlyLoading = true;
 			
 			if (loadingFirstTime){
 				runTransparentLoadAnimation();
@@ -120,12 +136,11 @@ public class MainActivity extends BaseActivity {
 		 * Superclass method doInBackground
 		 */
 		@Override
-		protected Boolean doInBackground(Integer... descending) {	
+		protected ArrayList<NewsItem> doInBackground(Integer... descending) {	
 			try {
-				newsAdapter.addAll(LoadData.loadNews(descending[0]));
-				return true;
+				return LoadData.loadNews(descending[0], Connectivity.isConnectedFast(MainActivity.this));			
 			} catch (Exception e){
-				return false;
+				return null;
 			}
 		}
 		
@@ -133,9 +148,10 @@ public class MainActivity extends BaseActivity {
 		 * Superclass method onPostExecute
 		 */
 		@Override
-        protected void onPostExecute(Boolean feedLoadedSuccessfully){
+        protected void onPostExecute(ArrayList<NewsItem> list){
 			
-			if (feedLoadedSuccessfully){
+			//Check if new posts were loaded successfully
+			if (list != null){
 				if (loadingFirstTime){
 					stopAnimation();
 					loadingFirstTime = false;
@@ -143,7 +159,9 @@ public class MainActivity extends BaseActivity {
 					removeFooterAnimation();
 				}
 				
+				//Add new posts to adapter and notify list view
 				currentlyLoading = false;
+				newsAdapter.addAll(list);
 				newsAdapter.notifyDataSetChanged();
 				
 			} else {

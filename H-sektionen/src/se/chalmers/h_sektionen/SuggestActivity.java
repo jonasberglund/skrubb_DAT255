@@ -1,4 +1,5 @@
-﻿package se.chalmers.h_sektionen;
+﻿
+package se.chalmers.h_sektionen;
 
 import se.chalmers.h_sektionen.utils.MenuItems;
 import android.content.Intent;
@@ -9,8 +10,11 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 /**
- * Activity that displays the view for the user to input
+ * Class that displays the view for the user to input
  * suggestions.
+ * @Author Oskar Gustavsson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class SuggestActivity extends BaseActivity {
 	
@@ -65,12 +69,7 @@ public class SuggestActivity extends BaseActivity {
 		
 		//if no E-mail client is found, post a toast to let the user know.
 		catch (android.content.ActivityNotFoundException ex) {
-			Toast.makeText(SuggestActivity.this,getString(R.string.suggest_noEmailClientFound), Toast.LENGTH_SHORT).show();
+			Toast.makeText(SuggestActivity.this,getString(R.string.noEmailClientFound), Toast.LENGTH_SHORT).show();
 		}
-	}
-	
-	public void startSecret(View view){
-		Intent intent = new Intent(Intent.ACTION_VIEW ,Uri.parse(getString(R.string.video)));
-		startActivity(intent);
 	}
 }

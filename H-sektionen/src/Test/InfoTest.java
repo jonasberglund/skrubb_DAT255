@@ -16,6 +16,12 @@ import org.junit.Test;
 import se.chalmers.h_sektionen.containers.ContactCard;
 import se.chalmers.h_sektionen.utils.Constants;
 
+/**
+ * Test Info View
+ * @Author Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
 public class InfoTest {
 
 	public InfoTest() {
@@ -49,9 +55,9 @@ public class InfoTest {
 	 */
 	@Test
 	public void createContactCardTest() {
-		ContactCard c = new ContactCard("Kalle Anka", "Städare", "kalle@ankeborg.se", "070-1231232", null);
+		ContactCard c = new ContactCard("Kalle Anka", "Stadare", "kalle@ankeborg.se", "070-1231232", null);
 		assertTrue("Name fail", c.getName().equals("Kalle Anka"));
-		assertTrue("Position fail", c.getPosition().equals("Städare"));
+		assertTrue("Position fail", c.getPosition().equals("Stadare"));
 		assertTrue("Email fail", c.getEmail().equals("kalle@ankeborg.se"));
 		assertTrue("Phone number fail", c.getPhoneNumber().equals("070-1231232"));
 	}

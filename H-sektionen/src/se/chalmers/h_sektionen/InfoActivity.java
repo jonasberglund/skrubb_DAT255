@@ -2,7 +2,6 @@ package se.chalmers.h_sektionen;
 
 import android.graphics.Color;
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.widget.LinearLayout;
@@ -15,21 +14,13 @@ import se.chalmers.h_sektionen.utils.MenuItems;
 
 /**
  * InfoActivity takes care about the info view
+ * @Author Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class InfoActivity extends BaseActivity {
 	
-	/**
-	 * Sets up the view, via the GetInfoTask.
-	 */
-	@Override
-	protected void onCreate(Bundle savedInstance) {
-		super.onCreate(savedInstance);
-		if(!connectedToInternet()) {
-			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
-		} else {
-			new GetInfoTask().execute();
-		}
-	}
+	private AsyncTask<String, String, InfoContainer> getInfoTask;
 	
 	/**
 	 * Sets the static "currentView" variable in the super class, BaseActivity.
@@ -39,8 +30,26 @@ public class InfoActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 		setCurrentView(MenuItems.INFO);
+		if(connectedToInternet()) {
+			getFrameLayout().removeAllViews();
+			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.info_links, null));
+			getInfoTask = new GetInfoTask().execute();
+			
+		} else {
+			setErrorView(getString(R.string.INTERNET_CONNECTION_ERROR_MSG));
+		}
 	}
 	
+	/**
+	 * Cancel the GetInfoTask task if the activity get paused.
+	 */
+	@Override
+	protected void onPause() {
+		super.onPause();
+		if (getInfoTask != null && !getInfoTask.isCancelled()) {
+			getInfoTask.cancel(true);
+		}
+	}
 	
 	/**
 	 * GetInfoTask loads the info data and sets up the view.
@@ -53,8 +62,7 @@ public class InfoActivity extends BaseActivity {
 		@Override
 		protected void onPreExecute() {
 			super.onPreExecute();
-			
-			runLoadAnimation();
+			runTransparentLoadAnimation();
 		}
 		
 		/**
@@ -68,12 +76,13 @@ public class InfoActivity extends BaseActivity {
 		}
 		
 		/**
-		 * runs setUpView()
+		 * runs setUpView() and stops the load animation.
 		 * @param container An InfoContainer object with info to be showed.
 		 */
 		@Override
 		protected void onPostExecute(InfoContainer container) {
 			super.onPostExecute(container);
+			stopAnimation();
 			setUpView(container);
 		}
 		
@@ -93,15 +102,20 @@ public class InfoActivity extends BaseActivity {
 			ListView contactListView = (ListView) findViewById(R.id.contact_info_list);
 			contactListView.setCacheColorHint(Color.WHITE);
 
+			// Set the links text view.
 			LinearLayout linksLayout = (LinearLayout)getLayoutInflater().inflate(R.layout.info_links, null);
 			TextView linksTextView = (TextView)linksLayout.findViewById(R.id.links);
 			TextView openingHoursTextView = (TextView)linksLayout.findViewById(R.id.opening_hours);
 
+			// Make links clickable
 			linksTextView.setMovementMethod(LinkMovementMethod.getInstance());
 			linksTextView.setText(Html.fromHtml(container.getHtmlLinks()));
 
+			// Set the opening hours text view.
 			openingHoursTextView.setText(Html.fromHtml(container.getOpeningHoursString()));
 			contactListView.addHeaderView(linksLayout);
+			
+			// Set contacts list view
 			contactListView.setAdapter(new ContactCardArrayAdapter(this, R.layout.contact_list_item, container.getContactCards()));
 		} else {
 			setErrorView(getString(R.string.INFO_ERROR));

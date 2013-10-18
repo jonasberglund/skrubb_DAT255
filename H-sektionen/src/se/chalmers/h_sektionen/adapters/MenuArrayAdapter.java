@@ -17,10 +17,9 @@ import android.widget.TextView;
 
 /**
  * MenuArrayAdapter- adapter between the Menu-ui and data.
- * 
- * 
- * @author Anders
- *
+ * @Author Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class MenuArrayAdapter extends ArrayAdapter<String> {
 

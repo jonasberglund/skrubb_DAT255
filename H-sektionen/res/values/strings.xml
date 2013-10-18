@@ -31,6 +31,7 @@
     <string name="title_activity_events">Events</string>
     <string name="title_activity_suggest">Förslagslådan</string>
     <string name="title_activity_faultreport">Felanmälan</string>
+    <string name="noEmailClientFound">Det verkar inte finnas någon E-mail applikation på din telefon.</string>
     
     <string name="GET_FEED_ERROR_MSG">Det gick inte att hämta flödet.</string>
     <string name="INTERNET_CONNECTION_ERROR_MSG">Ingen internetanslutning.</string>
@@ -46,7 +47,6 @@
 		
     <string name="faultreport_buildingEmail">8800@chalmers.se</string>
     <string name="faultreport_dataEmail">support@chalmers.se</string>
-    <string name="faultreport_noEmailClientFound">Det verkar inte finnas någon E-mail applikation på din telefon.</string>
     <string name="faultreport_subject">Felanmälan</string>
     <string name="faultreport_header_textView">Felanmälan</string>
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>

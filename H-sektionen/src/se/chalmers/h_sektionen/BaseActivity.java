@@ -33,6 +33,9 @@ import com.parse.PushService;
 /**
  * The base activity which every activity extends to get the same
  * action bar and menu drawer.
+ * @Author Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class BaseActivity extends ActionBarActivity {
 

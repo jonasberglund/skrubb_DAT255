@@ -37,6 +37,9 @@ import se.chalmers.h_sektionen.containers.NewsItem;
 
 /**
  * Class for retrieving and parsing data for different feeds
+ * @Author Jonas Berglund, Olle Svensson, Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class LoadData {
 
@@ -168,7 +171,7 @@ public class LoadData {
 		sb.append(Constants.LS_KITCHEN_TITLE);
 		sb.append("</h1>");
 		
-		// Append data from L´s RSS.
+		// Append data from Ls RSS.
 		sb.append(loadLunchFromRSS(Constants.LS_KITCHEN_RSS, "item", "title", "description", false));
 		
 		return sb.toString();

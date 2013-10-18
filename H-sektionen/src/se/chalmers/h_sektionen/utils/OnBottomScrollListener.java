@@ -5,6 +5,9 @@ import android.widget.AbsListView.OnScrollListener;
 
 /**
  * ScrollListener that checks if ScrollList has reached bottom.
+ * @Author Olle Svensson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public abstract class OnBottomScrollListener implements OnScrollListener {
 		private int currentFirstVisibleItem;

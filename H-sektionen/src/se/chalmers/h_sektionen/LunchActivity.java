@@ -4,11 +4,13 @@ import se.chalmers.h_sektionen.utils.LoadData;
 import se.chalmers.h_sektionen.utils.MenuItems;
 
 import android.os.AsyncTask;
-import android.os.Bundle;
 import android.text.Html;
 import android.widget.TextView;
 /**
  * Activity responsible of the lunch menu view.
+ * @Author Robin Tornquist
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class LunchActivity extends BaseActivity {
 

@@ -17,6 +17,9 @@ import android.widget.ImageView;
 import android.widget.ListView;
 /**
  * Activity that displays the events for H-sektionen.
+ * @Author Jonas Berglund
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class EventsActivity extends BaseActivity {
 	

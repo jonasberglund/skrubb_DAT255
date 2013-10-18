@@ -11,6 +11,9 @@ import android.widget.Toast;
 
 /**
  * Activity that displays a view for reporting faults.
+ * @Author Oskar Gustavsson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class FaultreportActivity extends BaseActivity {
 	
@@ -42,7 +45,7 @@ public class FaultreportActivity extends BaseActivity {
 	
 	/**
 	 * Starts an e-mail client with all fields filled in.
-	 * Message is taken from the view, subject is decided by a checkbox status.
+	 * Message is taken from the view, subject is in a string and receiver is decided by a checkbox status.
 	 * @param view the view to get the message from.
 	 */
 	public void sendFaultreportEmail(View view){
@@ -66,7 +69,7 @@ public class FaultreportActivity extends BaseActivity {
 		try{
 			startActivity(intent);	
 		}catch (android.content.ActivityNotFoundException ex) { //if no email clients on the phone, post a toast to let the user know.
-			Toast.makeText(FaultreportActivity.this, R.string.faultreport_noEmailClientFound, Toast.LENGTH_SHORT).show();
+			Toast.makeText(FaultreportActivity.this, R.string.noEmailClientFound, Toast.LENGTH_SHORT).show();
 		}
 	}
 

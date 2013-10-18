@@ -14,6 +14,12 @@ import android.widget.ArrayAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+/**
+ * Events Array Adapter
+ * @Author Jonas Berglund
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
 
 public class EventsArrayAdapter extends ArrayAdapter<Event> {
    

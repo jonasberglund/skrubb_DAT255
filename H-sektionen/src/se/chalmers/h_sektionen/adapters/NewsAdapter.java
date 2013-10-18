@@ -18,6 +18,12 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+/**
+ * News Array Adapter
+ * @Author Olle Svensson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
+ */
 public class NewsAdapter extends ArrayAdapter<NewsItem> {
 	
 	private ArrayList<NewsItem> objects;

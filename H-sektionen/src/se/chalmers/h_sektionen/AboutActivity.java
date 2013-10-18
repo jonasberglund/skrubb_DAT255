@@ -8,11 +8,14 @@ import android.view.View;
 
 /**
  * Activity that displays a view for reporting faults.
+ * @Author Oskar Gustavsson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class AboutActivity extends BaseActivity {
 	
 	/**
-	 * Creates the view by calling createFaultView();
+	 * Creates the view by calling createAboutView();
 	 */
 	@Override
 	protected void onCreate(Bundle savedInstance) {

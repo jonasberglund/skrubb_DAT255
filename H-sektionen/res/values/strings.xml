@@ -31,22 +31,21 @@
     <string name="title_activity_events">Events</string>
     <string name="title_activity_suggest">Förslagslådan</string>
     <string name="title_activity_faultreport">Felanmälan</string>
+    <string name="noEmailClientFound">Det verkar inte finnas någon E-mail applikation på din telefon.</string>
     
     <string name="GET_FEED_ERROR_MSG">Det gick inte att hämta flödet.</string>
     <string name="INTERNET_CONNECTION_ERROR_MSG">Ingen internetanslutning.</string>
     <string name="INFO_ERROR">Kunde inte hämta information.</string>
     
     <string name="suggest_header_textView">Förslagslådan</string>
-    <string name="suggest_text">Här kan du skicka in förslag till H-sektionen. Är det något du är missnöjd med eller saknar? Låt oss veta!</string>
+    <string name="suggest_text">Här kan du skicka in förslag till H-sektionen. Har du en kul idèe? Är det något du är missnöjd med eller saknar? Låt oss veta!</string>
     <string name="suggest_edit_message">Skriv här</string>
     <string name="suggest_button_send">Skicka</string>
 	<string name="suggest_emailReceiver">foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com</string>
 	<string name="suggest_subject">Förslag till H-sektionen</string>
-	<string name="suggest_noEmailClientFound">"Det verkar inte finnas någon E-mail applikation på din telefon."</string>	
 		
     <string name="faultreport_buildingEmail">8800@chalmers.se</string>
     <string name="faultreport_dataEmail">support@chalmers.se</string>
-    <string name="faultreport_noEmailClientFound">Det verkar inte finnas någon E-mail applikation på din telefon.</string>
     <string name="faultreport_subject">Felanmälan</string>
     <string name="faultreport_header_textView">Felanmälan</string>
     <string name="faultreport_text">Hittat något fel i lokalerna? Startar inte datorn? Tänds inte lampan? Hänger det istappar i grupprummet? Gör en felanmälan!</string>
@@ -71,7 +70,7 @@
 	<string name="about_versionText">1.0</string>
 	<string name="about_creatorsHeader">Utvecklare</string>
 	<string name="about_creators">Jonas Berglund\nRobin Törnquist\nOlle Svensson\nRikard Ekbom\nOskar Gustavsson\nAnders Johansson</string>
-	<string name="about_trailerHeaderText">Skapandet av H-sektionen</string>
+	<string name="about_trailerHeaderText">Skapandet av H-sektionsappen</string>
 	<string name="about_trailerText">Action, spänning, skräck och drama. H-sektionens trailer har allt!</string>
 	<string name="about_trailerButtonText">Se filmen</string>
 	<string name="video">http://www.youtube.com/watch?v=eE8PISJ_0jY</string>

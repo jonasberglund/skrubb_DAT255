@@ -10,7 +10,9 @@ import android.content.res.Resources;
 
 /**
  * Populate a static list of items. The list is used to build the menu.
- *
+ * @Author Anders Johansson
+ * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
+ * @Licens Apache
  */
 public class MenuModel {
 

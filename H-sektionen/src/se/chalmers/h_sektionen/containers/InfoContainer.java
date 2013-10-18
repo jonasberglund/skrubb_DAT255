@@ -2,8 +2,6 @@ package se.chalmers.h_sektionen.containers;
 
 import java.util.List;
 
-import se.chalmers.h_sektionen.adapters.ContactCardArrayAdapter;
-
 /**
  * A container class that contains information used in InfoActivity.
  * The meaning of this class is that, LoadData should fill it, and 

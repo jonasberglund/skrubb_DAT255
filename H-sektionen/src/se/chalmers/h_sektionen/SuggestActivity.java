@@ -66,7 +66,7 @@ public class SuggestActivity extends BaseActivity {
 		
 		//if no E-mail client is found, post a toast to let the user know.
 		catch (android.content.ActivityNotFoundException ex) {
-			Toast.makeText(SuggestActivity.this,getString(R.string.suggest_noEmailClientFound), Toast.LENGTH_SHORT).show();
+			Toast.makeText(SuggestActivity.this,getString(R.string.noEmailClientFound), Toast.LENGTH_SHORT).show();
 		}
 	}
 }

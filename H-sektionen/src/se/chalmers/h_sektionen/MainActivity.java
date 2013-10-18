@@ -103,7 +103,7 @@ public class MainActivity extends BaseActivity {
     /**
      * AsyncTask for loading news feed posts in background.
      */
-    private class LoadNewsInBg extends AsyncTask<Integer, String, Boolean>{
+    private class LoadNewsInBg extends AsyncTask<Integer, String, ArrayList<NewsItem>>{
 		
 		
     	/**
@@ -123,13 +123,12 @@ public class MainActivity extends BaseActivity {
 		 * Superclass method doInBackground
 		 */
 		@Override
-		protected Boolean doInBackground(Integer... descending) {	
+		protected ArrayList<NewsItem> doInBackground(Integer... descending) {	
 			try {
-				newsAdapter.addAll(LoadData.loadNews(descending[0], Connectivity.isConnectedFast(MainActivity.this)));
-				return true;
+				return LoadData.loadNews(descending[0], Connectivity.isConnectedFast(MainActivity.this));
 					
 			} catch (Exception e){
-				return false;
+				return null;
 			}
 		}
 		
@@ -137,9 +136,9 @@ public class MainActivity extends BaseActivity {
 		 * Superclass method onPostExecute
 		 */
 		@Override
-        protected void onPostExecute(Boolean feedLoadedSuccessfully){
+        protected void onPostExecute(ArrayList<NewsItem> list){
 			
-			if (feedLoadedSuccessfully){
+			if (list != null){
 				if (loadingFirstTime){
 					stopAnimation();
 					loadingFirstTime = false;
@@ -148,6 +147,7 @@ public class MainActivity extends BaseActivity {
 				}
 				
 				currentlyLoading = false;
+				newsAdapter.addAll(list);
 				newsAdapter.notifyDataSetChanged();
 				
 			} else {

@@ -26,16 +26,6 @@ public class MainActivity extends BaseActivity {
 	private AsyncTask<Integer, String, Boolean> loadNewsTask;
 	
 	/**
-	 * Superclass method onCreate
-	 */
-	@Override
-	 protected void onCreate(Bundle savedInstanceState){	
-		super.onCreate(savedInstanceState);
-		
-	}
-	
-	
-	/**
 	 * Superclass method onResume
 	 */
 	@Override
@@ -79,8 +69,12 @@ public class MainActivity extends BaseActivity {
 			imgHeader.setImageResource(R.drawable.news);
 
 			//Add to list view
-			newsFeed.addHeaderView(imgHeader,null,false);
+			if (newsFeed.getHeaderViewsCount() == 0) {
+				newsFeed.addHeaderView(imgHeader,null,false);
+			}
+			
 			newsFeed.setAdapter(newsAdapter);
+
 			
 			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
 				@Override

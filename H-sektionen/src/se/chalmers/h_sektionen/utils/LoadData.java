@@ -110,8 +110,11 @@ public class LoadData {
 
 	/**
 	 * Retrieves and parses news feed posts
+	 * 
+	 * @param descending Integer value deciding which interval of posts to get from server
+	 * @param highresPictures True if method should load high resolution pictures
 	 * @return List containing news feed posts
-	 * @throws JSONException 
+	 * @throws JSONException
 	 */
 	public static ArrayList<NewsItem> loadNews(int descending, boolean highresPictures) throws JSONException{
 		
@@ -132,22 +135,27 @@ public class LoadData {
 				String[] date = json_arr.getJSONObject(i).optString("created_time").split("T");
 				
 				//Get image url
-				String image = json_arr.getJSONObject(i).optString("picture");
+				String imageUrl = json_arr.getJSONObject(i).optString("picture");
 				
-				if(highresPictures && !image.equals("")){
-					image = image.replace("s.jpg", "n.jpg");
-					image = image.replace("s.png", "n.png");
+				//If true, change image url to high resolution pictures
+				if(highresPictures && !imageUrl.equals("")){
+					imageUrl = imageUrl.replace("s.jpg", "n.jpg");
+					imageUrl = imageUrl.replace("s.png", "n.png");
 				}
 				
 				//Add to posts if valid content
 				if ((!message.equals("")) && (!date.equals(""))){
-					posts.add(new NewsItem(message, date[0], image));
+					posts.add(new NewsItem(message, date[0], imageUrl));
 				}
 			}
 		
 		return (ArrayList<NewsItem>) posts;
 	}
 	
+	/**
+	 * 
+	 * @return A JSON formed string containing info such as contact information and links
+	 */
 	public static String loadInfoAsJSON() {
 		return getJSON(Constants.INFO);
 	}

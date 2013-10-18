@@ -24,50 +24,60 @@ import android.widget.TextView;
  * @Copyright (c) 2013 Anders Johansson, Olle Svensson, Robin Tornquist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund
  * @Licens Apache
  */
-public class NewsAdapter extends ArrayAdapter<NewsItem> {
+public class NewsArrayAdapter extends ArrayAdapter<NewsItem> {
 	
-	private ArrayList<NewsItem> objects;
+	private ArrayList<NewsItem> items;
 	
-	public NewsAdapter(Context context, int resource, ArrayList<NewsItem> objects){
-		super(context, resource, objects);
-		this.objects = objects;
+	/**
+	 * Constructor.
+	 * @param context
+	 * @param resource
+	 * @param objects
+	 */
+	public NewsArrayAdapter(Context context, int resource, ArrayList<NewsItem> items){
+		super(context, resource, items);
+		this.items = items;
 	}
-	 
+	
+	/** @return  Returns the data set of news items stored by the adapter */
 	public ArrayList<NewsItem> getItems(){
-		return objects;
+		return items;
 	}
 	
 	/**
-	 * Overrided and added manually because method unsupported in target API.
+	 * Overrided method and added manually because method unsupported in minimum required API.
 	 */
 	@Override
 	public void addAll(Collection<? extends NewsItem> collection){
 		for (NewsItem item : collection){
-			objects.add(item);
+			items.add(item);
 		}
 	}
 	
-	
+	/**
+	 * Overrided method getView
+	 * Sets message and date to view and loads image in background.
+	 */
+	@Override
 	public View getView(int position, View convertView, ViewGroup parent){
 		
-		//Assign the view we are converting to a local variable
-		View v = convertView;
+		//Assign the view to a local variable
+		View view = convertView;
 		
-		
-		// first check to see if the view is null. if so, we have to inflate it.
-		// to inflate it basically means to render, or show, the view.
-		if(v == null){
+		//Inflate view if null
+		if(view == null){
 			LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-			v = inflater.inflate(R.layout.news_feed_item, null);
+			view = inflater.inflate(R.layout.news_feed_item, null);
 		}
 		
-		NewsItem item = objects.get(position);
+		//Get item to display in view
+		NewsItem item = items.get(position);
 		
 		if (item != null){
 			
-			TextView message = (TextView) v.findViewById(R.id.item_message);
-			TextView date = (TextView) v.findViewById(R.id.item_date);
-			ImageView image = (ImageView) v.findViewById(R.id.item_image);
+			TextView message = (TextView) view.findViewById(R.id.item_message);
+			TextView date = (TextView) view.findViewById(R.id.item_date);
+			ImageView image = (ImageView) view.findViewById(R.id.item_image);
 			
 			if (message != null){
 				message.setText(item.getMessage());
@@ -79,21 +89,29 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 			
 				//Remove current image
 				image.setImageBitmap(null);
+				
+				//Load new image in background
 				if (item.getImageAdr()!=null && !item.getImageAdr().equals("")) {
-					new LoadImagesInBg().execute(v, item.getImageAdr());
+					new LoadImagesInBg().execute(view, item.getImageAdr());
 				}
 			}
 			
 		}
 		
-		return v;
+		return view;
 	}
 	
+	/**
+	 * AsyncTask for loading image in background and displaying it in corresponding view.
+	 */
 	private class LoadImagesInBg extends AsyncTask<Object, String, Bitmap> {
 
 	    private View view;
 	    private Bitmap bitmap = null;
 
+	    /**
+	     * Superclass method doInBackground
+	     */
 	    @Override
 	    protected Bitmap doInBackground(Object... parameters) {
 
@@ -107,6 +125,8 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 						pcl.start();
 						try {
 							pcl.join();
+							
+							//Save picture to bitmap and cache
 							bitmap = pcl.getPicture();
 							CacheCompass.getInstance(getContext()).getBitmapCache().put(uri, bitmap);
 						} catch (Exception e) {}	
@@ -118,8 +138,13 @@ public class NewsAdapter extends ArrayAdapter<NewsItem> {
 	        return bitmap;
 	    }
 
+	    /**
+	     * Superclass method onPostExecute
+	     */
 	    @Override
 	    protected void onPostExecute(Bitmap bitmap) {
+	    	
+	    	//Set downloaded image to view if both are valid
 	        if (bitmap != null && view != null) {
 	            ImageView image = (ImageView) view.findViewById(R.id.item_image);
 	            image.setImageBitmap(bitmap);

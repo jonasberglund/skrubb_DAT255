@@ -2,7 +2,7 @@ package se.chalmers.h_sektionen;
 
 import java.util.ArrayList;
 
-import se.chalmers.h_sektionen.adapters.NewsAdapter;
+import se.chalmers.h_sektionen.adapters.NewsArrayAdapter;
 import se.chalmers.h_sektionen.containers.NewsItem;
 import se.chalmers.h_sektionen.utils.Connectivity;
 import se.chalmers.h_sektionen.utils.LoadData;
@@ -24,7 +24,7 @@ import android.widget.ListView;
 
 public class MainActivity extends BaseActivity {
 	
-	private NewsAdapter newsAdapter;
+	private NewsArrayAdapter newsAdapter;
 	private ListView newsFeed;
 	private View aniFooter;
 	private boolean loadingFirstTime;
@@ -39,7 +39,7 @@ public class MainActivity extends BaseActivity {
 	protected void onResume() {
 		super.onResume();
 		
-		newsAdapter = new NewsAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
+		newsAdapter = new NewsArrayAdapter(MainActivity.this, R.layout.news_feed_item, new ArrayList<NewsItem>());
 		loadingFirstTime = true;
 		currentlyLoading = false;
 		setCurrentView(MenuItems.NEWS);
@@ -66,6 +66,7 @@ public class MainActivity extends BaseActivity {
     private void createNewsView(){
     	
     	if (connectedToInternet()){
+    		
 	    	getFrameLayout().removeAllViews();
 			getFrameLayout().addView(getLayoutInflater().inflate(R.layout.view_news, null));
 			
@@ -81,7 +82,7 @@ public class MainActivity extends BaseActivity {
 			newsFeed.addHeaderView(imgHeader,null,false);
 			newsFeed.setAdapter(newsAdapter);
 
-			
+			//Add scroll listener
 			newsFeed.setOnScrollListener(new OnBottomScrollListener(){
 				@Override
 				protected void doOnScrollCompleted() {
@@ -137,8 +138,7 @@ public class MainActivity extends BaseActivity {
 		@Override
 		protected ArrayList<NewsItem> doInBackground(Integer... descending) {	
 			try {
-				return LoadData.loadNews(descending[0], Connectivity.isConnectedFast(MainActivity.this));
-					
+				return LoadData.loadNews(descending[0], Connectivity.isConnectedFast(MainActivity.this));			
 			} catch (Exception e){
 				return null;
 			}
@@ -150,6 +150,7 @@ public class MainActivity extends BaseActivity {
 		@Override
         protected void onPostExecute(ArrayList<NewsItem> list){
 			
+			//Check if new posts were loaded successfully
 			if (list != null){
 				if (loadingFirstTime){
 					stopAnimation();
@@ -158,6 +159,7 @@ public class MainActivity extends BaseActivity {
 					removeFooterAnimation();
 				}
 				
+				//Add new posts to adapter and notify list view
 				currentlyLoading = false;
 				newsAdapter.addAll(list);
 				newsAdapter.notifyDataSetChanged();

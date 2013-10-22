@@ -1,14 +1,24 @@
-H-sektionen
+#H-sektionsappen 
 =============
-This is a school project for the course DAT255 at Chalmers
-The goal was to create an android app for H-sektionen at Chalmers, witch succeeded! 
+This was a school project for the course DAT255 at Chalmers
+The goal was to create an android app for H-sektionen at Chalmers, which succeeded! 
 
-### SDK targets
 
+##Developers
+- Anders Johansson – vispen- Jonas Berglund - jonasberglund
+- Olle Svensson - olvert- Rickard Ekbom - rillepille- Robin Törnquist - roffin- Oskar Gustavsson - OskarG
+====
+
+##Dependencies
+- Java 7 SE
+- Android SDK
+- An Android device
+
+##Android SDK targets
 - Minimum SDK: 		**8**
-- Target SDK:		**17**
+- Target SDK:		**18**
 
-
+===
 Licens
 =============
  Copyright 2013 Anders Johansson, Olle Svensson, Robin Törnqvist, Rikard Ekbom, Oskar Gustavsson, Jonas Berglund

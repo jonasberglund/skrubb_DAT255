@@ -17,13 +17,21 @@ public class Constants {
     		"sortorder=ascending&" +
     		"futureevents=true&";
 	
-
+//	Förslagslådans mail till Podio
 	public static final String SUGGESTEMAIL = "foerslagsladan.918a17d9@internverksamhet.h-styret.podio.com";
+	
+//	Gamla servern
 //	public static final String INFO = "http://jpv-net.dyndns.org:1337/H-Sektionen/info/";
-	public static final String NEWSFEED = "http://www.prokrastinera.com/hsektionen/newsfeed/?week=";
-	public static final String INFO = "http://www.prokrastinera.com/hsektionen/info/";
+//	public static final String NEWSFEED = "http://www.prokrastinera.com/hsektionen/newsfeed/?week=";
+//	public static final String INFO = "http://www.prokrastinera.com/hsektionen/info/";
     
-	public static final String SERVER_ADDRESS = "http://www.prokrastinera.com/";
+//	public static final String SERVER_ADDRESS = "http://www.prokrastinera.com/";
+	
+//	Plesk - Server på htek	
+	public static final String NEWSFEED = "http://www.htek.se/appen/newsfeed/?week=";
+	public static final String INFO = "http://www.htek.se/appen/info/";
+    
+	public static final String SERVER_ADDRESS = "http://www.htek.se";
 	
 	public static final String LS_KITCHEN_TITLE = "L's Kitchen";
 	public static final String KOKBOKEN_TITLE = "Kokboken";

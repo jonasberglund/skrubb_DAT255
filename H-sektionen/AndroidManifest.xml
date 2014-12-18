@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="se.chalmers.h_sektionen"
+    package="se.chalmers_h.h_sektionen"
     android:versionCode="2"
     android:versionName="1.1" >
 
@@ -31,7 +31,7 @@
         </receiver>
 
         <activity
-            android:name="se.chalmers.h_sektionen.MainActivity"
+            android:name="se.chalmers_h.h_sektionen.MainActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:label="@string/app_name"
             android:screenOrientation="portrait" >
@@ -42,42 +42,42 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.LunchActivity"
+            android:name="se.chalmers_h.h_sektionen.LunchActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.InfoActivity"
+            android:name="se.chalmers_h.h_sektionen.InfoActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.PubActivity"
+            android:name="se.chalmers_h.h_sektionen.PubActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.EventsActivity"
+            android:name="se.chalmers_h.h_sektionen.EventsActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.VoteActivity"
+            android:name="se.chalmers_h.h_sektionen.VoteActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.SuggestActivity"
+            android:name="se.chalmers_h.h_sektionen.SuggestActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
         <activity
-            android:name="se.chalmers.h_sektionen.FaultreportActivity"
+            android:name="se.chalmers_h.h_sektionen.FaultreportActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>
 		<activity
-            android:name="se.chalmers.h_sektionen.AboutActivity"
+            android:name="se.chalmers_h.h_sektionen.AboutActivity"
             android:configChanges="keyboardHidden|orientation|screenSize"
             android:screenOrientation="portrait" >
         </activity>

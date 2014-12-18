@@ -2,8 +2,7 @@ package Test;
 
 import org.junit.Test;
 
-import se.chalmers.h_sektionen.containers.Event;
-
+import se.chalmers_h.h_sektionen.containers.Event;
 import junit.framework.TestCase;
 	
 /**

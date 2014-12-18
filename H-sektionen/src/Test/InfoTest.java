@@ -13,8 +13,8 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import se.chalmers.h_sektionen.containers.ContactCard;
-import se.chalmers.h_sektionen.utils.Constants;
+import se.chalmers_h.h_sektionen.containers.ContactCard;
+import se.chalmers_h.h_sektionen.utils.Constants;
 
 /**
  * Test Info View
